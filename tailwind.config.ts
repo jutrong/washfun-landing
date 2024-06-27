@@ -12,7 +12,7 @@ const config: Config = {
       subPrimary: "#0547F5",
       white: "#FFFFFF",
       gray: "#4F5055",
-      lightGray: "#bdc3c7",
+      lightGray: "#ecf0f1",
       lightPrimary: "#EFF6FF",
       lightSubPrimary: "#EBF3FF",
       lightPrimary2: "#F5F9FF",

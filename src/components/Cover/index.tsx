@@ -23,8 +23,8 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
       </div>
       <div className="absolute top-72 left-72 flex flex-col text-white">
         <div className="flex flex-col gap-3 mb-16">
-          <p className="text-7xl font-medium font-Jamsil opacity-90">셀프 세차의</p>
-          <p className="text-8xl font-bold tracking-wide font-Jamsil">디지털 혁신</p>
+          <p className="text-7xl font-medium  opacity-90">셀프 세차의</p>
+          <p className="text-8xl font-bold tracking-wide">디지털 혁신</p>
         </div>
         <div className="mb-6 flex">
           <p className="text-4xl text-primary">워시펀</p>
