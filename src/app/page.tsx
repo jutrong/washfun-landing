@@ -16,6 +16,7 @@ import { useRef } from "react";
 export default function Home() {
   const serviceDataElement = useRef<HTMLDivElement>(null);
   const accordianElement = useRef<HTMLDivElement>(null);
+  const contactElement = useRef<HTMLDivElement>(null);
 
   const onServiceDataMoveBox = () => {
     serviceDataElement.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -25,10 +26,14 @@ export default function Home() {
     accordianElement.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const onContactMoveBox = () => {
+    contactElement.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+  };
+
   return (
     <>
       <div className="w-full box-border">
-        <Cover onMoveBox={onServiceDataMoveBox} onAccordianMoveBox={onAccordianMoveBox} />
+        <Cover onMoveBox={onServiceDataMoveBox} onAccordianMoveBox={onAccordianMoveBox} onContactMoveBox={onContactMoveBox} />
         <ServiceInfo />
         <ServiceData element={serviceDataElement} />
         <EditPriceService />
@@ -36,7 +41,7 @@ export default function Home() {
         <VarienceFeeService />
         <DeviceService />
         <PointService />
-        <Contact />
+        <Contact element={contactElement} />
         <Accordian element={accordianElement} />
         <Footer />
       </div>

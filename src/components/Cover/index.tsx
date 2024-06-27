@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion"
 
-const Cover = ({ onMoveBox, onAccordianMoveBox }: { onMoveBox: () => void, onAccordianMoveBox: () => void }) => {
+const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox: () => void, onAccordianMoveBox: () => void, onContactMoveBox: () => void; }) => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -30,10 +30,10 @@ const Cover = ({ onMoveBox, onAccordianMoveBox }: { onMoveBox: () => void, onAcc
           <p className="text-4xl text-primary">워시펀</p>
           <span className="text-4xl text-white">과 함께</span>
         </div>
-        <button className="flex items-center gap-3 p-3 w-40 h-12 border border-x-2 bg-white rounded-xl">
+        <div className="flex items-center gap-3 p-3 w-40 h-12 border border-x-2 bg-white rounded-xl z-20" onClick={onContactMoveBox}>
           <Image src="/images/svg/contact.svg" width={30} height={30} alt="contact" />
-          <p className="text-1xl text-gray ">문의하기</p>
-        </button>
+          <p className="text-1xl text-gray cursor-pointer">문의하기</p>
+        </div>
       </div>
       <motion.div
         className="absolute bottom-10 left-1/2 w-10 h-10 z-10 "
@@ -51,7 +51,7 @@ const Cover = ({ onMoveBox, onAccordianMoveBox }: { onMoveBox: () => void, onAcc
       >
         <Image src="/images/svg/arrow-down-svgrepo-com-2.svg" alt="scroll down" width={60} height={50} />
       </motion.div>
-    </div>
+    </div >
   )
 }
 

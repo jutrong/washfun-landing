@@ -14,7 +14,7 @@ const ServiceInfo = () => {
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.2 } }}
         >
           <div className="h-44">
-            <Image src="/images/svg/card.svg" width={320} height={200} alt="nfc" />
+            <Image src="/images/svg/card.svg" width={220} height={200} alt="nfc" />
           </div>
           <p className="text-black text-2xl font-bold mt-10">사용량 기반</p>
           <p className="text-black text-2xl font-bold">후불 결제 시스템</p>
