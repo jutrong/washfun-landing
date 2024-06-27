@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { RefObject, useState } from "react";
 
 const QNA = [
   {
@@ -28,14 +28,14 @@ const QNA = [
 
 ]
 
-const Accordian = () => {
+const Accordian = ({ element }: { element: RefObject<HTMLDivElement> }) => {
 
   const [openId, setOpenId] = useState<number | null>(null); // 현재 열린 항목의 ID를 저장
 
   const toggleOpen = (id: number) => setOpenId(openId === id ? null : id);
 
   return (
-    <div className="w-full  mb-52 text-black">
+    <div className="w-full  mb-52 text-black" ref={element}>
       <div className="flex justify-center items-center mt-32 mb-20">
         <p className="font-bold text-4xl">자주 묻는 질문</p>
       </div>

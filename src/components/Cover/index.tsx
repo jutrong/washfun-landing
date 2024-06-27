@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion"
 
-const Cover = () => {
+const Cover = ({ onMoveBox, onAccordianMoveBox }: { onMoveBox: () => void, onAccordianMoveBox: () => void }) => {
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full z-0">
@@ -15,9 +16,9 @@ const Cover = () => {
         </div>
         <div className="w-96 h-px bg-gray z-10 mx-48"></div>
         <div className="flex space-x-12 cursor-pointer">
-          <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500">주요 기능</p>
-          <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500">사용 예시</p>
-          <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500">자주 묻는 질문</p>
+          <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500" onClick={onMoveBox}>주요 기능</p>
+          {/* <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500">사용 예시</p> */}
+          <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500" onClick={onAccordianMoveBox}>자주 묻는 질문</p>
         </div>
       </div>
       <div className="absolute top-72 left-72 flex flex-col text-white">

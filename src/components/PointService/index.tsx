@@ -9,7 +9,7 @@ const PointService = () => {
           <div>
 
           </div>
-          <p className="text-5xl text-gradient font-bold pt-4">포인트 충전 기능</p>
+          <p className="text-5xl text-gradient font-bold pt-4">포인트 충전 기능</p>
         </div>
         <div className="flex flex-col items-center pt-10 text-gray">
           <p>현금이나 계좌 이체 후 점주 프로그램에서 포인트 충전</p>
@@ -17,7 +17,7 @@ const PointService = () => {
         </div>
       </div>
       <div className="flex justify-center items-center mt-16">
-        <Image src="/images/png/point-mockup.png" alt="point" width={900} height={1000} />
+        <Image src="/images/png/point-mockup.png" alt="point" width={900} height={1000} quality={100} />
       </div>
     </div>
   )

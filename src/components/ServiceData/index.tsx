@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { RefObject } from "react";
 
 
-const ServiceData = () => {
+const ServiceData = ({ element }: { element: RefObject<HTMLDivElement> }) => {
   return (
-    <div className="relative w-full h-300vh">
+    <div className="relative w-full h-300vh" ref={element}>
       <div className="sticky top-0 h-screen z-20">
         <div className="text-black text-6xl flex flex-col items-center gap-4 p-28 font-semibold pb-14">
           <p>매출,고객 수 등 <span className="text-subPrimary">다양한 데이터</span>를</p>
@@ -14,7 +15,7 @@ const ServiceData = () => {
           </div>
         </div>
         <div className="flex justify-center item-cente mb-14">
-          <Image src="/images/png/dashboard-mockup.png" alt="dashboard" width={900} height={580} />
+          <Image src="/images/png/dashboard-mockup.png" alt="dashboard" width={900} height={580} quality={100} />
         </div>
       </div>
       <div className="absolute top-1/4 right-0 -z-10">
