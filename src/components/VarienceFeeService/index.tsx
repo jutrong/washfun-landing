@@ -11,7 +11,7 @@ const VarienceFeeService = () => {
     offset: [0, 0.5]
   })
   const backgroundColor = useTransform(scrollYProgress, [0, 0.5],
-    ['#EFF6FF', '#001E43']);
+    ['#EFF6FF', '#0d0829']);
   const cloudX = useTransform(scrollYProgress, [0, 0.5], [0, -700]);
   const sunX = useTransform(scrollYProgress, [0, 0.5], [0, 700], { ease: backIn });
   const moonX = useTransform(scrollYProgress, [0.3, 1], [400, 0], { ease: backIn });
@@ -23,7 +23,7 @@ const VarienceFeeService = () => {
   const peopleOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const dayPercentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const nightPercentOpacity = useTransform(scrollYProgress, [0.5, 0.8], [0, 1]);
-  const upY = useTransform(scrollYProgress, [0.2, 1], [200, 0]);
+  const upY = useTransform(scrollYProgress, [0.2, 1], [300, 0]);
   const dayPannelOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const nightPannelOpacity = useTransform(scrollYProgress, [0.3, 1], [0, 1]);
 
@@ -48,8 +48,8 @@ const VarienceFeeService = () => {
               <motion.div style={{ opacity: nightPannelOpacity }}>
                 <Image src="/images/svg/pannel-night.svg" width={650} height={100} alt="pannel-day" />
               </motion.div>
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-                <Image src="images/svg/car.svg" width={700} height={600} alt="car" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] opacity-80">
+                <Image src="/images/png/car3.png" width={600} height={600} alt="car" />
               </div>
               <div className="absolute -top-14 left-1/2 -translate-x-1/2">
                 <div>
@@ -76,15 +76,25 @@ const VarienceFeeService = () => {
                   <Image src="/images/png/people-circle3.png" alt="revenue-up" width={40} height={100} />
                 </motion.div>
               </div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
-                <div className="w-700px h-32 bg-lightPrimary shadow-primary-shadow rounded-3xl flex justify-between items-center px-20">
+              <motion.div className="absolute top-2/4 left-1/2 -translate-x-1/2" style={{ opacity: dayPannelOpacity }}>
+                <div className="w-600px h-32 bg-lightPrimary shadow-primary-shadow rounded-3xl flex justify-between items-center px-10">
                   <p className="text-gray font-Jamsil text-4xl opacity-80">Day</p>
                   <div className="flex justify-center items-center">
                     <motion.div className="text-black font-Jamsil text-4xl" style={{ opacity: dayPercentOpacity }}>100%</motion.div>
-                    <motion.div className="text-primary font-Jamsil text-4xl" style={{ opacity: nightPercentOpacity, x: nightPercentOpacity }}>80%</motion.div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+              <motion.div className="absolute top-2/4 left-1/2 -translate-x-1/2" style={{ opacity: nightPercentOpacity }}>
+                <div className="w-600px h-32 bg-lightPrimary shadow-primary-shadow rounded-3xl flex justify-between items-center px-10">
+                  <p className="text-gray font-Jamsil text-4xl opacity-80">Night</p>
+                  <div className="flex justify-center items-center">
+                    <motion.div className="relative w-full h-full text-lightPrimary    font-Jamsil text-4xl opacity-5" style={{ opacity: nightPercentOpacity, x: nightPercentOpacity }}>
+                      <Image src="/images/png/sale-tag.png" width={200} height={100} alt="sale tag" ></Image>
+                      <motion.p className="absolute top-2/4 left-32 font-Jamsil text-2xl z-10 -translate-x-1/2 -translate-y-1/2 tracking-widest" >80%</motion.p>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
             <motion.div className="absolute left-80 top-1/3" style={{ x: cloudX }}>
               <Image src="/images/svg/cloud.svg" width={140} height={120} alt="cloud" />
@@ -104,7 +114,7 @@ const VarienceFeeService = () => {
             <motion.div className="absolute left-28 top-28" style={{ x: moonXX }}>
               <Image src="/images/png/moon.png" alt="moon" width={140} height={120} />
             </motion.div>
-            <motion.div className="absolute bottom-4 -z-20 opacity-40" style={{ y: upY }}>
+            <motion.div className="absolute bottom-16 -z-20 opacity-10" style={{ y: upY }}>
               <Image src="/images/png/up.png" alt="up" width={600} height={120} />
             </motion.div>
           </motion.div>

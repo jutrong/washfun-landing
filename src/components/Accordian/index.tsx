@@ -35,8 +35,8 @@ const Accordian = ({ element }: { element: RefObject<HTMLDivElement> }) => {
   const toggleOpen = (id: number) => setOpenId(openId === id ? null : id);
 
   return (
-    <div className="w-full  mb-52 text-black" ref={element}>
-      <div className="flex justify-center items-center mt-32 mb-20">
+    <div className="w-full mb-52 text-black" ref={element}>
+      <div className="flex justify-center items-center mb-20">
         <p className="font-bold text-4xl">자주 묻는 질문</p>
       </div>
       {QNA.map((qna) => {

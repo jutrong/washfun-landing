@@ -12,11 +12,14 @@ const config: Config = {
       subPrimary: "#0547F5",
       white: "#FFFFFF",
       gray: "#4F5055",
+      lightGray: "#bdc3c7",
       lightPrimary: "#EFF6FF",
       lightSubPrimary: "#EBF3FF",
       lightPrimary2: "#F5F9FF",
       lightPrimary3: "#F5F9FF",
       black: "#222",
+      color: "white",
+      day: "linear-gradient(180deg, #F5F9FF 0%, #EFF6FF 100%)",
     },
     extend: {
       backgroundImage: {

@@ -1,6 +1,7 @@
 "use client";
 
 import Accordian from "@/components/Accordian";
+import Contact from "@/components/Contact";
 import Cover from "@/components/Cover";
 import DeviceService from "@/components/DeviceService";
 import EditPriceService from "@/components/EditPriceService";
@@ -35,6 +36,7 @@ export default function Home() {
         <VarienceFeeService />
         <DeviceService />
         <PointService />
+        <Contact />
         <Accordian element={accordianElement} />
         <Footer />
       </div>

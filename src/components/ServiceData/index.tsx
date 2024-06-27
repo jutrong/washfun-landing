@@ -7,7 +7,7 @@ const ServiceData = ({ element }: { element: RefObject<HTMLDivElement> }) => {
     <div className="relative w-full h-300vh" ref={element}>
       <div className="sticky top-0 h-screen z-20">
         <div className="text-black text-6xl flex flex-col items-center gap-4 p-28 font-semibold pb-14">
-          <p>매출,고객 수 등 <span className="text-subPrimary">다양한 데이터</span>를</p>
+          <p>매출,고객 수 등 <span className="text-gradient">다양한 데이터</span>를</p>
           <p>한 눈에 확인하세요.</p>
           <div className="font-normal text-gray text-base flex flex-col items-center">
             <p>데이터 수집과 분석으로 일별, 월별, 시간별, 베이별 매출</p>
@@ -24,9 +24,12 @@ const ServiceData = ({ element }: { element: RefObject<HTMLDivElement> }) => {
       <div className="absolute bottom-96 left-0 -z-9">
         <Image src="/images/png/customers.png" width={800} height={200} alt="sale background text" />
       </div>
-      {/* <div className="absolute top-1/2 left-80 text-black text-9xl font-mono">
-        <p className="opacity-5">DATA</p>
-      </div> */}
+      <div className="absolute top-2/4 left-0 -z-9">
+        <Image src="/images/png/data-text.png" width={500} height={200} alt="sale background text" />
+      </div>
+      <div className="absolute top-3/4 right-20 -z-9">
+        <Image src="/images/png/revenue-text.png" width={500} height={200} alt="sale background text" />
+      </div>
       <div className="absolute bottom-0 left-0 w-full h-2/3 -z-10">
         <Image src="/images/png/frame.png" fill={true} alt="frame" />
       </div>
