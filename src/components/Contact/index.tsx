@@ -2,7 +2,7 @@ import { RefObject, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 
-const Contact = () => {
+const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
   const form: RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
 
   const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
@@ -35,7 +35,7 @@ const Contact = () => {
   };
 
   return (
-    <div className=" w-full h-full flex flex-col items-center gap-20 text-black  bg-gradient-to-t from-lightPrimary to-white pb-32 mt-44 mb-44">
+    <div className=" w-full h-full flex flex-col items-center gap-20 text-black  bg-gradient-to-t from-lightPrimary to-white pb-32 mt-44 mb-44" ref={element}>
       <div className="text-black flex justify-center items-center ">
         <p className="font-bold text-5xl">WashFun 문의</p>
       </div>
