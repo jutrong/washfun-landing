@@ -45,7 +45,7 @@ const Accordian = ({ element }: { element: RefObject<HTMLDivElement> }) => {
             <div className="w-3/4 cursor-pointer md:w-full">
               <div>
                 <motion.div layout className="flex justify-between items-center h-20 px-10" onClick={() => toggleOpen(qna.id)}>
-                  <p className="font-bold text-xl">{qna.title}</p>
+                  <p className="font-bold text-xl md:text-base">{qna.title}</p>
                   <motion.img
                     src={openId === qna.id ? "/images/svg/close.svg" : "/images/svg/plus.svg"}
                     alt="toggle"

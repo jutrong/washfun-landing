@@ -11,10 +11,6 @@ const EditPriceService = () => {
       className="w-full h-full flex items-center my-44 md:flex-col-reverse md:gap-10 md:items-start md:my-20 overflow-x-hidden"
     >
       <motion.div
-        whileHover={{
-          scale: 1.1,
-          transition: { duration: 0.5 },
-        }}
         className="flex-1" >
         <Image src="/images/png/editprice-mockup.png" alt="edit price" width={860} height={400} quality={100}
           className="md:w-[330px]"

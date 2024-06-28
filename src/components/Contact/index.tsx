@@ -39,14 +39,14 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
       {/* <div className="text-black flex justify-center items-center ">
         <p className="font-semibold text-4xl">WashFun 문의</p>
       </div> */}
-      <div className="w-full h-full flex py-20 pb-10 md:flex-col ">
+      <div className="w-full h-full flex py-20 pb-10 md:flex-col">
         <div className="flex-[2] font-semibold text-2xl gap-4 flex flex-col items-start mt-44 md:mt-0">
-          <p className="ml-20">편리하고 체계적인</p>
-          <p className="ml-20">세차장 관리</p>
-          <p className="ml-20">워시펀과 함께 만들어 나갑니다.</p>
+          <p className="ml-20 md:ml-10">편리하고 체계적인</p>
+          <p className="ml-20 md:ml-10">세차장 관리</p>
+          <p className="ml-20 md:ml-10">워시펀과 함께 만들어 나갑니다.</p>
         </div>
         <form ref={form} onSubmit={sendEmail} className="flex-[3] p-32 md:p-0 md:mt-20 md:justify-center">
-          <div className="flex">
+          <div className="flex md:flex-col md:gap-6">
             <div className="flex-1 flex flex-col mx-10 ">
               <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="name" placeholder="이름" required />
             </div>
@@ -54,7 +54,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
               <input className="w-full h-9 border border-lightGray rounded-md  pl-5 focus:outline-none focus:border-primary placeholder:text-sm" type="email" name="email" placeholder="이메일" required />
             </div>
           </div>
-          <div className="flex mt-6">
+          <div className="flex mt-6 md:flex-col md:gap-6">
             <div className="flex-1 flex flex-col mx-10">
               <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="address" placeholder="주소" required />
             </div>
@@ -62,7 +62,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
               <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="phone" placeholder="전화번호" required />
             </div>
           </div>
-          <div className="flex mt-6">
+          <div className="flex mt-6 md:flex-col md:gap-6">
             <div className="flex-1 flex flex-col mx-10">
               <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="store_name" placeholder="상호명" required />
             </div>
@@ -70,7 +70,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
               <input className="w-full h-9 border border-lightGray rounded-md  pl-5 focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="year" placeholder="입력(년차)" required />
             </div>
           </div>
-          <div className="flex mt-6">
+          <div className="flex mt-6 md:flex-col md:gap-6">
             <div className="flex-1 flex flex-col mx-10">
               <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="bay" placeholder="베이 수" required />
             </div>

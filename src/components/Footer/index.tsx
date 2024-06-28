@@ -1,22 +1,28 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 const Footer = () => {
   return (
-    <div className="w-full  border-t border-lightPrimary">
+    <div className="w-full  border-t border-lightPrimary bg-gradient-to-tr from-lightPrimary to-white">
       <div className="w-full h-full flex flex-col justify-center py-10">
         <div className="flex flex-col items-center">
           <div className="w-2/3 h-20 flex justify-between mt-6">
             <div className="opacity-50">
               <Image src="/images/svg/grayLogo.svg" alt="gray Logo" width={80} height={80} />
             </div>
-            <div>
-              <Image src="/images/png/instagram.png" alt="instagram" width={30} height={30} />
-            </div>
+            <Link href={"https://www.instagram.com/wash.fun_official/?locale=French"} target="_blank">
+              <div className="cursor-pointer">
+                <Image src="/images/png/instagram.png" alt="instagram" width={30} height={30} />
+              </div>
+            </Link>
           </div>
-          <div className="w-2/3 flex flex-col gap-3 text-gray md:pt-10">
-            <div className="flex gap-2 md:flex-col">
-              <p className="font-bold">개인정보 처리방침 및 기타문의사항 </p>
+          <div className="w-2/3 flex flex-col gap-3 text-gray md:pt-10 md:text-sm">
+            <div>
+              <p className="font-bold text-gradient">Life Divergence</p>
+            </div>
+            <div className="flex gap-2 md:flex-col ">
+              <p className="font-bold ">개인정보 처리방침 및 기타문의사항 </p>
               <p>kdy@washfun.fun / 070-8806-8088</p>
             </div>
             <div className="flex gap-2 md:flex-col">
@@ -34,7 +40,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
