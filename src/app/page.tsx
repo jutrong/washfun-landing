@@ -45,6 +45,7 @@ export default function Home() {
         <Accordian element={accordianElement} />
         <Footer />
       </div>
+
     </>
   );
 }

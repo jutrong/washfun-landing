@@ -22,6 +22,7 @@ const config: Config = {
 
       sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
+      sx: { min: "767px" },
     },
     colors: {
       primary: "#2E87FF",
