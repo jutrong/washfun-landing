@@ -42,7 +42,7 @@ const Accordian = ({ element }: { element: RefObject<HTMLDivElement> }) => {
       {QNA.map((qna) => {
         return (
           <motion.div className=" flex justify-center " key={qna.id}>
-            <div className="w-3/4 cursor-pointer">
+            <div className="w-3/4 cursor-pointer md:w-full">
               <div>
                 <motion.div layout className="flex justify-between items-center h-20 px-10" onClick={() => toggleOpen(qna.id)}>
                   <p className="font-bold text-xl">{qna.title}</p>

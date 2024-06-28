@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox: () => void, onAccordianMoveBox: () => void, onContactMoveBox: () => void; }) => {
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen">
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <Image src="/images/png/pc-background.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>

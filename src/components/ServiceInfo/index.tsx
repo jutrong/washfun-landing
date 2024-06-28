@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 const ServiceInfo = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-t from-lightPrimary to-white pb-40 ">
+    <div className="w-full h-full bg-gradient-to-t from-lightPrimary to-white pb-40 overflow-x-hidden">
       <div className="flex justify-center pt-40 text-5xl font-bold tracking-wider md:text-3xl">
         <p className="text-black mr-4">셀프 셀차의</p>
         <span className="text-black text-gradient">패  러  다  임</span>
