@@ -3,13 +3,13 @@ import { motion } from "framer-motion"
 
 const ServiceInfo = () => {
   return (
-    <div className="w-full h-screen bg-gradient-to-t from-lightPrimary to-white overflow-hidden">
-      <div className="flex justify-center pt-40 text-5xl font-bold tracking-wider">
+    <div className="w-full h-full bg-gradient-to-t from-lightPrimary to-white pb-40 ">
+      <div className="flex justify-center pt-40 text-5xl font-bold tracking-wider md:text-3xl">
         <p className="text-black mr-4">셀프 셀차의</p>
         <span className="text-black text-gradient">패  러  다  임</span>
       </div>
-      <motion.div className="flex justify-center items-center gap-20 mt-32">
-        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col"
+      <motion.div className="flex justify-center items-center gap-20 mt-32 lg:gap-6 md:flex-col">
+        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col lg:w-60 md:w-80"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.2 } }}
         >
@@ -19,7 +19,7 @@ const ServiceInfo = () => {
           <p className="text-black text-2xl font-bold mt-10">사용량 기반</p>
           <p className="text-black text-2xl font-bold">후불 결제 시스템</p>
         </motion.div>
-        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col"
+        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col lg:w-60 md:w-80"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.4 } }}
         >
@@ -36,7 +36,7 @@ const ServiceInfo = () => {
           <p className="text-black text-2xl font-bold mt-10">실시간 서버와 통신하는</p>
           <p className="text-black text-2xl font-bold">IoT 코인박스 · 청소기</p>
         </motion.div>
-        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col"
+        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col lg:w-60 md:w-80"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.6 } }}
         >
