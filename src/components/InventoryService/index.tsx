@@ -8,7 +8,7 @@ const InventoryService = () => {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 2 } }}
-      className="w-full h-full flex items-center my-44 md:flex-col md:gap-10 md:items-end md:my-20 overflow-x-hidden "
+      className="w-full h-full flex items-center  my-44 md:flex-col md:gap-10 md:items-end md:my-20 overflow-x-hidden "
     >
       <div className="flex-1 flex flex-col items-center text-black h-full md:mr-6">
         <div>
@@ -36,11 +36,8 @@ const InventoryService = () => {
         </div>
       </div>
       <motion.div
-        whileHover={{
-          scale: 1.1,
-          transition: { duration: 0.5 },
-        }}
-        className="flex-1" >
+
+        className="flex-1 w-full flex justify-end" >
         <Image src="/images/png/inventory-mockup.png" alt="inventory mockup" width={860} height={400} quality={100}
           className="md:w-[330px]"
         />

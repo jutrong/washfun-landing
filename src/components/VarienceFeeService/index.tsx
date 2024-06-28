@@ -33,8 +33,8 @@ const VarienceFeeService = () => {
       <motion.div ref={scrollRef} className="h-250vh w-full relative" style={{ backgroundColor }} >
         <div className="sticky top-0 left-0 z-20 h-screen overflow-hidden">
           <motion.div
-            className="flex justify-center  md:w-full" >
-            <motion.div className="text-black mt-40 z-20 md:mt-30 md:px-10" style={{ color: textColor }}>
+            className="flex justify-center md:w-full" >
+            <motion.div className="text-black mt-40 z-20 md:mt-20 md:px-10" style={{ color: textColor }}>
               <p className="font-bold text-5xl md:text-xl md:flex md:justify-center ">시간별 변동 요금제로 매장 회전율 극대화</p>
               <motion.div className="flex flex-col items-center mt-10 font-light opacity-70 md:text-[10px]" style={{ color: subTextColor }}>
                 <p>바쁜 시간에는 기존 요금을</p>
@@ -42,7 +42,7 @@ const VarienceFeeService = () => {
                 <p>주변 세차장과의 가격 경쟁력 확보로 고객 추가 유입 !</p>
               </motion.div>
             </motion.div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2  w-[460px]">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2  w-[460px] md:w-[400px]">
               <motion.div className="absolute" style={{ opacity: dayPannelOpacity }}>
                 <Image src="/images/svg/pannel-day100.svg" width={650} height={100} alt="pannel-day" />
               </motion.div>
@@ -78,7 +78,7 @@ const VarienceFeeService = () => {
                 </motion.div>
               </div>
               <motion.div className="absolute top-2/4 left-1/2 -translate-x-1/2" style={{ opacity: dayPannelOpacity }}>
-                <div className="w-600px h-32 bg-lightPrimary shadow-primary-shadow rounded-3xl flex justify-between items-center px-10 md:w-[400px] md:h-20">
+                <div className="w-600px h-32 bg-lightPrimary shadow-primary-shadow rounded-3xl flex justify-between items-center px-10 md:w-[360px] md:h-20">
                   <p className="text-gray font-Jamsil text-4xl opacity-80 md:text-2xl">Day</p>
                   <div className="flex justify-center items-center">
                     <motion.div className="text-black font-Jamsil text-4xl md:text-2xl" style={{ opacity: dayPercentOpacity }}>100%</motion.div>
@@ -86,7 +86,7 @@ const VarienceFeeService = () => {
                 </div>
               </motion.div>
               <motion.div className="absolute top-2/4 left-1/2 -translate-x-1/2" style={{ opacity: nightPercentOpacity }}>
-                <div className="w-600px h-32 bg-lightPrimary shadow-primary-shadow rounded-3xl flex justify-between items-center px-10 md:w-[400px] md:h-20">
+                <div className="w-600px h-32 bg-lightPrimary shadow-primary-shadow rounded-3xl flex justify-between items-center px-10 md:w-[360px] md:h-20">
                   <p className="text-gray font-Jamsil text-4xl opacity-80 md:text-2xl">Night</p>
                   <div className="flex justify-center items-center">
                     <motion.div className="relative w-full h-full text-lightPrimary  font-Jamsil text-4xl opacity-5"
