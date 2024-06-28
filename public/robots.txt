@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://washfun.vercel.app
+
+# Sitemaps
+Sitemap: https://washfun.vercel.app/sitemap.xml
