@@ -17,7 +17,6 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
         <div className="w-96 h-px bg-gray z-10 mx-48"></div>
         <div className="flex space-x-12 cursor-pointer">
           <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500" onClick={onMoveBox}>주요 기능</p>
-          {/* <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500">사용 예시</p> */}
           <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500" onClick={onAccordianMoveBox}>자주 묻는 질문</p>
         </div>
       </div>
@@ -30,10 +29,15 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
           <p className="text-4xl text-primary">워시펀</p>
           <span className="text-4xl text-white">과 함께</span>
         </div>
-        <div className="flex items-center gap-3 p-3 w-40 h-12 border border-x-2 bg-white rounded-xl z-20" onClick={onContactMoveBox}>
-          <Image src="/images/svg/contact.svg" width={30} height={30} alt="contact" />
+        <motion.div
+          whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
+          className="flex items-center gap-3 p-3 w-40 h-12 border border-x-2 bg-white rounded-xl z-20" onClick={onContactMoveBox}>
+          <motion.div
+          >
+            <Image src="/images/svg/contact.svg" width={30} height={30} alt="contact" />
+          </motion.div>
           <p className="text-1xl text-gray cursor-pointer">문의하기</p>
-        </div>
+        </motion.div>
       </div>
       <motion.div
         className="absolute bottom-10 left-1/2 w-10 h-10 z-10 "
