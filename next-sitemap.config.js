@@ -2,7 +2,7 @@
 
 module.exports = {
   siteUrl: "https://washfun.vercel.app",
-  changefreq: "daily",
+  changefreq: "yearly",
   generateRobotsTxt: true,
   priority: 1,
   robotsTxtOptions: {
