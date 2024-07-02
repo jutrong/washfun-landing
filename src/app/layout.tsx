@@ -28,6 +28,13 @@ export default function RootLayout({
     <html lang="kr" className={`${pretendard.variable}`}>
       <meta name="google-site-verification" content="VMTp64EcMV80hjezkmVT12Yd2tPjLS823u_zVWUxIwE" />
       <meta name="naver-site-verification" content="0dfd8e7c9e0fdc338d7b7a27f89ddac03bb278b9" />
+      {/* <!-- naver 블로그, 카카오톡 미리보기 설정 --> */}
+      <meta property="og:title" content="워시펀 - 셀프 세차의 디지털 혁신 - 워시펀과 함께" />
+      <meta property="og:url" content="https://washfun.vercel.app/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="/images/png/dashboard-mockup.png" />
+      <meta property="og:title" content="워시펀" />
+      <meta property="og:description" content="워시펀을 통해 매출,고객 수 등 다양한 데이터를 한 눈에 확인하세요." />
       <body className={pretendard.className}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
