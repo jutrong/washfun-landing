@@ -26,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
+      <meta name="google-site-verification" content="VMTp64EcMV80hjezkmVT12Yd2tPjLS823u_zVWUxIwE" />
       <body className={pretendard.className}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
