@@ -37,7 +37,6 @@ export default function Home() {
   const onUpMoveBox = () => {
     upElement.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
   };
-
   return (
     <>
       <div className="w-full box-border" ref={upElement}>
