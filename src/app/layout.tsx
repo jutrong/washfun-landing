@@ -12,7 +12,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://washfun.vercel.app/"),
+  metadataBase: new URL("https://www.lifedivergence.com"),
 
   title: "WashFun - 워시펀",
   description: "셀프 세차의 디지털 혁신 - 워시펀과 함께",
@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
-      <meta name="google-site-verification" content="VMTp64EcMV80hjezkmVT12Yd2tPjLS823u_zVWUxIwE" />
+      <meta name="google-site-verification" content="rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM" />
       <meta name="naver-site-verification" content="0dfd8e7c9e0fdc338d7b7a27f89ddac03bb278b9" />
       {/* <!-- naver 블로그, 카카오톡 미리보기 설정 --> */}
       <meta property="og:title" content="워시펀 - 셀프 세차의 디지털 혁신 - 워시펀과 함께" />
