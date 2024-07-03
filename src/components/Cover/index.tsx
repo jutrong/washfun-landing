@@ -11,7 +11,7 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
         <Image src="/images/png/pc-background.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>
       <div className="absolute top-0 left-0 w-full h-full z-0 hidden lg:block">
-        <Image src="/images/png/mobile-background.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
+        <Image src="/images/png/mobile-back.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>
       <div className="absolute inset-x-0 w-full h-24 z-10 flex justify-between items-center px-60 lg:px-0">
         <div className="w-[120px] h-[60px] flex justify-center items-center">
@@ -24,10 +24,10 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
       </div>
       <div className="absolute top-72 left-72 flex flex-col text-white lg:left-1/2 lg:-translate-x-1/2 lg:top-32 w-full">
         <div className="flex flex-col gap-3 mb-16 lg:items-center">
-          <p className="text-7xl font-medium  opacity-90 lg:text-6xl lg:opacity-100">셀프 세차의</p>
+          <p className="text-7xl font-medium opacity-90 lg:text-6xl lg:opacity-100">셀프 세차의</p>
           <p className="text-8xl font-bold tracking-wide lg:text-6xl">디지털 혁신</p>
         </div>
-        <div className="mb-6 flex  lg:justify-center lg:bg-black lg:py-2 lg:opacity-80">
+        <div className="mb-6 flex  lg:justify-center  lg:py-2 ">
           <p className="text-4xl text-primary lg:text-3xl lg:font-bold">워시펀</p>
           <span className="text-4xl text-white lg:text-3xl">과 함께</span>
         </div>
