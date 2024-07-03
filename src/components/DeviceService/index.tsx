@@ -8,7 +8,7 @@ const DeviceService = () => {
   const scrollRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: scrollRef,
-    offset: [0, 1]
+    offset: [0, 1],
   })
   const firstBoxY = useTransform(scrollYProgress, [0, 0.3], [0, -1200]);
   const secondBoxY = useTransform(scrollYProgress, [0.1, 0.6], [0, -900]);
@@ -16,7 +16,7 @@ const DeviceService = () => {
 
   return (
     <div className="h-full w-full">
-      <div className="relative h-[300vh] w-full" ref={scrollRef}>
+      <motion.div className="relative h-[300vh] w-full" ref={scrollRef}>
         <div className="sticky top-0 left-0">
           <motion.div className="absolute top-0 left-0 w-full text-black flex flex-col items-center z-30 bg-white md:flex" style={{ y: firstBoxY }}>
             <div className="flex flex-col justify-center items-center mt-20">
@@ -26,7 +26,7 @@ const DeviceService = () => {
               </div>
               <p className="text-gray opacity-90 font-semibold mt-6 md:text-sm">베이별 사용 시간, 상태 확인</p>
             </div>
-            <div className="relative w-[1200px] h-[550px]  mt-10 rounded-[26px] shadow-primary-shadow flex flex-col justify-end overflow-hidden bg-white xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px]">
+            <div className="relative w-[1200px] h-[550px] mt-10 rounded-[26px] shadow-primary-shadow flex flex-col z-30 justify-end bg-white xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px]">
               <div className="flex justify-end items-center md:flex-col md:justify-center">
                 <div className="flex flex-col justify-start pl-20 pt-10 items-start gap-5 w-full h-full md:items-center md:pl-0 md:gap-1 ">
                   <div>
@@ -36,10 +36,10 @@ const DeviceService = () => {
                   <p className="text-3xl font-bold md:text-xl">실시간 상태 확인</p>
                 </div>
                 <div className="flex min-w-[900px] md:hidden xl:min-w-[720px] ">
-                  <Image src="/images/png/device-mockup.png" alt="device-mockup" width={900} height={1000} className="" />
+                  <Image src="/images/png/device-mockup.png" alt="device-mockup" width={900} height={1000} />
                 </div>
                 <div className="flex md:min-w-[500px] h-[250px] md:justify-center sx:hidden">
-                  <Image src="/images/svg/mobile-device.svg" alt="device-mockup" width={500} height={400} className="" />
+                  <Image src="/images/svg/mobile-device.svg" alt="device-mockup" width={500} height={400} />
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 w-full h-20 bg-lightSubPrimary flex justify-start items-center md:h-12">
@@ -48,7 +48,7 @@ const DeviceService = () => {
             </div>
           </motion.div>
           <motion.div className="absolute top-[250px] left-0 w-full  text-black flex flex-col items-center bg-white z-20  md:flex md:top-[220px]" style={{ y: secondBoxY }}  >
-            <div className="relative w-[1200px] h-[550px]  mt-20 rounded-[26px] shadow-primary-shadow flex flex-col justify-end overflow-hidden  xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px]">
+            <div className="relative w-[1200px] h-[550px]  mt-20 rounded-[26px] shadow-primary-shadow flex flex-col justify-end xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px]">
               <div className="flex  justify-end items-center md:flex-col md:justify-center">
                 <div className="flex flex-col justify-start pl-20 pt-10 items-start  gap-5 w-full h-full md:items-center md:pl-0 md:gap-1">
                   <div>
@@ -57,10 +57,10 @@ const DeviceService = () => {
                   <p className="text-4xl font-bold md:text-xl">에러 내역 확인</p>
                 </div>
                 <div className="flex min-w-[900px] md:hidden xl:min-w-[720px]">
-                  <Image src="/images/png/error-content-mockup.png" alt="device-mockup" width={900} height={1000} className="" />
+                  <Image src="/images/png/error-content-mockup.png" alt="device-mockup" width={900} height={1000} />
                 </div>
                 <div className="flex md:min-w-[500px] h-[250px] md:justify-center sx:hidden">
-                  <Image src="/images/svg/mobile-content.svg" alt="device-mockup" width={500} height={400} className="" />
+                  <Image src="/images/svg/mobile-content.svg" alt="device-mockup" width={500} height={400} />
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 w-full h-20 bg-lightPrimary2 flex justify-start items-center md:h-12">
@@ -69,7 +69,7 @@ const DeviceService = () => {
             </div>
           </motion.div>
           <motion.div className="absolute top-[310px] left-0 w-full  text-black flex flex-col items-center bg-white z-10 md:flex md:top-[265px]" style={{ y: thirdBoxY }}>
-            <div className="relative w-[1200px] h-[550px]  mt-20 rounded-[26px] shadow-primary-shadow flex flex-col justify-end overflow-hidden xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px]">
+            <div className="relative w-[1200px] h-[550px]  mt-20 rounded-[26px] shadow-primary-shadow flex flex-col justify-end xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px]">
               <div className="flex  justify-end items-center  md:flex-col md:justify-center">
                 <div className="flex flex-col justify-start pl-20 pt-10 items-start  gap-5 w-full h-full md:items-center md:pl-0 md:gap-1">
                   <div>
@@ -79,10 +79,10 @@ const DeviceService = () => {
                   <p className="text-4xl font-bold md:text-xl">고장 설정</p>
                 </div>
                 <div className="flex min-w-[900px] md:hidden xl:min-w-[720px]">
-                  <Image src="/images/png/device-mockup.png" alt="device-mockup" width={900} height={1000} className="" />
+                  <Image src="/images/png/device-mockup.png" alt="device-mockup" width={900} height={1000} />
                 </div>
                 <div className="flex md:min-w-[500px] h-[250px] md:justify-center sx:hidden">
-                  <Image src="/images/svg/mobile-device.svg" alt="device-mockup" width={500} height={400} className="" />
+                  <Image src="/images/svg/mobile-device.svg" alt="device-mockup" width={500} height={400} />
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 w-full h-20 bg-lightPrimary3 flex justify-start items-center md:h-12">
@@ -91,7 +91,7 @@ const DeviceService = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div >
   )
 }

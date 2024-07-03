@@ -54,7 +54,7 @@ export default function Home() {
         <Footer />
         <div className="fixed bottom-6 right-10 bg-white  w-12 h-12 rounded-full cursor-pointer bg-gradient-to-tr from-subPrimary to-white shadow-primary-shadow
           flex justify-center items-center rotate-180
-          opacity-90
+          opacity-50
         "
           onClick={onUpMoveBox}>
           <motion.div

@@ -12,7 +12,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://washfun.vercel.app"),
+  metadataBase: new URL("https://washfun.vercel.app/"),
 
   title: "WashFun - 워시펀",
   description: "셀프 세차의 디지털 혁신 - 워시펀과 함께",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: "셀프 세차의 디지털 혁신 - 워시펀과 함께",
     images: [
       {
-        url: "/images/png/dashboard-mockup.png",
+        url: "/images/png/cover-page.png",
         alt: "워시펀 대시보드 이미지",
       }
     ]
