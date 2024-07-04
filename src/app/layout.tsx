@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
       <meta name="google-site-verification" content="rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM" />
-      <meta name="naver-site-verification" content="0dfd8e7c9e0fdc338d7b7a27f89ddac03bb278b9" />
+      <meta name="naver-site-verification" content="d983fee3f0b7db68efd9a65aa2ebd48490c11d92" />
       {/* <!-- naver 블로그, 카카오톡 미리보기 설정 --> */}
       <meta property="og:title" content="워시펀 - 셀프 세차의 디지털 혁신 - 워시펀과 함께" />
       <meta property="og:url" content="https://washfun.vercel.app/" />
