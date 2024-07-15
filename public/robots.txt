@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://washfun.vercel.app
+Host: https://www.lifedivergence.com
 
 # Sitemaps
-Sitemap: https://washfun.vercel.app/sitemap.xml
+Sitemap: https://www.lifedivergence.com/sitemap.xml
