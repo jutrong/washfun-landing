@@ -21,7 +21,9 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
           serviceID,
           templateID,
           form.current,
-          publicKey,
+          {
+            publicKey: publicKey
+          }
         )
         .then(
           (result) => {
@@ -31,6 +33,8 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
           }, (error) => {
             console.log(error.text);
             console.log(error)
+            console.log(publicKey, "key")
+            console.log(templateID, "templateID")
             alert("문의 전송에 실패했습니다. 다시 시도해주세요.");
           });
     } else {
