@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
             <div className="flex gap-2 md:flex-col">
               <p className="font-bold  ">사업자등록번호 </p>
-              <p>707-43-01003 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업</p>
+              <p>797-43-01003 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업</p>
             </div>
             <div className="flex gap-2 md:flex-col">
               <p className="font-bold">통신판매 신고번호 </p>
