@@ -29,6 +29,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
             alert("문의가 성공적으로 전송되었습니다.");
           }, (error) => {
             console.log(error.text);
+            console.log(error)
             alert("문의 전송에 실패했습니다. 다시 시도해주세요.");
           });
     }
