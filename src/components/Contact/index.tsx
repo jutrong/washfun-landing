@@ -7,7 +7,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
 
   const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
   const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY as string;
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,9 +18,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
           serviceID,
           templateID,
           form.current,
-          {
-            publicKey: publicKey,
-          },
+          publicKey,
         )
         .then(
           (result) => {
