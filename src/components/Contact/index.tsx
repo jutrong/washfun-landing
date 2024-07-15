@@ -5,14 +5,17 @@ import emailjs from "@emailjs/browser";
 const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
   const form: RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
 
-  const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
-  const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY as string;
+  const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (form.current) {
+    if (form.current !== null &&
+      serviceID !== undefined &&
+      templateID !== undefined &&
+      publicKey !== undefined) {
       emailjs
         .sendForm(
           serviceID,
@@ -30,6 +33,8 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
             console.log(error)
             alert("문의 전송에 실패했습니다. 다시 시도해주세요.");
           });
+    } else {
+      alert("문의 전송에 실패했습니다. 다시 시도해주세요...");
     }
   };
 

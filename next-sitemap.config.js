@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: "https://washfun.vercel.app",
+  siteUrl: "https://www.lifedivergence.com",
   changefreq: "yearly",
   generateRobotsTxt: true,
   priority: 1,
