@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
             <div className="flex gap-2 md:flex-col ">
               <p className="font-bold ">개인정보 처리방침 및 기타문의사항 </p>
-              <p>kdy@washfun.fun / 070-8806-8088</p>
+              <p>contact@washfun.fun / 070-8806-8088</p>
             </div>
             <div className="flex gap-2 md:flex-col">
               <p className="font-bold ">주소</p>
