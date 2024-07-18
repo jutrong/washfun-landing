@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox: () => void, onAccordianMoveBox: () => void, onContactMoveBox: () => void; }) => {
 
   return (
-    <div className="relative w-full h-screen overflow-x-hidden">
+    <div className="relative w-full h-screen overflow-x-hidden ">
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <Image src="/images/png/pc-background.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>
@@ -44,7 +44,7 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
         </div>
       </div>
       <motion.div
-        className="absolute bottom-10 left-[46%]  w-10 h-10 z-10 "
+        className="absolute bottom-10 left-[50%]  w-10  h-10 z-10 md:left-[45%]"
         initial={{ y: 0 }}
         animate={{
           y: [0, 10, 0, 10, 0],
