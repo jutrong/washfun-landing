@@ -16,7 +16,7 @@ const VarienceFee = () => {
       </motion.div >
       <div className="flex-1 flex flex-col items-start text-black ml-20 h-full md:ml-0 md:mt-20">
         <div className="ml-5 mt-5 md:w-full md:flex md:flex-col md:items-center md:ml-0">
-          <div className="text-5xl font-semibold flex flex-col gap-4 md:text-3xl">
+          <div className="text-5xl font-semibold flex flex-col gap-4 md:text-3xl md:items-center">
             <p>시간별 변동 요금제로</p>
             <p>매장 회전율 극대화 !</p>
           </div>
