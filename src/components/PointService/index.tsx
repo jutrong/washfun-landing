@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const PointService = () => {
   return (
-    <div className="relative w-full h-screen  bg-gradient-to-b from-lightPrimary to-white text-black">
+    <div className="relative w-full h-[115vh]  bg-gradient-to-b from-lightPrimary to-white text-black pt-20">
       <div className="flex flex-col justify-center items-center pt-24">
         <p className="text-5xl font-bold md:text-3xl">기존 RFID 카드와 유사한</p>
         <div>
