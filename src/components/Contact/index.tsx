@@ -62,7 +62,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
     <>
       <div className=" w-full h-full flex flex-col items-center gap-20 text-black  bg-gradient-to-t from-lightPrimary to-white pb-32 mt-44 mb-44 px-36 md:px-0 md:mt-0 xl:px-10" ref={element}>
         <div className="w-full h-full flex py-20 pb-10 md:flex-col lg:flex-col ">
-          <div className="flex-[2] font-semibold text-2xl gap-4 flex flex-col items-start mt-44 md:mt-0 lg:items-center ">
+          <div className="flex-[2] font-semibold text-2xl gap-4 flex flex-col items-start mt-44 md:mt-0 lg:items-star ">
             <p className="ml-20 md:ml-10">편리하고 체계적인</p>
             <p className="ml-20 md:ml-10">세차장 관리</p>
             <p className="ml-20 md:ml-10">워시펀과 함께 만들어 나갑니다.</p>

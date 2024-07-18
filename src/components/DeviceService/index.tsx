@@ -10,16 +10,16 @@ const DeviceService = () => {
     target: scrollRef,
     offset: [0, 1],
   })
-  const firstBoxY = useTransform(scrollYProgress, [0, 0.3], [0, -1200]);
-  const secondBoxY = useTransform(scrollYProgress, [0.1, 0.6], [0, -900]);
-  const thirdBoxY = useTransform(scrollYProgress, [0.4, 0.9], [0, -200]);
+  const firstBoxY = useTransform(scrollYProgress, [0, 1], [0, -5000]);
+  const secondBoxY = useTransform(scrollYProgress, [0.1, 1], [0, -1000]);
+  const thirdBoxY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   return (
-    <div className="h-full w-full">
-      <motion.div className="relative h-[300vh] w-full" ref={scrollRef}>
-        <div className="sticky top-0 left-0">
-          <motion.div className="absolute top-0 left-0 w-full text-black flex flex-col items-center z-30 bg-white md:flex" style={{ y: firstBoxY }}>
-            <div className="flex flex-col justify-center items-center mt-20 ">
+    <div className="relative h-full w-full flex justify-center items-center">
+      <motion.div className="relative w-full max-w-[1200px] h-[300vh]  xl:max-w-[1000px] md:max-w-[360px] lg:max-w-[800px]" ref={scrollRef}>
+        <div className="sticky top-0 flex justify-center w-full">
+          <motion.div className="absolute top-0 left-0 text-black flex flex-col  justify-center items-center z-30 bg-white md:flex " style={{ y: firstBoxY }}>
+            <div className="flex flex-col justify-center items-center mt-20  ">
               <div className="flex flex-col gap-4 justify-center items-center ">
                 <p className="text-5xl font-bold md:text-3xl">실시간 베이 상황 확인으로</p>
                 <p className="text-4xl font-bold text-gradient md:text-3xl">간편 매장 모니터링 !</p>
@@ -47,8 +47,8 @@ const DeviceService = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div className="absolute top-[250px] left-0 w-full  text-black flex flex-col items-center bg-white z-20  md:flex md:top-[220px]" style={{ y: secondBoxY }}  >
-            <div className="relative w-[1200px] h-[550px]  mt-20 rounded-[26px] shadow-primary-shadow flex flex-col justify-end xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px] lg:w-[800px] lg:h-[380px]">
+          <motion.div className="absolute top-[250px] left-0 -translate-x-1/2 text-black flex flex-col items-center bg-white z-20  md:flex md:top-[220px]" style={{ y: secondBoxY }}  >
+            <div className="relative w-[1200px] h-[550px] mt-20 rounded-[26px] shadow-primary-shadow flex flex-col justify-end xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px] lg:w-[800px] lg:h-[380px]">
               <div className="flex  justify-end items-center md:flex-col md:justify-center">
                 <div className="flex flex-col justify-start pl-20 pt-10 items-start  gap-5 w-full h-full md:items-center md:pl-0 md:gap-1 lg:pt-0">
                   <div>
@@ -68,7 +68,7 @@ const DeviceService = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div className="absolute top-[310px] left-0 w-full  text-black flex flex-col items-center bg-white z-10 md:flex md:top-[265px]" style={{ y: thirdBoxY }}>
+          <motion.div className="absolute top-[310px] left-0   text-black flex flex-col items-center bg-white z-10 md:flex md:top-[265px]" style={{ y: thirdBoxY }}>
             <div className="relative w-[1200px] h-[550px]  mt-20 rounded-[26px] shadow-primary-shadow flex flex-col justify-end xl:w-[1000px] xl:h-[460px] md:w-[360px] md:h-[400px] lg:w-[800px] lg:h-[380px]">
               <div className="flex  justify-end items-center  md:flex-col md:justify-center">
                 <div className="flex flex-col justify-start pl-20 pt-10 items-start  gap-5 w-full h-full md:items-center md:pl-0 md:gap-1 lg:pt-0">
@@ -92,7 +92,7 @@ const DeviceService = () => {
           </motion.div>
         </div>
       </motion.div>
-    </div >
+    </div>
   )
 }
 
