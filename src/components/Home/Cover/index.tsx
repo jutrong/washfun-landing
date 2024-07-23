@@ -22,7 +22,7 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
           <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500" onClick={onAccordianMoveBox}>자주 묻는 질문</p>
         </div>
       </div>
-      <div className="absolute top-72 left-72 flex flex-col text-white lg:left-1/2 lg:-translate-x-1/2 lg:top-32 w-full">
+      <div className="absolute top-72 left-72 flex flex-col text-white lg:left-1/2 lg:-translate-x-1/2 lg:top-32 w-full xl:left-36">
         <div className="flex flex-col gap-3 mb-16 lg:items-center">
           <p className="text-7xl font-medium opacity-90 lg:text-6xl lg:opacity-100">셀프 세차의</p>
           <p className="text-8xl font-bold tracking-wide lg:text-6xl">디지털 혁신</p>
