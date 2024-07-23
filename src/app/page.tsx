@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-full box-border" ref={upElement}>
+      <div className="box-border w-full" ref={upElement}>
         <Cover onMoveBox={onServiceDataMoveBox} onAccordianMoveBox={onAccordianMoveBox} onContactMoveBox={onContactMoveBox} />
         <ServiceInfo />
         <ServiceData element={serviceDataElement} />
