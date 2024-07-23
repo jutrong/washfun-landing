@@ -1,20 +1,9 @@
 "use client";
-import Image from "next/image";
-import { motion } from "framer-motion"
 
-import Accordian from "@/components/Accordian";
-import Contact from "@/components/Contact";
-import Cover from "@/components/Cover";
-import DeviceService from "@/components/DeviceService";
-import EditPriceService from "@/components/EditPriceService";
-import Footer from "@/components/Footer";
-import InventoryService from "@/components/InventoryService";
-import PointService from "@/components/PointService";
-import ServiceData from "@/components/ServiceData";
-import ServiceInfo from "@/components/ServiceInfo";
-import VarienceFee from "@/components/VarienceFee";
-import VarienceFeeService from "@/components/VarienceFeeService";
 import { useRef } from "react";
+import { Accordian, Contact, Cover, DeviceService, EditPriceService, InventoryService, PointService, ServiceData, ServiceInfo, VarienceFee } from "@/components/Home";
+import Footer from "@/components/Footer";
+import MoveToUp from "@/components/MoveToUp";
 
 export default function Home() {
   const serviceDataElement = useRef<HTMLDivElement>(null);
@@ -37,6 +26,7 @@ export default function Home() {
   const onUpMoveBox = () => {
     upElement.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
   };
+
   return (
     <>
       <div className="w-full box-border" ref={upElement}>
@@ -46,35 +36,12 @@ export default function Home() {
         <EditPriceService />
         <InventoryService />
         <VarienceFee />
-        {/* <VarienceFeeService /> */}
         <DeviceService />
         <PointService />
         <Contact element={contactElement} />
         <Accordian element={accordianElement} />
         <Footer />
-        <div className="fixed bottom-6 right-10 bg-white  w-12 h-12 rounded-full cursor-pointer bg-gradient-to-tr from-subPrimary to-white shadow-primary-shadow
-          flex justify-center items-center rotate-180
-          opacity-50
-        "
-          onClick={onUpMoveBox}>
-          <motion.div
-            initial={{ y: -5 }}
-            animate={{
-              y: [-3, 3, -3, 3, -3],
-              opacity: [0.6, 0.8, 0.9, 0.8, 0.6],
-            }}
-            transition={
-              {
-                duration: 6,
-                ease: "easeInOut",
-                repeat: Infinity,
-                delay: 2,
-              }
-            }
-          >
-            <Image src="/images/svg/arrow-down-svgrepo-com-2.svg" alt="scroll down" width={26} height={30} />
-          </motion.div>
-        </div>
+        <MoveToUp onUpMoveBox={onUpMoveBox} />
       </div>
 
     </>
