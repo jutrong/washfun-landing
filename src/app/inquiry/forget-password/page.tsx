@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 const ForgetPassword = () => {
+
   return (
     <div className="w-screen  text-black pt-10 p-5">
       <h1 className="font-bold text-xl">만약 이메일을 등록하지 않았다면 아래 내용과 함께 고객센터에 문의 남겨 주세요.</h1>
@@ -10,9 +13,11 @@ const ForgetPassword = () => {
         <p>4. 바뀐 휴대전화번호로 이미 가입한 계정이 있을 경우, 탈퇴처리하는 것에 동의하시나요(예/아니요)</p>
         <p>* 동의 후 탈퇴 처리된 계정에 대해서는 복구가 어려운 점 참고 부탁 드려요.</p>
       </div>
-      <div className="text-right">
-        <button className="mt-8 text-subPrimary py-2 px-4 font-bold">문의하러 가기</button>
-      </div>
+      <Link href="/inquiry">
+        <div className="text-right">
+          <button className="mt-8 text-subPrimary py-2 px-4 font-bold">문의하러 가기</button>
+        </div>
+      </Link>
     </div>
   )
 }
