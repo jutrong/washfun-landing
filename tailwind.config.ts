@@ -37,6 +37,7 @@ const config: Config = {
       black: "#222",
       color: "white",
       day: "linear-gradient(180deg, #F5F9FF 0%, #EFF6FF 100%)",
+      primary2: "#1C74BC",
     },
     extend: {
       backgroundImage: {
