@@ -64,21 +64,21 @@ const Inquiry = () => {
         <p>아래에 남겨주시면 답변해 드리겠습니다.</p>
       </div>
       <form className='mt-6 flex flex-col gap-4' ref={form} onSubmit={sendEmail}>
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 '>
           <label className='font-bold'>유저명</label>
-          <input className='bg-lightGray py-1 px-2 focus:outline-none' name="name"></input>
+          <input className='bg-lightGray py-1 px-3 text-xs focus:outline-none' name="name"></input>
         </div>
         <div className='flex flex-col gap-3'>
           <label className='font-bold'>전화번호</label>
-          <input className='bg-lightGray py-1  px-2 focus:outline-none' name="phone"></input>
+          <input className='bg-lightGray py-1  px-3 text-xs focus:outline-none' name="phone"></input>
         </div>
         <div className='flex flex-col gap-3'>
           <label className='font-bold'>답변받을 이메일</label>
-          <input className='bg-lightGray py-1  px-2 focus:outline-none' name="email"></input>
+          <input className='bg-lightGray py-1  px-3 text-xs focus:outline-none' name="email"></input>
         </div>
         <div className='flex flex-col gap-3'>
           <label className='font-bold'>문의내용 (자세한 내용을 적어주세요.)</label>
-          <textarea className='bg-lightGray h-40 p-3 focus:outline-none' name="content"></textarea>
+          <textarea className='bg-lightGray h-40 p-3 text-xs focus:outline-none' name="content"></textarea>
         </div>
         <button className='bg-primary2 text-white py-2 rounded-md mt-4'>문의하기</button>
       </form>
