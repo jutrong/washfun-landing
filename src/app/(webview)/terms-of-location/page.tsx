@@ -1,7 +1,13 @@
-const TermsOfDigital = () => {
+import Image from "next/image";
+
+const TermsOfLocation = () => {
   return (
-    <div className="text-black">로케이션 이용 약관 페이지</div>
+    <div className="size-full flex justify-center">
+      <div className="flex w-[1200px] justify-center">
+        <Image src="/images/png/termsOfLocation.png" width={1900} height={5000} alt="policy" />
+      </div>
+    </div>
   )
 }
 
-export default TermsOfDigital;
+export default TermsOfLocation;

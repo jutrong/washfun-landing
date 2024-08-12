@@ -1,6 +1,12 @@
+import Image from "next/image";
+
 const TermsOfService = () => {
   return (
-    <div className="text-black">서비스 이용 약관 페이지</div>
+    <div className="size-full flex justify-center">
+      <div className="flex w-[1200px] justify-center">
+        <Image src="/images/png/termsOfService.png" width={1900} height={5000} alt="policy" />
+      </div>
+    </div>
   )
 }
 
