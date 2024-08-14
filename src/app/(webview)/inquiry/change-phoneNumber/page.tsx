@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const ForgetPassword = () => {
+const ChangePhoneNumber = () => {
 
   return (
     <div className="w-screen  text-black pt-10 p-5">
@@ -22,4 +22,4 @@ const ForgetPassword = () => {
   )
 }
 
-export default ForgetPassword;
+export default ChangePhoneNumber;
