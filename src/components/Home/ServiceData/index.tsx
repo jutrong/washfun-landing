@@ -4,9 +4,9 @@ import { RefObject } from "react";
 
 const ServiceData = ({ element }: { element: RefObject<HTMLDivElement> }) => {
   return (
-    <div className="relative w-full h-300vh" ref={element}>
-      <div className="sticky top-0 w-full h-[130vh] z-20 md:h-[100vh]">
-        <div className="text-black text-6xl flex flex-col items-center gap-4 p-28 font-bold pb-14 md:text-2xl md:p-10 md:pt-56">
+    <div className="relative w-full h-[300vh]" ref={element}>
+      <div className="sticky top-0 w-full h-[120vh] z-20 md:h-[100vh]">
+        <div className="text-black text-6xl flex flex-col items-center gap-4 p-24 font-bold pb-10 md:text-2xl md:p-10 md:pt-56">
           <p>매출,고객 수 등 <span className="text-gradient">다양한 데이터</span>를</p>
           <p>한 눈에 확인하세요.</p>
           <div className="font-normal text-gray text-base flex flex-col items-center  md:text-sm">
@@ -15,7 +15,7 @@ const ServiceData = ({ element }: { element: RefObject<HTMLDivElement> }) => {
           </div>
         </div>
         <div className="flex justify-center item-cente mb-14">
-          <Image src="/images/png/dashboard-mockup.png" alt="dashboard" width={900} height={580} quality={100} className="md:w-[500px]" />
+          <Image src="/images/png/dashboard-mockup.png" alt="dashboard" width={800} height={580} quality={100} className="md:w-[500px]" />
         </div>
       </div>
       <div className="absolute top-1/4 right-0 -z-10 md:-right-0">

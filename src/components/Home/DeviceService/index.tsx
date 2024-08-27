@@ -12,7 +12,7 @@ const DeviceService = () => {
   })
   const firstBoxY = useTransform(scrollYProgress, [0, 1], [0, -5000]);
   const secondBoxY = useTransform(scrollYProgress, [0.1, 1], [0, -1000]);
-  const thirdBoxY = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const thirdBoxY = useTransform(scrollYProgress, [0.1, 1], [0, -200]);
 
   return (
     <div className="relative h-full w-full flex justify-center items-center">

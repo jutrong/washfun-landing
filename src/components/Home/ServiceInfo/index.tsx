@@ -9,21 +9,21 @@ const ServiceInfo = () => {
         <span className="text-black text-gradient">패  러  다  임</span>
       </div>
       <motion.div className="flex justify-center items-center gap-20 mt-32 lg:gap-6 md:flex-col">
-        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col lg:w-60 md:w-80"
+        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl flex justify-start items-center flex-col lg:w-60 md:w-80"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.2 } }}
         >
-          <div className="h-44">
-            <Image src="/images/svg/card.svg" width={220} height={200} alt="nfc" />
+          <div className=" mt-10">
+            <Image src="/images/png/NFC.png" width={200} height={200} alt="nfc" />
           </div>
-          <p className="text-black text-2xl font-bold mt-10">사용량 기반</p>
+          <p className="text-black text-2xl font-bold mt-4">사용량 기반</p>
           <p className="text-black text-2xl font-bold">후불 결제 시스템</p>
         </motion.div>
-        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col lg:w-60 md:w-80"
+        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl  flex justify-start items-center flex-col lg:w-60 md:w-80"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.4 } }}
         >
-          <div className="h-44 relative">
+          <div className="relative mt-10">
             <Image src="/images/svg/coinbox.svg" width={180} height={200} alt="coinbox" />
             <motion.div className="absolute top-0 right-5"
               initial={{ y: 0 }}
@@ -36,14 +36,14 @@ const ServiceInfo = () => {
           <p className="text-black text-2xl font-bold mt-10">실시간 서버와 통신하는</p>
           <p className="text-black text-2xl font-bold">IoT 코인박스 · 청소기</p>
         </motion.div>
-        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl bg-white flex justify-center items-center flex-col lg:w-60 md:w-80"
+        <motion.div className="w-80 h-96 shadow-primary-shadow rounded-3xl flex justify-start items-center flex-col lg:w-60 md:w-80"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.6 } }}
         >
-          <div className="h-44 ">
-            <Image src="/images/svg/data.svg" width={230} height={200} alt="data" />
+          <div className="mt-10">
+            <Image src="/images/png/data.png" width={200} height={200} alt="data" />
           </div>
-          <p className="text-black text-2xl font-bold mt-10">사용량 데이터 수집</p>
+          <p className="text-black text-2xl font-bold mt-4">사용량 데이터 수집</p>
         </motion.div>
       </motion.div>
     </div >
