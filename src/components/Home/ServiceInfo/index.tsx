@@ -41,7 +41,7 @@ const ServiceInfo = () => {
           whileInView={{ opacity: 1, y: 0, transition: { duration: 2, delay: 0.6 } }}
         >
           <div className="mt-10">
-            <Image src="/images/png/data.png" width={200} height={200} alt="data" />
+            <Image src="/images/png/usage-data.png" width={200} height={200} alt="data" />
           </div>
           <p className="mt-4 text-2xl font-bold text-black">사용량 데이터 수집</p>
         </motion.div>
