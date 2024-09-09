@@ -35,7 +35,7 @@ const Footer = () => {
             </div>
             <div className="flex gap-2 md:flex-col">
               <p className="font-bold">통신판매 신고번호 </p>
-              <p>2023-울산남구-0832</p>
+              <p>2024-울산중구-0396</p>
             </div>
           </div>
         </div>
