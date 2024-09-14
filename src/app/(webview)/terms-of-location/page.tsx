@@ -10,14 +10,18 @@ const TermsOfLocation = () => {
     route.push('/terms-of-location/card')
   }
   return (
-    <div className="size-full flex justify-center">
-      <div className="flex w-[1200px] justify-center">
-        <Image src="/images/png/termsOfLocation.png" width={1900} height={10000} alt="policy" />
+    <>
+      <div className="size-full flex justify-center">
+        <div className="flex w-[1200px] justify-center">
+          <Image src="/images/png/termsOfLocation.png" width={1900} height={10000} alt="policy" />
+        </div>
+        <div>
+          <div className="text-black  w-40 h-20" onClick={onClickBtn}></div>
+        </div>
       </div>
-      <div>
-        <button className="text-black" onClick={onClickBtn}>...</button>
-      </div>
-    </div>
+
+    </>
+
   )
 }
 
