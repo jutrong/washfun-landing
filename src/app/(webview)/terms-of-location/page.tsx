@@ -11,15 +11,15 @@ const TermsOfLocation = () => {
   }
   return (
     <>
-      <div className="size-full flex justify-center">
+      <div className="size-full flex justify-center items-centerflex-col">
         <div className="flex w-[1200px] justify-center">
-          <Image src="/images/png/termsOfLocation.png" width={1900} height={10000} alt="policy" />
+          <Image src="/images/png/termsOfLocation.png" width={1900} height={9000} alt="policy" />
         </div>
-        <div>
-          <div className="text-black  w-40 h-20" onClick={onClickBtn}></div>
-        </div>
-      </div>
 
+      </div>
+      <div>
+        <div className="text-black  w-[2000px] h-[400px] border border-black" onClick={onClickBtn}></div>
+      </div>
     </>
 
   )
