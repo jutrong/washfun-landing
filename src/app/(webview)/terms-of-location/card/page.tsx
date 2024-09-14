@@ -4,59 +4,59 @@ import axios from 'axios';
 import { useState } from 'react';
 
 const CardPage = () => {
-  const [phoneNumber1, setPhoneNumber1] = useState('');
-  const [phoneNumber2, setPhoneNumber2] = useState('');
-  const [phoneNumber3, setPhoneNumber3] = useState('');
-  const [cardNumber1, setCardNumber1] = useState('');
-  const [cardNumber2, setCardNumber2] = useState('');
-  const [cardNumber3, setCardNumber3] = useState('');
-  const [cardNumber4, setCardNumber4] = useState('');
-  const [expiryMonth, setExpiryMonth] = useState('');
-  const [expiryYear, setExpiryYear] = useState('');
-  const [cvc, setCvc] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [birthdate, setBirthdate] = useState('');
+  // const [phoneNumber1, setPhoneNumber1] = useState('');
+  // const [phoneNumber2, setPhoneNumber2] = useState('');
+  // const [phoneNumber3, setPhoneNumber3] = useState('');
+  // const [cardNumber1, setCardNumber1] = useState('');
+  // const [cardNumber2, setCardNumber2] = useState('');
+  // const [cardNumber3, setCardNumber3] = useState('');
+  // const [cardNumber4, setCardNumber4] = useState('');
+  // const [expiryMonth, setExpiryMonth] = useState('');
+  // const [expiryYear, setExpiryYear] = useState('');
+  // const [cvc, setCvc] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [name, setName] = useState('');
+  // const [birthdate, setBirthdate] = useState('');
 
-  const postCard = async (payload: {
-    phone: string;
-    cardNo: string;
-    expYear: string;
-    expMonth: string;
-    idNo: string;
-    cardPw: string;
-    holderName: string
-  }) => {
-    try {
-      const response = await axios.put(`${process.env.NEXT_PUBLIC_APP_URL}/api/v0/user/card/temp`, payload)
+  // const postCard = async (payload: {
+  //   phone: string;
+  //   cardNo: string;
+  //   expYear: string;
+  //   expMonth: string;
+  //   idNo: string;
+  //   cardPw: string;
+  //   holderName: string
+  // }) => {
+  //   try {
+  //     const response = await axios.put(`${process.env.NEXT_PUBLIC_APP_URL}/api/v0/user/card/temp`, payload)
 
-      alert('카드 등록 성공')
-      return response.data;
-    } catch (error) {
-      console.log(error)
-      alert('카드 등록 실패')
-    }
-  }
+  //     alert('카드 등록 성공')
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log(error)
+  //     alert('카드 등록 실패')
+  //   }
+  // }
 
-  const onClickBtn = () => {
-    const fullPhoneNumber = `${phoneNumber1}${phoneNumber2}${phoneNumber3}`;
-    const fullCardNumber = `${cardNumber1}${cardNumber2}${cardNumber3}${cardNumber4}`;
+  // const onClickBtn = () => {
+  //   const fullPhoneNumber = `${phoneNumber1}${phoneNumber2}${phoneNumber3}`;
+  //   const fullCardNumber = `${cardNumber1}${cardNumber2}${cardNumber3}${cardNumber4}`;
 
-    postCard({
-      phone: fullPhoneNumber,
-      cardNo: fullCardNumber,
-      expYear: expiryYear,
-      expMonth: expiryMonth,
-      idNo: birthdate,
-      cardPw: password,
-      holderName: name,
-    })
-  }
+  //   postCard({
+  //     phone: fullPhoneNumber,
+  //     cardNo: fullCardNumber,
+  //     expYear: expiryYear,
+  //     expMonth: expiryMonth,
+  //     idNo: birthdate,
+  //     cardPw: password,
+  //     holderName: name,
+  //   })
+  // }
 
-  console.log(phoneNumber1, phoneNumber2, phoneNumber3, cardNumber1, cardNumber2, cardNumber3, cardNumber4, expiryMonth, expiryYear, cvc, password, name, birthdate)
+  // console.log(phoneNumber1, phoneNumber2, phoneNumber3, cardNumber1, cardNumber2, cardNumber3, cardNumber4, expiryMonth, expiryYear, cvc, password, name, birthdate)
   return (
     <div className="w-full mx-auto my-4 p-8 bg-white shadow-md rounded-lg text-black">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">카드 등록</h2>
+      {/* <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">카드 등록</h2>
       <div className="flex flex-col gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">전화번호</label>
@@ -190,7 +190,7 @@ const CardPage = () => {
         >
           카드 등록
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
