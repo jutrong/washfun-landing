@@ -18,7 +18,7 @@ const TermsOfLocation = () => {
 
       </div>
       <div>
-        <div className="text-black  w-[2000px] h-[400px] border border-black" onClick={onClickBtn}></div>
+        <div className="text-black  w-[2000px] h-[300px]" onClick={onClickBtn}></div>
       </div>
     </>
 
