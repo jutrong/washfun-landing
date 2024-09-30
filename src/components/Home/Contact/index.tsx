@@ -60,54 +60,54 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
 
   return (
     <>
-      <div className=" w-full h-full flex flex-col items-center gap-20 text-black  bg-gradient-to-t from-lightPrimary to-white pb-32 mt-44 mb-44 px-36 md:px-0 md:mt-0 xl:px-10" ref={element}>
-        <div className="w-full h-full flex py-20 pb-10 md:flex-col lg:flex-col ">
-          <div className="flex-[2] font-semibold text-2xl gap-4 flex flex-col items-start mt-44 md:mt-0 lg:items-star ">
+      <div className=" my-44 flex size-full flex-col items-center gap-20 bg-gradient-to-t  from-lightPrimary to-white px-36 pb-32 text-black xl:px-10 md:mt-0 md:px-0" ref={element}>
+        <div className="flex size-full py-20 pb-10 lg:flex-col md:flex-col ">
+          <div className="mt-44 flex flex-[2] flex-col items-start gap-4 text-2xl font-semibold lg:items-start md:mt-0 ">
             <p className="ml-20 md:ml-10">편리하고 체계적인</p>
             <p className="ml-20 md:ml-10">세차장 관리</p>
             <p className="ml-20 md:ml-10">워시펀과 함께 만들어 나갑니다.</p>
           </div>
-          <form ref={form} onSubmit={sendEmail} className="flex-[3] p-32 md:p-0 md:mt-20 md:justify-center ">
+          <form ref={form} onSubmit={sendEmail} className="flex-[3] p-32 md:mt-20 md:justify-center md:p-0 ">
             <div className="flex md:flex-col md:gap-6">
-              <div className="flex-1 flex flex-col mx-10 min-w-[200px]">
-                <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="name" placeholder="이름" />
+              <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none" type="text" name="name" placeholder="이름" />
               </div>
-              <div className="flex-1 flex flex-col mx-10 min-w-[200px]">
-                <input className="w-full h-9 border border-lightGray rounded-md  pl-5 focus:outline-none focus:border-primary placeholder:text-sm" type="email" name="email" placeholder="이메일" />
-              </div>
-            </div>
-            <div className="flex mt-6 md:flex-col md:gap-6">
-              <div className="flex-1 flex flex-col mx-10 min-w-[200px]">
-                <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="address" placeholder="사업장 주소" required />
-              </div>
-              <div className="flex-1 flex flex-col mx-10">
-                <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="phone" placeholder="전화번호" required />
+              <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray  pl-5 placeholder:text-sm focus:border-primary focus:outline-none" type="email" name="email" placeholder="이메일" />
               </div>
             </div>
-            <div className="flex mt-6 md:flex-col md:gap-6">
-              <div className="flex-1 flex flex-col mx-10">
-                <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="store_name" placeholder="상호명" required />
+            <div className="mt-6 flex md:flex-col md:gap-6">
+              <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none" type="text" name="address" placeholder="사업장 주소" required />
               </div>
-              <div className="flex-1 flex flex-col mx-10">
-                <input className="w-full h-9 border border-lightGray rounded-md  pl-5 focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="year" placeholder="입력(년차)" required />
-              </div>
-            </div>
-            <div className="flex mt-6 md:flex-col md:gap-6">
-              <div className="flex-1 flex flex-col mx-10">
-                <input className="w-full h-9 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="bay" placeholder="베이 수" required />
-              </div>
-              <div className="flex-1 flex flex-col mx-10">
-                <input className="w-full h-9 border border-lightGray rounded-md  pl-5 focus:outline-none focus:border-primary placeholder:text-sm" type="text" name="drying" placeholder="드라잉존 수" required />
+              <div className="mx-10 flex min-w-[200px] flex-1  flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none" type="text" name="phone" placeholder="전화번호" required />
               </div>
             </div>
-            <div className="flex mt-6">
-              <div className="flex-1 flex flex-col mx-10">
-                <label className="font-base mb-4 pl-2">문의 사항</label>
-                <textarea className="w-full h-44 py-2 border border-lightGray rounded-md pl-5 outline-none focus:outline-none focus:border-primary resize-none" name="content" required />
+            <div className="mt-6 flex md:flex-col md:gap-6">
+              <div className="mx-10 flex min-w-[200px] flex-1  flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none" type="text" name="store_name" placeholder="상호명" required />
+              </div>
+              <div className="mx-10 flex min-w-[200px] flex-1  flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray  pl-5 placeholder:text-sm focus:border-primary focus:outline-none" type="text" name="year" placeholder="입력(년차)" required />
               </div>
             </div>
-            <div className="flex justify-end cursor-pointer">
-              <div onClick={onClickContactBtn} className="text-base w-36 cursor-pointer text-white p-2 mt-6 rounded-md opacity-80 hover:opacity-100 transition bg-primary  mx-10 text-center">문의하기</div>
+            <div className="mt-6 flex md:flex-col md:gap-6">
+              <div className="mx-10 flex min-w-[200px] flex-1  flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none" type="text" name="bay" placeholder="베이 수" required />
+              </div>
+              <div className="mx-10 flex min-w-[200px] flex-1  flex-col">
+                <input className="h-9 w-full rounded-md border border-lightGray  pl-5 placeholder:text-sm focus:border-primary focus:outline-none" type="text" name="drying" placeholder="드라잉존 수" required />
+              </div>
+            </div>
+            <div className="mt-6 flex">
+              <div className="mx-10 flex flex-1 flex-col">
+                <label className="mb-4 pl-2">문의 사항</label>
+                <textarea className="h-44 w-full resize-none rounded-md border border-lightGray py-2 pl-5 outline-none focus:border-primary focus:outline-none" name="content" required />
+              </div>
+            </div>
+            <div className="flex cursor-pointer justify-end">
+              <div onClick={onClickContactBtn} className="mx-10 mt-6 w-36 cursor-pointer rounded-md bg-primary p-2 text-center text-base text-white opacity-80  transition hover:opacity-100">문의하기</div>
             </div>
             <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} onSubmit={sendEmail} />
           </form>

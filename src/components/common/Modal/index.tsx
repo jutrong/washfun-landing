@@ -11,14 +11,14 @@ const Modal = ({ isOpen, onClose, onSubmit }: ModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black "
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-lg text-black py-10 px-20"
+        className="rounded-lg bg-white px-20 py-10 text-black shadow-lg md:w-[300px] md:px-8 md:text-xs"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className='font-bold text-xl mb-5'>
+        <p className='mb-5 text-xl font-bold'>
           개인정보 수집 이용에 대한 안내
         </p>
         <div className='mb-5'>
@@ -62,9 +62,9 @@ const Modal = ({ isOpen, onClose, onSubmit }: ModalProps) => {
             - 소비자의 불만 또는 분쟁 처리에 관한 기록 : 3년 등
           </p>
         </div>
-        <div className='w-full flex justify-center gap-10 mt-18'>
-          <button className=' py-2 px-32 rounded bg-primary text-white opacity-80' type='submit' role='button'>문의하기</button>
-          <button className='border border-black py-2 px-32 rounded' onClick={onClose}>취소하기</button>
+        <div className='flex w-full justify-center gap-10 md:gap-5'>
+          <button className=' rounded bg-primary px-32 py-2 text-white opacity-80 md:px-8' type='submit' role='button'>문의하기</button>
+          <button className='rounded border border-black px-32 py-2 md:px-8' onClick={onClose}>취소하기</button>
         </div>
       </div>
     </div>
