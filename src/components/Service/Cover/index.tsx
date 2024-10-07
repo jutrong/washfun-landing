@@ -2,28 +2,32 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion"
+import Link from "next/link";
 
-const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox: () => void, onAccordianMoveBox: () => void, onContactMoveBox: () => void; }) => {
+const Cover = () => {
 
   return (
-    <div className="relative w-full h-screen overflow-x-hidden ">
-      <div className="absolute top-0 left-0 w-full h-full z-0">
+    <div className="relative h-screen w-full overflow-x-hidden ">
+      <div className="absolute left-0 top-0 z-0 size-full">
         <Image src="/images/png/pc-background.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>
-      <div className="absolute top-0 left-0 w-full h-full z-0 hidden lg:block">
+      <div className="absolute left-0 top-0 z-0 hidden size-full lg:block">
         <Image src="/images/png/mobile-back.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>
-      <div className="absolute inset-x-0 w-full h-24 z-10 flex justify-between items-center px-60 lg:px-0">
-        <div className="w-[120px] h-[60px] flex justify-center items-center">
+      <div className="absolute inset-x-0 z-10 flex h-24 w-full items-center justify-between px-60 lg:px-0">
+        <div className="flex h-[60px] w-[120px] items-center justify-center">
           <Image src="/images/svg/white-logo.svg" alt="washfun Logo" width={60} height={50} />
         </div>
-        <div className="flex space-x-12 cursor-pointer w-full justify-end lg:hidden">
-          <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500" onClick={onMoveBox}>주요 기능</p>
-          <p className="text-white text-opacity-80 hover:text-opacity-100 transition duration-500" onClick={onAccordianMoveBox}>자주 묻는 질문</p>
+        <div className="flex w-full cursor-pointer justify-end space-x-12 lg:hidden">
+          {/* <p className="text-white text-opacity-80 transition duration-500 hover:text-opacity-100" onClick={onMoveBox}>회사 소개</p> */}
+          <Link href="/service">
+            <p className="text-white text-opacity-80 transition duration-500 hover:text-opacity-100" >서비스 안내</p>
+          </Link>
+          <p className="text-white text-opacity-80 transition duration-500 hover:text-opacity-100" >도입 문의</p>
         </div>
       </div>
-      <div className="absolute top-72 left-72 flex flex-col text-white lg:left-1/2 lg:-translate-x-1/2 lg:top-32 w-full xl:left-36">
-        <div className="flex flex-col gap-3 mb-16 lg:items-center">
+      <div className="absolute left-72 top-72 flex w-full flex-col text-white xl:left-36 lg:left-1/2 lg:top-32 lg:-translate-x-1/2">
+        <div className="mb-16 flex flex-col gap-3 lg:items-center">
           <p className="text-7xl font-medium opacity-90 lg:text-6xl lg:opacity-100">셀프 세차의</p>
           <p className="text-8xl font-bold tracking-wide lg:text-6xl">디지털 혁신</p>
         </div>
@@ -34,17 +38,17 @@ const Cover = ({ onMoveBox, onAccordianMoveBox, onContactMoveBox }: { onMoveBox:
         <div className=" flex lg:justify-center">
           <motion.div
             whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
-            className="flex items-center gap-3 p-3 w-40 h-12 border border-x-2 bg-white rounded-xl z-20 lg:justify-center lg:rounded-[100px]" onClick={onContactMoveBox}>
+            className="z-20 flex h-12 w-40 items-center gap-3 rounded-xl border border-x-2 bg-white p-3 lg:justify-center lg:rounded-[100px]">
             <motion.div
             >
               <Image src="/images/svg/contact.svg" width={30} height={30} alt="contact" />
             </motion.div>
-            <p className="text-lg text-gray cursor-pointer lg:text-base">문의하기</p>
+            <p className="cursor-pointer text-lg text-gray lg:text-base">문의하기</p>
           </motion.div>
         </div>
       </div>
       <motion.div
-        className="absolute bottom-10 left-[50%]  w-10  h-10 z-10 md:left-[45%]"
+        className="absolute bottom-10 left-1/2 z-10  size-10 md:left-[45%]"
         initial={{ y: 0 }}
         animate={{
           y: [0, 10, 0, 10, 0],
