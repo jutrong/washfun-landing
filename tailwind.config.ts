@@ -24,24 +24,26 @@ const config: Config = {
       // => @media (max-width: 639px) { ... }
       sx: { min: "767px" },
     },
-    colors: {
-      primary: "#2E87FF",
-      subPrimary: "#0547F5",
-      white: "#FFFFFF",
-      gray: "#4F5055",
-      lightGray: "#ecf0f1",
-      lightPrimary: "#EFF6FF",
-      lightSubPrimary: "#EBF3FF",
-      lightPrimary2: "#F5F9FF",
-      lightPrimary3: "#F5F9FF",
-      black: "#222",
-      color: "white",
-      day: "linear-gradient(180deg, #F5F9FF 0%, #EFF6FF 100%)",
-      primary2: "#1C74BC",
-    },
+ 
     extend: {
       backgroundImage: {
         "cover-image": "url('/cover.png')",
+      },
+      colors: {
+        primary: "#2E87FF",
+        subPrimary: "#0547F5",
+        white: "#FFFFFF",
+        gray: "#4F5055",
+        lightGray: "#ecf0f1",
+        lightPrimary: "#EFF6FF",
+        lightSubPrimary: "#EBF3FF",
+        lightPrimary2: "#F5F9FF",
+        lightPrimary3: "#F5F9FF",
+        lightPrimary4: "#F9FBFF",
+        black: "#222",
+        color: "white",
+        day: "linear-gradient(180deg, #F5F9FF 0%, #EFF6FF 100%)",
+        primary2: "#1C74BC",
       },
       height: {
         "200vh": "200vh",
