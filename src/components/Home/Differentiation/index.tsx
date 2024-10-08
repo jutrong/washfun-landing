@@ -6,7 +6,7 @@ const Differentiation = () => {
       <div className="flex w-full justify-center">
         <h2 className="text-[50px] font-normal">워시펀은 다른 세차장과의 <span className="text-gradient tracking-wider">차이</span>를 만듭니다.</h2>
       </div>
-      <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col gap-10">
         <div className="mb-12 flex w-full justify-center ">
           <div className="mt-20 flex h-full flex-col  ">
             <div className="flex h-1/2 w-full justify-center">
