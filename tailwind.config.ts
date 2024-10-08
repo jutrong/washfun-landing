@@ -40,6 +40,7 @@ const config: Config = {
         lightPrimary2: "#F5F9FF",
         lightPrimary3: "#F5F9FF",
         lightPrimary4: "#F9FBFF",
+        lightPrimary5: "#FEFFFF",
         black: "#222",
         color: "white",
         day: "linear-gradient(180deg, #F5F9FF 0%, #EFF6FF 100%)",

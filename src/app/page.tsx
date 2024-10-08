@@ -6,6 +6,7 @@ import MoveToUp from "@/components/MoveToUp";
 import { Cover } from "@/components/Service";
 import Phrase from "@/components/Home/Phrase";
 import Benefit from "@/components/Home/Benefit";
+import Differentiation from "@/components/Home/Differentiation";
 
 export default function Home() {
   const upElement = useRef<HTMLDivElement>(null);
@@ -20,6 +21,7 @@ export default function Home() {
         <Cover />
         <Phrase />
         <Benefit />
+        <Differentiation />
         <Footer />
         <MoveToUp onUpMoveBox={onUpMoveBox} />
       </div>
