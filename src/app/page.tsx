@@ -9,6 +9,7 @@ import Benefit from "@/components/Home/Benefit";
 import Differentiation from "@/components/Home/Differentiation";
 import Reason from "@/components/Home/Reason";
 import ReasonCard from "@/components/Home/ReasonCard";
+import Recommend from "@/components/Home/Recommend";
 
 export default function Home() {
   const upElement = useRef<HTMLDivElement>(null);
@@ -26,6 +27,7 @@ export default function Home() {
         <Differentiation />
         <Reason />
         <ReasonCard />
+        <Recommend />
         <Footer />
         <MoveToUp onUpMoveBox={onUpMoveBox} />
       </div>

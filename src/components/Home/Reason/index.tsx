@@ -9,9 +9,9 @@ const Reason = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 8000) {
+      if (scrollPosition > 8400) {
         setHighlightedText('도입하는');
-      } else if (scrollPosition > 7500) {
+      } else if (scrollPosition > 7600) {
         setHighlightedText('주목하는');
       } else if (scrollPosition > 6700) {
         setHighlightedText('선택하는');
