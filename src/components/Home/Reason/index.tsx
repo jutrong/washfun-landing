@@ -9,7 +9,6 @@ const Reason = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      console.log(scrollPosition);
       if (scrollPosition > 8000) {
         setHighlightedText('도입하는');
       } else if (scrollPosition > 7500) {
@@ -24,14 +23,14 @@ const Reason = () => {
   }, []);
 
   return (
-    <div className="relative h-400vh w-full bg-gradient-to-b from-white to-lightPrimary text-black">
+    <div className="relative h-400vh w-full bg-gradient-to-b from-white to-lightPrimary font-NotoSansKR text-black">
       <div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center">
         <h2 className="text-center text-[50px] font-normal">
           워시펀을 {' '}
           <AnimatePresence mode="wait">
             <motion.span
               key={highlightedText}
-              className="text-gradient inline-block font-bold"
+              className="text-gradient inline-block font-bold "
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}

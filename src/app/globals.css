@@ -77,3 +77,18 @@ body {
   font-weight: 400;
   src: url("/fonts/The-Jamsil-OTF-Bold.otf") format("opentype");
 }
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Black";
+  font-weight: 400;
+  src: url("/fonts/Poppins-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("/fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+}

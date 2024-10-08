@@ -4,7 +4,10 @@ const Differentiation = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-10 bg-color p-20  text-black">
       <div className="flex w-full justify-center">
-        <h2 className="text-[50px] font-normal">워시펀은 다른 세차장과의 <span className="text-gradient tracking-wider">차이</span>를 만듭니다.</h2>
+        <h2 className="text-center text-[50px] font-semibold leading-tight">
+          워시펀은 다른 세차장과의 <br />
+          <span className="text-gradient text-[60px] tracking-wider">차이</span>를 만듭니다.
+        </h2>
       </div>
       <div className="flex w-full flex-col gap-10">
         <div className="mb-12 flex w-full justify-center ">
@@ -13,7 +16,7 @@ const Differentiation = () => {
               <Image src="/images/png/difference1.png" alt="" width={900} height={1000} />
             </div>
             <div className="flex h-1/2 w-full flex-col items-center  gap-3 pb-32  pt-10">
-              <p className="text-4xl font-semibold">셀프세차, 노터치 기계세차, 예약제</p>
+              <p className="text-4xl font-medium">셀프세차, 노터치 기계세차, 예약제</p>
               <p className="text-3xl font-medium">모두를 하나의 플랫폼으로 !</p>
               <p className="text-2xl font-medium text-gray">셀프세차부터 예약제 노터치 세차까지, 편리함의 새로운 기준</p>
               <p className="">
@@ -30,7 +33,7 @@ const Differentiation = () => {
               <Image src="/images/png/iphone3.png" alt="" width={200} height={600} className="object-contain" />
             </div>
             <div className="relative flex h-1/2 w-full flex-col items-center  gap-3  pt-0">
-              <p className="text-4xl font-semibold">복잡한 타플랫폼과 달리</p>
+              <p className="text-4xl font-medium">복잡한 타플랫폼과 달리</p>
               <p className="text-3xl font-medium">모든 연령대가 편하게 사용가능한</p>
               <p className="text-2xl font-medium text-gray">UX / UI</p>
             </div>
@@ -43,7 +46,7 @@ const Differentiation = () => {
               <Image src="/images/png/iot2.png" alt="" width={440} height={1000} className="object-contain" />
             </div>
             <div className="flex h-1/2 w-full flex-col items-end  gap-3   ">
-              <p className="text-4xl font-semibold">IoT 기기를 통한 고객별 데이터 수집으로</p>
+              <p className="text-4xl font-medium">IoT 기기를 통한 고객별 데이터 수집으로</p>
               {/* <p className="text-3xl font-medium">고객별 데이터 수집으로</p> */}
               <p className="text-2xl font-medium text-gray">체계적인 매장관리 지원 !</p>
 
@@ -56,7 +59,7 @@ const Differentiation = () => {
               <Image src="/images/png/cost.png" alt="" width={400} height={600} className="object-contain" />
             </div>
             <div className="relative flex h-1/2 w-full flex-col items-start  gap-3  pt-0">
-              <p className="pb-4 text-4xl font-semibold">저렴한 도입 비용</p>
+              <p className="pb-4 text-4xl font-medium">저렴한 도입 비용</p>
               <p className="text-2xl font-medium text-gray">1. 기존 대비 30% 저렴한 신규 도입 비용</p>
               <p className="text-2xl font-medium text-gray">2. 카드 제작, 카드 단말기 설치, 키오스크 설치와 유사한 기기 도입 비용</p>
             </div>

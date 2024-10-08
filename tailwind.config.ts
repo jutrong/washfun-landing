@@ -63,6 +63,10 @@ const config: Config = {
       },
       fontFamily: {
         Jamsil: ["Jamsil-bold"],
+        Poppins: ["Poppins"],
+        PoppinsBlack: ["Poppins-Black"],
+        Pretendard: ["Pretendard-black"],
+        NotoSansKR: ["NotoSansKR"],
       },
       boxShadow: {
         "primary-shadow": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",

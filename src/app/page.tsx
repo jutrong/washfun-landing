@@ -8,6 +8,7 @@ import Phrase from "@/components/Home/Phrase";
 import Benefit from "@/components/Home/Benefit";
 import Differentiation from "@/components/Home/Differentiation";
 import Reason from "@/components/Home/Reason";
+import ReasonCard from "@/components/Home/ReasonCard";
 
 export default function Home() {
   const upElement = useRef<HTMLDivElement>(null);
@@ -18,12 +19,13 @@ export default function Home() {
 
   return (
     <>
-      <div className="box-border w-full" ref={upElement}>
+      <div className="box-border w-full font-NotoSansKR text-black" ref={upElement}>
         <Cover />
         <Phrase />
         <Benefit />
         <Differentiation />
         <Reason />
+        <ReasonCard />
         <Footer />
         <MoveToUp onUpMoveBox={onUpMoveBox} />
       </div>
