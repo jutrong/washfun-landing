@@ -65,8 +65,10 @@ const config: Config = {
         Jamsil: ["Jamsil-bold"],
         Poppins: ["Poppins"],
         PoppinsBlack: ["Poppins-Black"],
+        PoppinsExtraBold: ["Poppins-ExtraBold"],
         Pretendard: ["Pretendard-black"],
         NotoSansKR: ["NotoSansKR"],
+        OneMobilePOP: ["ONE-Mobile-POP"],
       },
       boxShadow: {
         "primary-shadow": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",

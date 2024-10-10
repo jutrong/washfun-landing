@@ -26,8 +26,10 @@ export default function Home() {
         <Benefit />
         <Differentiation />
         <Reason />
-        <ReasonCard />
-        <Recommend />
+        <div className="bg-gradient-to-b from-lightPrimary3 to-white">
+          <ReasonCard />
+          <Recommend />
+        </div>
         <Footer />
         <MoveToUp onUpMoveBox={onUpMoveBox} />
       </div>

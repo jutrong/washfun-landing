@@ -21,18 +21,20 @@ const Phrase = () => {
 
   return (
     <div className="flex flex-col items-center justify-center bg-gradient-to-b from-lightPrimary to-white  py-40 text-black">
-      <div className="flex flex-col items-center justify-center gap-10">
+      <div className="flex flex-col items-center justify-center gap-10 ">
         <AnimatePresence mode="wait">
-          <motion.h2
-            key={currentPhrase}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold tracking-widest text-gray"
-          >
-            {phrases[currentPhrase]}
-          </motion.h2>
+          <div className=" rounded-sm p-3 px-5 shadow-sm">
+            <motion.h2
+              key={currentPhrase}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold tracking-widest text-gray"
+            >
+              {phrases[currentPhrase]}
+            </motion.h2>
+          </div>
         </AnimatePresence>
         <h3 className="text-5xl font-semibold">현금은 고객의 <span className="tracking-widest text-primary2">불편함</span>입니다.</h3>
       </div>
