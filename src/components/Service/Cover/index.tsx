@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion"
+import Header from "@/components/Header";
 import Link from "next/link";
 
 const Cover = () => {
@@ -14,18 +15,7 @@ const Cover = () => {
       <div className="absolute left-0 top-0 z-0 hidden size-full lg:block">
         <Image src="/images/png/mobile-back.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>
-      <div className="absolute inset-x-0 z-10 flex h-24 w-full items-center justify-between px-60 lg:px-0">
-        <div className="flex h-[60px] w-[120px] items-center justify-center">
-          <Image src="/images/svg/white-logo.svg" alt="washfun Logo" width={60} height={50} />
-        </div>
-        <div className="flex w-full cursor-pointer justify-end space-x-12 lg:hidden">
-          {/* <p className="text-white text-opacity-80 transition duration-500 hover:text-opacity-100" onClick={onMoveBox}>회사 소개</p> */}
-          <Link href="/service">
-            <p className="text-white text-opacity-80 transition duration-500 hover:text-opacity-100" >서비스 안내</p>
-          </Link>
-          <p className="text-white text-opacity-80 transition duration-500 hover:text-opacity-100" >도입 문의</p>
-        </div>
-      </div>
+      <Header />
       <div className="absolute left-72 top-72 flex w-full flex-col text-white xl:left-36 lg:left-1/2 lg:top-32 lg:-translate-x-1/2">
         <div className="mb-16 flex flex-col gap-3 lg:items-center">
           <p className="text-7xl font-medium opacity-90 lg:text-6xl lg:opacity-100">셀프 세차의</p>
@@ -36,15 +26,17 @@ const Cover = () => {
           <span className="text-4xl text-white lg:text-3xl">과 함께</span>
         </div>
         <div className=" flex lg:justify-center">
-          <motion.div
-            whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
-            className="z-20 flex h-12 w-40 items-center gap-3 rounded-xl border border-x-2 bg-white p-3 lg:justify-center lg:rounded-[100px]">
+          <Link href="/contact">
             <motion.div
-            >
-              <Image src="/images/svg/contact.svg" width={30} height={30} alt="contact" />
+              whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
+              className="z-20 flex h-12 w-40 items-center gap-3 rounded-xl border border-x-2 bg-white p-3 lg:justify-center lg:rounded-[100px]">
+              <motion.div
+              >
+                <Image src="/images/svg/contact.svg" width={30} height={30} alt="contact" />
+              </motion.div>
+              <p className="cursor-pointer text-lg text-gray lg:text-base">도입 문의</p>
             </motion.div>
-            <p className="cursor-pointer text-lg text-gray lg:text-base">문의하기</p>
-          </motion.div>
+          </Link>
         </div>
       </div>
       <motion.div

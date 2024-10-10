@@ -5,9 +5,9 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className="w-full  border-t border-lightPrimary bg-gradient-to-tr from-lightPrimary to-white">
-      <div className="w-full h-full flex flex-col justify-center py-10">
+      <div className="flex size-full flex-col justify-center py-10">
         <div className="flex flex-col items-center">
-          <div className="w-2/3 h-20 flex justify-between mt-6">
+          <div className="mt-6 flex h-20 w-2/3 justify-between">
             <div className="opacity-50">
               <Image src="/images/svg/grayLogo.svg" alt="gray Logo" width={80} height={80} />
             </div>
@@ -17,9 +17,9 @@ const Footer = () => {
               </div>
             </Link>
           </div>
-          <div className="w-2/3 flex flex-col gap-3 text-gray md:pt-10 md:text-sm">
+          <div className="flex w-2/3 flex-col gap-3 text-gray md:pt-10 md:text-sm">
             <div>
-              <p className="font-bold text-gradient">Life Divergence</p>
+              <p className="text-gradient font-bold">Life Divergence</p>
             </div>
             <div className="flex gap-2 md:flex-col ">
               <p className="font-bold ">개인정보 처리방침 및 기타문의사항 </p>

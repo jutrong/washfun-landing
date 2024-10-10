@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const Recommend = () => {
   return (
-    <div className="flex h-screen flex-col px-52 font-Poppins text-black">
-      <div className="mt-24 flex flex-col gap-5 ">
+    <div className="mb-40 flex flex-col px-52 font-Poppins text-black xl:mb-20 xl:px-0 md:px-4">
+      <div className="mt-24 flex flex-col gap-5 xl:px-10 ">
         <p className="font-PoppinsExtraBold text-3xl">Who Washfun </p>
         <p className="font-NotoSansKR text-xl font-normal text-gray">이런 분들께 워시펀을 추천합니다.</p>
       </div>
-      <div className=" mt-28 flex size-full items-start justify-start gap-20 font-NotoSansKR">
-        <div className="flex items-center gap-44">
+      <div className=" mt-28 flex size-full items-start justify-start gap-20 font-NotoSansKR xl:justify-center">
+        <div className="flex items-center gap-44 xl:flex-col xl:items-center xl:gap-14">
           <div className=" flex justify-center  ">
             <Image src="/images/png/recommend.png" alt="recommend1" width={500} height={500} />
           </div>

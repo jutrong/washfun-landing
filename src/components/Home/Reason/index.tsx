@@ -12,7 +12,7 @@ const Reason = () => {
       if (scrollPosition > 9000) {
         setHighlightedText('도입하는');
       } else if (scrollPosition > 7600) {
-        setHighlightedText('주목하는');
+        setHighlightedText('사용하는');
       } else if (scrollPosition > 6700) {
         setHighlightedText('선택하는');
       }
@@ -24,7 +24,7 @@ const Reason = () => {
   return (
     <div className="relative h-[460vh] w-full bg-gradient-to-b from-white to-lightPrimary font-NotoSansKR text-black">
       <div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center">
-        <h2 className="text-center text-[50px] font-normal">
+        <h2 className="text-center text-[50px] font-normal md:text-3xl">
           워시펀을 {' '}
           <AnimatePresence mode="wait">
             <motion.span

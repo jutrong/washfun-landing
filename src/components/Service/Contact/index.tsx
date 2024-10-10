@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser";
 import Modal from "@/components/common/Modal";
 
 
-const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
+const Contact = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const form: RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
 
@@ -60,7 +60,7 @@ const Contact = ({ element }: { element: RefObject<HTMLDivElement> }) => {
 
   return (
     <>
-      <div className=" my-44 flex size-full flex-col items-center gap-20 bg-gradient-to-t  from-lightPrimary to-white px-36 pb-32 text-black xl:px-10 md:mt-0 md:px-0" ref={element}>
+      <div className=" my-0 flex size-full flex-col items-center gap-20 bg-gradient-to-t  from-lightPrimary to-white px-36  text-black xl:px-10 md:mt-0 md:px-0 md:pt-20" >
         <div className="flex size-full py-20 pb-10 lg:flex-col md:flex-col ">
           <div className="mt-44 flex flex-[2] flex-col items-start gap-4 text-2xl font-semibold lg:items-start md:mt-0 ">
             <p className="ml-20 md:ml-10">편리하고 체계적인</p>

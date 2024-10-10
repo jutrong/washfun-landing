@@ -2,21 +2,20 @@ import Image from "next/image";
 
 const ReasonCard = () => {
   return (
-    <div className="flex flex-col px-52 font-Poppins text-black">
-      <div className="mt-32 flex flex-col gap-5 ">
+    <div className="flex flex-col px-52 font-Poppins text-black xl:px-0">
+      <div className="mt-32 flex flex-col gap-5 xl:px-10">
         <p className="font-PoppinsExtraBold text-3xl">Why Washfun </p>
-        <p className="font-NotoSansKR text-xl font-normal text-gray">워시펀과 함께하세요.</p>
+        <p className="font-NotoSansKR text-xl font-normal text-gray">왜 워시펀을 선택해야 할까요?</p>
       </div>
-      <div className="my-14 mt-20 flex size-full flex-col gap-36 px-14 font-NotoSansKR ">
-        <div className="flex h-full flex-1 flex-col  rounded-lg ">
+      <div className="my-14 mt-20 flex size-full flex-col gap-36 px-14 font-NotoSansKR md:gap-10 md:px-0 ">
+        <div className="flex h-full flex-1 flex-col  rounded-lg  ">
           <p className="ml-10 mt-8 text-2xl font-bold  text-gray">고객 만족도</p>
-          <div className="mt-10 flex items-center ">
+          <div className="mt-10 flex items-center md:flex-col md:justify-start  ">
             <div className=" flex flex-[3] items-center justify-center ">
-              <Image src="/images/png/why1.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow" />
+              <Image src="/images/png/why1.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
             </div>
             <div className=" flex-[4] p-10 ">
-              {/* <p className="mb-7 text-left text-xl font-bold text-primary2">고객 만족도 97%, 재방문률 42%</p> */}
-              <div className="flex flex-col gap-8 pl-16 text-left text-lg">
+              <div className="flex flex-col gap-8 pl-16 text-left text-lg md:pl-0">
                 <div>
                   <p className="pb-2 text-xl font-bold text-primary2">No 현금 ! No 회원 카드 !</p>
                   <p className="text-gray">앱을 통해 간편하게 결제할 수 있어, 충전 문제나 포인트 부족으로 인한 불편함이 사라집니다. </p>
@@ -32,10 +31,10 @@ const ReasonCard = () => {
 
         <div className="flex flex-col gap-4">
           <p className="mr-10 mt-8 text-right text-2xl font-bold text-gray">객단가 증가</p>
-          <div className="flex h-full  flex-1 flex-col rounded-lg  bg-[#f4f5f641] py-10">
-            <div className=" flex flex-row-reverse items-center">
+          <div className="flex h-full  flex-1 flex-col rounded-lg  bg-[#f4f5f641] py-10 md:px-0">
+            <div className=" flex flex-row-reverse items-center md:flex-col">
               <div className=" flex flex-[3] items-center justify-center ">
-                <Image src="/images/png/why2.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow" />
+                <Image src="/images/png/why2.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
               </div>
               <div className=" flex-[4] p-10">
                 <div className="flex flex-col gap-8 text-left text-lg">
@@ -51,9 +50,9 @@ const ReasonCard = () => {
 
         <div className="flex h-full flex-1 flex-col  rounded-lg ">
           <p className="ml-10 mt-8 text-2xl font-bold  text-gray">유효 고객</p>
-          <div className="mt-10 flex items-center">
+          <div className="mt-10 flex items-center md:flex-col md:justify-start">
             <div className=" flex flex-[3] items-center justify-center ">
-              <Image src="/images/png/why3.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow" />
+              <Image src="/images/png/why3.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
             </div>
             <div className=" flex-[4] p-10">
               {/* <p className="mb-7 text-left text-xl font-bold text-primary2">고객 만족도 97%, 재방문률 42%</p> */}
@@ -70,9 +69,9 @@ const ReasonCard = () => {
         <div className="flex flex-col">
           <p className="mr-10 mt-8 text-right text-2xl font-bold text-gray">효율적인 매장 관리</p>
           <div className="flex h-full  flex-1 flex-col rounded-lg  bg-[#f4f5f641] py-10">
-            <div className=" flex flex-row-reverse items-center">
+            <div className=" flex flex-row-reverse items-center md:flex-col">
               <div className=" flex flex-[3] items-center justify-center ">
-                <Image src="/images/png/way4.jpg" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow" />
+                <Image src="/images/png/way4.jpg" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
               </div>
               <div className=" flex-[4] p-10">
                 <div className="flex flex-col gap-8 text-left text-lg">
