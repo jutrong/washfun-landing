@@ -1,6 +1,12 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /inquiry
+Disallow: /term-of-service
+Disallow: /terms-of-digital
+Disallow: /terms-of-location
+Disallow: /terms-of-privacy
+Disallow: /privacy-policy
 
 # Host
 Host: https://www.lifedivergence.com

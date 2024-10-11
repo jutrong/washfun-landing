@@ -2,7 +2,7 @@
 
 module.exports = {
   siteUrl: "https://www.lifedivergence.com",
-  changefreq: "yearly",
+  changefreq: "daily",
   generateRobotsTxt: true,
   priority: 1,
   robotsTxtOptions: {
@@ -10,6 +10,14 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
+        disallow: [
+          "/inquiry",
+          "/term-of-service",
+          "/terms-of-digital",
+          "/terms-of-location",
+          "/terms-of-privacy",
+          "/privacy-policy",
+        ],
       },
     ],
   },
