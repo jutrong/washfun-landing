@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Footer from "@/components/Footer";
 import MoveToUp from "@/components/MoveToUp";
-import { Cover } from "@/components/Service";
+import { Accordian, Cover } from "@/components/Service";
 import Phrase from "@/components/Home/Phrase";
 import Benefit from "@/components/Home/Benefit";
 import Differentiation from "@/components/Home/Differentiation";

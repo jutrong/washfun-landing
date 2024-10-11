@@ -12,7 +12,7 @@ const Reason = () => {
       if (scrollPosition > 9000) {
         setHighlightedText('도입하는');
       } else if (scrollPosition > 7600) {
-        setHighlightedText('사용하는');
+        setHighlightedText('추천하는');
       } else if (scrollPosition > 6700) {
         setHighlightedText('선택하는');
       }

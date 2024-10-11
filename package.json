@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
+    "@lottiefiles/dotlottie-react": "^0.9.1",
     "axios": "^1.7.7",
     "emailjs": "^4.0.3",
     "eslint-plugin-tailwindcss": "^3.17.4",

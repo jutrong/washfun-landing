@@ -27,7 +27,6 @@ const Service = () => {
       <VarienceFee />
       <DeviceService />
       <PointService />
-      <Accordian element={accordianElement} />
       <Footer />
       <MoveToUp onUpMoveBox={onUpMoveBox} />
     </>

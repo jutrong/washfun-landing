@@ -28,24 +28,24 @@ const QNA = [
 
 ]
 
-const Accordian = ({ element }: { element: RefObject<HTMLDivElement> }) => {
+const Accordian = () => {
 
   const [openId, setOpenId] = useState<number | null>(null); // 현재 열린 항목의 ID를 저장
 
   const toggleOpen = (id: number) => setOpenId(openId === id ? null : id);
 
   return (
-    <div className="w-full mb-52 text-black" ref={element}>
-      <div className="flex justify-center items-center mb-20">
-        <p className="font-bold text-4xl">자주 묻는 질문</p>
+    <div className="w-full pb-10 pt-52 text-black">
+      <div className="mb-20 flex items-center justify-center">
+        <p className="text-4xl font-bold">자주 묻는 질문</p>
       </div>
       {QNA.map((qna) => {
         return (
           <motion.div className=" flex justify-center " key={qna.id}>
             <div className="w-3/4 cursor-pointer md:w-full">
               <div>
-                <motion.div layout className="flex justify-between items-center h-20 px-10" onClick={() => toggleOpen(qna.id)}>
-                  <p className="font-bold text-xl md:text-base">{qna.title}</p>
+                <motion.div layout className="flex h-20 items-center justify-between px-10" onClick={() => toggleOpen(qna.id)}>
+                  <p className="text-xl font-bold md:text-base">{qna.title}</p>
                   <motion.img
                     src={openId === qna.id ? "/images/svg/close.svg" : "/images/svg/plus.svg"}
                     alt="toggle"
@@ -66,7 +66,7 @@ const Accordian = ({ element }: { element: RefObject<HTMLDivElement> }) => {
                     style={{ overflow: 'hidden' }}
                     className="px-20"
                   >
-                    <p className="text-gray my-4">{qna.answer}</p>
+                    <p className="my-4 text-gray">{qna.answer}</p>
                   </motion.div>
                 }
               </AnimatePresence>

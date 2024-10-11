@@ -16,12 +16,12 @@ const Cover = () => {
         <Image src="/images/png/mobile-back.png" fill={true} alt="washfun cover" quality={100} style={{ objectFit: "cover" }} />
       </div>
       <Header />
-      <div className="absolute left-72 top-72 flex w-full flex-col text-white xl:left-36 lg:left-1/2 lg:top-32 lg:-translate-x-1/2">
-        <div className="mb-16 flex flex-col gap-3 lg:items-center">
+      <div className=" absolute left-72 top-72 flex w-full flex-col text-white xl:left-36 lg:left-1/2 lg:top-32 lg:-translate-x-1/2 md:mt-10">
+        <div className="mb-16 flex flex-col gap-3 font-NotoSansKR lg:items-center">
           <p className="text-7xl font-medium opacity-90 lg:text-6xl lg:opacity-100">셀프 세차의</p>
           <p className="text-8xl font-bold tracking-wide lg:text-6xl">디지털 혁신</p>
         </div>
-        <div className="mb-6 flex  lg:justify-center  lg:py-2 ">
+        <div className="mb-6 flex lg:justify-center lg:py-2  ">
           <p className="text-4xl text-primary lg:text-3xl lg:font-bold">워시펀</p>
           <span className="text-4xl text-white lg:text-3xl">과 함께</span>
         </div>

@@ -1,12 +1,15 @@
 'use client'
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { Contact } from "@/components/Service";
+import { Accordian, Contact } from "@/components/Service";
 
 const ContactPage = () => {
   return (
     <>
       <Header />
+      <Accordian />
       <Contact />
+      <Footer />
     </>
   );
 };

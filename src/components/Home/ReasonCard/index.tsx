@@ -1,3 +1,4 @@
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Image from "next/image";
 
 const ReasonCard = () => {
@@ -9,10 +10,15 @@ const ReasonCard = () => {
       </div>
       <div className="my-14 mt-20 flex size-full flex-col gap-36 px-14 font-NotoSansKR md:gap-10 md:px-0 ">
         <div className="flex h-full flex-1 flex-col  rounded-lg  ">
-          <p className="ml-10 mt-8 text-2xl font-bold  text-gray">고객 만족도</p>
+          <p className="ml-10 mt-8 text-2xl font-bold  text-gray">고객 만족도 <span className="pl-2 text-xl">97.4%</span></p>
           <div className="mt-10 flex items-center md:flex-col md:justify-start  ">
             <div className=" flex flex-[3] items-center justify-center ">
-              <Image src="/images/png/why1.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
+              <DotLottieReact
+                src="https://lottie.host/c8f6e522-266a-4c21-a063-879a765fe50b/HJG4UXgPvC.lottie"
+                loop
+                autoplay
+                speed={0.7}
+              />
             </div>
             <div className=" flex-[4] p-10 ">
               <div className="flex flex-col gap-8 pl-16 text-left text-lg md:pl-0">
@@ -30,11 +36,16 @@ const ReasonCard = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <p className="mr-10 mt-8 text-right text-2xl font-bold text-gray">객단가 증가</p>
+          <p className="mr-28 mt-8 text-right text-2xl font-bold text-gray md:ml-10 md:text-left">객단가 증가</p>
           <div className="flex h-full  flex-1 flex-col rounded-lg  bg-[#f4f5f641] py-10 md:px-0">
             <div className=" flex flex-row-reverse items-center md:flex-col">
               <div className=" flex flex-[3] items-center justify-center ">
-                <Image src="/images/png/why2.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
+                <DotLottieReact
+                  src="https://lottie.host/616eacdd-ee88-43b8-a207-de4deb1bcbfa/hcHCCMT2wo.lottie"
+                  loop
+                  autoplay
+                  speed={0.5}
+                />
               </div>
               <div className=" flex-[4] p-10">
                 <div className="flex flex-col gap-8 text-left text-lg">
@@ -52,13 +63,18 @@ const ReasonCard = () => {
           <p className="ml-10 mt-8 text-2xl font-bold  text-gray">유효 고객</p>
           <div className="mt-10 flex items-center md:flex-col md:justify-start">
             <div className=" flex flex-[3] items-center justify-center ">
-              <Image src="/images/png/why3.png" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
+              <DotLottieReact
+                src="https://lottie.host/6f02d4eb-7ac9-4e7a-b806-425f91b20394/usSo8KzUzB.lottie"
+                loop
+                autoplay
+                speed={0.5}
+              />
             </div>
             <div className=" flex-[4] p-10">
               {/* <p className="mb-7 text-left text-xl font-bold text-primary2">고객 만족도 97%, 재방문률 42%</p> */}
               <div className="flex flex-col gap-8 text-left text-lg">
                 <div>
-                  <p className="pb-2 text-xl font-bold text-primary2">예약제의 장점</p>
+                  <p className="pb-2 text-xl font-bold text-primary2">예약제처럼 사용은 자유롭게, 요금은 셀프 세차장처럼</p>
                   <p className="text-gray">예약제 서비스를 사용하는 고객 중 24.9%가 자유롭게 기능을 사용할 수 있어서 예약제를 선호합니다. 그중 68.9%는 예약제가 비싸다고 느낍니다.<br /> 워시펀은 초 단위로 기능을 자유롭게 사용할 수 있기 때문에, 이 고객들은 워시펀의 강력한 잠재 고객이 됩니다. 즉, 기존보다 더 많은 고객이 점주님의 세차장을 선택할 가능성이 큽니다. </p>
                 </div>
               </div>
@@ -67,11 +83,16 @@ const ReasonCard = () => {
         </div>
 
         <div className="flex flex-col">
-          <p className="mr-10 mt-8 text-right text-2xl font-bold text-gray">효율적인 매장 관리</p>
+          <p className="mr-16 mt-8 text-right text-2xl font-bold text-gray md:ml-10 md:text-left">효율적인 매장 관리</p>
           <div className="flex h-full  flex-1 flex-col rounded-lg  bg-[#f4f5f641] py-10">
             <div className=" flex flex-row-reverse items-center md:flex-col">
               <div className=" flex flex-[3] items-center justify-center ">
-                <Image src="/images/png/way4.jpg" alt="customer" width={400} height={200} className="rounded-[50px] shadow-primary-shadow md:rounded-[10px]" />
+                <DotLottieReact
+                  src="https://lottie.host/faf8e6e6-82f4-41ce-ae51-4536525eea32/ip4gKGuTte.lottie"
+                  loop
+                  autoplay
+                  speed={0.5}
+                />
               </div>
               <div className=" flex-[4] p-10">
                 <div className="flex flex-col gap-8 text-left text-lg">
