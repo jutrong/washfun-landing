@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "워시펀을 통해 매출,고객 수 등 다양한 데이터를 한 눈에 확인하세요. 셀프 세차의 디지털 혁신 - 워시펀과 함께",
   keywords: ["워시펀", "셀프세차", "워시펀 카드", "워시펀 코인박스", "워시펀 포스", "워시펀 무인화", "워시펀 직원관리", "washfun", "후불결제 시스템"],
   icons: {
-    icon: "/images/logo/logo180.png"
+    icon: "/images/logo/logo180.png",
   },
   openGraph: {
     title: "WashFun - 워시펀",
@@ -43,6 +43,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM" />
         <meta name="naver-site-verification" content="d983fee3f0b7db68efd9a65aa2ebd48490c11d92" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="https://www.lifedivergence.com/favicon.ico" />
       </head>
       <body className={pretendard.className}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
