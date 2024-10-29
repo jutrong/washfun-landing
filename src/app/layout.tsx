@@ -39,7 +39,7 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM" />
         <meta name="naver-site-verification" content="d983fee3f0b7db68efd9a65aa2ebd48490c11d92" />
-        <link rel="shortcut icon" href="https://www.lifedivergence.com/favicon.ico" />
+        <link rel="shortcut icon" sizes="15x15" href="https://www.lifedivergence.com/favicon.ico" />
       </head>
       <body className={pretendard.className}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
