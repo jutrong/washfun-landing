@@ -18,8 +18,8 @@ const Footer = () => {
             </Link>
           </div>
           <div className="flex w-2/3 flex-col gap-3 text-gray md:pt-10 md:text-sm">
-            <div>
-              <p className="text-gradient font-bold">Life Divergence</p>
+            <div className="my-2 mt-4">
+              <Image src="/images/logo/HorizontalType.svg" alt="logo" width={200} height={100} />
             </div>
             <div className="flex gap-2 md:flex-col ">
               <p className="font-bold ">개인정보 처리방침 및 기타문의사항 </p>
