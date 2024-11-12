@@ -8,7 +8,7 @@ const Inquiry = () => {
 
   const serviceID = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_SERVICE_ID;
   const templateID = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_TEMPLATE_ID;
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_KEY;
 
   const validateForm = (form: HTMLFormElement): boolean => {
     const formInputs = Array.from(form.elements).filter(element => {
