@@ -8,13 +8,34 @@ const Inquiry = () => {
 
   const serviceID = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_SERVICE_ID;
   const templateID = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_TEMPLATE_ID;
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_KEY;
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
 
+  const validateForm = (form: HTMLFormElement): boolean => {
+    const formInputs = Array.from(form.elements).filter(element => {
+      const input = element as HTMLInputElement;
+      return input.tagName.toLowerCase() === 'input' || input.tagName.toLowerCase() === 'textarea';
+    });
+
+    const allFieldsFilled = formInputs.every(element => {
+      const input = element as HTMLInputElement;
+      return input.value.trim() !== '';
+    });
+
+    if (!allFieldsFilled) {
+      alert("모든 필드를 채워주세요.");
+      return false;
+    }
+    return true;
+  };
+  console.log(form.current, "forn")
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (form.current !== null &&
-      serviceID !== undefined &&
+    if (!form.current || !validateForm(form.current)) {
+      return;
+    }
+
+    if (serviceID !== undefined &&
       templateID !== undefined &&
       publicKey !== undefined) {
       emailjs
@@ -40,21 +61,6 @@ const Inquiry = () => {
       alert("문의 전송에 실패했습니다. 다시 시도해주세요...");
     }
   };
-
-  const onClickContactBtn = () => {
-    if (form.current) {
-      const allFieldsFilled = Array.from(form.current.elements).every(element => {
-        const input = element as HTMLInputElement;
-        return input.value.trim() !== '';
-      });
-
-      if (allFieldsFilled) {
-      } else {
-        alert("모든 필드를 채워주세요.");
-      }
-    }
-  }
-
 
   return (
     <div className='text-black p-4 pl-6'>
