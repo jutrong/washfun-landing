@@ -27,7 +27,7 @@ const Footer = () => {
             </div>
             <div className="flex gap-2 md:flex-col">
               <p className="font-bold ">주소</p>
-              <p>울산광역시 중구 학성로 95-6, 304호</p>
+              <p>울산광역시 중구 종가6길 21, 우정혁신타워 605호</p>
             </div>
             <div className="flex gap-2 md:flex-col">
               <p className="font-bold  ">사업자등록번호 </p>
