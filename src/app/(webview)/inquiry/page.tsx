@@ -5,33 +5,33 @@ import emailjs from "@emailjs/browser";
 
 const Inquiry = () => {
   const form: RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    content: ''
+  });
 
   const serviceID = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_SERVICE_ID;
   const templateID = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_TEMPLATE_ID;
   const publicKey = process.env.NEXT_PUBLIC_EMAILJS_INQUIRY_KEY;
 
-  const validateForm = (form: HTMLFormElement): boolean => {
-    const formInputs = Array.from(form.elements).filter(element => {
-      const input = element as HTMLInputElement;
-      return input.tagName.toLowerCase() === 'input' || input.tagName.toLowerCase() === 'textarea';
-    });
-
-    const allFieldsFilled = formInputs.every(element => {
-      const input = element as HTMLInputElement;
-      return input.value.trim() !== '';
-    });
-
-    if (!allFieldsFilled) {
-      alert("모든 필드를 채워주세요.");
-      return false;
-    }
-    return true;
+  const isFormValid = () => {
+    return Object.values(formData).every(value => value.trim() !== '');
   };
-  console.log(form.current, "forn")
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!form.current || !validateForm(form.current)) {
+    if (!form.current || !isFormValid()) {
       return;
     }
 
@@ -51,6 +51,12 @@ const Inquiry = () => {
           (result) => {
             console.log(result.text);
             (e.target as HTMLFormElement).reset();
+            setFormData({
+              name: '',
+              phone: '',
+              email: '',
+              content: ''
+            });
             alert("문의가 성공적으로 전송되었습니다.");
           }, (error) => {
             console.log(error.text);
@@ -63,30 +69,62 @@ const Inquiry = () => {
   };
 
   return (
-    <div className='text-black p-4 pl-6'>
-      <h1 className='font-bold text-2xl'>워시펀에게 문의하기</h1>
+    <div className='relative flex min-h-screen flex-1 flex-col gap-[12px] bg-[#F9F9FA] p-[20px] text-black'>
+      <h1 className='text-2xl font-bold'>워시펀에게 문의하기</h1>
       <div className='mt-6'>
-        <p>워시펀에 궁금하신 사항이 있으신가요?</p>
-        <p>아래에 남겨주시면 답변해 드리겠습니다.</p>
+        <p>워시펀에 대해 궁금하거나 불편한 점이 있으셨나요?</p>
+        <p>아래에 남겨주시면, 빠르고 정확하게 답변드리겠습니다!.</p>
       </div>
-      <form className='mt-6 flex flex-col gap-4' ref={form} onSubmit={sendEmail}>
-        <div className='flex flex-col gap-3 '>
-          <label className='font-bold'>유저명</label>
-          <input className='bg-lightGray py-1 px-3  focus:outline-none' name="name"></input>
+      <form className='mt-6 flex flex-col gap-4 pb-[80px]' ref={form} onSubmit={sendEmail}>
+        <div className='flex flex-col gap-3'>
+          <label className='text-[14px] font-medium text-[#6B7280]'>닉네임</label>
+          <input
+            className='rounded-[16px] border border-[#E1E3E6] bg-white px-[12px] py-[14px] focus:outline-none'
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder='닉네임을 입력해주세요.'
+          />
         </div>
         <div className='flex flex-col gap-3'>
-          <label className='font-bold'>전화번호</label>
-          <input className='bg-lightGray py-1  px-3  focus:outline-none' name="phone"></input>
+          <label className='text-[14px] font-medium text-[#6B7280]'>전화번호</label>
+          <input
+            className='rounded-[16px] border border-[#E1E3E6] bg-white px-[12px] py-[14px] focus:outline-none'
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            placeholder='010-0000-0000'
+          />
         </div>
         <div className='flex flex-col gap-3'>
-          <label className='font-bold'>답변받을 이메일</label>
-          <input className='bg-lightGray py-1  px-3  focus:outline-none' name="email"></input>
+          <label className='text-[14px] font-medium text-[#6B7280]'>답변 받으실 이메일</label>
+          <input
+            className='rounded-[16px] border border-[#E1E3E6] bg-white px-[12px] py-[14px] focus:outline-none'
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder='example@gmail.com'
+          />
         </div>
         <div className='flex flex-col gap-3'>
-          <label className='font-bold'>문의내용 (자세한 내용을 적어주세요.)</label>
-          <textarea className='bg-lightGray h-40 p-3  focus:outline-none' name="content"></textarea>
+          <label className='text-[14px] font-medium text-[#6B7280]'>문의 내용을 자세히 작성해주세요!</label>
+          <textarea
+            className='h-52 rounded-[16px] border border-[#E1E3E6] bg-white px-[12px] py-[14px] focus:outline-none'
+            name="content"
+            value={formData.content}
+            onChange={handleInputChange}
+            placeholder='문의 내용을 자세히 작성해주세요.'
+          />
         </div>
-        <button className='bg-primary2 text-white py-2 rounded-md mt-4'>문의하기</button>
+        <div className='fixed inset-x-0 bottom-0 bg-[#F9F9FA] p-[20px]'>
+          <button
+            className={`h-[48px] w-full rounded-md py-2 text-white ${isFormValid() ? 'bg-primary2' : 'cursor-not-allowed bg-[#E1E3E6]'
+              }`}
+            disabled={!isFormValid()}
+          >
+            문의하기
+          </button>
+        </div>
       </form>
     </div>
   );
