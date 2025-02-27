@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 
 const Inquiry = () => {
   const form: RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -31,9 +32,11 @@ const Inquiry = () => {
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!form.current || !isFormValid()) {
+    if (!form.current || !isFormValid() || isSubmitting) {
       return;
     }
+
+    setIsSubmitting(true);
 
     if (serviceID !== undefined &&
       templateID !== undefined &&
@@ -61,10 +64,14 @@ const Inquiry = () => {
           }, (error) => {
             console.log(error.text);
             console.log(error)
-            alert("문의 전송에 실패했습니다. 다시 시도해주세요.");
-          });
+            alert("문의 전송에 실패했습니다. 잠시후 다시 시도해주세요.");
+          })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     } else {
-      alert("문의 전송에 실패했습니다. 다시 시도해주세요...");
+      setIsSubmitting(false);
+      alert("문의 전송에 실패했습니다. 잠시후 다시 시도해주세요...");
     }
   };
 
@@ -109,20 +116,21 @@ const Inquiry = () => {
         <div className='flex flex-col gap-3'>
           <label className='text-[14px] font-medium text-[#6B7280]'>문의 내용을 자세히 작성해주세요!</label>
           <textarea
-            className='h-52 rounded-[16px] border border-[#E1E3E6] bg-white px-[12px] py-[14px] focus:outline-none'
+            className='h-44 rounded-[16px] border border-[#E1E3E6] bg-white px-[12px] py-[14px] focus:outline-none'
             name="content"
             value={formData.content}
             onChange={handleInputChange}
-            placeholder='문의 내용을 자세히 작성해주세요.'
+            placeholder='문의 내용을 자세히 작성해주세요. (500자 이내)'
+            maxLength={500}
           />
         </div>
-        <div className='fixed inset-x-0 bottom-0 bg-[#F9F9FA] p-[20px]'>
+        <div className='fixed inset-x-0 bottom-0 bg-[#F9F9FA] p-[14px]'>
           <button
-            className={`h-[48px] w-full rounded-md py-2 text-white ${isFormValid() ? 'bg-primary2' : 'cursor-not-allowed bg-[#E1E3E6]'
+            className={`h-[48px] w-full rounded-md py-2 text-white ${isFormValid() && !isSubmitting ? 'bg-primary2' : 'cursor-not-allowed bg-[#E1E3E6]'
               }`}
-            disabled={!isFormValid()}
+            disabled={!isFormValid() || isSubmitting}
           >
-            문의하기
+            {isSubmitting ? '전송중...' : '문의하기'}
           </button>
         </div>
       </form>
