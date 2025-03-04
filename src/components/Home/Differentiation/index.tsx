@@ -20,11 +20,11 @@ const Differentiation = () => {
               <Image src="/images/png/difference.png" alt="" width={1100} height={1000} />
             </div>
             <div className="flex h-1/2 w-full flex-col items-center  gap-3 pb-32  pt-16">
-              <p className="text-4xl font-medium md:text-2xl">셀프세차, 노터치 기계세차, 예약제</p>
+              <p className="text-4xl font-medium md:text-2xl">셀프세차, 자동세차, 예약제</p>
               <p className="text-3xl font-medium md:text-xl">모두를 하나의 플랫폼으로 !</p>
-              <p className="text-2xl font-medium text-gray md:text-xs">셀프세차부터 예약제 노터치 세차까지, 편리함의 새로운 기준</p>
+              <p className="text-2xl font-medium text-gray md:text-xs">셀프세차부터 예약제, 자동세차까지, 편리함의 새로운 기준</p>
               <p className="md:text-xs">
-                (노터치, 예약제 서비스는 2025년 제공 예정)
+                (자동세차 2025년 9월 제공 예정)
               </p>
             </div>
           </div>
