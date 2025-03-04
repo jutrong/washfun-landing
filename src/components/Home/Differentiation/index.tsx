@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Differentiation = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-10 bg-color p-20  text-black lg:p-10 md:px-2">
+    <div className="flex flex-col items-center justify-center gap-10 bg-color p-20 pt-32  text-black lg:p-10 md:px-2">
       <div className="mt-20 flex w-full justify-center md:mt-10">
         <h2 className="text-center text-[44px] font-semibold leading-tight text-gray md:text-3xl">
           워시펀은 다른 세차장과의 <br />
@@ -17,7 +17,7 @@ const Differentiation = () => {
         >
           <div className="mt-20 flex h-full flex-col  ">
             <div className="flex h-1/2 w-full justify-center">
-              <Image src="/images/png/difference3.png" alt="" width={1100} height={1000} />
+              <Image src="/images/png/difference.png" alt="" width={1100} height={1000} />
             </div>
             <div className="flex h-1/2 w-full flex-col items-center  gap-3 pb-32  pt-16">
               <p className="text-4xl font-medium md:text-2xl">셀프세차, 노터치 기계세차, 예약제</p>

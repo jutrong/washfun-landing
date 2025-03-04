@@ -23,7 +23,7 @@ export default function Home() {
       <div className="box-border w-full font-NotoSansKR text-black" ref={upElement}>
         <Cover />
         <Phrase />
-        <Benefit />
+        {/* <Benefit /> */}
         <Differentiation />
         <Reason />
         <div className="bg-gradient-to-b from-lightPrimary3 to-white">
