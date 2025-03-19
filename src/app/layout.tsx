@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import GoogleAnalytics from "@/lib/GoogleAnalytics";
-import Script from "next/script";
 
 
 const pretendard = localFont({
@@ -41,32 +40,11 @@ export default function RootLayout({
         <meta name="google-site-verification" content="rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM" />
         <meta name="naver-site-verification" content="d983fee3f0b7db68efd9a65aa2ebd48490c11d92" />
         <link rel="shortcut icon" href="/icon.ico" />
-        <Script
-          id="jennifer-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(j, ennifer) {
-                j['dmndata'] = [];
-                j['jenniferFront'] = function(args) { window.dmndata.push(args) };
-                j['dmnaid'] = ennifer;
-                j['dmnatime'] = new Date();
-                j['dmnanocookie'] = false;
-                j['dmnajennifer'] = 'JENNIFER_FRONT@INTG';
-              }(window, 'e7a803bd'));
-            `,
-          }}
-        />
       </head>
       <body className={pretendard.className}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
-        <Script
-          src="https://d-collect.jennifersoft.com/e7a803bd/demian.js"
-          strategy="afterInteractive"
-          async
-        />
         {children}
       </body>
     </html>
