@@ -12,7 +12,7 @@ export default function CertificationCard() {
           <p className="text-[16px] font-semibold leading-[24px] text-main">2023</p>
           <p className="text-[20px] font-medium leading-[28px] text-secondaryDefault">창업진흥원 주관<br />예비창업패키지 선정</p>
           <div className="relative h-[156px] w-full">
-            <Image src="/images/v2/png/certification1.png" alt="certification" fill={true} className="scale-[60%] object-contain" />
+            <Image src="/images/v2/png/certification0.png" alt="certification" fill={true} className="scale-[60%] object-contain" />
           </div>
         </div>
         <div className="flex h-[300px] flex-col gap-[8px] rounded-[24px] border border-borderStrong bg-secondaryForeground p-[24px]  lg:h-[200px] lg:p-[16px]">
