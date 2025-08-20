@@ -2,17 +2,17 @@ import Image from "next/image";
 
 export default function Phrase() {
   return (
-    <div className="relative flex flex-col items-center justify-self-center py-[120px]">
+    <div className="relative flex flex-col items-center justify-self-center py-[120px] lg:py-[60px]">
       {/* 헤더 */}
       <div className="flex flex-col items-center justify-center gap-[16px]">
-        <p className="text-[20px] font-medium text-secondaryDefault">세차장 디지털 솔루션, 워시펀</p>
-        <p className="text-center text-[48px] font-bold">
+        <p className="text-[20px] font-medium text-secondaryDefault lg:text-[16px]">세차장 디지털 솔루션, 워시펀</p>
+        <p className="text-center text-[48px] font-bold lg:text-[30px]">
           이제 고객의 일상에<br /> 내 세차장을 초대하세요.
         </p>
       </div>
 
       {/* 카드 묶음  */}
-      <div className="relative mt-[64px] flex w-full max-w-[720px] flex-col gap-[60px] overflow-hidden  px-4">
+      <div className="relative mt-[64px] flex w-full max-w-[720px] flex-col gap-[60px] overflow-hidden px-4">
         {/* === 연결선 SVG === */}
         <svg
           className="pointer-events-none absolute inset-0 z-0 sm:inset-[-40px] "
@@ -41,17 +41,17 @@ export default function Phrase() {
 
         {/* === 카드 === */}
         <div className="relative z-10 -rotate-2 rounded-[24px] bg-secondaryForeground px-[24px] py-[16px] text-center">
-          <p className="text-[24px] font-semibold">커피를 사듯, 저절로 생각나는 세차!</p>
-          <Image src="/images/v2/svg/coffee.svg" alt="coffee" quality={100} unoptimized={true} priority={true} width={48} height={48} className="absolute -left-4 top-1/2 -translate-y-1/2" />
+          <p className="text-[24px] font-semibold lg:text-[18px]">커피를 사듯, 저절로 생각나는 세차!</p>
+          <Image src="/images/v2/svg/coffee.svg" alt="coffee" quality={100} unoptimized={true} priority={true} width={48} height={48} className="absolute -left-4 top-1/2 -translate-y-1/2 lg:size-[32px]" />
         </div>
         <div className="z-10 rotate-2 rounded-[24px] bg-secondaryForeground px-[24px] py-[16px] text-center">
-          <p className="text-[24px] font-semibold">합리적이고 부담 없는 세차!</p>
-          <Image src="/images/v2/svg/money.svg" alt="coffee" quality={100} unoptimized={true} priority={true} width={48} height={48} className="absolute right-6 top-1/2 -translate-y-1/2" />
+          <p className="text-[24px] font-semibold lg:text-[18px]">합리적이고 부담 없는 세차!</p>
+          <Image src="/images/v2/svg/money.svg" alt="coffee" quality={100} unoptimized={true} priority={true} width={48} height={48} className="absolute right-6 top-1/2 -translate-y-1/2 lg:right-2 lg:size-[32px]" />
 
         </div>
         <div className="z-10 -rotate-2 rounded-[24px] bg-secondaryForeground px-[24px] py-[16px] text-center">
-          <p className="text-[24px] font-semibold">고객의 습관에 스며드는 세차!</p>
-          <Image src="/images/v2/svg/running.svg" alt="coffee" quality={100} unoptimized={true} priority={true} width={48} height={48} className="absolute -left-0 top-1/2 -translate-y-1/2" />
+          <p className="text-[24px] font-semibold lg:text-[18px]">고객의 습관에 스며드는 세차!</p>
+          <Image src="/images/v2/svg/running.svg" alt="coffee" quality={100} unoptimized={true} priority={true} width={48} height={48} className="absolute -left-0 top-1/2 -translate-y-1/2 lg:size-[32px]" />
 
         </div>
 

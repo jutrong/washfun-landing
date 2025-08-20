@@ -102,15 +102,15 @@ export default function Situation() {
   });
 
   return (
-    <section ref={sectionRef} className="relative h-300vh">
+    <section ref={sectionRef} className="relative h-300vh lg:h-200vh">
       {/* sticky로 한 화면에 고정 */}
       <div className="sticky top-0 flex min-h-screen items-center">
         <div className="w-full py-[80px]">
           {/* 헤더 */}
           <div className="mb-16 flex flex-col items-center justify-center gap-4">
-            <p className="text-[20px] font-medium text-secondaryDefault">점주님들의 고민은 워시펀의 고민</p>
+            <p className="text-[20px] font-medium text-secondaryDefault lg:text-[16px]">점주님들의 고민은 워시펀의 고민</p>
             <div className="text-center">
-              <p className="text-[48px] font-bold leading-tight">점주님의 {' '}
+              <p className="text-[48px] font-bold leading-tight lg:text-[30px]">점주님의 {' '}
                 <motion.span
                   key={textContent.get()}
                   initial={{ opacity: 0, y: 20 }}
@@ -120,13 +120,27 @@ export default function Situation() {
                   {textContent}
                 </motion.span>은
               </p>
-              <p className="text-[48px] font-bold leading-tight">지금 어떤 모습인가요?</p>
+              <p className="text-[48px] font-bold leading-tight lg:text-[30px]">지금 어떤 모습인가요?</p>
             </div>
           </div>
 
           {/* 카드들 */}
           <div
-            className="mt-8 flex w-full items-stretch justify-between gap-3 px-4"
+            className="mt-8 flex w-full items-stretch justify-between gap-3 px-4 lg:hidden"
+            style={{ perspective: '1200px' }}
+          >
+            {COPIES.map((c, i) => (
+              <FlipCard
+                key={i}
+                index={i}
+                range={ranges[i]}
+                scrollYProgress={scrollYProgress}
+                copy={c}
+              />
+            ))}
+          </div>
+          <div
+            className="mt-8 hidden  w-full items-stretch justify-between gap-3 px-4 lg:block lg:flex-col lg:px-0"
             style={{ perspective: '1200px' }}
           >
             {COPIES.map((c, i) => (
@@ -166,7 +180,7 @@ function FlipCard({
 
   return (
     <motion.div
-      className="relative h-[400px] flex-1 rounded-[24px] will-change-transform"
+      className="relative h-[400px] flex-1 rounded-[24px] will-change-transform lg:mb-[40px] lg:h-[280px]"
       style={{
         transformStyle: 'preserve-3d',
         rotateY,
@@ -213,7 +227,7 @@ function FaceContent({ face, dark = false }: { face: Face; dark?: boolean }) {
           height={36}
           style={{ objectFit: 'cover' }}
         />
-        <p className="text-[24px] font-semibold leading-[32px]">
+        <p className="text-[24px] font-semibold leading-[32px] lg:text-[18px]">
           {face.title1}
           {face.title2 && (
             <>
@@ -224,7 +238,7 @@ function FaceContent({ face, dark = false }: { face: Face; dark?: boolean }) {
         </p>
       </div>
       <p
-        className={`text-[18px] leading-[28px] ${dark ? 'text-white/80' : 'text-secondaryDefault'
+        className={`text-[18px] leading-[28px] ${dark ? 'text-white/80' : 'text-secondaryDefault lg:text-[14px]'
           }`}
       >
         {face.body}
