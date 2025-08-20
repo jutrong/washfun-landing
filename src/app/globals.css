@@ -21,6 +21,9 @@ body {
   -ms-overflow-style: none;
 }
 
+p {
+  line-height: normal;
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -73,9 +76,8 @@ body {
 }
 
 @font-face {
-  font-family: "Pretendard-black";
-  font-weight: 400;
-  src: url("/fonts/Pretendard-Black.woff") format("woff");
+  font-family: "Pretendard";
+  src: url("/fonts/PretendardVariable.woff2") format("woff2");
 }
 @font-face {
   font-family: "Jamsil-bold";

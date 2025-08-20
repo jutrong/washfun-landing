@@ -41,10 +41,17 @@ const config: Config = {
         lightPrimary3: "#F5F9FF",
         lightPrimary4: "#F9FBFF",
         lightPrimary5: "#FEFFFF",
-        black: "#222",
+        black: "#15171A",
         color: "white",
         day: "linear-gradient(180deg, #F5F9FF 0%, #EFF6FF 100%)",
         primary2: "#1C74BC",
+  
+        secondaryDefault: "#6B7280",
+        secondaryForeground: "#F9F9FA",
+        main: "#1C73BA",
+        borderStrong: "#E1E3E6",
+        
+
       },
       height: {
         "200vh": "200vh",
@@ -66,7 +73,7 @@ const config: Config = {
         Poppins: ["Poppins"],
         PoppinsBlack: ["Poppins-Black"],
         PoppinsExtraBold: ["Poppins-ExtraBold"],
-        Pretendard: ["Pretendard-black"],
+        Pretendard: ["PretendardVariable"],
         NotoSansKR: ["NotoSansKR"],
         OneMobilePOP: ["ONE-Mobile-POP"],
       },
