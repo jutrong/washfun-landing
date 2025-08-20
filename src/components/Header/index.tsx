@@ -17,7 +17,7 @@ const Header = () => {
       <div className="flex w-full  cursor-pointer justify-end gap-8 lg:w-auto lg:pr-4">
         {/* <p className="text-white text-opacity-80 transition duration-500 hover:text-opacity-100" onClick={onMoveBox}>회사 소개</p> */}
         <Link href="/service">
-          <p className={`${path === "/service" || path === "/contact" ? "text-black" : "text-white text-opacity-80"} transition duration-500 hover:text-opacity-100`}>서비스 안내</p>
+          <p className={`${path === "/service" || path === "/contact" ? "text-black" : "text-white text-opacity-80"} transition duration-500 hover:text-opacity-100`}>워시펀 사장님</p>
         </Link>
         <Link href="/contact">
           <p className={`${path === "/service" || path === "/contact" ? "text-black" : "text-white text-opacity-80"} transition duration-500 hover:text-opacity-100`} >도입 문의</p>

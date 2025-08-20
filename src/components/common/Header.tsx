@@ -11,7 +11,7 @@ export default function Header() {
           <Image src="/images/v2/svg/logo1.svg" alt="washfun Logo" width={65} height={35} style={{ objectFit: "cover", cursor: "pointer" }} onClick={() => router.push('/')} />
           <div className="flex gap-[40px] ">
             {/* <p className="cursor-pointer text-[18px] font-medium">홈</p> */}
-            <p className="cursor-pointer text-[18px] font-medium text-secondaryDefault" onClick={() => router.push('/service')}>서비스 안내</p>
+            <p className="cursor-pointer text-[18px] font-medium text-secondaryDefault" onClick={() => router.push('/service')}>워시펀 사장님</p>
             <p className="cursor-pointer text-[18px] font-medium text-secondaryDefault" onClick={() => router.push('/contact')}>도입 문의</p>
           </div>
         </div>
