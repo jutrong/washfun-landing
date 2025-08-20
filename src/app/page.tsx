@@ -31,19 +31,21 @@ export default function Home() {
       <Header />
       <div className="box-border w-full px-[120px] font-Pretendard text-black lg:px-[16px]" ref={upElement}>
         <Cover />
-        <Situation />
-        <Phrase />
-        <System />
-        <SlideCard />
-        {/* <Benefit /> */}
-        {/* <Differentiation /> */}
-        {/* <Reason /> */}
-        {/* <div className="bg-gradient-to-b from-lightPrimary3 to-white"> */}
-        {/* <ReasonCard /> */}
-        {/* <Recommend /> */}
-        {/* </div> */}
-        <CertificationCard />
-        <Banner />
+        <div className="mx-auto max-w-[1440px]">
+          <Situation />
+          <Phrase />
+          <System />
+          <SlideCard />
+          {/* <Benefit /> */}
+          {/* <Differentiation /> */}
+          {/* <Reason /> */}
+          {/* <div className="bg-gradient-to-b from-lightPrimary3 to-white"> */}
+          {/* <ReasonCard /> */}
+          {/* <Recommend /> */}
+          {/* </div> */}
+          <CertificationCard />
+          <Banner />
+        </div>
         <Footer />
         {/* <MoveToUp onUpMoveBox={onUpMoveBox} /> */}
       </div>
