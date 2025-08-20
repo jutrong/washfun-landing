@@ -73,7 +73,7 @@ const config: Config = {
         Poppins: ["Poppins"],
         PoppinsBlack: ["Poppins-Black"],
         PoppinsExtraBold: ["Poppins-ExtraBold"],
-        Pretendard: ["PretendardVariable"],
+        Pretendard: ["var(--font-pretendard)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
         NotoSansKR: ["NotoSansKR"],
         OneMobilePOP: ["ONE-Mobile-POP"],
       },

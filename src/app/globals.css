@@ -19,6 +19,15 @@
 body {
   color: rgb(var(--foreground-rgb));
   -ms-overflow-style: none;
+  font-family:
+    var(--font-pretendard),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 }
 
 p {
@@ -75,10 +84,6 @@ p {
   }
 }
 
-@font-face {
-  font-family: "Pretendard";
-  src: url("/fonts/PretendardVariable.woff2") format("woff2");
-}
 @font-face {
   font-family: "Jamsil-bold";
   font-weight: 400;
