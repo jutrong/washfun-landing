@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CertificationCard() {
   return (
-    <div className="mt-[200px] py-[120px] pb-0">
+    <div className="mt-[40px] py-[120px] pb-0">
       <div>
         <p className="text-center text-[48px] font-bold lg:text-[30px]">믿을 만한 솔루션<br />믿을 만한 팀이 만드니깐.</p>
       </div>

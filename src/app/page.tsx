@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import MoveToUp from "@/components/MoveToUp";
 import { Accordian } from "@/components/Service";
-import Benefit from "@/components/Home/Benefit";
 import Differentiation from "@/components/Home/Differentiation";
 import Reason from "@/components/Home/Reason";
 import ReasonCard from "@/components/Home/ReasonCard";
@@ -17,6 +16,7 @@ import Footer from "@/components/HomeV2/Footer";
 import Banner from "@/components/HomeV2/Banner";
 import CertificationCard from "@/components/HomeV2/CertificationCard";
 import Header from "@/components/common/Header";
+import Benefit from "@/components/HomeV2/Benefit";
 
 export default function Home() {
   const upElement = useRef<HTMLDivElement>(null);
@@ -43,6 +43,7 @@ export default function Home() {
           {/* <ReasonCard /> */}
           {/* <Recommend /> */}
           {/* </div> */}
+          <Benefit />
           <CertificationCard />
           <Banner />
         </div>
