@@ -1,6 +1,6 @@
 'use client'
+import Header from "@/components/common/Header";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Accordian, Contact } from "@/components/Service";
 
 const ContactPage = () => {

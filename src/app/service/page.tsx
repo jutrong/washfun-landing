@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import { Accordian, Contact, DeviceService, EditPriceService, InventoryService, PointService, ServiceData, ServiceInfo, VarienceFee } from "@/components/Service";
 import MoveToUp from "@/components/MoveToUp";
 import { useRef } from "react";
-import Header from "@/components/Header";
+import Header from "@/components/common/Header";
+import Cover from "@/components/ServiceV2/Cover";
 
 const Service = () => {
   const upElement = useRef<HTMLDivElement>(null);
@@ -20,7 +21,7 @@ const Service = () => {
   return (
     <>
       <Header />
-      <ServiceInfo />
+      <Cover />
       <ServiceData element={serviceDataElement} />
       <EditPriceService />
       <InventoryService />
