@@ -58,11 +58,11 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lifedivergence.com"),
   title: "WashFun - 워시펀",
-  description: "워시펀을 통해 매출,고객 수 등 다양한 데이터를 한 눈에 확인하세요. 셀프 세차의 디지털 혁신 - 워시펀과 함께",
-  keywords: ["워시펀", "washfun", "셀프세차", "워시펀 카드", "워시펀 코인박스", "워시펀 포스", "워시펀 무인화", "워시펀 직원관리", "후불결제 시스템"],
+  description: "RF카드를 대체한 세차장 디지털 혁신, 매장 관리부터 경쟁력 확보까지 - 워시펀과 함께",
+  keywords: ["워시펀", "washfun", "셀프세차", "노터치 자동세차", "세차 구독", "세차 카드", "세차장 창업", "세차장 창업비용", "세차장 매매", "세차장 임대", "세차장"],
   openGraph: {
     title: "WashFun - 워시펀",
-    description: "워시펀을 통해 매출,고객 수 등 다양한 데이터를 한 눈에 확인하세요. 셀프 세차의 디지털 혁신 - 워시펀과 함께",
+    description: "RF카드를 대체한 세차장 디지털 혁신, 매장 관리부터 경쟁력 확보까지 - 워시펀과 함께",
     images: [
       {
         url: "/images/png/cover-page.png",
