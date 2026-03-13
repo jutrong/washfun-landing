@@ -10,6 +10,7 @@ const REFUND_POLICY_ITEMS = [
 
 const COMPANY_INFO_ITEMS = [
   { label: "상호명", value: "(주)라이프다이버전스" },
+  { label: "대표명", value: "김동영" },
   { label: "사업자등록번호", value: "514-86-03698" },
   { label: "개인정보 처리방침 및 기타문의사항", value: "contact@washfun.fun / 070-8806-8088" },
 ];

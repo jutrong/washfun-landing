@@ -36,6 +36,10 @@ const Footer = () => {
               <p>(주)라이프다이버전스</p>
             </div>
             <div className="flex gap-2 md:flex-col">
+              <p className="font-bold ">대표명</p>
+              <p>김동영</p>
+            </div>
+            <div className="flex gap-2 md:flex-col">
               <p className="font-bold  ">사업자등록번호 </p>
               <p>514-86-03698 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업</p>
             </div>
