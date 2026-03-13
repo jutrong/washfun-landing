@@ -13,12 +13,12 @@ export default function Footer() {
         <div className="mt-[24px] flex flex-col gap-[8px] lg:gap-[14px]">
           <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
             <p className="text-[14px] font-medium text-secondaryDefault">상호명</p>
-            <p className="text-[14px] font-medium text-black">라이프다이버전스</p>
+            <p className="text-[14px] font-medium text-black">(주)라이프다이버전스</p>
           </div>
 
           <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
             <p className="text-[14px] font-medium text-secondaryDefault">사업자등록번호</p>
-            <p className="text-[14px] font-medium text-black">797-43-01003 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업</p>
+            <p className="text-[14px] font-medium text-black">514-86-03698 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업</p>
           </div>
           <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
             <p className="text-[14px] font-medium text-secondaryDefault">주소</p>

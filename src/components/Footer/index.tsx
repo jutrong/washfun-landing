@@ -32,8 +32,12 @@ const Footer = () => {
               <p>울산광역시 중구 종가6길 21, 우정혁신타워 605호</p>
             </div>
             <div className="flex gap-2 md:flex-col">
+              <p className="font-bold ">상호명</p>
+              <p>(주)라이프다이버전스</p>
+            </div>
+            <div className="flex gap-2 md:flex-col">
               <p className="font-bold  ">사업자등록번호 </p>
-              <p>797-43-01003 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업</p>
+              <p>514-86-03698 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업</p>
             </div>
             <div className="flex gap-2 md:flex-col">
               <p className="font-bold">통신판매 신고번호 </p>
