@@ -67,15 +67,15 @@ const Contact = () => {
       aria-labelledby="contact-heading"
     >
       <div className="flex size-full py-20 pb-10 lg:flex-col md:flex-col">
-        <div className="mt-44 flex flex-[2] flex-col items-start gap-4 text-2xl font-semibold lg:items-start md:mt-0">
-          <h2 id="contact-heading" className="ml-20 text-3xl font-bold md:ml-10 md:text-2xl">
+        <div className="mt-44 flex flex-[2] flex-col items-start gap-4 text-2xl font-semibold lg:items-start md:mt-0 md:px-6">
+          <h2 id="contact-heading" className="ml-20 text-3xl font-bold md:ml-0 md:text-2xl">
             세차장 컨설팅 무료 상담
           </h2>
-          <p className="ml-20 text-base font-normal leading-[26px] text-gray md:ml-10 md:text-sm">
-            창업·리모델링·시스템 도입·운영 어떤 단계든 워시펀 팀이 함께합니다.<br />
+          <p className="ml-20 mr-20 text-base font-normal leading-[26px] text-gray md:mx-0 md:text-sm">
+            창업·리모델링·시스템 도입·운영 어떤 단계든 워시펀 팀이 함께합니다.<br className="md:hidden" />
             아래 폼에 이름과 연락처만 남겨주시면 1영업일 내 연락드립니다.
           </p>
-          <div className="ml-20 mt-2 flex flex-col gap-1 text-base font-normal text-gray md:ml-10 md:text-sm">
+          <div className="ml-20 mt-2 flex flex-col gap-1 text-base font-normal text-gray md:ml-0 md:text-sm">
             <a href="tel:+82-70-8806-8088" className="underline" onClick={() => track("lead_cta_click", { source: "contact_page_tel" })}>
               ☎ 070-8806-8088
             </a>

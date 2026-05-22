@@ -116,10 +116,10 @@ export default function LongTailPage({ content }: { content: LongTailContent }) 
             <p className="text-[16px] font-medium text-main lg:text-[14px]">
               {content.eyebrow}
             </p>
-            <h1 className="mt-[12px] text-[52px] font-bold leading-[1.18] lg:text-[30px]">
+            <h1 className="mt-[12px] text-balance text-[52px] font-bold leading-[1.18] lg:text-[24px] lg:leading-[1.3]">
               {content.h1}
             </h1>
-            <p className="mt-[20px] max-w-[820px] text-[18px] leading-[28px] text-secondaryDefault lg:text-[14px] lg:leading-[22px]">
+            <p className="mt-[20px] max-w-[820px] text-balance text-[18px] leading-[28px] text-secondaryDefault lg:text-[14px] lg:leading-[22px]">
               {content.intro}
             </p>
             <div className="mt-[24px] flex items-center gap-[12px] lg:flex-col">

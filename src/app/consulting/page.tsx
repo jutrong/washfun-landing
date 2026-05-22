@@ -179,8 +179,8 @@ export default function ConsultingPage() {
             <p className="text-[18px] font-medium text-secondaryDefault lg:text-[14px]">
               세차장 종합 컨설팅 · 워시펀
             </p>
-            <h1 className="text-[56px] font-bold leading-[1.15] lg:text-[32px]">
-              세차장 창업, 리모델링, 시스템 도입까지<br />
+            <h1 className="text-balance text-[56px] font-bold leading-[1.15] lg:text-[26px] lg:leading-[1.3]">
+              세차장 창업, 리모델링, 시스템 도입까지<br className="md:hidden" />
               한 번에 컨설팅 받으세요.
             </h1>
             <p className="max-w-[760px] text-[18px] leading-[28px] text-secondaryDefault lg:text-[14px] lg:leading-[22px]">
@@ -188,7 +188,7 @@ export default function ConsultingPage() {
               워시펀은 창업비용 분석부터 후불제 셀프 세차, 구독제 자동 세차, 점주용 관리 시스템까지
               세차장 운영의 전 과정을 한 팀이 함께 설계합니다.
             </p>
-            <div className="mt-[24px] flex items-center gap-[12px]">
+            <div className="mt-[24px] flex items-center gap-[12px] lg:flex-col">
               <Link
                 href="/contact"
                 className="rounded-[999px] bg-main px-[28px] py-[14px] text-[16px] font-semibold text-white"

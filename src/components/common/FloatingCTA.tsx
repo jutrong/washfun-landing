@@ -27,7 +27,7 @@ export default function FloatingCTA() {
           <Link
             href="/contact"
             onClick={() => track("lead_cta_click", { source: "floating_contact" })}
-            className="flex items-center gap-[8px] rounded-[999px] bg-white px-[16px] py-[10px] text-[14px] font-semibold text-black shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-1 ring-black/10 transition hover:translate-y-[-1px]"
+            className="flex items-center gap-[8px] rounded-[999px] bg-white px-[16px] py-[10px] text-[14px] font-semibold text-black shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-1 ring-black/10 transition hover:translate-y-[-1px] lg:hidden"
             aria-label="세차장 컨설팅 무료 상담 신청"
           >
             <span aria-hidden>💬</span>
@@ -36,7 +36,7 @@ export default function FloatingCTA() {
           <a
             href="tel:+82-70-8806-8088"
             onClick={() => track("lead_cta_click", { source: "floating_tel" })}
-            className="flex items-center gap-[8px] rounded-[999px] bg-white px-[16px] py-[10px] text-[14px] font-semibold text-black shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-1 ring-black/10 transition hover:translate-y-[-1px]"
+            className="flex items-center gap-[8px] rounded-[999px] bg-white px-[16px] py-[10px] text-[14px] font-semibold text-black shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-1 ring-black/10 transition hover:translate-y-[-1px] lg:hidden"
             aria-label="워시펀 전화 상담 070-8806-8088"
           >
             <span aria-hidden>📞</span>
