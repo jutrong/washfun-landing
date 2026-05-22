@@ -3,9 +3,12 @@ User-agent: *
 Allow: /
 Disallow: /inquiry
 Disallow: /term-of-service
+Disallow: /terms-of-service
+Disallow: /terms-of-service-kiosk
+Disallow: /terms-of-privacy
+Disallow: /terms-of-privacy-kiosk
 Disallow: /terms-of-digital
 Disallow: /terms-of-location
-Disallow: /terms-of-privacy
 Disallow: /privacy-policy
 
 # Host

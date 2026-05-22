@@ -20,14 +20,14 @@ const InventoryService = () => {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className="inline-block"
           >
-            <Image src="/images/svg/remain-amount.svg" alt="remain amount" width={80} height={50}
+            <Image src="/images/svg/remain-amount.svg" alt="약품 잔량 아이콘" width={80} height={50}
             />
           </motion.div>
           <div className="ml-5 mt-5">
-            <div className="text-5xl font-semibold flex flex-col gap-4 md:text-3xl">
-              <p>수시로 기계실에 가서</p>
-              <p>약품 잔량 확인은 그만 !</p>
-            </div>
+            <h2 className="text-5xl font-semibold flex flex-col gap-4 md:text-3xl">
+              <span>수시로 기계실에 가서</span>
+              <span>약품 잔량 확인은 그만 !</span>
+            </h2>
             <div className="mt-10 text-gray opacity-90 font-normal tracking-wide md:text-sm  ">
               <p>교체 주기 임박시 워시펀이 알려드립니다.</p>
               <p>기능별 사용 시간 기반 예상 교체 주기 알림</p>
@@ -38,7 +38,7 @@ const InventoryService = () => {
       <motion.div
 
         className="flex-1 w-full flex justify-end" >
-        <Image src="/images/png/inventory-mockup.png" alt="inventory mockup" width={860} height={400} quality={100}
+        <Image src="/images/png/inventory-mockup.png" alt="세차장 약품 재고 관리 화면" width={860} height={400} quality={100}
           className="md:w-[330px]"
         />
       </motion.div >

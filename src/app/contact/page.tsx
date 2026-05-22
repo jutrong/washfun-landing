@@ -1,15 +1,56 @@
-'use client'
+"use client";
+
+import Script from "next/script";
 import Header from "@/components/common/Header";
-import Footer from "@/components/Footer";
+import Footer from "@/components/HomeV2/Footer";
 import { Accordian, Contact } from "@/components/Service";
+
+const SITE_URL = "https://www.lifedivergence.com";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "홈", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "도입 문의",
+      item: `${SITE_URL}/contact`,
+    },
+  ],
+};
 
 const ContactPage = () => {
   return (
     <>
       <Header />
+      <Script
+        id="ld-contact-breadcrumb"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <section
+        className="mx-auto w-full max-w-[1200px] px-[24px] pt-[80px] text-center lg:pt-[40px]"
+        aria-labelledby="contact-intro"
+      >
+        <p className="text-[16px] font-medium text-secondaryDefault">
+          세차장 컨설팅 · 도입 문의
+        </p>
+        <h1 id="contact-intro" className="mt-[8px] text-[40px] font-bold lg:text-[26px]">
+          세차장 창업·리모델링·시스템 도입 무료 상담
+        </h1>
+        <p className="mx-auto mt-[16px] max-w-[680px] text-[16px] leading-[26px] text-secondaryDefault lg:text-[14px]">
+          이름과 연락처만 남겨주시면 1영업일 내 워시펀 컨설턴트가 연락드립니다.
+          전화 070-8806-8088 또는 contact@washfun.fun 으로 직접 연락도 가능합니다.
+        </p>
+      </section>
       <Accordian />
       <Contact />
-      <Footer />
+      <div className="box-border w-full px-[120px] lg:px-[16px]">
+        <Footer />
+      </div>
     </>
   );
 };
