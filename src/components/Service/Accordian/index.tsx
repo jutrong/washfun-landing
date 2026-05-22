@@ -53,8 +53,8 @@ const Accordian = () => {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="mb-20 flex items-center justify-center">
-        <h2 className="text-4xl font-bold">세차장 시스템 도입 자주 묻는 질문</h2>
+      <div className="mb-20 flex items-center justify-center px-6 text-center">
+        <h2 className="text-4xl font-bold md:text-2xl">세차장 시스템 도입 자주 묻는 질문</h2>
       </div>
       {QNA.map((qna) => {
         return (

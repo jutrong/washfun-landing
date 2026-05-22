@@ -19,10 +19,10 @@ export default function Banner() {
 
         <div className="absolute left-0 top-0 z-10 size-full bg-black opacity-70" />
 
-        <div className="absolute left-0 top-0 z-20 flex size-full flex-col items-center justify-center">
-          <div className="flex flex-col items-center justify-center gap-[16px]">
+        <div className="absolute left-0 top-0 z-20 flex size-full flex-col items-center justify-center px-4">
+          <div className="flex flex-col items-center justify-center gap-[16px] text-balance">
             <h2 className="text-center text-[48px] font-bold text-white lg:text-[30px]">이젠, 고민보단 <br />행동이 필요할 때.</h2>
-            <p className="text-center text-[20px] font-normal leading-[28px] text-[#C4C7CC] lg:text-[16px] lg:leading-[24px]">이미 수많은 세차장이 구독제를 도입하고<br />내년을 준비하고 있습니다. 창업·리모델링·시스템 도입까지 컨설팅 받아보세요.</p>
+            <p className="text-center text-[20px] font-normal leading-[28px] text-[#C4C7CC] lg:text-[15px] lg:leading-[22px]">이미 수많은 세차장이 구독제를 도입하고<br className="md:hidden" />내년을 준비하고 있습니다.</p>
           </div>
           <div className="mt-[32px] flex items-center gap-[12px] lg:flex-col">
             <Link

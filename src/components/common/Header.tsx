@@ -2,9 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { track } from "@/lib/analytics";
 
+const NAV_ITEMS = [
+  { href: "/service", label: "워시펀 사장님" },
+  { href: "/consulting", label: "세차장 컨설팅" },
+  { href: "/contact", label: "도입 문의" },
+];
+
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <header
@@ -23,24 +49,15 @@ export default function Header() {
             />
           </Link>
           <nav className="flex gap-[40px]" aria-label="주 메뉴">
-            <Link
-              href="/service"
-              className="text-[18px] font-medium text-secondaryDefault"
-            >
-              워시펀 사장님
-            </Link>
-            <Link
-              href="/consulting"
-              className="text-[18px] font-medium text-secondaryDefault"
-            >
-              세차장 컨설팅
-            </Link>
-            <Link
-              href="/contact"
-              className="text-[18px] font-medium text-secondaryDefault"
-            >
-              도입 문의
-            </Link>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-[18px] font-medium text-secondaryDefault"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
@@ -65,14 +82,30 @@ export default function Header() {
           </Link>
         </div>
       </header>
+
       <header
-        className="hidden lg:block lg:p-[16px]"
+        className="sticky left-0 top-0 z-[170] hidden bg-white lg:block lg:p-[16px]"
         aria-label="워시펀 모바일 헤더"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-[16px]">
-            <Image src="/images/v2/svg/menu.svg" alt="메뉴 열기" width={30} height={28} style={{ objectFit: "cover" }} />
-            <Link href="/" aria-label="워시펀 홈">
+            <button
+              type="button"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-drawer"
+              className="flex size-[36px] items-center justify-center rounded-md"
+            >
+              <Image
+                src={menuOpen ? "/images/svg/close.svg" : "/images/v2/svg/menu.svg"}
+                alt=""
+                width={28}
+                height={28}
+                style={{ objectFit: "contain" }}
+              />
+            </button>
+            <Link href="/" aria-label="워시펀 홈" onClick={() => setMenuOpen(false)}>
               <Image
                 src="/images/v2/svg/logo1.svg"
                 alt="워시펀 WashFun 로고"
@@ -94,7 +127,10 @@ export default function Header() {
             </a>
             <Link
               href="/contact"
-              onClick={() => track("lead_cta_click", { source: "header_contact_mobile" })}
+              onClick={() => {
+                track("lead_cta_click", { source: "header_contact_mobile" });
+                setMenuOpen(false);
+              }}
               className="rounded-[999px] bg-main px-[20px] py-[8px] font-semibold text-white"
             >
               온라인 문의
@@ -102,6 +138,59 @@ export default function Header() {
           </div>
         </div>
       </header>
+
+      {menuOpen && (
+        <>
+          <div
+            className="fixed inset-x-0 bottom-0 top-[78px] z-[150] hidden bg-black/40 lg:block"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden
+          />
+          <nav
+            id="mobile-nav-drawer"
+            aria-label="모바일 메뉴"
+            className="fixed left-0 right-0 top-[78px] z-[160] hidden bg-white shadow-[0_12px_24px_rgba(0,0,0,0.1)] lg:block"
+          >
+            <ul className="flex flex-col py-[8px]">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block px-[20px] py-[16px] text-[18px] font-medium text-black hover:bg-secondaryForeground"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li className="mt-[8px] border-t border-borderStrong px-[20px] py-[14px]">
+                <a
+                  href="tel:+82-70-8806-8088"
+                  onClick={() => {
+                    track("lead_cta_click", { source: "drawer_tel" });
+                    setMenuOpen(false);
+                  }}
+                  className="block text-[16px] font-semibold text-main"
+                >
+                  ☎ 070-8806-8088
+                </a>
+              </li>
+              <li className="px-[20px] pb-[16px]">
+                <a
+                  href="mailto:contact@washfun.fun"
+                  onClick={() => {
+                    track("lead_cta_click", { source: "drawer_email" });
+                    setMenuOpen(false);
+                  }}
+                  className="block text-[14px] text-secondaryDefault"
+                >
+                  ✉ contact@washfun.fun
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </>
+      )}
     </>
   );
 }
