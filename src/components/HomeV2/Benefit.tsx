@@ -31,18 +31,18 @@ export default function Benefit() {
             <p className="text-[30px] font-semibold leading-[36px]">시스템을 위해 모든 기기를 다 바꿀 순 없죠.<br />이미 설치된 기기에 필요한 것만 도입하세요.</p>
           </div>
           <div className="relative h-[282px] overflow-hidden rounded-[24px] border border-borderStrong p-[24px] transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/device1.png" alt="device1" fill={true} className="scale-[76%] object-contain object-center" />
+            <Image src="/images/v2/png/device1.png" alt="워시펀 셀프 세차 단말기" fill={true} className="scale-[76%] object-contain object-center" />
             <div className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[2px] bg-[#C4C7CC]" />
           </div>
           <div className="relative row-span-2 h-[576px] rounded-[24px] border border-dashed border-borderStrong p-[24px] transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/device4.png" alt="device4" fill={true} className="scale-[76%] object-contain" />
+            <Image src="/images/v2/png/device4.png" alt="워시펀 점주용 관리 시스템 대시보드" fill={true} className="scale-[76%] object-contain" />
           </div>
           <div className="relative h-[282px] overflow-hidden rounded-[24px] border border-borderStrong p-[24px] transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/device3.png" alt="device3" fill={true} className="scale-[76%] object-contain" />
+            <Image src="/images/v2/png/device3.png" alt="워시펀 포인트 자동 충전 현금 키오스크" fill={true} className="scale-[76%] object-contain" />
             <div className="absolute left-1/2 top-1/2 -z-10 h-[2px] w-[240px] rotate-0 bg-[#C4C7CC]" />
           </div>
           <div className="relative flex h-[282px] rounded-[24px] border border-borderStrong transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/device2.png" alt="device2" fill={true} className="scale-[76%] object-contain" />
+            <Image src="/images/v2/png/device2.png" alt="워시펀 자동 세차 키오스크" fill={true} className="scale-[76%] object-contain" />
             <div className="absolute left-1/2 top-0 -z-10 h-[200px] w-[2px] bg-[#C4C7CC]" />
             <div className="absolute left-0 top-1/2 -z-10 h-[2px] w-[140px] rotate-0 bg-[#C4C7CC]" />
           </div>
@@ -80,15 +80,15 @@ export default function Benefit() {
           <div></div>
 
           <div className="relative h-[160px] overflow-hidden rounded-[24px] border border-borderStrong p-[16px] transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/device1.png" alt="device1" fill={true} className="scale-[76%] object-contain object-center" />
+            <Image src="/images/v2/png/device1.png" alt="워시펀 셀프 세차 단말기" fill={true} className="scale-[76%] object-contain object-center" />
             <div className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[2px] bg-[#C4C7CC]" />
           </div>
           <div className="relative h-[160px] overflow-hidden rounded-[24px] border border-borderStrong p-[16px] transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/device3.png" alt="device3" fill={true} className="scale-[76%] object-contain" />
+            <Image src="/images/v2/png/device3.png" alt="워시펀 포인트 자동 충전 현금 키오스크" fill={true} className="scale-[76%] object-contain" />
             <div className="absolute left-1/2 top-1/2 -z-10 h-[2px] w-[240px] rotate-0 bg-[#C4C7CC]" />
           </div>
           <div className="relative flex h-[160px] rounded-[24px] border border-borderStrong transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/device2.png" alt="device2" fill={true} className="scale-[76%] object-contain" />
+            <Image src="/images/v2/png/device2.png" alt="워시펀 자동 세차 키오스크" fill={true} className="scale-[76%] object-contain" />
             <div className="absolute left-1/2 top-0 -z-10 h-[80px] w-[2px] bg-[#C4C7CC]" />
             <div className="absolute left-0 top-1/2 -z-10 h-[2px] w-[140px] rotate-0 bg-[#C4C7CC]" />
           </div>
@@ -96,7 +96,7 @@ export default function Benefit() {
             <p className="text-[18px] font-semibold leading-[28px]">고객에게 갑작스러운 혼란은 그만,<br />기존 RF카드 및 키오스크를 유지하며<br /> 전환해보세요.</p>
           </div>
           <div className="relative col-span-2 h-[160px] rounded-[24px] border border-dashed border-borderStrong transition-transform duration-300 ease-in-out hover:scale-[102%]">
-            <Image src="/images/v2/png/image2.png" alt="device4" fill={true} className="mt-4 scale-[80%] object-contain object-center" />
+            <Image src="/images/v2/png/image2.png" alt="워시펀 점주용 관리 시스템 대시보드" fill={true} className="mt-4 scale-[80%] object-contain object-center" />
           </div>
           <div className="col-span-2 flex h-[160px] items-end rounded-[24px] bg-secondaryForeground p-[16px] transition-transform duration-300 ease-in-out hover:scale-[102%]">
             <p className="text-[18px] font-semibold leading-[28px]">직영, 가맹, 개인 운영 세차장<br />어떠한 세차장이라도<br />제한 없이 도입 가능해요.</p>

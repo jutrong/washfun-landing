@@ -1,6 +1,6 @@
 "use client";
 
-import Footer from "@/components/Footer";
+import Footer from "@/components/HomeV2/Footer";
 import { Accordian, Contact, DeviceService, EditPriceService, InventoryService, PointService, ServiceData, ServiceInfo, VarienceFee } from "@/components/Service";
 import MoveToUp from "@/components/MoveToUp";
 import { useRef } from "react";
@@ -28,7 +28,9 @@ const Service = () => {
       <VarienceFee />
       <DeviceService />
       <PointService />
-      <Footer />
+      <div className="box-border w-full px-[120px] lg:px-[16px]">
+        <Footer />
+      </div>
       <MoveToUp onUpMoveBox={onUpMoveBox} />
     </>
   );

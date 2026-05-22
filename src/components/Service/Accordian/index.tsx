@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Script from "next/script";
 import { RefObject, useState } from "react";
 
 const QNA = [
@@ -28,16 +29,32 @@ const QNA = [
 
 ]
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: QNA.map((q) => ({
+    "@type": "Question",
+    name: q.title,
+    acceptedAnswer: { "@type": "Answer", text: q.answer },
+  })),
+};
+
 const Accordian = () => {
 
-  const [openId, setOpenId] = useState<number | null>(null); // 현재 열린 항목의 ID를 저장
+  const [openId, setOpenId] = useState<number | null>(null);
 
   const toggleOpen = (id: number) => setOpenId(openId === id ? null : id);
 
   return (
     <div className="w-full pb-10 pt-52 text-black">
+      <Script
+        id="ld-accordian-faq"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="mb-20 flex items-center justify-center">
-        <p className="text-4xl font-bold">자주 묻는 질문</p>
+        <h2 className="text-4xl font-bold">세차장 시스템 도입 자주 묻는 질문</h2>
       </div>
       {QNA.map((qna) => {
         return (

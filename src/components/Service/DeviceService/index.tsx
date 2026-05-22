@@ -20,10 +20,10 @@ const DeviceService = () => {
         <div className="sticky top-0 flex w-full justify-center">
           <motion.div className="absolute left-0 top-0 z-30 flex flex-col  items-center justify-center bg-white text-black md:flex " style={{ y: firstBoxY }}>
             <div className="mt-20 flex flex-col items-center justify-center  ">
-              <div className="flex flex-col items-center justify-center gap-4 ">
-                <p className="text-5xl font-bold md:text-3xl">실시간 베이 상황 확인으로</p>
-                <p className="text-gradient text-4xl font-bold md:text-3xl">간편 매장 모니터링 !</p>
-              </div>
+              <h2 className="flex flex-col items-center justify-center gap-4">
+                <span className="text-5xl font-bold md:text-3xl">실시간 베이 상황 확인으로</span>
+                <span className="text-gradient text-4xl font-bold md:text-3xl">간편 매장 모니터링 !</span>
+              </h2>
               <p className="mt-6 font-semibold text-gray opacity-90 md:text-sm">베이별 사용 시간, 상태 확인</p>
             </div>
             <div className="relative z-30 mt-10 flex h-[550px] w-[1200px] flex-col justify-end rounded-[26px] bg-white shadow-primary-shadow xl:h-[460px] xl:w-1000px lg:h-[380px] lg:w-800px md:h-[400px] md:w-[360px] ">
@@ -36,10 +36,10 @@ const DeviceService = () => {
                   <p className="text-3xl font-bold md:text-xl">실시간 상태 확인</p>
                 </div>
                 <div className="flex min-w-[900px] xl:min-w-[620px] lg:min-w-[500px] md:hidden md:min-w-[100px] ">
-                  <Image src="/images/png/device-mockup.png" alt="device-mockup" width={900} height={1000} />
+                  <Image src="/images/png/device-mockup.png" alt="세차장 베이 상태 모니터링 점주 화면" width={900} height={1000} />
                 </div>
                 <div className="flex h-[250px] md:min-w-[330px] md:justify-center sx:hidden">
-                  <Image src="/images/svg/mobile-device.svg" alt="device-mockup" width={500} height={400} />
+                  <Image src="/images/svg/mobile-device.svg" alt="세차장 베이 상태 모니터링 점주 화면" width={500} height={400} />
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 flex h-20 w-full items-center justify-start bg-lightSubPrimary lg:h-14 md:h-12">
@@ -57,10 +57,10 @@ const DeviceService = () => {
                   <p className="text-4xl font-bold md:text-xl">에러 내역 확인</p>
                 </div>
                 <div className="flex min-w-[900px] xl:min-w-[720px] lg:min-w-[500px] md:hidden ">
-                  <Image src="/images/png/error-content-mockup.png" alt="device-mockup" width={900} height={1000} />
+                  <Image src="/images/png/error-content-mockup.png" alt="세차장 베이 상태 모니터링 점주 화면" width={900} height={1000} />
                 </div>
                 <div className="flex h-[250px] md:min-w-[330px] md:justify-center sx:hidden ">
-                  <Image src="/images/svg/mobile-content.svg" alt="device-mockup" width={500} height={400} />
+                  <Image src="/images/svg/mobile-content.svg" alt="세차장 베이 상태 모니터링 점주 화면" width={500} height={400} />
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 flex h-20 w-full items-center justify-start bg-lightPrimary2 lg:h-14 md:h-12">
@@ -79,10 +79,10 @@ const DeviceService = () => {
                   <p className="text-4xl font-bold md:text-xl">고장 설정</p>
                 </div>
                 <div className="flex min-w-[900px] xl:min-w-[720px] lg:min-w-[500px] md:hidden md:min-w-[100px]">
-                  <Image src="/images/png/device-mockup.png" alt="device-mockup" width={900} height={1000} />
+                  <Image src="/images/png/device-mockup.png" alt="세차장 베이 상태 모니터링 점주 화면" width={900} height={1000} />
                 </div>
                 <div className="flex h-[250px] md:min-w-[330px] md:justify-center sx:hidden">
-                  <Image src="/images/svg/mobile-device.svg" alt="device-mockup" width={500} height={400} />
+                  <Image src="/images/svg/mobile-device.svg" alt="세차장 베이 상태 모니터링 점주 화면" width={500} height={400} />
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 flex h-20 w-full items-center justify-start bg-lightPrimary3 lg:h-14 md:h-12">
