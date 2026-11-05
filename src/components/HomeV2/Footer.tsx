@@ -194,6 +194,7 @@ export default function Footer() {
               { href: LEGAL_LINKS.privacy, label: "개인정보 처리방침" },
               { href: LEGAL_LINKS.digital, label: "전자상거래 표준약관" },
               { href: LEGAL_LINKS.location, label: "위치기반서비스 이용약관" },
+              { href: LEGAL_LINKS.marketing, label: "마케팅 정보 수신 동의" },
             ].map((l) => (
               <a
                 key={l.href}
