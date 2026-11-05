@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import GoogleAnalytics from "@/lib/GoogleAnalytics";
+import FloatingCTA from "@/components/common/FloatingCTA";
 
 const pretendard = localFont({
   src: [
@@ -55,22 +56,148 @@ const pretendard = localFont({
   variable: "--font-pretendard",
 });
 
+const SITE_URL = "https://www.lifedivergence.com";
+const SITE_NAME = "워시펀 WashFun";
+const DEFAULT_TITLE = "워시펀 WashFun | 세차장 결제 솔루션 혁신";
+const DEFAULT_DESCRIPTION =
+  "세차장 창업부터 리모델링, 무인 시스템 도입까지 워시펀이 함께합니다. RF카드를 대체하는 후불제 셀프 세차, 구독제 자동 세차, 사장님 관리 시스템과 운영 컨설팅을 무료로 상담해 드립니다.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.lifedivergence.com"),
-  title: "WashFun - 워시펀",
-  description: "RF카드를 대체한 세차장 디지털 혁신, 매장 관리부터 경쟁력 확보까지 - 워시펀과 함께",
-  keywords: ["워시펀", "washfun", "셀프세차", "노터치 자동세차", "세차 구독", "세차 카드", "세차장 창업", "세차장 창업비용", "세차장 매매", "세차장 임대", "세차장"],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: "%s | 워시펀",
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  generator: "Next.js",
+  keywords: [
+    "워시펀",
+    "washfun",
+    "세차장 창업",
+    "세차장 개업",
+    "세차장 창업비용",
+    "세차장 컨설팅",
+    "세차장 리모델링",
+    "세차장 시스템",
+    "세차장 무인 시스템",
+    "세차장 운영",
+    "셀프세차장 창업",
+    "자동세차장 창업",
+    "셀프 세차",
+    "후불제 셀프세차",
+    "노터치 자동세차",
+    "구독제 세차",
+    "세차 구독",
+    "세차장 매매",
+    "세차장 임대",
+    "세차장 키오스크",
+    "RF카드 대체",
+    "세차장 디지털 전환",
+    "세차장 매출 증대",
+    "세차장 솔루션",
+  ],
+  authors: [{ name: "라이프다이버전스", url: SITE_URL }],
+  creator: "라이프다이버전스",
+  publisher: "라이프다이버전스",
+  category: "Business",
   openGraph: {
-    title: "WashFun - 워시펀",
-    description: "RF카드를 대체한 세차장 디지털 혁신, 매장 관리부터 경쟁력 확보까지 - 워시펀과 함께",
+    type: "website",
+    locale: "ko_KR",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [
       {
         url: "/images/png/cover-page.png",
-        alt: "워시펀 대시보드 이미지",
-      }
-    ]
+        width: 1920,
+        height: 1038,
+        alt: "워시펀 세차장 솔루션 대시보드",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/images/png/cover-page.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: "rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM",
+    other: {
+      "naver-site-verification": "d983fee3f0b7db68efd9a65aa2ebd48490c11d92",
+    },
+  },
+};
 
-  }
+// 회사 엔티티는 하나로 유지한다. Organization 과 LocalBusiness 를 따로 두면
+// 같은 회사가 두 개로 잡힌다. sameAs 는 소유한 프로필 자리라 언론 보도 URL 은 넣지 않는다.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  "@id": `${SITE_URL}#organization`,
+  name: "워시펀 WashFun",
+  legalName: "주식회사 라이프다이버전스",
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/logo/logo180.png`,
+  image: `${SITE_URL}/images/png/cover-page.png`,
+  description: DEFAULT_DESCRIPTION,
+  email: "contact@washfun.fun",
+  telephone: "+82-70-8806-8088",
+  priceRange: "\u20a9\u20a9",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "종가6길 21, 우정혁신타워 605호",
+    addressLocality: "울산광역시 중구",
+    addressRegion: "울산광역시",
+    postalCode: "44429",
+    addressCountry: "KR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 35.5683,
+    longitude: 129.3505,
+  },
+  areaServed: "KR",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
+  knowsAbout: [
+    "세차장 창업 컨설팅",
+    "세차장 리모델링",
+    "세차장 시스템 도입",
+    "셀프 세차 후불제",
+    "자동 세차 구독제",
+    "세차장 키오스크",
+    "세차장 운영 솔루션",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}#website`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  inLanguage: "ko-KR",
+  publisher: { "@id": `${SITE_URL}#organization` },
 };
 
 export default function RootLayout({
@@ -79,17 +206,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="kr" className={`${pretendard.variable}`}>
+    <html lang="ko-KR" className={`${pretendard.variable}`}>
       <head>
-        <meta name="google-site-verification" content="rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM" />
-        <meta name="naver-site-verification" content="d983fee3f0b7db68efd9a65aa2ebd48490c11d92" />
-        <link rel="shortcut icon" href="/icon.ico" />
+        {/* JS 사용 가능할 때만 등장 애니메이션 적용 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="format-detection" content="telephone=yes" />
       </head>
       <body className={pretendard.className}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
+        {/* JSON-LD: 서버 렌더 (JS 미실행 크롤러 대응) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         {children}
+        <FloatingCTA />
       </body>
     </html>
   );
