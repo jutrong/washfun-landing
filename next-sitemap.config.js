@@ -23,6 +23,7 @@ module.exports = {
     "/terms-of-digital",
     "/terms-of-location",
     "/terms-of-location/*",
+    "/terms-of-marketing",
     "/privacy-policy",
   ],
   transform: async (config, path) => {
