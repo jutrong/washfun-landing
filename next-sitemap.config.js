@@ -15,6 +15,7 @@ module.exports = {
           "/term-of-service",
           "/terms-of-digital",
           "/terms-of-location",
+          "/terms-of-marketing",
           "/terms-of-privacy",
           "/privacy-policy",
         ],

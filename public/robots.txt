@@ -5,6 +5,7 @@ Disallow: /inquiry
 Disallow: /term-of-service
 Disallow: /terms-of-digital
 Disallow: /terms-of-location
+Disallow: /terms-of-marketing
 Disallow: /terms-of-privacy
 Disallow: /privacy-policy
 
