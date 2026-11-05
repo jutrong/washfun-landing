@@ -20,6 +20,8 @@ export const LEGAL_LINKS = {
   service: `${N}/40f07002948980ecae65dee07489a5e0`,
   /** 위치기반서비스 이용약관 최신본 */
   location: `${N}/3bb070029489805db5d8d11346e217d5`,
+  /** 마케팅 정보 수신 동의 시행본. /terms-of-marketing 웹뷰도 같은 페이지를 임베드한다. */
+  marketing: `${N}/40f0700294898036bff9cdb14b8a4386`,
 
   /** 키오스크 서비스 이용약관 최신본 */
   kioskService: `${N}/3bb0700294898026bcccf5b21e58b56e`,
