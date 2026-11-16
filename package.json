@@ -9,6 +9,7 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "tokens:test": "node --test design-system/",
+    "tokens:build": "node design-system/sync/sync-tokens.mjs --source design-system/tokens.json --format tailwind --env web --out design-system/generated/tailwind-preset.cjs && npm run tokens:docs",
     "tokens:docs": "node design-system/scripts/build-docs.mjs",
     "tokens:check": "node design-system/scripts/check.mjs"
   },

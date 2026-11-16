@@ -2,6 +2,9 @@ import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { loadTokens } from "../lib/tokens.mjs";
 import { DOC_PATH, renderTokenTables, injectTables } from "./build-docs.mjs";
+import { toTailwindPreset } from "../sync/convert.mjs";
+
+const PRESET_PATH = fileURLToPath(new URL("../generated/tailwind-preset.cjs", import.meta.url));
 
 const read = (path) => (existsSync(path) ? readFileSync(path, "utf8") : null);
 
@@ -9,11 +12,16 @@ const read = (path) => (existsSync(path) ? readFileSync(path, "utf8") : null);
 export const checks = [
   {
     name: "DESIGN.md",
-    fix: "npm run tokens:docs",
+    fix: "npm run tokens:build",
     isFresh() {
       const doc = read(DOC_PATH);
       return doc !== null && doc === injectTables(doc, renderTokenTables(loadTokens()));
     },
+  },
+  {
+    name: "design-system/generated/tailwind-preset.cjs",
+    fix: "npm run tokens:build",
+    isFresh: () => read(PRESET_PATH) === toTailwindPreset(loadTokens(), "web"),
   },
 ];
 
