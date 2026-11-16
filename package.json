@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
-    "tokens:test": "node --test design-system/"
+    "tokens:test": "node --test design-system/",
+    "tokens:docs": "node design-system/scripts/build-docs.mjs",
+    "tokens:check": "node design-system/scripts/check.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
