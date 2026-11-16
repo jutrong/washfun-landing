@@ -6,11 +6,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createRequire } from "node:module";
 import { loadTokens, resolveTokens } from "../lib/tokens.mjs";
-import { toTailwindPreset, toTsObject } from "./convert.mjs";
+import { toTailwindPreset, toTsObject } from "../sync/convert.mjs";
 
 const tree = loadTokens();
 const dir = mkdtempSync(join(tmpdir(), "tokens-"));
-const cli = new URL("./sync-tokens.mjs", import.meta.url).pathname;
+const cli = new URL("../sync/sync-tokens.mjs", import.meta.url).pathname;
 const src = new URL("../tokens.json", import.meta.url).pathname;
 const loadPreset = (text) => {
   const f = join(dir, `p-${Math.random()}.cjs`);
@@ -70,4 +70,15 @@ test("CLI: 필수 인자가 빠지면 사용법을 출력하고 실패", () => {
   const r = spawnSync("node", [cli, "--format", "ts"]);
   assert.notEqual(r.status, 0);
   assert.match(String(r.stderr), /Usage: node sync-tokens\.mjs/);
+});
+test("글자 크기에 짝이 되는 줄 높이가 없으면 undefined 를 쓰지 않고 오류", () => {
+  const bad = structuredClone(tree);
+  delete bad.env.web["line-height"].t5;
+  assert.throws(() => toTailwindPreset(bad, "web"), /Missing token: env\.web\.line-height\.t5/);
+});
+test("괄호가 깨진 참조는 값으로 내보내지 않고 오류", () => {
+  const bad = structuredClone(tree);
+  bad.color.fg.brand.$value = "{color.palette.blue-600";
+  assert.throws(() => toTailwindPreset(bad, "web"), /Unresolved token reference: \{color\.palette\.blue-600 at color\.fg\.brand/);
+  assert.throws(() => toTsObject(bad, "app"), /Unresolved token reference/);
 });

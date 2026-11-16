@@ -35,6 +35,9 @@ function resolveValue(tree, value, at) {
     seen.add(target);
     current = leaf.$value;
   }
+  if (typeof current === "string" && /[{}]/.test(current)) {
+    throw new Error(`Unresolved token reference: ${value} at ${at}`);
+  }
   return current;
 }
 

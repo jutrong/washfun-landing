@@ -3,7 +3,7 @@
 워시펀 제품(결제·멤버십·충전 키오스크, 파트너 웹, 랜딩, 고객 앱)이 함께 쓰는 색·글자·간격의 기준이다.
 
 - 값의 원본은 `design-system/tokens.json` 하나다. 이 문서의 "토큰" 표와 `/design-system` 페이지는 그 파일에서 만들어진다.
-- 토큰을 고친 뒤에는 `npm run tokens:docs`로 아래 표를 다시 만든다. 표를 손으로 고치지 않는다.
+- 토큰을 고친 뒤에는 `npm run tokens:build`로 아래 표와 랜딩의 Tailwind preset을 다시 만든다. 표를 손으로 고치지 않는다.
 - 구조와 이름 규칙은 당근 [SEED Design](https://seed-design.io)을 따른다.
 
 ## 구조: 팔레트 → 역할
@@ -62,7 +62,7 @@
 
 ## 다른 제품에서 가져가기
 
-`design-system/sync/` 폴더를 제품 저장소에 복사하고 아래 명령으로 토큰을 받아 그 제품의 형식으로 바꾼다. 만들어진 파일은 커밋한다.
+`design-system/sync/` 폴더(파일 두 개: `convert.mjs`, `sync-tokens.mjs`)를 제품 저장소에 복사하고 아래 명령으로 토큰을 받아 그 제품의 형식으로 바꾼다. 만들어진 파일은 커밋한다.
 
 ```bash
 node sync-tokens.mjs --format tailwind --env kiosk --out src/styles/tokens-preset.cjs

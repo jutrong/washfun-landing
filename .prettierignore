@@ -1,0 +1,3 @@
+# design-system/tokens.json 에서 만들어지는 파일. 형식을 바꾸면 tokens:check 가 낡았다고 판단해 빌드가 멈춘다.
+DESIGN.md
+design-system/generated/

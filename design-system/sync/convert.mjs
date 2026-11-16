@@ -16,6 +16,10 @@ function resolve(tree, value, at) {
     seen.add(target);
     current = leaf.$value;
   }
+  // 괄호가 남아 있으면 참조를 쓰려다 깨진 것이다. 색 값으로 새어 나가지 않게 막는다.
+  if (typeof current === "string" && /[{}]/.test(current)) {
+    throw new Error(`Unresolved token reference: ${value} at ${at}`);
+  }
   return current;
 }
 
@@ -42,7 +46,10 @@ export function toTailwindPreset(tree, env) {
   const sizes = group(tree, `env.${env}.font-size`);
   const leading = group(tree, `env.${env}.line-height`);
   const fontSize = {};
-  for (const [name, size] of Object.entries(sizes)) fontSize[name] = [size, { lineHeight: String(leading[name]) }];
+  for (const [name, size] of Object.entries(sizes)) {
+    if (leading[name] === undefined) throw new Error(`Missing token: env.${env}.line-height.${name}`);
+    fontSize[name] = [size, { lineHeight: String(leading[name]) }];
+  }
 
   const extend = {
     colors: {
