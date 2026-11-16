@@ -25,7 +25,7 @@ export default function ColorSwatch({
         : { borderColor: token.value, borderWidth: 2 };
 
   return (
-    <div className="min-w-0">
+    <div>
       <div
         className="flex h-[72px] items-center justify-center rounded-r3 border border-stroke-neutral-muted bg-bg-layer-default text-t7 font-bold"
         style={sample}
@@ -33,7 +33,7 @@ export default function ColorSwatch({
         {variant === "text" ? "가나다 Aa" : null}
       </div>
       <p className="mt-x2 break-all text-t3 font-medium text-fg-neutral">{token.path}</p>
-      <p className="break-all text-t2 text-fg-neutral-subtle">
+      <p className="break-all text-t2 text-fg-neutral-muted">
         {token.ref ? `${token.ref.replace("color.palette.", "")} · ` : ""}
         {token.value}
       </p>

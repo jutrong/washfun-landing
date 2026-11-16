@@ -10,30 +10,30 @@ export default function EnvTable({
   /** 환경별 값을 눈으로 보여 줄 견본 */
   sample?: (value: string) => ReactNode;
 }) {
-  const byEnv = ENVIRONMENTS.map((env) => list(`env.${env}.${group}`));
-  const names = byEnv[0].map((token) => token.name);
+  const byEnv = ENVIRONMENTS.map((env) => new Map(list(`env.${env}.${group}`).map((token) => [token.name, token.value])));
+  const names = Array.from(byEnv[0].keys());
 
   return (
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-left text-t3">
         <thead>
           <tr className="text-fg-neutral-muted">
-            <th className="border-b border-stroke-neutral-weak py-x2 pr-x4 font-medium">이름</th>
+            <th scope="col" className="border-b border-stroke-neutral-weak py-x2 pr-x4 font-medium">이름</th>
             {ENVIRONMENTS.map((env) => (
-              <th key={env} className="border-b border-stroke-neutral-weak py-x2 pr-x4 font-medium">
+              <th key={env} scope="col" className="border-b border-stroke-neutral-weak py-x2 pr-x4 font-medium">
                 {env}
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {names.map((name, row) => (
+          {names.map((name) => (
             <tr key={name}>
-              <td className="border-b border-stroke-neutral-muted py-x2 pr-x4 align-middle font-medium text-fg-neutral">
+              <th scope="row" className="border-b border-stroke-neutral-muted py-x2 pr-x4 text-left align-middle font-medium text-fg-neutral">
                 {group}.{name}
-              </td>
-              {byEnv.map((tokensOfEnv, col) => {
-                const value = tokensOfEnv[row]?.value ?? "";
+              </th>
+              {byEnv.map((valuesOfEnv, col) => {
+                const value = valuesOfEnv.get(name) ?? "";
                 return (
                   <td
                     key={ENVIRONMENTS[col]}
