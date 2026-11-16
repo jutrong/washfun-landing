@@ -82,3 +82,17 @@ test("괄호가 깨진 참조는 값으로 내보내지 않고 오류", () => {
   assert.throws(() => toTailwindPreset(bad, "web"), /Unresolved token reference: \{color\.palette\.blue-600 at color\.fg\.brand/);
   assert.throws(() => toTsObject(bad, "app"), /Unresolved token reference/);
 });
+test("preset: 그라디언트는 세로·가로 두 방향의 배경 이미지로 들어간다", () => {
+  const t = loadPreset(toTailwindPreset(tree, "web"));
+  assert.equal(t.backgroundImage["gradient-highlight-brand"], "linear-gradient(180deg, #1C74BC 0%, #3397D7 100%)");
+  assert.equal(t.backgroundImage["gradient-highlight-brand-x"], "linear-gradient(90deg, #1C74BC 0%, #3397D7 100%)");
+});
+test("ts: 그라디언트는 colors 와 locations 배열", () => {
+  const out = toTsObject(tree, "app");
+  assert.match(out, /highlightBrand: \{\s+colors: \["#1C74BC", "#3397D7"\],\s+locations: \[0, 1\],/);
+});
+test("그라디언트 색 지점의 깨진 참조는 변환에서도 오류", () => {
+  const bad = structuredClone(tree);
+  bad.gradient["glow-brand"].$value[0].color = "{color.palette.nope-100}";
+  assert.throws(() => toTailwindPreset(bad, "web"), /Unresolved token reference: \{color\.palette\.nope-100\} at gradient\.glow-brand/);
+});

@@ -28,6 +28,7 @@ export function renderTokenTables(tree) {
     plain("크기 단위", "dimension."),
     plain("글자 굵기", "font-weight."),
     plain("그림자", "shadow."),
+    plain("그라디언트", "gradient."),
   ];
 
   // 환경별 값은 이름을 한 번만 쓰고 web / app / kiosk 값을 나란히 둔다.

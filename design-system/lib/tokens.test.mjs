@@ -47,3 +47,16 @@ test("순환 참조도 오류", () => {
   bad.color.bg["brand-solid"].$value = "{color.fg.brand}";
   assert.throws(() => resolveTokens(bad), /Unresolved token reference/);
 });
+test("그라디언트의 색 지점은 팔레트를 참조하고 실제 색으로 풀린다", () => {
+  for (const stop of tree.gradient["highlight-brand"].$value) assert.match(stop.color, /^\{color\.palette\./);
+  assert.deepEqual(resolved.gradient["highlight-brand"].$value, [
+    { color: "#1C74BC", position: 0 },
+    { color: "#3397D7", position: 1 },
+  ]);
+  assert.equal(get("gradient.highlight-brand").value, "#1C74BC 0%, #3397D7 100%");
+});
+test("그라디언트 색 지점의 깨진 참조도 경로를 담은 오류", () => {
+  const bad = structuredClone(tree);
+  bad.gradient["glow-brand"].$value[1].color = "{color.palette.nope-200}";
+  assert.throws(() => resolveTokens(bad), /Unresolved token reference: \{color\.palette\.nope-200\} at gradient\.glow-brand/);
+});

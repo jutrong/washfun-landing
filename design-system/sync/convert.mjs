@@ -7,6 +7,8 @@ const REF = /^\{([^}]+)\}$/;
 const isLeaf = (node) => node !== null && typeof node === "object" && "$value" in node;
 
 function resolve(tree, value, at) {
+  // 그라디언트는 색 지점의 목록이다. 지점마다 색 참조를 푼다.
+  if (Array.isArray(value)) return value.map((stop) => ({ ...stop, color: resolve(tree, stop.color, at) }));
   const seen = new Set();
   let current = value;
   while (typeof current === "string" && REF.test(current)) {
@@ -39,6 +41,9 @@ function assertEnv(env) {
   if (!ENVIRONMENTS.includes(env)) throw new Error(`Unknown env: ${env}`);
 }
 
+const percent = (position) => `${Math.round(position * 10000) / 100}%`;
+const stopList = (stops) => stops.map((stop) => `${stop.color} ${percent(stop.position)}`).join(", ");
+
 const header = (tree) => `// Generated from washfun design tokens v${tree.version}. Do not edit. Run sync-tokens to update.\n`;
 
 export function toTailwindPreset(tree, env) {
@@ -49,6 +54,13 @@ export function toTailwindPreset(tree, env) {
   for (const [name, size] of Object.entries(sizes)) {
     if (leading[name] === undefined) throw new Error(`Missing token: env.${env}.line-height.${name}`);
     fontSize[name] = [size, { lineHeight: String(leading[name]) }];
+  }
+
+  // 그라디언트 토큰은 색 지점만 정한다. 방향은 쓰는 쪽이 고르도록 세로(기본)와 가로(-x) 두 가지를 낸다.
+  const backgroundImage = {};
+  for (const [name, stops] of Object.entries(group(tree, "gradient"))) {
+    backgroundImage[`gradient-${name}`] = `linear-gradient(180deg, ${stopList(stops)})`;
+    backgroundImage[`gradient-${name}-x`] = `linear-gradient(90deg, ${stopList(stops)})`;
   }
 
   const extend = {
@@ -62,6 +74,7 @@ export function toTailwindPreset(tree, env) {
     fontSize,
     borderRadius: group(tree, `env.${env}.radius`),
     boxShadow: group(tree, "shadow"),
+    backgroundImage,
   };
   return `${header(tree)}module.exports = ${JSON.stringify({ theme: { extend } }, null, 2)};\n`;
 }
@@ -71,6 +84,7 @@ const unitless = (value) => (typeof value === "string" && /^-?\d+(\.\d+)?px$/.te
 
 function serialize(value, indent) {
   if (value === null || typeof value !== "object") return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map((item) => JSON.stringify(item)).join(", ")}]`;
   const pad = "  ".repeat(indent + 1);
   const lines = Object.entries(value).map(([key, child]) => `${pad}${key}: ${serialize(child, indent + 1)},`);
   return `{\n${lines.join("\n")}\n${"  ".repeat(indent)}}`;
@@ -92,6 +106,11 @@ export function toTsObject(tree, env) {
     lineHeight: group(tree, `env.${env}.line-height`, camel),
     radius: group(tree, `env.${env}.radius`, camel, unitless),
     shadow: group(tree, "shadow", camel),
+    // react-native-linear-gradient 의 colors / locations 에 그대로 넣는 모양.
+    gradient: group(tree, "gradient", camel, (stops) => ({
+      colors: stops.map((stop) => stop.color),
+      locations: stops.map((stop) => stop.position),
+    })),
   };
   return `${header(tree)}export const tokens = ${serialize(tokens, 0)} as const;\n`;
 }

@@ -1,4 +1,4 @@
-import { list } from "./tokens";
+import { gradients, list } from "./tokens";
 
 /**
  * 항목을 대표하는 그림. 목록 카드와 각 문서의 머리 그림에 같이 쓴다.
@@ -70,6 +70,20 @@ export default function Thumb({ name, large = false }: { name: string; large?: b
               style={{ borderRadius: token.value }}
             />
           ))}
+      </div>
+    );
+  }
+
+  if (name === "gradient") {
+    const all = gradients();
+    const glow = all.find((gradient) => gradient.name === "glow-brand");
+    const highlight = all.find((gradient) => gradient.name === "highlight-brand");
+    return (
+      <div className={frame} style={{ backgroundImage: `linear-gradient(180deg, ${glow?.stops})` }}>
+        <span
+          className="block size-[112px] rounded-full"
+          style={{ backgroundImage: `linear-gradient(135deg, ${highlight?.stops})` }}
+        />
       </div>
     );
   }

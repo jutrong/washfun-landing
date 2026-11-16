@@ -47,6 +47,7 @@
 - 주요 버튼은 `bg.brand-solid` 위에 `fg.on-brand-solid`. 색 면 위의 글자는 항상 `fg.on-*`을 쓴다.
 - 입력 칸·외곽선 버튼처럼 선이 형태를 만드는 곳은 `stroke.neutral-weak`, 영역을 나누는 구분선은 `stroke.neutral-muted`.
 - 간격은 `dimension.x1`(4px) 단위만 쓴다.
+- 그라디언트 토큰은 색 지점만 정한다. 방향은 쓰는 곳에서 고른다(Tailwind는 `bg-gradient-glow-brand`가 세로, `-x`를 붙이면 가로).
 
 ## 환경별 값
 
@@ -70,7 +71,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 ```
 
 - `--source`를 생략하면 `https://www.lifedivergence.com/design-system/tokens.json`에서 받는다. 파일 경로도 줄 수 있다.
-- `--format tailwind`는 Tailwind preset(`text-fg-neutral`, `bg-bg-brand-solid`, `border-stroke-neutral-weak`, `p-x4`, `text-t5`, `rounded-r3`, `shadow-s2`)을 만든다.
+- `--format tailwind`는 Tailwind preset(`text-fg-neutral`, `bg-bg-brand-solid`, `border-stroke-neutral-weak`, `p-x4`, `text-t5`, `rounded-r3`, `shadow-s2`, `bg-gradient-glow-brand`)을 만든다.
 - `--format ts`는 `tokens.color.fg.neutralMuted`처럼 쓰는 객체를 만든다. 크기는 단위 없는 숫자다.
 
 ## 예외
@@ -185,6 +186,9 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.palette.static-black` | `#000000` |
 | `color.palette.static-black-alpha-700` | `#000000B3` |
 | `color.palette.static-black-alpha-500` | `#00000080` |
+| `color.palette.static-white-alpha-00` | `#FFFFFF00` |
+| `color.palette.static-white-alpha-700` | `#FFFFFFAB` |
+| `color.palette.static-white-alpha-900` | `#FFFFFFD9` |
 
 ### 크기 단위
 
@@ -220,6 +224,15 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `shadow.s1` | 0 2px 8px rgba(21,23,26,0.05) |
 | `shadow.s2` | 0 10px 30px rgba(21,23,26,0.06) |
 | `shadow.s3` | 0 30px 80px rgba(21,23,26,0.35) |
+
+### 그라디언트
+
+| 이름 | 값 |
+| --- | --- |
+| `gradient.glow-brand` | #F9F9FA 0%, #CCE5F5 100% |
+| `gradient.highlight-brand` | #1C74BC 0%, #3397D7 100% |
+| `gradient.fade-layer` | #FFFFFF00 0%, #FFFFFFD9 60%, #FFFFFF 100% |
+| `gradient.shimmer-neutral` | #FFFFFF00 0%, #FFFFFFAB 46%, #FFFFFFAB 54%, #FFFFFF00 100% |
 
 ### 글자 크기 (환경별)
 

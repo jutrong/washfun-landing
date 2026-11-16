@@ -24,6 +24,10 @@ function lookup(tree, path) {
 
 // 참조를 끝까지 따라가 실제 값을 돌려준다. 없는 토큰이나 순환이면 처음 경로를 담아 던진다.
 function resolveValue(tree, value, at) {
+  // 그라디언트는 색 지점의 목록이다. 지점마다 색 참조를 푼다.
+  if (Array.isArray(value)) {
+    return value.map((stop) => ({ ...stop, color: resolveValue(tree, stop.color, at) }));
+  }
   const seen = new Set();
   let current = value;
   while (typeof current === "string" && REF.test(current)) {
@@ -49,6 +53,11 @@ function walk(node, path, visit) {
   }
 }
 
+/** 색 지점 목록을 CSS 그라디언트에 그대로 넣을 수 있는 문자열로 만든다. 예: "#1C74BC 0%, #3397D7 100%" */
+export function formatStops(stops) {
+  return stops.map((stop) => `${stop.color} ${Math.round(stop.position * 10000) / 100}%`).join(", ");
+}
+
 export function resolveTokens(tree) {
   const out = structuredClone(tree);
   walk(out, "", (path, leaf) => {
@@ -62,9 +71,10 @@ export function flattenTokens(tree) {
   walk(tree, "", (path, leaf) => {
     const raw = leaf.$value;
     const ref = typeof raw === "string" && REF.test(raw) ? raw.match(REF)[1] : null;
+    const value = resolveValue(tree, raw, path);
     list.push({
       path,
-      value: String(resolveValue(tree, raw, path)),
+      value: Array.isArray(value) ? formatStops(value) : String(value),
       ref,
       description: leaf.$description ?? null,
     });

@@ -20,3 +20,5 @@ test("두 번 돌려도 결과가 같다", () => {
 });
 test("표시가 없으면 덮어쓰지 않고 오류", () =>
   assert.throws(() => injectTables("표시 없음", tables), /missing the tokens:start \/ tokens:end markers/));
+test("그라디언트 표에 색 지점이 나온다", () =>
+  assert.match(tables, /\| `gradient\.highlight-brand` \| #1C74BC 0%, #3397D7 100% \|/));

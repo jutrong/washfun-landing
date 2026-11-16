@@ -45,4 +45,10 @@ export const FOUNDATIONS: NavItem[] = [
     title: "Elevation",
     lead: "그림자로 면이 떠 있는 높이를 세 단계로 표현합니다.",
   },
+  {
+    key: "gradient",
+    href: "/design-system/gradient",
+    title: "Gradient",
+    lead: "그라디언트는 배경과 강조 면에서 깊이와 움직임을 표현할 때 쓰는 색 토큰입니다.",
+  },
 ];

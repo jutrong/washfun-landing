@@ -64,7 +64,10 @@ module.exports = {
           "static-white": "#FFFFFF",
           "static-black": "#000000",
           "static-black-alpha-700": "#000000B3",
-          "static-black-alpha-500": "#00000080"
+          "static-black-alpha-500": "#00000080",
+          "static-white-alpha-00": "#FFFFFF00",
+          "static-white-alpha-700": "#FFFFFFAB",
+          "static-white-alpha-900": "#FFFFFFD9"
         },
         "fg": {
           "neutral": "#15171A",
@@ -194,6 +197,16 @@ module.exports = {
         "s1": "0 2px 8px rgba(21,23,26,0.05)",
         "s2": "0 10px 30px rgba(21,23,26,0.06)",
         "s3": "0 30px 80px rgba(21,23,26,0.35)"
+      },
+      "backgroundImage": {
+        "gradient-glow-brand": "linear-gradient(180deg, #F9F9FA 0%, #CCE5F5 100%)",
+        "gradient-glow-brand-x": "linear-gradient(90deg, #F9F9FA 0%, #CCE5F5 100%)",
+        "gradient-highlight-brand": "linear-gradient(180deg, #1C74BC 0%, #3397D7 100%)",
+        "gradient-highlight-brand-x": "linear-gradient(90deg, #1C74BC 0%, #3397D7 100%)",
+        "gradient-fade-layer": "linear-gradient(180deg, #FFFFFF00 0%, #FFFFFFD9 60%, #FFFFFF 100%)",
+        "gradient-fade-layer-x": "linear-gradient(90deg, #FFFFFF00 0%, #FFFFFFD9 60%, #FFFFFF 100%)",
+        "gradient-shimmer-neutral": "linear-gradient(180deg, #FFFFFF00 0%, #FFFFFFAB 46%, #FFFFFFAB 54%, #FFFFFF00 100%)",
+        "gradient-shimmer-neutral-x": "linear-gradient(90deg, #FFFFFF00 0%, #FFFFFFAB 46%, #FFFFFFAB 54%, #FFFFFF00 100%)"
       }
     }
   }
