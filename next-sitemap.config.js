@@ -14,6 +14,7 @@ module.exports = {
     "/icon.ico",
     "/design-system",
     "/design-system/*",
+    "/design-system/**",
     "/subscription/*",
     "/inquiry",
     "/inquiry/*",
