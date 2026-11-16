@@ -51,7 +51,8 @@
 
 ## 아이콘
 
-- 아이콘 원본은 `design-system/icons/`의 SVG다. 고객 앱이 쓰는 Remix Icon 방식(24 격자, 면으로 그린 Line·Fill)을 따른다.
+- 아이콘 원본은 `design-system/icons/`의 SVG다. [Remix Icon](https://remixicon.com) 공식 파일(Apache License 2.0)을 고치지 않고 쓴다. 24 격자에 면으로 그린 Line·Fill 두 가지다.
+- 전체 목록은 `/design-system/iconography/library`에서 이름이나 한글로 찾는다. 없는 아이콘은 `design-system/icons/meta.json`에 모양 이름과 한글 검색어를 적고 `node design-system/scripts/import-remix-icons.mjs <remixicon 패키지 폴더>`로 가져온다.
 - 이름은 쓰임새가 아니라 모양으로 짓는다: `모양[-번호]-line|fill` (`home-line`, `settings-4-line`, `delete-bin-fill`).
 - Line이 기본이다. Fill은 선택된 상태, 색 면 안, 16px 이하에 쓴다. 한 묶음 안에서 둘을 섞지 않는다.
 - 파일에는 색과 크기를 넣지 않는다. 색은 `fg` 역할 색으로, 크기는 `icon-size.xs`~`xl`로 정한다. 기본은 `icon-size.lg`.

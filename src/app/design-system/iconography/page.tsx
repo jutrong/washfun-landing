@@ -1,3 +1,4 @@
+import Link from "next/link";
 import DocPage from "@/components/design-system/DocPage";
 import EnvTable from "@/components/design-system/EnvTable";
 import Icon from "@/components/design-system/Icon";
@@ -128,21 +129,27 @@ export default function IconographyPage() {
       <TokenSection
         id="library"
         title="Library"
-        lead={`지금 등록된 아이콘 ${all.length}개입니다. 고객 앱의 아이콘 가운데 규칙에 맞는 것부터 옮겼습니다.`}
+        lead={`제품이 실제로 쓰는 모양 ${all.length / 2}개를 Line과 Fill로 등록했습니다. 모두 Remix Icon 공식 파일입니다.`}
       >
-        <ul className="grid grid-cols-4 gap-x4 lg:grid-cols-3 md:grid-cols-2">
-          {all.map((entry) => (
-            <li key={entry.name}>
-              <a
-                href={`/design-system/icons/${entry.name}.svg`}
-                className="flex flex-col items-center gap-x3 rounded-r3 border border-stroke-neutral-muted px-x2 py-x6 hover:border-stroke-brand-solid"
+        <ul className="grid grid-cols-8 gap-x2 lg:grid-cols-6 md:grid-cols-4">
+          {all
+            .filter((entry) => entry.variant === "line")
+            .slice(0, 16)
+            .map((entry) => (
+              <li
+                key={entry.name}
+                className="flex aspect-square items-center justify-center rounded-r3 border border-stroke-neutral-muted"
               >
-                <Icon name={entry.name} className="size-icon-xl text-fg-neutral" />
-                <span className="break-all text-center text-t2 text-fg-neutral-muted">{entry.name}</span>
-              </a>
-            </li>
-          ))}
+                <Icon name={entry.name} className="size-icon-lg text-fg-neutral" />
+              </li>
+            ))}
         </ul>
+        <Link
+          href="/design-system/iconography/library"
+          className="mt-x6 inline-flex min-h-touch items-center rounded-r2 bg-bg-brand-solid px-x5 text-t4 font-bold text-fg-on-brand-solid"
+        >
+          아이콘 {all.length}개 모두 보기
+        </Link>
       </TokenSection>
 
       <TokenSection id="usage" title="쓰는 법" lead="아이콘 원본은 design-system/icons 폴더의 SVG 파일입니다.">
@@ -163,9 +170,9 @@ export default function IconographyPage() {
 
       <TokenSection id="add" title="새 아이콘 추가" lead="먼저 Library에 있는지 찾고, 없을 때만 추가합니다.">
         <ol className="flex list-decimal flex-col gap-x2 pl-x5 text-t4 text-fg-neutral-muted">
-          <li>Remix Icon에서 같은 모양을 찾아 Line과 Fill을 함께 가져옵니다.</li>
+          <li>Remix Icon에서 같은 모양을 찾아 Line과 Fill을 함께 가져옵니다. 파일은 고치지 않습니다.</li>
           <li>없으면 24 격자에 맞춰 새로 그립니다. 선이 아니라 면으로 그리고 색은 넣지 않습니다.</li>
-          <li>이름 규칙대로 design-system/icons에 넣으면 이 페이지의 Library에 나타납니다.</li>
+          <li>design-system/icons의 meta.json에 모양 이름과 한글 검색어를 적고 가져오기 스크립트를 돌리면 Library에 나타납니다.</li>
         </ol>
       </TokenSection>
     </DocPage>

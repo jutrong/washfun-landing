@@ -13,7 +13,7 @@ export default function Sidebar() {
     <nav aria-label="디자인 시스템 문서" className="w-[200px] shrink-0 lg:w-full">
       <ul className="sticky top-[72px] flex flex-col gap-x1 lg:static lg:flex-row lg:overflow-x-auto lg:pb-x2">
         {items.map((item) => {
-          const active = pathname === item.href;
+          const active = pathname === item.href || (item.href !== OVERVIEW.href && pathname.startsWith(`${item.href}/`));
           return (
             <li key={item.href} className="shrink-0">
               <Link

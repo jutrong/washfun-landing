@@ -24,3 +24,21 @@ test("색은 currentColor 만 쓴다", () => {
 test("크기는 쓰는 곳에서 정하도록 width / height 를 넣지 않는다", () => {
   for (const f of files) assert.doesNotMatch(read(f), /<svg[^>]*\s(width|height)=/, f);
 });
+
+const meta = JSON.parse(readFileSync(`${dir}meta.json`, "utf8"));
+const base = (f) => f.replace(/-(line|fill)\.svg$/, "");
+
+test("모든 아이콘은 meta.json 에 분류와 한글 검색어가 있다", () => {
+  for (const f of files) {
+    const entry = meta[base(f)];
+    assert.ok(entry, `${f} 가 meta.json 에 없다`);
+    assert.ok(entry.category, f);
+    assert.ok(Array.isArray(entry.ko) && entry.ko.length > 0, f);
+  }
+});
+test("meta.json 에 적힌 모양은 모두 파일이 있다", () => {
+  for (const name of Object.keys(meta))
+    assert.ok(files.some((f) => base(f) === name), `${name} 의 SVG 가 없다`);
+});
+test("출처와 라이선스 안내가 함께 있다", () =>
+  assert.match(readFileSync(`${dir}NOTICE.md`, "utf8"), /Remix Icon[\s\S]*Apache License 2\.0/));
