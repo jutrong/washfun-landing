@@ -12,6 +12,8 @@ module.exports = {
   priority: 0.7,
   exclude: [
     "/icon.ico",
+    "/design-system",
+    "/design-system/*",
     "/subscription/*",
     "/inquiry",
     "/inquiry/*",

@@ -46,3 +46,6 @@ internal-data/
 
 # 미사용 애셋 보관
 /_unused/
+
+# design-system: 빌드 전에 design-system/tokens.json 에서 복사된다
+/public/design-system/

@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node design-system/scripts/copy-public.mjs",
     "dev": "next dev",
+    "prebuild": "npm run tokens:check && node design-system/scripts/copy-public.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
