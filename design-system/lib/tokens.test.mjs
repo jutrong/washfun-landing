@@ -60,3 +60,10 @@ test("그라디언트 색 지점의 깨진 참조도 경로를 담은 오류", (
   bad.gradient["glow-brand"].$value[1].color = "{color.palette.nope-200}";
   assert.throws(() => resolveTokens(bad), /Unresolved token reference: \{color\.palette\.nope-200\} at gradient\.glow-brand/);
 });
+test("아이콘 크기와 누르는 영역은 환경마다 값이 있다", () => {
+  assert.equal(get("env.app.icon-size.lg").value, "24px");
+  assert.equal(get("env.web.icon-size.xs").value, "12px");
+  assert.equal(get("env.kiosk.icon-size.lg").value, "48px");
+  assert.equal(get("env.app.touch-target.min").value, "44px");
+  assert.equal(get("env.kiosk.touch-target.min").value, "64px");
+});

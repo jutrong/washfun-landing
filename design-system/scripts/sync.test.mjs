@@ -96,3 +96,15 @@ test("그라디언트 색 지점의 깨진 참조는 변환에서도 오류", ()
   bad.gradient["glow-brand"].$value[0].color = "{color.palette.nope-100}";
   assert.throws(() => toTailwindPreset(bad, "web"), /Unresolved token reference: \{color\.palette\.nope-100\} at gradient\.glow-brand/);
 });
+test("preset: 아이콘 크기는 size-icon-*, 누르는 영역은 min-h-touch / min-w-touch", () => {
+  const web = loadPreset(toTailwindPreset(tree, "web"));
+  assert.equal(web.size["icon-md"], "20px");
+  assert.equal(web.minHeight.touch, "44px");
+  assert.equal(web.minWidth.touch, "44px");
+  assert.equal(loadPreset(toTailwindPreset(tree, "kiosk")).size["icon-md"], "40px");
+});
+test("ts: 아이콘 크기와 누르는 영역은 단위 없는 숫자", () => {
+  const out = toTsObject(tree, "app");
+  assert.match(out, /iconSize: \{[^}]*lg: 24,/s);
+  assert.match(out, /touchTarget: \{\s*min: 44,/);
+});

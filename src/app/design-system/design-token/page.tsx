@@ -75,7 +75,7 @@ export default function DesignTokenPage() {
       <TokenSection
         id="env"
         title="환경별 값"
-        lead="글자 크기·줄 높이·모서리는 이름이 같고 값만 환경마다 다릅니다. 색·간격·그림자는 모든 환경이 같습니다."
+        lead="글자 크기·줄 높이·모서리·아이콘 크기는 이름이 같고 값만 환경마다 다릅니다. 색·간격·그림자는 모든 환경이 같습니다."
       >
         <table className="w-full border-collapse text-t4">
           <thead>

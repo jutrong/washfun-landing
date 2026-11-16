@@ -51,4 +51,10 @@ export const FOUNDATIONS: NavItem[] = [
     title: "Gradient",
     lead: "그라디언트는 배경과 강조 면에서 깊이와 움직임을 표현할 때 쓰는 색 토큰입니다.",
   },
+  {
+    key: "iconography",
+    href: "/design-system/iconography",
+    title: "Iconography",
+    lead: "아이콘은 24 격자에 그린 Line과 Fill 두 가지 모양을 쓰고, 색은 글자색을 따릅니다.",
+  },
 ];

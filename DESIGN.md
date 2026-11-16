@@ -49,9 +49,19 @@
 - 간격은 `dimension.x1`(4px) 단위만 쓴다.
 - 그라디언트 토큰은 색 지점만 정한다. 방향은 쓰는 곳에서 고른다(Tailwind는 `bg-gradient-glow-brand`가 세로, `-x`를 붙이면 가로).
 
+## 아이콘
+
+- 아이콘 원본은 `design-system/icons/`의 SVG다. 고객 앱이 쓰는 Remix Icon 방식(24 격자, 면으로 그린 Line·Fill)을 따른다.
+- 이름은 쓰임새가 아니라 모양으로 짓는다: `모양[-번호]-line|fill` (`home-line`, `settings-4-line`, `delete-bin-fill`).
+- Line이 기본이다. Fill은 선택된 상태, 색 면 안, 16px 이하에 쓴다. 한 묶음 안에서 둘을 섞지 않는다.
+- 파일에는 색과 크기를 넣지 않는다. 색은 `fg` 역할 색으로, 크기는 `icon-size.xs`~`xl`로 정한다. 기본은 `icon-size.lg`.
+- 아이콘만 있는 버튼의 누르는 영역은 `touch-target.min` 이상이다.
+- 여러 색을 쓰는 그림(로고, 세차 코스 그림)은 아이콘이 아니라 이미지로 다룬다.
+- Tailwind는 `size-icon-lg`, `min-h-touch min-w-touch`, 앱은 `tokens.iconSize.lg`, `tokens.touchTarget.min`.
+
 ## 환경별 값
 
-글자 크기·줄 높이·모서리는 이름이 같고 값만 환경마다 다르다. 키오스크는 화면이 크고 멀리서 보므로 같은 `font-size.t5`라도 값이 크다.
+글자 크기·줄 높이·모서리·아이콘 크기·누르는 영역은 이름이 같고 값만 환경마다 다르다. 키오스크는 화면이 크고 멀리서 보므로 같은 `font-size.t5`라도 값이 크다.
 
 | 환경 | 쓰는 제품 |
 | --- | --- |
@@ -275,4 +285,20 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `radius.r5` | 20px | 20px | 24px |
 | `radius.r6` | 24px | 24px | 30px |
 | `radius.full` | 9999px | 9999px | 9999px |
+
+### 아이콘 크기 (환경별)
+
+| 이름 | web | app | kiosk |
+| --- | --- | --- | --- |
+| `icon-size.xs` | 12px | 12px | 24px |
+| `icon-size.sm` | 16px | 16px | 32px |
+| `icon-size.md` | 20px | 20px | 40px |
+| `icon-size.lg` | 24px | 24px | 48px |
+| `icon-size.xl` | 32px | 32px | 64px |
+
+### 누르는 영역 (환경별)
+
+| 이름 | web | app | kiosk |
+| --- | --- | --- | --- |
+| `touch-target.min` | 44px | 44px | 64px |
 <!-- tokens:end -->

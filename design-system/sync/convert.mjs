@@ -63,6 +63,11 @@ export function toTailwindPreset(tree, env) {
     backgroundImage[`gradient-${name}-x`] = `linear-gradient(90deg, ${stopList(stops)})`;
   }
 
+  const iconSize = Object.fromEntries(
+    Object.entries(group(tree, `env.${env}.icon-size`)).map(([name, size]) => [`icon-${name}`, size]),
+  );
+  const touch = group(tree, `env.${env}.touch-target`).min;
+
   const extend = {
     colors: {
       palette: group(tree, "color.palette"),
@@ -75,6 +80,10 @@ export function toTailwindPreset(tree, env) {
     borderRadius: group(tree, `env.${env}.radius`),
     boxShadow: group(tree, "shadow"),
     backgroundImage,
+    // 아이콘은 size-icon-md, 누르는 영역은 min-h-touch min-w-touch 로 쓴다.
+    size: { ...iconSize, touch },
+    minHeight: { touch },
+    minWidth: { touch },
   };
   return `${header(tree)}module.exports = ${JSON.stringify({ theme: { extend } }, null, 2)};\n`;
 }
@@ -106,6 +115,8 @@ export function toTsObject(tree, env) {
     lineHeight: group(tree, `env.${env}.line-height`, camel),
     radius: group(tree, `env.${env}.radius`, camel, unitless),
     shadow: group(tree, "shadow", camel),
+    iconSize: group(tree, `env.${env}.icon-size`, camel, unitless),
+    touchTarget: group(tree, `env.${env}.touch-target`, camel, unitless),
     // react-native-linear-gradient 의 colors / locations 에 그대로 넣는 모양.
     gradient: group(tree, "gradient", camel, (stops) => ({
       colors: stops.map((stop) => stop.color),

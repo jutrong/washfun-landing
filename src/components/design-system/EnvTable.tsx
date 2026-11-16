@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import { ENVIRONMENTS, list } from "./tokens";
 
-/** 환경별로 값이 다른 토큰(글자 크기·줄 높이·모서리)을 web / app / kiosk 세 칸으로 보여 준다. */
+/** 환경별로 값이 다른 토큰(글자 크기·줄 높이·모서리·아이콘 크기)을 web / app / kiosk 세 칸으로 보여 준다. */
 export default function EnvTable({
   group,
   sample,
 }: {
-  group: "font-size" | "line-height" | "radius";
+  group: "font-size" | "line-height" | "radius" | "icon-size" | "touch-target";
   /** 환경별 값을 눈으로 보여 줄 견본 */
   sample?: (value: string) => ReactNode;
 }) {

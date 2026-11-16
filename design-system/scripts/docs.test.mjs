@@ -22,3 +22,7 @@ test("표시가 없으면 덮어쓰지 않고 오류", () =>
   assert.throws(() => injectTables("표시 없음", tables), /missing the tokens:start \/ tokens:end markers/));
 test("그라디언트 표에 색 지점이 나온다", () =>
   assert.match(tables, /\| `gradient\.highlight-brand` \| #1C74BC 0%, #3397D7 100% \|/));
+test("아이콘 크기와 누르는 영역도 환경별 표에 나온다", () => {
+  assert.match(tables, /\| `icon-size\.md` \| 20px \| 20px \| 40px \|/);
+  assert.match(tables, /\| `touch-target\.min` \| 44px \| 44px \| 64px \|/);
+});

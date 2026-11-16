@@ -207,6 +207,20 @@ module.exports = {
         "gradient-fade-layer-x": "linear-gradient(90deg, #FFFFFF00 0%, #FFFFFFD9 60%, #FFFFFF 100%)",
         "gradient-shimmer-neutral": "linear-gradient(180deg, #FFFFFF00 0%, #FFFFFFAB 46%, #FFFFFFAB 54%, #FFFFFF00 100%)",
         "gradient-shimmer-neutral-x": "linear-gradient(90deg, #FFFFFF00 0%, #FFFFFFAB 46%, #FFFFFFAB 54%, #FFFFFF00 100%)"
+      },
+      "size": {
+        "icon-xs": "12px",
+        "icon-sm": "16px",
+        "icon-md": "20px",
+        "icon-lg": "24px",
+        "icon-xl": "32px",
+        "touch": "44px"
+      },
+      "minHeight": {
+        "touch": "44px"
+      },
+      "minWidth": {
+        "touch": "44px"
       }
     }
   }

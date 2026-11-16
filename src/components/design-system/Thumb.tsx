@@ -1,3 +1,4 @@
+import Icon from "./Icon";
 import { gradients, list } from "./tokens";
 
 /**
@@ -84,6 +85,16 @@ export default function Thumb({ name, large = false }: { name: string; large?: b
           className="block size-[112px] rounded-full"
           style={{ backgroundImage: `linear-gradient(135deg, ${highlight?.stops})` }}
         />
+      </div>
+    );
+  }
+
+  if (name === "iconography") {
+    return (
+      <div className={`${frame} gap-x6 bg-bg-brand-weak text-fg-brand`}>
+        <Icon name="home-line" className="size-x14" />
+        <Icon name="heart-fill" className="size-x14" />
+        <Icon name="settings-4-line" className="size-x14" />
       </div>
     );
   }
