@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "tokens:test": "node --test design-system/"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",

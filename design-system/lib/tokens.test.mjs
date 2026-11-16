@@ -1,0 +1,49 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { loadTokens, resolveTokens, flattenTokens, ENVIRONMENTS } from "./tokens.mjs";
+
+const tree = loadTokens();
+const resolved = resolveTokens(tree);
+const flat = flattenTokens(tree);
+const get = (p) => flat.find((t) => t.path === p);
+
+test("version 필드가 있다", () => assert.match(tree.version, /^\d+\.\d+\.\d+$/));
+test("대표 색은 #1C74BC", () => {
+  assert.equal(resolved.color.palette["blue-600"].$value, "#1C74BC");
+  assert.equal(resolved.color.bg["brand-solid"].$value, "#1C74BC");
+  assert.equal(resolved.color.fg.brand.$value, "#1C74BC");
+});
+test("앱 기준 값", () => {
+  assert.equal(resolved.color.fg.neutral.$value, "#15171A");
+  assert.equal(resolved.color.fg["neutral-muted"].$value, "#6B7280");
+  assert.equal(resolved.color.bg["layer-basement"].$value, "#F9F9FA");
+  assert.equal(resolved.color.stroke["neutral-weak"].$value, "#E1E3E6");
+  assert.equal(resolved.color.fg.critical.$value, "#FF0000");
+  assert.equal(resolved.color.fg.warning.$value, "#F59F0A");
+});
+test("역할 색은 모두 팔레트를 참조한다", () => {
+  for (const t of flat.filter((t) => /^color\.(fg|bg|stroke)\./.test(t.path)))
+    assert.match(t.ref ?? "", /^color\.palette\./, t.path);
+});
+test("팔레트 단계 이름은 SEED 규칙", () => {
+  for (const t of flat.filter((t) => t.path.startsWith("color.palette.")))
+    assert.match(t.path, /^color\.palette\.(gray-(00|[1-9]00|1000)|(blue|red|yellow|green|azure)-([1-9]00|1000)|static-[a-z0-9-]+)$/);
+});
+test("환경 세 벌이 같은 이름을 갖는다", () => {
+  const keys = (e) => flat.filter((t) => t.path.startsWith(`env.${e}.`)).map((t) => t.path.replace(`env.${e}.`, "")).sort();
+  for (const e of ENVIRONMENTS) assert.deepEqual(keys(e), keys("web"));
+  assert.equal(get("env.kiosk.font-size.t5").value, "28px");
+  assert.equal(get("env.web.font-size.t5").value, "16px");
+});
+test("dimension.xN = N*4px", () => assert.equal(resolved.dimension.x4.$value, "16px"));
+test("깨진 참조는 경로를 담은 오류", () => {
+  const bad = structuredClone(tree);
+  bad.color.fg.brand.$value = "{color.palette.nope-600}";
+  assert.throws(() => resolveTokens(bad), /Unresolved token reference: \{color\.palette\.nope-600\} at color\.fg\.brand/);
+});
+test("순환 참조도 오류", () => {
+  const bad = structuredClone(tree);
+  bad.color.fg.brand.$value = "{color.bg.brand-solid}";
+  bad.color.bg["brand-solid"].$value = "{color.fg.brand}";
+  assert.throws(() => resolveTokens(bad), /Unresolved token reference/);
+});
