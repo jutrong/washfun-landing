@@ -52,7 +52,7 @@ export const FOUNDATIONS: NavItem[] = [
     key: "elevation",
     href: "/design-system/elevation",
     title: "Elevation",
-    lead: "그림자로 면이 떠 있는 높이를 세 단계로 표현합니다.",
+    lead: "그림자 세 단계와 모달 뒤의 어두운 면으로 면이 떠 있는 높이를 표현합니다.",
   },
   {
     key: "gradient",

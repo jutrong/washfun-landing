@@ -44,6 +44,7 @@
 - 글자와 아이콘은 `fg`, 면은 `bg`, 선은 `stroke`에서 고른다.
 - 기본 글자는 `fg.neutral`, 보조 글자는 `fg.neutral-muted`, 캡션은 `fg.neutral-subtle`.
 - 화면 바닥은 `bg.layer-basement`, 그 위 카드·패널은 `bg.layer-default`, 모달·시트는 `bg.layer-floating`.
+- 확인 창과 바텀 시트 뒤는 `bg.overlay`로 화면 전체를 어둡게 덮는다. 토스트·툴팁·드롭다운 뒤는 어둡게 하지 않는다. 창이 겹쳐도 어두운 면은 한 겹만 둔다.
 - 주요 버튼은 `bg.brand-solid` 위에 `fg.on-brand-solid`. 색 면 위의 글자는 항상 `fg.on-*`을 쓴다.
 - 입력 칸의 외곽선은 `stroke.neutral`(배경과 3:1 이상). 카드·외곽선 버튼처럼 꾸미는 선은 `stroke.neutral-weak`, 영역을 나누는 구분선은 `stroke.neutral-muted`.
 - 간격은 `dimension.x1`(4px) 단위만 쓴다.
