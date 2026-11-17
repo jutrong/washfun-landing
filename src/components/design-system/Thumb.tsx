@@ -99,6 +99,15 @@ export default function Thumb({ name, large = false }: { name: string; large?: b
     );
   }
 
+  if (name === "writing") {
+    return (
+      <div className={`${frame} flex-col gap-x3 bg-bg-brand-weak`}>
+        <p className="rounded-r3 bg-bg-layer-default px-x5 py-x3 text-t5 text-fg-placeholder line-through">결제 실패: 키 검증 실패</p>
+        <p className="rounded-r3 bg-bg-brand-solid px-x5 py-x3 text-t5 font-bold text-fg-on-brand-solid">결제하지 못했어요</p>
+      </div>
+    );
+  }
+
   // elevation
   return (
     <div className={`${frame} gap-x6 bg-bg-layer-basement`}>
