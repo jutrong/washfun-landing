@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import Demo from "@/components/design-system/reference/Demo";
 import TokenSection from "@/components/design-system/TokenSection";
-import { component, components, sources } from "@/components/design-system/components";
+import { component, components } from "@/components/design-system/components";
 import { COMPONENTS_HREF } from "@/components/design-system/nav";
 import { ENVIRONMENTS, list } from "@/components/design-system/tokens";
 
@@ -57,17 +57,6 @@ function Table({ head, children }: { head: string[]; children: ReactNode }) {
   );
 }
 
-function Code({ title, source }: { title: string; source: string }) {
-  return (
-    <figure className="mt-x4">
-      <figcaption className="text-t3 font-bold text-fg-neutral">{title}</figcaption>
-      <pre className="mt-x2 max-h-[480px] overflow-auto rounded-r3 bg-bg-layer-basement p-x4 text-t2 leading-relaxed text-fg-neutral">
-        <code>{source}</code>
-      </pre>
-    </figure>
-  );
-}
-
 export default function ComponentPage({ params }: { params: { key: string } }) {
   const spec = component(params.key);
   if (!spec) notFound();
@@ -76,7 +65,6 @@ export default function ComponentPage({ params }: { params: { key: string } }) {
   const index = all.findIndex((item) => item.key === spec.key);
   const prev = all[index - 1];
   const next = all[index + 1];
-  const source = sources(spec);
   const sizeParts = Array.from(new Set(spec.sizes.flatMap((size) => ENVIRONMENTS.flatMap((env) => Object.keys(size.env[env] ?? {})))));
 
   return (
@@ -262,7 +250,6 @@ export default function ComponentPage({ params }: { params: { key: string } }) {
               <li key={text}>{text}</li>
             ))}
           </ol>
-          <Code title={`기준 구현 · ${spec.file}.tsx (위 견본이 이 코드로 그려집니다)`} source={source.web} />
         </TokenSection>
 
         <TokenSection id="app" title="구현: 앱" lead="고객 앱. React Native와 토큰 파일(tokens.ts, app)을 씁니다.">
@@ -271,7 +258,6 @@ export default function ComponentPage({ params }: { params: { key: string } }) {
               <li key={text}>{text}</li>
             ))}
           </ol>
-          <Code title={`예시 · ${spec.file}.tsx (React Native, 앱에서 실행해 확인하지 않은 코드)`} source={source.app} />
         </TokenSection>
 
         <TokenSection id="kiosk" title="구현: 키오스크" lead="키오스크 3종. 웹 기준 구현을 그대로 쓰고 토큰 preset만 kiosk로 바꿉니다.">

@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { CATEGORIES, loadComponents } from "../../../design-system/lib/components.mjs";
 
 type EnvName = "web" | "app" | "kiosk";
@@ -34,12 +32,3 @@ export const categories: { key: string; title: string; ko: string }[] = CATEGORI
 export const components = (): ComponentSpec[] => loadComponents();
 
 export const component = (key: string) => components().find((item) => item.key === key);
-
-/** 문서에 그대로 보여 줄 코드. 웹은 실제로 견본을 그리는 기준 구현 파일이다. */
-export function sources(spec: ComponentSpec) {
-  const root = process.cwd();
-  return {
-    web: readFileSync(join(root, "src/components/design-system/reference", `${spec.file}.tsx`), "utf8"),
-    app: readFileSync(join(root, "design-system/components", `${spec.key}.app.txt`), "utf8"),
-  };
-}
