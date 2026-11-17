@@ -63,4 +63,10 @@ export const FOUNDATIONS: NavItem[] = [
     title: "Writing",
     lead: "버튼, 오류, 알림의 문구를 쉽고 한결같게 쓰는 규칙과 용어입니다.",
   },
+  {
+    key: "accessibility",
+    href: "/design-system/accessibility",
+    title: "Accessibility",
+    lead: "누구나 같은 노력으로 쓸 수 있도록 대비, 글자 크기, 누르는 영역의 기준을 정합니다.",
+  },
 ];

@@ -76,6 +76,17 @@
 - 용어: 포인트(캐시·충전금 ✕), 포인트 충전(잔액 충전 ✕), 매장(지점 ✕), 구독(정기구독·정기권·회원권 ✕), 세차(워시 ✕, 제품 이름 제외), 직원에게 문의(관리자에게 문의 ✕), 확인(OK ✕), 아니요(아니오 ✕), 잠시 후(잠시후 ✕).
 - 문구를 검사하려면 `design-system/lib/writing.mjs`의 `findIssues(문구, 환경)`을 쓴다. 피하는 말, 어려운 한자어, 금액 표기, 느낌표·말줄임표, 말투, 수동형, 지나친 높임말을 찾는다.
 
+## 접근성
+
+- 규칙과 검사할 색 짝의 원본은 `design-system/accessibility.json`이다. 지금 값으로 계산한 대비표는 `/design-system/accessibility`.
+- 글자는 배경과 4.5:1 이상, 아이콘과 외곽선은 3:1 이상의 명도 대비를 가진다. 큰 글자(24px 이상, 굵게 19px 이상)는 3:1.
+- 기준을 지키는 짝: `fg.neutral`, `fg.neutral-muted`, `fg.brand`를 `bg.layer-default` 위에, `fg.on-brand-solid`를 `bg.brand-solid` 위에.
+- 기준에 못 미치는 짝: `fg.neutral-subtle`, `fg.placeholder`, 상태 색 글자(`fg.critical`·`warning`·`positive`·`informative`), 상태 색 강조 면 위의 흰 글자, `stroke.neutral-weak`. 꼭 읽어야 하는 글자는 `fg.neutral`이나 `fg.neutral-muted`로 쓰고, 상태 색은 아이콘·면과 문장을 함께 써서 알린다.
+- 본문은 `font-size.t5` 이상, 줄 높이 1.5 이상. 누르는 영역은 `touch-target.min` 이상.
+- 색만으로 상태를 알리지 않는다. 아이콘만 있는 버튼에는 읽어 줄 이름을 붙이고, 입력 칸에는 보이는 레이블을 둔다.
+- 키오스크는 한 화면에 한 가지 일, 어느 화면에서나 이전으로·처음으로, 결과는 화면과 소리로 함께 알린다. KS X 9211 수치와의 대조는 아직 하지 않았다.
+- 대비를 계산하려면 `design-system/lib/contrast.mjs`의 `contrastRatio(색, 색)`을 쓴다.
+
 ## 환경별 값
 
 글자 크기·줄 높이·모서리·아이콘 크기·누르는 영역은 이름이 같고 값만 환경마다 다르다. 키오스크는 화면이 크고 멀리서 보므로 같은 `font-size.t5`라도 값이 크다.

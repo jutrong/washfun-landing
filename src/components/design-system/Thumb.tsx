@@ -108,6 +108,15 @@ export default function Thumb({ name, large = false }: { name: string; large?: b
     );
   }
 
+  if (name === "accessibility") {
+    return (
+      <div className={`${frame} gap-x4 bg-bg-layer-basement`}>
+        <span className="flex size-x16 items-center justify-center rounded-r3 bg-bg-brand-solid text-t8 font-bold text-fg-on-brand-solid">가</span>
+        <span className="text-t8 font-bold text-fg-neutral">4.9 : 1</span>
+      </div>
+    );
+  }
+
   // elevation
   return (
     <div className={`${frame} gap-x6 bg-bg-layer-basement`}>
