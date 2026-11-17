@@ -1,0 +1,261 @@
+{
+  "key": "bottom-sheet",
+  "file": "BottomSheet",
+  "title": "Bottom Sheet",
+  "ko": "바텀 시트",
+  "category": "feedback",
+  "order": 20,
+  "interactive": false,
+  "lead": "화면 아래에서 올라오는 판입니다. 지금 화면을 떠나지 않고 선택지를 고르거나 짧은 일을 마칩니다. 앱과 모바일 웹에서 쓰고 키오스크에서는 쓰지 않습니다.",
+  "when": [
+    "결제 수단, 정렬 기준처럼 여러 선택지 가운데 하나를 고를 때",
+    "쿠폰 번호 입력처럼 한두 칸으로 끝나는 짧은 일을 지금 화면 위에서 마칠 때",
+    "항목 하나에 대한 행동 몇 가지(수정하기, 삭제하기)를 모아 보여 줄 때"
+  ],
+  "avoid": [
+    "예와 아니요로 답하는 질문은 Dialog를 씁니다.",
+    "키오스크에서는 쓰지 않습니다. 선택은 Dialog나 별도 화면으로 받습니다.",
+    "결과만 알릴 때는 Toast를 씁니다.",
+    "단계가 여럿이거나 입력 칸이 셋 이상이면 별도 화면으로 옮깁니다.",
+    "시트 위에 시트를 또 올리지 않습니다."
+  ],
+  "anatomy": [
+    {
+      "part": "overlay",
+      "ko": "배경",
+      "note": "뒤 화면을 덮는 어두운 면. bg.overlay를 씁니다. 누르면 시트가 닫힙니다."
+    },
+    {
+      "part": "surface",
+      "ko": "면",
+      "note": "아래에 붙는 판. bg.layer-floating에 위쪽 모서리만 r6으로 둥급니다. 안쪽 여백은 x6, 아래만 x12입니다."
+    },
+    {
+      "part": "title",
+      "ko": "제목",
+      "note": "한 문장. 굵게 씁니다. 무엇을 고르거나 하는 곳인지 말합니다."
+    },
+    {
+      "part": "description",
+      "ko": "설명",
+      "note": "선택. 제목 아래 한 줄. fg.neutral-muted를 씁니다."
+    },
+    {
+      "part": "close",
+      "ko": "닫기 버튼",
+      "note": "제목 오른쪽의 아이콘 버튼. 아이콘은 icon-size.lg, 누르는 영역은 touch-target.min입니다."
+    },
+    {
+      "part": "body",
+      "ko": "내용",
+      "note": "선택지 목록이나 짧은 입력. 길면 이 부분만 스크롤합니다."
+    },
+    {
+      "part": "action",
+      "ko": "주요 버튼",
+      "note": "선택. 맨 아래에 너비를 채우는 Button large primary 하나."
+    }
+  ],
+  "variants": [
+    {
+      "name": "select",
+      "use": "선택지를 누르면 바로 고르고 닫는 시트. 주요 버튼이 없습니다.",
+      "tokens": {
+        "bg": "color.bg.layer-floating",
+        "fg": "color.fg.neutral"
+      }
+    },
+    {
+      "name": "action",
+      "use": "고르거나 입력한 뒤 아래 주요 버튼으로 마치는 시트.",
+      "tokens": {
+        "bg": "color.bg.layer-floating",
+        "fg": "color.fg.neutral",
+        "action": "color.bg.brand-solid"
+      }
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "default": true,
+      "use": "크기는 하나입니다. 높이는 내용을 따르고 화면 위쪽 x16은 늘 남깁니다. 키오스크에서는 쓰지 않습니다.",
+      "env": {
+        "web": {
+          "padding": "dimension.x6",
+          "padding-bottom": "dimension.x12",
+          "radius-top": "radius.r6",
+          "title-font": "font-size.t7",
+          "description-font": "font-size.t4",
+          "body-top": "dimension.x4",
+          "action-top": "dimension.x6",
+          "button-height": "dimension.x12",
+          "close-icon": "icon-size.lg",
+          "close-target": "touch-target.min",
+          "top-gap": "dimension.x16"
+        },
+        "app": {
+          "padding": "dimension.x6",
+          "padding-bottom": "dimension.x12",
+          "radius-top": "radius.r6",
+          "title-font": "font-size.t7",
+          "description-font": "font-size.t4",
+          "body-top": "dimension.x4",
+          "action-top": "dimension.x6",
+          "button-height": "dimension.x12",
+          "close-icon": "icon-size.lg",
+          "close-target": "touch-target.min",
+          "top-gap": "dimension.x16"
+        },
+        "kiosk": {}
+      }
+    }
+  ],
+  "states": [
+    {
+      "name": "closed",
+      "change": "화면에 없습니다. DOM과 화면 읽기 프로그램에서도 빠집니다."
+    },
+    {
+      "name": "open",
+      "change": "배경이 뒤 화면을 덮고 시트가 아래에 붙습니다. 뒤 화면은 스크롤되지 않고 초점도 받지 않습니다.",
+      "tokens": [
+        "color.bg.overlay",
+        "color.bg.layer-floating",
+        "shadow.s3"
+      ]
+    },
+    {
+      "name": "scrolling",
+      "change": "내용이 남은 높이보다 길면 제목과 주요 버튼은 그대로 두고 내용만 스크롤합니다."
+    },
+    {
+      "name": "keyboard",
+      "change": "입력 칸에 초점이 가 키보드가 올라오면 시트가 키보드 높이만큼 위로 올라갑니다. 입력 칸과 주요 버튼이 가려지지 않습니다."
+    },
+    {
+      "name": "in-progress",
+      "change": "주요 버튼을 눌러 처리하는 동안입니다. 버튼이 loading으로 바뀌고 닫기 버튼, 배경 누름, 뒤로 가기로 닫히지 않습니다."
+    },
+    {
+      "name": "close-pressed",
+      "change": "닫기 버튼을 누르는 동안 버튼 면이 bg.neutral-weak로 바뀝니다. 웹에서 키보드 초점이 오면 2px 테두리를 그립니다.",
+      "tokens": [
+        "color.bg.neutral-weak",
+        "color.stroke.brand-solid"
+      ]
+    }
+  ],
+  "motion": [
+    {
+      "what": "열릴 때 배경 (투명도 0 → 1)",
+      "duration": "motion.duration.d4",
+      "easing": "motion.easing.enter"
+    },
+    {
+      "what": "열릴 때 시트 (아래에서 제자리로 올라옴)",
+      "duration": "motion.duration.d4",
+      "easing": "motion.easing.enter"
+    },
+    {
+      "what": "닫힐 때 배경과 시트 (투명도 1 → 0, 아래로 내려감)",
+      "duration": "motion.duration.d3",
+      "easing": "motion.easing.exit"
+    },
+    {
+      "what": "닫기 버튼의 눌림 색 변화",
+      "duration": "motion.duration.d2",
+      "easing": "motion.easing.standard"
+    }
+  ],
+  "behavior": [
+    "너비는 화면을 채웁니다. 넓은 웹 화면에서는 448px(max-w-md)을 넘지 않고 가운데 아래에 붙습니다.",
+    "높이는 내용을 따릅니다. 화면 위쪽 x16은 늘 남겨 뒤 화면이 보이게 하고, 그보다 길어지면 내용만 스크롤합니다.",
+    "닫기 버튼, 배경 누름, Esc, Android 뒤로 가기로 닫힙니다. 닫으면 고르던 것은 반영하지 않습니다.",
+    "select 시트는 선택지를 누르면 바로 반영하고 닫습니다. action 시트는 주요 버튼을 눌러야 반영합니다.",
+    "아래 여백 x12에는 홈 표시 줄 자리가 들어 있습니다. 홈 표시 줄이 더 높은 기기에서는 x6에 safe area 아래 값을 더한 것과 견주어 큰 쪽을 씁니다.",
+    "끌어서 닫는 동작과 손잡이는 두지 않습니다. 지금 앱에도 없고, 손잡이만 있고 끌리지 않으면 오히려 헷갈립니다.",
+    "처리하는 동안에는 닫히지 않습니다. 처리가 끝나면 시트를 닫고 결과는 Toast나 화면으로 알립니다.",
+    "키오스크에서는 쓰지 않습니다. 화면이 크고 서서 쓰기 때문에 아래에 붙는 판은 손이 닿기 어렵습니다. Dialog를 씁니다."
+  ],
+  "accessibility": [
+    "면에 role=\"dialog\"와 aria-modal=\"true\"를 주고 aria-labelledby로 제목을 잇습니다. 앱은 accessibilityViewIsModal을 씁니다.",
+    "열리면 초점을 시트 안으로 옮기고, 닫히면 시트를 연 요소로 돌려줍니다. 열려 있는 동안 Tab은 시트 안에서만 돕니다.",
+    "닫기 버튼에는 읽어 줄 이름 '닫기'를 붙입니다. 배경 누름과 끌기는 화면 읽기 프로그램으로 쓸 수 없으므로 닫기 버튼을 빼지 않습니다.",
+    "닫기 버튼과 선택지 한 줄의 누르는 영역은 touch-target.min 이상입니다.",
+    "고른 선택지는 색만으로 알리지 않습니다. 체크 아이콘을 함께 보여 주고 선택 상태를 읽어 줍니다.",
+    "동작 줄이기를 켜면 올라오는 움직임을 빼고 배경의 투명도만 바뀝니다."
+  ],
+  "writing": [
+    "제목은 한 문장으로 무엇을 하는 곳인지 씁니다. 부탁은 '~해주세요'로 씁니다: 결제 수단을 골라주세요.",
+    "선택지는 이름만 짧게 씁니다: 신용카드, 카카오페이. 문장으로 풀지 않습니다.",
+    "주요 버튼은 일어날 일을 '~하기'로 씁니다: 결제하기, 적용하기. '확인'으로 뭉뚱그리지 않습니다.",
+    "닫기 버튼의 읽어 줄 이름은 '닫기'입니다. '취소'는 실제로 무언가를 취소할 때만 씁니다.",
+    "설명은 한 줄을 넘기지 않습니다. 더 길게 알려야 하면 시트가 맞는 자리인지 다시 봅니다."
+  ],
+  "props": [
+    {
+      "name": "open",
+      "type": "boolean",
+      "note": "열려 있는지. 부모가 가지고 있는 값입니다."
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "note": "닫기 버튼, 배경 누름, Esc, 뒤로 가기로 닫힐 때 부릅니다."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "note": "제목. 한 문장."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "note": "제목 아래 한 줄 설명. 선택."
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "note": "내용. 선택지 목록이나 짧은 입력."
+    },
+    {
+      "name": "primaryAction",
+      "type": "{ label, onClick / onPress, loading?, disabled? }",
+      "note": "맨 아래 주요 버튼. 선택. 웹은 onClick, 앱은 onPress."
+    },
+    {
+      "name": "bottomInset",
+      "type": "number",
+      "default": "0",
+      "note": "앱만. 홈 표시 줄 높이(safe area 아래 값)."
+    }
+  ],
+  "implementation": {
+    "web": [
+      "지금 웹에는 바텀 시트가 없으므로 모바일 웹에서 선택지를 받는 화면부터 이 구현으로 새로 넣습니다. 면은 div에 role=\"dialog\"와 aria-modal=\"true\"를 주고 제목 h2의 id를 aria-labelledby에 잇습니다. 닫기는 button 요소에 aria-label=\"닫기\"를 붙입니다.",
+      "createPortal로 document.body에 그립니다. 가장 바깥은 fixed inset-0 z-50 flex items-end justify-center pt-x16이고, 그 안에 배경(absolute inset-0 bg-bg-overlay)과 면을 형제로 둡니다. 문서의 고정 헤더(z-10)보다 위에 떠야 합니다.",
+      "면은 w-full max-w-md max-h-full flex flex-col rounded-t-r6 px-x6 pt-x6 pb-x12로 둡니다. 내용 영역에만 min-h-0 flex-1 overflow-y-auto를 줘서 제목과 주요 버튼이 스크롤에 밀려나지 않게 합니다.",
+      "열릴 때 body의 overflow를 hidden으로 바꾸고 effect의 정리 함수에서 바꾸기 전 값으로 되돌립니다. 시트가 열린 채 화면이 사라져도 스크롤이 잠긴 채 남지 않습니다.",
+      "열릴 때 document.activeElement를 기억하고 면(tabIndex -1)으로 초점을 옮깁니다. document의 keydown에서 Tab을 시트 안에 가두고 Esc로 닫으며, 닫히면 기억해 둔 요소에 focus를 돌려줍니다.",
+      "움직임은 mounted와 visible 두 상태로 나눕니다. 열릴 때는 translate-y-full에서 translate-y-0으로 duration-d4 ease-enter, 닫힐 때는 duration-d3 ease-exit로 내리고 d3이 지난 뒤 DOM에서 뺍니다. 면에는 motion-reduce:transition-none을 붙입니다.",
+      "모바일 브라우저에서는 주소 표시줄 때문에 화면 높이가 바뀝니다. 높이를 vh로 고정하지 않고 fixed inset-0 안에서 max-h-full로 잡습니다. 홈 표시 줄이 있는 기기는 아래 여백에 env(safe-area-inset-bottom)을 더합니다."
+    ],
+    "app": [
+      "React Native의 Modal을 transparent, statusBarTranslucent, animationType=\"none\"으로 띄우고, 움직임은 Animated 값 하나(0 → 1)로 만듭니다. 시트의 translateY는 화면 높이에서 0으로, 배경의 opacity는 0에서 1로 뽑습니다. 지금 앱이 손으로 만든 translateY 방식과 같습니다.",
+      "시간과 곡선은 tokens.motion에서 가져옵니다. 올라올 때 duration.d4와 easing.enter, 내려갈 때 duration.d3과 easing.exit입니다. 지금 앱은 시트마다 시간을 숫자로 적고 있어 바꿔야 하는 부분입니다.",
+      "면은 위쪽 모서리 radius.r6, 안쪽 여백 dimension.x6, 아래 여백 x12를 tokens에서 가져옵니다. 이 값들은 지금 앱(위 모서리 24, 여백 24, 아래 48)과 같습니다. 아래 여백은 Math.max(x12, x6 + safe area 아래 값)으로 계산해 홈 표시 줄이 높은 기기에서도 버튼이 가려지지 않게 합니다.",
+      "제목 오른쪽에 닫기 버튼을 둡니다. Pressable에 accessibilityRole button, accessibilityLabel '닫기', hitSlop으로 누르는 영역을 touchTarget.min까지 넓힙니다. 지금 앱의 시트에는 닫기 버튼이 없어 화면 읽기 프로그램으로 닫을 수 없으므로 바꿔야 하는 부분입니다.",
+      "닫는 규칙: 배경의 Pressable, 닫기 버튼, Modal의 onRequestClose(Android 뒤로 가기)가 모두 같은 close 함수를 부르고, 처리 중이면 아무것도 하지 않습니다.",
+      "입력 칸이 있는 시트는 KeyboardAvoidingView로 감쌉니다. iOS는 behavior padding, Android는 창 설정(adjustResize)에 맡깁니다. 내용은 ScrollView에 넣고 keyboardShouldPersistTaps를 handled로 둬 키보드가 떠 있어도 선택지가 한 번에 눌리게 합니다.",
+      "면에 accessibilityViewIsModal을 주고 Modal의 onShow에서 제목으로 접근성 초점을 옮깁니다. 동작 줄이기가 켜져 있으면 translateY 대신 opacity만 바꿉니다."
+    ],
+    "kiosk": [
+      "키오스크에서는 바텀 시트를 쓰지 않습니다. 이 부품의 키오스크 크기 값은 비워 둡니다.",
+      "선택지가 둘이면 Dialog의 버튼 두 개로 받습니다. 덜 중요한 것을 왼쪽, 주요 선택을 오른쪽에 둡니다.",
+      "선택지가 셋 이상이면 별도 화면에서 큰 카드로 보여 줍니다. 키오스크는 한 화면에 한 가지 일만 합니다.",
+      "앱의 화면을 키오스크로 옮길 때 시트로 받던 선택은 흐름의 한 단계로 풀어 넣고, 이전으로와 처음으로를 함께 둡니다.",
+      "다른 키오스크에서 가져온 화면에 아래에서 올라오는 판이 있으면 Dialog로 바꿉니다. 화면 아래쪽은 서서 쓰는 사람과 휠체어를 쓰는 사람 모두에게 닿기 어려운 자리가 될 수 있습니다."
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import Svg, { Path } from "react-native-svg";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+
+type Size = "medium" | "small";
+
+type Props = {
+  selected?: boolean;
+  size?: Size;
+  dot?: boolean;
+  icon?: React.ReactNode;
+  disabled?: boolean;
+  onPress?: () => void;
+  children: string;
+};
+
+const { color, dimension, radius, fontSize, fontWeight, iconSize, touchTarget } = tokens;
+
+// 선택 여부는 색과 함께 굵기와 체크 표시로도 알린다.
+const TONES = {
+  unselected: { bg: color.bg.layerDefault, pressed: color.bg.neutralWeak, fg: color.fg.neutral, stroke: color.stroke.neutral },
+  selected: { bg: color.bg.brandWeak, pressed: color.bg.layerDefault, fg: color.fg.brand, stroke: color.stroke.brandSolid },
+} as const;
+
+const SIZES = {
+  medium: { height: dimension.x9, paddingHorizontal: dimension.x4, gap: dimension.x2, fontSize: fontSize.t4 },
+  small: { height: dimension.x8, paddingHorizontal: dimension.x3, gap: dimension.x1, fontSize: fontSize.t3 },
+} as const;
+
+export function Chip({ selected = false, size = "medium", dot, icon, disabled, onPress, children }: Props) {
+  const t = selected ? TONES.selected : TONES.unselected;
+  const s = SIZES[size];
+  const fg = disabled ? color.fg.disabled : t.fg;
+  // 보이는 알약은 36(small 은 32)이므로 누르는 영역을 touchTarget.min 까지 위아래로 넓힌다.
+  const slop = Math.max(0, (touchTarget.min - s.height) / 2);
+
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected, disabled: !!disabled }}
+      accessibilityLabel={children}
+      disabled={disabled}
+      onPress={onPress}
+      hitSlop={{ top: slop, bottom: slop }}
+      style={({ pressed }) => [
+        styles.base,
+        { height: s.height, paddingHorizontal: s.paddingHorizontal, gap: s.gap },
+        { backgroundColor: disabled ? color.bg.disabled : pressed ? t.pressed : t.bg },
+        { borderColor: disabled ? "transparent" : t.stroke },
+      ]}
+    >
+      {/* 앞 표시 자리에는 하나만 둔다. 선택되면 체크 표시가 차지한다. */}
+      {selected ? (
+        <Svg width={iconSize.sm} height={iconSize.sm} viewBox="0 0 24 24" fill={fg}>
+          <Path d="m9.55 15.15 8.47-8.47 1.41 1.41-9.88 9.88-5-5 1.41-1.41 3.59 3.59Z" />
+        </Svg>
+      ) : icon ? (
+        icon
+      ) : dot ? (
+        <View style={[styles.dot, { backgroundColor: fg }]} />
+      ) : null}
+      <Text numberOfLines={1} style={{ color: fg, fontSize: s.fontSize, fontWeight: selected ? fontWeight.bold : fontWeight.medium }}>
+        {children}
+      </Text>
+    </Pressable>
+  );
+}
+
+const styles = StyleSheet.create({
+  base: { flexDirection: "row", alignItems: "center", justifyContent: "center", alignSelf: "flex-start", borderWidth: 1, borderRadius: tokens.radius.full },
+  dot: { width: dimension.x2, height: dimension.x2, borderRadius: radius.full },
+});
+
+// 묶음 예시: 가로로 넘치면 스크롤한다.
+// <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: tokens.dimension.x2, paddingHorizontal: tokens.dimension.x4 }}>
+//   {["전체", "셀프 세차", "자동 세차"].map((label) => (
+//     <Chip key={label} selected={value === label} onPress={() => setValue(label)}>{label}</Chip>
+//   ))}
+// </ScrollView>

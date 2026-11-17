@@ -1,0 +1,146 @@
+import React, { useEffect, useRef, useState } from "react";
+import {
+  AccessibilityInfo,
+  Animated,
+  Easing,
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  findNodeHandle,
+  useWindowDimensions,
+} from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+import { Button } from "./Button";
+import { Icon } from "./Icon"; // 앱의 Icon Library 부품
+
+type Action = { label: string; onPress: () => void; loading?: boolean; disabled?: boolean };
+
+type Props = {
+  open: boolean;
+  /** 닫기 버튼, 배경 누름, Android 뒤로 가기로 닫힐 때 부른다. */
+  onClose: () => void;
+  title: string;
+  description?: string;
+  /** 선택지 목록이나 짧은 입력. */
+  children: React.ReactNode;
+  primaryAction?: Action;
+  /** 홈 표시 줄 높이. 화면에서 safe area 의 아래 값을 넘긴다. */
+  bottomInset?: number;
+};
+
+const { color, dimension, radius, fontSize, fontWeight, lineHeight, iconSize, touchTarget } = tokens;
+
+export function BottomSheet({ open, onClose, title, description, children, primaryAction, bottomInset = 0 }: Props) {
+  // mounted: Modal 이 떠 있는지. 내려가는 움직임이 끝난 뒤에 내린다.
+  const [mounted, setMounted] = useState(open);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const progress = useRef(new Animated.Value(0)).current;
+  const titleRef = useRef<Text>(null);
+  const { height } = useWindowDimensions();
+  const busy = !!primaryAction?.loading;
+
+  useEffect(() => {
+    AccessibilityInfo.isReduceMotionEnabled().then(setReduceMotion);
+    const subscription = AccessibilityInfo.addEventListener("reduceMotionChanged", setReduceMotion);
+    return () => subscription.remove();
+  }, []);
+
+  useEffect(() => {
+    if (open) setMounted(true);
+    Animated.timing(progress, {
+      toValue: open ? 1 : 0,
+      duration: open ? tokens.motion.duration.d4 : tokens.motion.duration.d3,
+      easing: Easing.bezier(...(open ? tokens.motion.easing.enter : tokens.motion.easing.exit)),
+      useNativeDriver: true,
+    }).start(({ finished }) => {
+      if (finished && !open) setMounted(false);
+    });
+  }, [open, progress]);
+
+  // 열리면 화면 읽기 프로그램의 초점을 제목으로 옮긴다.
+  const focusTitle = () => {
+    const node = findNodeHandle(titleRef.current);
+    if (node) AccessibilityInfo.setAccessibilityFocus(node);
+  };
+
+  const close = () => {
+    if (!busy) onClose();
+  };
+
+  // 동작 줄이기에서는 자리 이동을 빼고 투명도만 바꾼다.
+  const motionStyle = reduceMotion
+    ? { opacity: progress }
+    : { transform: [{ translateY: progress.interpolate({ inputRange: [0, 1], outputRange: [height, 0] }) }] };
+
+  return (
+    <Modal visible={mounted} transparent statusBarTranslucent animationType="none" onShow={focusTitle} onRequestClose={close}>
+      {/* 입력 칸이 있으면 키보드가 올라온 만큼 시트를 밀어 올린다. */}
+      <KeyboardAvoidingView style={styles.root} behavior={Platform.OS === "ios" ? "padding" : undefined}>
+        <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, { opacity: progress }]}>
+          <Pressable style={StyleSheet.absoluteFill} accessible={false} importantForAccessibility="no" onPress={close} />
+        </Animated.View>
+        <Animated.View
+          accessibilityViewIsModal
+          style={[styles.surface, { paddingBottom: Math.max(dimension.x12, dimension.x6 + bottomInset) }, motionStyle]}
+        >
+          <View style={styles.header}>
+            <View style={styles.heading}>
+              <Text ref={titleRef} accessibilityRole="header" style={styles.title}>
+                {title}
+              </Text>
+              {description ? <Text style={styles.description}>{description}</Text> : null}
+            </View>
+            {/* 보이는 아이콘은 iconSize.lg, 누르는 영역은 touchTarget.min. */}
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="닫기"
+              onPress={close}
+              hitSlop={(touchTarget.min - iconSize.lg) / 2}
+              style={({ pressed }) => [styles.close, pressed && styles.closePressed]}
+            >
+              <Icon name="close-line" size={iconSize.lg} color={color.fg.neutralMuted} />
+            </Pressable>
+          </View>
+          {/* 내용이 길면 제목과 버튼은 그대로 두고 이 부분만 스크롤한다. */}
+          <ScrollView style={styles.body} keyboardShouldPersistTaps="handled">
+            {children}
+          </ScrollView>
+          {primaryAction ? (
+            <View style={styles.action}>
+              <Button fullWidth loading={primaryAction.loading} disabled={primaryAction.disabled} onPress={primaryAction.onPress}>
+                {primaryAction.label}
+              </Button>
+            </View>
+          ) : null}
+        </Animated.View>
+      </KeyboardAvoidingView>
+    </Modal>
+  );
+}
+
+const styles = StyleSheet.create({
+  // 위에 x16 을 남겨 시트가 화면을 다 덮지 않게 한다.
+  root: { flex: 1, justifyContent: "flex-end", paddingTop: dimension.x16 },
+  backdrop: { backgroundColor: color.bg.overlay },
+  surface: {
+    maxHeight: "100%",
+    paddingTop: dimension.x6,
+    paddingHorizontal: dimension.x6,
+    borderTopLeftRadius: radius.r6,
+    borderTopRightRadius: radius.r6,
+    backgroundColor: color.bg.layerFloating,
+  },
+  header: { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", gap: dimension.x4 },
+  heading: { flex: 1 },
+  title: { color: color.fg.neutral, fontSize: fontSize.t7, fontWeight: fontWeight.bold, lineHeight: fontSize.t7 * lineHeight.t7 },
+  description: { marginTop: dimension.x1, color: color.fg.neutralMuted, fontSize: fontSize.t4, lineHeight: fontSize.t4 * lineHeight.t4 },
+  close: { borderRadius: radius.full },
+  closePressed: { backgroundColor: color.bg.neutralWeak },
+  body: { marginTop: dimension.x4, flexGrow: 0 },
+  action: { marginTop: dimension.x6 },
+});

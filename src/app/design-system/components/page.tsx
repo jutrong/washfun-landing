@@ -25,7 +25,12 @@ export default function ComponentsPage() {
                 .map((item) => (
                   <li key={item.key}>
                     <Link href={`${COMPONENTS_HREF}/${item.key}`} className="group block">
-                      <div className="flex h-[168px] items-center justify-center overflow-hidden rounded-r4 bg-bg-layer-basement p-x4">
+                      {/* 카드 전체가 링크이므로 견본 안의 버튼·입력 칸은 누르거나 초점이 가지 않게 한다. */}
+                      <div
+                        aria-hidden
+                        {...({ inert: "" } as Record<string, string>)}
+                        className="pointer-events-none flex h-[168px] items-center justify-center overflow-hidden rounded-r4 bg-bg-layer-basement p-x4"
+                      >
                         <Demo name={item.key} thumb />
                       </div>
                       <span className="mt-x3 block text-t6 font-bold group-hover:text-fg-brand">

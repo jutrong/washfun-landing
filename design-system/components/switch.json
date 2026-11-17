@@ -1,0 +1,114 @@
+{
+  "key": "switch",
+  "file": "Switch",
+  "title": "Switch",
+  "ko": "스위치",
+  "category": "selection",
+  "order": 30,
+  "interactive": true,
+  "lead": "설정 하나를 켜고 끄는 부품입니다. 누르는 즉시 적용되고, 저장 버튼을 따로 누르지 않습니다.",
+  "when": [
+    "알림 받기, 자동 충전처럼 켜고 끄는 설정을 바꿀 때",
+    "바꾼 값이 누르는 즉시 적용될 때",
+    "설정 목록에서 줄마다 켜짐과 꺼짐을 보여 줄 때"
+  ],
+  "avoid": [
+    "제출해야 적용되는 선택에는 Checkbox를 씁니다. 약관 동의가 그렇습니다.",
+    "두 가지가 켜짐과 꺼짐이 아니라 서로 다른 값일 때는 Radio를 씁니다.",
+    "결제, 삭제처럼 한 번 실행하는 일에는 Button을 씁니다.",
+    "되돌리기 어려운 설정을 스위치 하나로 바꾸지 않습니다. 확인 창을 거칩니다."
+  ],
+  "anatomy": [
+    { "part": "row", "ko": "줄", "note": "누르는 영역 전체. 레이블은 왼쪽, 스위치는 오른쪽 끝에 둡니다. 높이는 touch-target.min 이상입니다." },
+    { "part": "label", "ko": "레이블", "note": "무엇을 켜고 끄는지 알립니다. 켜져도 꺼져도 글자는 바뀌지 않습니다." },
+    { "part": "description", "ko": "보조 설명", "note": "선택. 레이블 아래에 작은 글자로 둡니다." },
+    { "part": "track", "ko": "바탕", "note": "양 끝이 둥근 막대. 꺼지면 회색, 켜지면 브랜드 색입니다." },
+    { "part": "thumb", "ko": "손잡이", "note": "바탕 안의 흰 원. 바탕 가장자리에서 2px 떨어져 있고, 꺼지면 왼쪽, 켜지면 오른쪽에 있습니다." }
+  ],
+  "variants": [
+    {
+      "name": "default",
+      "use": "모든 스위치의 기본 모양. 켜지면 바탕이 bg.brand-solid, 손잡이가 fg.on-brand-solid입니다. 변형은 이것 하나입니다.",
+      "tokens": { "bg": "color.bg.brand-solid", "fg": "color.fg.on-brand-solid" }
+    }
+  ],
+  "sizes": [
+    {
+      "name": "medium",
+      "default": true,
+      "use": "모든 환경의 스위치. 크기는 이것 하나입니다.",
+      "env": {
+        "web": { "height": "dimension.x12", "track-width": "dimension.x12", "track-height": "dimension.x7", "thumb": "dimension.x6", "travel": "dimension.x5", "gap": "dimension.x3", "radius": "radius.full", "font": "font-size.t5", "description-font": "font-size.t3" },
+        "app": { "height": "dimension.x12", "track-width": "dimension.x12", "track-height": "dimension.x7", "thumb": "dimension.x6", "travel": "dimension.x5", "gap": "dimension.x3", "radius": "radius.full", "font": "font-size.t5", "description-font": "font-size.t3" },
+        "kiosk": { "height": "dimension.x16", "track-width": "dimension.x16", "track-height": "dimension.x9", "thumb": "dimension.x8", "travel": "dimension.x7", "gap": "dimension.x4", "radius": "radius.full", "font": "font-size.t3", "description-font": "font-size.t1" }
+      }
+    }
+  ],
+  "states": [
+    { "name": "off", "change": "바탕은 stroke.neutral 색의 회색 면, 손잡이는 왼쪽에 있습니다.", "tokens": ["color.stroke.neutral", "color.bg.layer-default"] },
+    { "name": "on", "change": "바탕이 bg.brand-solid로 바뀌고 손잡이가 오른쪽으로 옮겨 갑니다.", "tokens": ["color.bg.brand-solid", "color.fg.on-brand-solid"] },
+    { "name": "focus", "change": "웹에서 키보드로 초점이 오면 바탕 둘레에 2px 테두리를 2px 띄워 그립니다.", "tokens": ["color.stroke.brand-solid"] },
+    { "name": "disabled", "change": "바탕은 bg.disabled, 손잡이와 레이블은 fg.disabled. 켜짐과 꺼짐은 손잡이의 자리로 알 수 있습니다. 누를 수 없고 투명도로 흐리게 하지 않습니다.", "tokens": ["color.bg.disabled", "color.fg.disabled"] }
+  ],
+  "motion": [
+    { "what": "손잡이의 자리 이동과 바탕의 색 변화. 동작 줄이기가 켜지면 움직임 없이 바로 바뀝니다.", "duration": "motion.duration.d3", "easing": "motion.easing.standard" }
+  ],
+  "behavior": [
+    "누르는 즉시 적용됩니다. 저장 버튼과 함께 두지 않습니다.",
+    "줄 전체가 눌립니다. 레이블을 눌러도 켜지고 꺼집니다.",
+    "서버에 저장해야 하는 설정은 먼저 화면을 바꾸고, 저장하지 못하면 원래 자리로 되돌린 뒤 이유를 토스트로 알립니다.",
+    "저장하는 동안 다시 누르면 마지막에 누른 값만 보냅니다. 스위치를 처리 표시로 바꾸지 않습니다.",
+    "설정 목록에서는 스위치를 줄의 오른쪽 끝에 맞춥니다. 여러 줄의 스위치가 한 세로줄에 놓입니다.",
+    "켜면 다른 설정이 나타나는 경우, 새 설정은 그 줄 바로 아래에 펼칩니다."
+  ],
+  "accessibility": [
+    "웹은 input type=checkbox에 role=switch를 줍니다. 켜짐과 꺼짐은 요소의 checked가 그대로 알립니다. 버튼으로 만들 때는 aria-checked를 직접 바꿉니다.",
+    "스위치와 레이블을 label 요소로 감쌉니다. 레이블이 없는 스위치에는 aria-label로 이름을 붙입니다.",
+    "켜짐과 꺼짐은 색과 함께 손잡이의 자리로 알립니다.",
+    "꺼진 바탕은 둘레의 면과 3:1 이상(stroke.neutral), 손잡이는 바탕과 3:1 이상입니다.",
+    "보이는 바탕은 48×28px이지만 누르는 영역은 줄 전체이고 touch-target.min 이상입니다.",
+    "키보드의 스페이스로 켜고 끌 수 있습니다."
+  ],
+  "writing": [
+    "레이블은 켜면 일어나는 일을 명사나 '~하기'로 씁니다: 마케팅 알림 받기, 자동 충전.",
+    "'알림 끄기'처럼 부정형으로 쓰지 않습니다. 켜짐이 무슨 뜻인지 헷갈립니다.",
+    "켜짐, 꺼짐이라는 글자를 스위치 옆에 따로 쓰지 않습니다. 레이블은 상태에 따라 바뀌지 않습니다.",
+    "켜면 무슨 일이 생기는지 설명해야 하면 보조 설명에 한 문장으로 씁니다: 포인트가 5,000P보다 적으면 10,000원을 충전해요."
+  ],
+  "props": [
+    { "name": "label", "type": "ReactNode", "note": "스위치 왼쪽 레이블. 앱은 string." },
+    { "name": "description", "type": "string", "note": "레이블 아래 보조 설명." },
+    { "name": "checked", "type": "boolean", "note": "켜진 상태. 밖에서 값을 가질 때 씁니다." },
+    { "name": "defaultChecked", "type": "boolean", "default": "false", "note": "처음 상태. 웹에서 값을 밖에 두지 않을 때 씁니다." },
+    { "name": "onCheckedChange", "type": "(checked: boolean) => void", "note": "켜거나 끌 때. 웹과 앱이 같은 이름을 씁니다." },
+    { "name": "disabled", "type": "boolean", "default": "false", "note": "누를 수 없습니다." }
+  ],
+  "implementation": {
+    "web": [
+      "label 요소 하나로 레이블과 스위치를 감쌉니다. flex, items-center, justify-between, gap-x3를 주고 줄의 높이는 min-h-x12로 만듭니다.",
+      "input type=checkbox에 role=\"switch\"와 appearance-none을 주어 그 요소를 바탕으로 그립니다(h-x7 w-x12 rounded-full). 켜짐은 checked:bg-bg-brand-solid입니다.",
+      "손잡이는 input 바로 뒤의 span입니다(size-x6 rounded-full). 바탕에서 2px 안쪽에 두고 peer-checked:translate-x-x5로 옮깁니다. 2px 안쪽 여백은 선 굵기처럼 토큰이 없어 Tailwind 기본 단계(left-0.5 top-0.5)를 씁니다.",
+      "움직이는 속성은 transform과 색뿐입니다. left나 margin을 움직이지 않습니다. 바탕에는 transition-colors, 손잡이에는 transition-transform을 주고 둘 다 duration-d3 ease-standard입니다.",
+      "초점 테두리는 input에 focus-visible:outline으로 그립니다. outline-offset-2로 바탕에서 띄웁니다.",
+      "비활성은 disabled:bg-bg-disabled, 손잡이는 peer-disabled:bg-fg-disabled로 바꿉니다. opacity는 쓰지 않습니다.",
+      "동작 줄이기에는 바탕과 손잡이 모두 motion-reduce:transition-none을 붙입니다."
+    ],
+    "app": [
+      "Pressable 하나로 레이블과 스위치를 감싸 줄 전체가 눌리게 합니다. minHeight는 tokens.dimension.x12, 레이블은 flex 1로 두어 스위치를 오른쪽 끝으로 밉니다.",
+      "바탕은 tokens.dimension.x12 × x7(48×28), 손잡이는 x6(24), 움직이는 거리는 x5(20)입니다. 지금 앱의 50×30, 손잡이 26은 토큰에 없는 값이어서 바꿔야 하는 부분입니다. 2px 안쪽 여백은 그대로입니다.",
+      "지금 앱은 꺼진 바탕에 팔레트의 회색을 직접 쓰고 있어 바꿔야 하는 부분입니다. color.stroke.neutral을 씁니다.",
+      "손잡이는 Animated.timing으로 translateX를 옮기고, 바탕 색은 같은 값을 interpolate해서 바꿉니다. 시간은 tokens.motion.duration.d3(200ms)으로 지금 앱과 같습니다.",
+      "지금 앱은 linear 곡선을 쓰고 있어 바꿔야 하는 부분입니다. linear는 처리 표시에만 쓰므로 tokens.motion.easing.standard를 Easing.bezier에 넘겨 만든 곡선으로 바꿉니다.",
+      "AccessibilityInfo.isReduceMotionEnabled가 참이면 duration을 0으로 두어 움직임 없이 바로 바꿉니다.",
+      "accessibilityRole은 switch, accessibilityState에 checked와 disabled를 넘깁니다. 비활성은 opacity가 아니라 color.bg.disabled와 color.fg.disabled로 바꿉니다."
+    ],
+    "kiosk": [
+      "웹 기준 구현을 그대로 가져가고 Tailwind preset만 kiosk용으로 만듭니다(sync-tokens --env kiosk). 같은 클래스 이름으로 글자 크기가 kiosk 값이 됩니다.",
+      "크기 값만 kiosk 값으로 바꿉니다: 줄 min-h-x16 gap-x4, 바탕 h-x9 w-x16, 손잡이 size-x8, 옮기는 거리 peer-checked:translate-x-x7, 레이블 text-t3. 2px 안쪽 여백은 그대로입니다.",
+      "줄 전체가 눌려야 하고 줄의 너비는 화면 너비를 채웁니다. 바탕만 눌리면 서서 손가락으로 누르기 어렵습니다.",
+      "hover는 없으므로 눌리는 동안 줄의 배경을 active:bg-bg-neutral-weak로 바꿔 반응을 보여 줍니다.",
+      "키오스크의 고객 화면에는 설정이 거의 없습니다. 스위치는 직원용 설정 화면에서 쓰고, 고객 화면에서 두 가지 가운데 고르게 할 때는 큰 버튼 두 개를 씁니다.",
+      "초점 테두리는 키보드가 없는 키오스크에서는 보이지 않지만, 지우지 않고 둡니다."
+    ]
+  }
+}

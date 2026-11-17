@@ -60,10 +60,20 @@
 - 여러 색을 쓰는 그림(로고, 세차 코스 그림)은 아이콘이 아니라 이미지로 다룬다.
 - Tailwind는 `size-icon-lg`, `min-h-touch min-w-touch`, 앱은 `tokens.iconSize.lg`, `tokens.touchTarget.min`.
 
+## 컴포넌트
+
+- 부품별 명세의 원본은 `design-system/components/<이름>.json`이다. 구성 조각, 변형, 환경별 크기, 상태, 움직임, 접근성, 문구, props, 웹·앱·키오스크 구현 단계를 담는다. 견본과 함께 보려면 `/design-system/components`.
+- 지금 있는 부품: Button, Text Field, Checkbox, Radio, Switch, Chip, Badge, Dialog, Bottom Sheet, Toast, Tabs.
+- 웹 기준 구현은 `src/components/design-system/reference/<이름>.tsx`다. 문서의 견본이 이 코드로 그려진다. 색 값과 임의 값 클래스를 쓰지 않고 토큰 클래스만 쓴다.
+- 앱 예시는 `design-system/components/<이름>.app.txt`(React Native)다. `tokens`에서 값을 가져온다. 앱에서 실행해 확인한 코드는 아니다.
+- 키오스크는 웹 기준 구현을 그대로 쓰고 Tailwind preset만 kiosk로 바꾼다. 크기 표의 kiosk 값은 각 명세의 Sizes에 있다.
+- 누르는 부품의 기본 크기는 환경마다 `touch-target.min` 이상이고, 모든 변형의 글자와 면은 4.5:1 이상이다. 테스트가 확인한다.
+- 새 부품을 더할 때는 명세 json, 웹 기준 구현, 앱 예시, 견본(`reference/demos/<이름>.tsx`) 네 파일을 만들고 `demos.tsx`에 등록한다.
+
 ## 움직임
 
 - 시간은 `motion.duration.d1`~`d5`(100·150·200·300·500ms), 곡선은 `motion.easing.standard`·`enter`·`exit`·`linear`. 환경과 상관없이 같은 값이다. 직접 보려면 `/design-system/motion`.
-- 누름 반응은 d1, 색·테두리 변화는 d2, 열릴 때는 d3 + enter, 사라질 때는 d3 + exit, 모달·시트·토스트는 d4 + enter, 화면 전환은 d5 + enter. 로딩 표시만 linear.
+- 누름 반응은 d1, 색·테두리 변화는 d2, 열릴 때와 토스트는 d3 + enter, 사라질 때는 d3 + exit, 모달·시트는 d4 + enter, 화면 전환은 d5 + enter. 로딩 표시만 linear.
 - 움직이는 속성은 투명도와 transform으로 한정한다. d5보다 긴 움직임은 로딩 표시와 진행 막대뿐이다.
 - 기기의 동작 줄이기 설정이 켜지면 자리 이동과 크기 변화를 뺀다(`motion-reduce:transition-none`). 반복되는 움직임은 멈춘다.
 - Tailwind는 `duration-d3 ease-enter`, 앱은 `tokens.motion.duration.d3`(ms 숫자), `Easing.bezier(...tokens.motion.easing.enter)`.

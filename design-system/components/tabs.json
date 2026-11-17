@@ -1,0 +1,136 @@
+{
+  "key": "tabs",
+  "file": "Tabs",
+  "title": "Tabs",
+  "ko": "탭",
+  "category": "navigation",
+  "order": 10,
+  "interactive": true,
+  "lead": "한 화면 안에서 같은 무게의 내용을 나눠 보여 주고 눌러서 오가는 부품입니다. 선택된 탭은 밑줄과 굵은 글자로 알립니다.",
+  "when": [
+    "매장 상세에서 매장 정보, 상품, 리뷰처럼 한 대상의 내용을 나눠 볼 때",
+    "이용 내역을 전체, 세차, 포인트 충전처럼 같은 꼴의 목록으로 나눌 때",
+    "시트 안에서 두세 가지 보기를 오갈 때(small)",
+    "앱의 가장 큰 구역(홈, 매장, 내 정보)을 오갈 때는 화면 아래 탭 바(bottom-bar)"
+  ],
+  "avoid": [
+    "목록을 조건으로 거르기만 할 때는 Chip을 씁니다. 탭은 내용 전체를 바꿉니다.",
+    "순서대로 밟아야 하는 단계에는 쓰지 않습니다. 탭은 어느 것이든 바로 갈 수 있어야 합니다.",
+    "탭이 하나뿐이거나 여섯 개를 넘으면 쓰지 않습니다. 화면 아래 탭 바는 3~5개입니다.",
+    "탭 안에 탭을 또 넣지 않습니다. 안쪽은 Chip이나 구역 제목으로 나눕니다.",
+    "설정 값 가운데 하나를 고르는 알약 모양 선택은 탭이 아닙니다. 파트너 웹의 알약 모양 탭은 내용을 바꾸는 곳만 이 밑줄 탭으로 옮깁니다."
+  ],
+  "anatomy": [
+    { "part": "list", "ko": "탭 줄", "note": "탭을 가로로 늘어놓는 줄. 아래에 1px 구분선(stroke.neutral-muted)이 화면 너비만큼 깔립니다." },
+    { "part": "tab", "ko": "탭", "note": "누르는 영역. 높이가 고정이고 좌우 여백을 가집니다." },
+    { "part": "label", "ko": "레이블", "note": "한 줄. 선택되면 bold, 아니면 regular입니다." },
+    { "part": "indicator", "ko": "밑줄", "note": "선택된 탭 아래의 2px 선. 구분선 위에 겹쳐 그립니다." },
+    { "part": "panel", "ko": "내용", "note": "선택된 탭의 내용. 탭 줄 바로 아래에 둡니다." },
+    { "part": "icon", "ko": "아이콘", "note": "bottom-bar에만 있습니다. 레이블 위에 icon-size.lg로 둡니다." }
+  ],
+  "variants": [
+    { "name": "underline", "use": "화면 안의 내용을 나눌 때 쓰는 기본 모양. 선택된 탭은 fg.neutral 글자와 같은 색의 2px 밑줄, 나머지는 fg.neutral-muted 글자입니다.", "tokens": { "bg": "color.bg.layer-default", "fg": "color.fg.neutral", "stroke": "color.stroke.neutral-muted" } },
+    { "name": "bottom-bar", "use": "앱 화면 아래의 탭 바. 선택된 탭은 fg.brand 아이콘과 글자, 나머지는 fg.neutral-muted입니다. 위쪽에 1px 구분선을 둡니다.", "tokens": { "bg": "color.bg.layer-default", "fg": "color.fg.brand", "stroke": "color.stroke.neutral-muted" } }
+  ],
+  "sizes": [
+    {
+      "name": "medium",
+      "default": true,
+      "use": "화면 위쪽의 탭",
+      "env": {
+        "web": { "height": "dimension.x12", "padding-x": "dimension.x4", "font": "font-size.t5" },
+        "app": { "height": "dimension.x12", "padding-x": "dimension.x4", "font": "font-size.t5" },
+        "kiosk": { "height": "dimension.x16", "padding-x": "dimension.x6", "font": "font-size.t3" }
+      }
+    },
+    {
+      "name": "small",
+      "use": "시트와 카드 안의 탭. 키오스크에서는 쓰지 않습니다.",
+      "env": {
+        "web": { "height": "touch-target.min", "padding-x": "dimension.x3", "font": "font-size.t4" },
+        "app": { "height": "touch-target.min", "padding-x": "dimension.x3", "font": "font-size.t4" },
+        "kiosk": {}
+      }
+    },
+    {
+      "name": "bottom-bar",
+      "use": "앱 화면 아래 탭 바의 탭 하나. 높이는 기기의 아래쪽 안전 영역을 뺀 값입니다. 앱에만 있습니다.",
+      "env": {
+        "web": {},
+        "app": { "height": "dimension.x14", "gap": "dimension.x1", "font": "font-size.t1", "icon": "icon-size.lg" },
+        "kiosk": {}
+      }
+    }
+  ],
+  "states": [
+    { "name": "default", "change": "선택되지 않은 탭. 글자는 fg.neutral-muted, regular. 밑줄은 없고 탭 줄의 구분선만 보입니다.", "tokens": ["color.fg.neutral-muted", "color.stroke.neutral-muted"] },
+    { "name": "selected", "change": "글자는 fg.neutral, bold. 아래에 같은 색의 2px 밑줄을 그립니다. bottom-bar는 아이콘과 글자가 fg.brand가 되고 아이콘이 Line에서 Fill 모양으로 바뀝니다.", "tokens": ["color.fg.neutral", "color.fg.brand"] },
+    { "name": "pressed", "change": "누르는 동안 글자가 fg.neutral이 되고 면이 bg.neutral-weak가 됩니다.", "tokens": ["color.fg.neutral", "color.bg.neutral-weak"] },
+    { "name": "focus", "change": "웹에서 키보드로 초점이 오면 탭 안쪽에 2px 테두리를 그립니다. 탭 줄이 가로로 스크롤될 때 잘리지 않도록 바깥이 아니라 안쪽에 그립니다.", "tokens": ["color.stroke.brand-solid"] },
+    { "name": "disabled", "change": "글자는 fg.disabled. 누를 수 없고 화살표 키로 옮길 때 건너뜁니다.", "tokens": ["color.fg.disabled"] }
+  ],
+  "motion": [
+    { "what": "탭의 글자색, 밑줄 색, 눌린 면의 색 변화", "duration": "motion.duration.d2", "easing": "motion.easing.standard" }
+  ],
+  "behavior": [
+    "언제나 탭 하나가 선택돼 있습니다. 화면에 처음 들어오면 첫 탭이 선택돼 있고, 뒤로 갔다가 돌아오면 보던 탭을 그대로 보여 줍니다.",
+    "누르면 내용이 바로 바뀝니다. 내용을 바꿀 때 밀려 들어오는 움직임은 주지 않습니다. 불러오는 동안에는 내용 자리에 로딩 표시를 두고 탭 줄은 그대로 둡니다.",
+    "탭 너비는 기본으로 내용을 따르고 왼쪽부터 놓습니다. 탭이 2~3개면 fullWidth로 너비를 똑같이 나눕니다.",
+    "탭이 화면 너비를 넘으면 줄을 바꾸지 않고 탭 줄만 가로로 스크롤합니다. 선택된 탭이 가려져 있으면 보이는 곳으로 옮깁니다.",
+    "내용이 길어 화면이 스크롤되면 탭 줄을 화면 위에 붙여 둡니다.",
+    "small은 높이를 touch-target.min에 맞춥니다. 탭 사이에는 간격을 두지 않아 누르는 영역이 서로 맞닿습니다.",
+    "화면 아래 탭 바(bottom-bar)는 3~5개의 탭을 같은 너비로 나누고, 아이콘(icon-size.lg) 아래에 레이블을 둡니다. 높이는 x14에 기기의 아래쪽 안전 영역을 더합니다.",
+    "화면 아래 탭 바에서 이미 선택된 탭을 다시 누르면 그 구역의 첫 화면으로 돌아가고 목록은 맨 위로 올립니다. 결제 같은 한 가지 일에 집중하는 화면에서는 탭 바를 숨깁니다."
+  ],
+  "accessibility": [
+    "웹은 탭 줄에 role=\"tablist\"와 이름(aria-label), 탭에 role=\"tab\"과 aria-selected, 내용에 role=\"tabpanel\"과 aria-labelledby를 줍니다. 탭과 내용은 aria-controls로 잇습니다.",
+    "Tab 키로는 선택된 탭 하나에만 초점이 갑니다(roving tabindex). 왼쪽, 오른쪽 화살표로 옆 탭으로 옮기고 Home, End로 처음과 끝으로 갑니다. 옮기면 바로 선택됩니다.",
+    "선택 여부를 색만으로 알리지 않습니다. 밑줄과 굵기가 함께 바뀌고, 화면 아래 탭 바는 아이콘 모양이 함께 바뀝니다.",
+    "선택되지 않은 탭의 글자(fg.neutral-muted)도 바탕과 4.5:1 이상을 지킵니다. 더 옅은 색으로 바꾸지 않습니다.",
+    "앱은 탭 줄에 accessibilityRole tablist, 탭에 tab과 accessibilityState의 selected를 줍니다.",
+    "화면 아래 탭 바는 아이콘만 두지 않고 레이블을 함께 보여 줍니다. 알림 개수 같은 표시가 있으면 '알림, 새 소식 3개'처럼 이름에 넣어 읽어 줍니다."
+  ],
+  "writing": [
+    "명사로 짧게 씁니다: 매장 정보, 상품, 리뷰. '~하기', '~보기'는 붙이지 않습니다.",
+    "두 단어를 넘기지 않고, 같은 줄의 탭은 말의 꼴과 길이를 비슷하게 맞춥니다.",
+    "개수를 함께 보여 줄 때는 레이블 뒤에 숫자만 둡니다: 리뷰 128.",
+    "화면 아래 탭 바의 레이블은 한 단어로 씁니다: 홈, 매장, 구독, 내 정보."
+  ],
+  "props": [
+    { "name": "items", "type": "{ value: string; label: string; content?: ReactNode; disabled?: boolean }[]", "note": "탭 목록. content를 주면 선택된 탭의 내용을 탭 줄 아래에 그립니다." },
+    { "name": "value", "type": "string", "note": "선택된 탭. 주면 부모가 값을 가집니다." },
+    { "name": "defaultValue", "type": "string", "note": "처음 선택할 탭. 없으면 첫 탭입니다." },
+    { "name": "onChange", "type": "(value: string) => void", "note": "탭을 바꿀 때 부릅니다." },
+    { "name": "label", "type": "string", "note": "탭 줄이 무엇을 나누는지 읽어 줄 이름. 예: 매장 상세." },
+    { "name": "size", "type": "medium | small", "default": "medium", "note": "크기." },
+    { "name": "fullWidth", "type": "boolean", "default": "false", "note": "탭 너비를 똑같이 나눠 줄을 채웁니다." }
+  ],
+  "implementation": {
+    "web": [
+      "탭 줄은 div에 role=\"tablist\"와 aria-label을, 탭은 button에 role=\"tab\", aria-selected, aria-controls를 줍니다. 내용은 div에 role=\"tabpanel\"과 aria-labelledby를 줍니다. id는 useId로 만듭니다.",
+      "선택된 탭만 tabIndex 0, 나머지는 -1로 둡니다. onKeyDown에서 왼쪽, 오른쪽 화살표와 Home, End를 받아 옆 탭에 focus를 주고 바로 선택합니다. 비활성 탭은 건너뛰고 끝에서는 반대쪽 끝으로 돕니다.",
+      "탭은 h-x12 px-x4 text-t5로 높이를 고정하고 border-b-2를 언제나 둡니다. 선택되면 border-fg-neutral, 아니면 border-transparent로 색만 바꿔 높이가 흔들리지 않게 합니다.",
+      "1px 구분선은 탭 줄을 감싼 div 안에 absolute로 깔고 그 위에 탭 줄을 올립니다. 탭 줄에 border-b를 주고 탭을 음수 margin으로 내리면 overflow-x-auto와 만나 세로 스크롤이 생깁니다.",
+      "선택된 탭은 font-bold, 나머지는 font-normal입니다. 굵기가 바뀌면 너비가 조금 달라지므로 탭이 2~3개면 fullWidth(flex-1)로 너비를 고정합니다.",
+      "초점 테두리는 focus-visible:outline에 -outline-offset-2를 붙여 안쪽에 그립니다. 탭 줄이 overflow-x-auto라서 바깥에 그리면 잘립니다.",
+      "색 변화에는 transition-colors duration-d2 ease-standard를, 동작 줄이기에는 motion-reduce:transition-none을 붙입니다. 밑줄이 옆으로 미끄러지는 움직임은 넣지 않습니다."
+    ],
+    "app": [
+      "탭 줄은 View에 accessibilityRole tablist를, 탭은 Pressable에 accessibilityRole tab과 accessibilityState의 selected를 줍니다.",
+      "높이는 tokens.dimension.x12, 좌우 여백은 x4, 글자는 tokens.fontSize.t5에서 가져옵니다. 위아래 padding으로 높이를 만들지 않습니다.",
+      "밑줄은 탭 아래에 absolute로 놓은 2px View입니다. 선택되면 color.fg.neutral, 아니면 transparent로 색만 바꿉니다. 탭 줄 전체에는 borderBottomWidth 1과 color.stroke.neutralMuted를 줍니다.",
+      "선택된 탭은 fontWeight.bold와 color.fg.neutral, 나머지는 fontWeight.regular와 color.fg.neutralMuted입니다.",
+      "지금 앱의 StoreTabMenu는 padding 14/16으로 높이를 만들고, 테두리 두께를 선택 여부에 따라 2px과 1px로 바꾸며, 굵기 600과 색 값을 직접 쓰고 있어 바꿔야 하는 부분입니다. 높이 x12, 언제나 2px 자리, bold, 토큰 색으로 바꿉니다.",
+      "지금 앱의 시트 안 탭은 높이가 40이라 누르는 영역이 모자랍니다. small(tokens.touchTarget.min)로 바꿔야 하는 부분입니다.",
+      "화면 아래 탭 바는 react-navigation의 tabBar 설정으로 맞춥니다: tabBarActiveTintColor는 color.fg.brand, tabBarInactiveTintColor는 color.fg.neutralMuted, 아이콘은 iconSize.lg, 높이는 dimension.x14에 아래쪽 안전 영역(insets.bottom)을 더합니다. 지금 앱은 레이블 10px, 높이 85(iOS)와 70(Android)을 직접 쓰고 있어 fontSize.t1과 이 계산으로 바꿔야 하는 부분입니다."
+    ],
+    "kiosk": [
+      "웹 기준 구현을 그대로 가져가고 Tailwind preset만 kiosk용으로 만듭니다(sync-tokens --env kiosk). 글자 크기는 같은 클래스 이름으로 kiosk 값이 됩니다.",
+      "크기 표(SIZES)만 kiosk 값으로 바꿉니다: medium은 h-x16 px-x6 text-t3. small과 bottom-bar는 두지 않습니다.",
+      "지금 키오스크에는 탭이 없습니다. 한 화면에 한 가지 일만 두는 것이 원칙이므로, 상품 종류를 나누는 것처럼 꼭 필요한 화면에만 씁니다.",
+      "탭은 2~4개로 하고 fullWidth로 너비를 똑같이 나눕니다. 가로 스크롤은 쓰지 않습니다. 서서 쓰는 화면에서는 가려진 탭을 찾기 어렵습니다.",
+      "hover는 없으므로 눌린 상태(active:)가 유일한 반응입니다. 눌린 면의 색이 분명히 보이는지 실제 화면에서 확인합니다.",
+      "초점 테두리와 화살표 키 처리는 키보드가 없는 키오스크에서는 쓰이지 않지만, 지우지 않고 둡니다."
+    ]
+  }
+}

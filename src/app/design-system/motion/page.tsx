@@ -18,9 +18,9 @@ const PRINCIPLES = [
 const USES = [
   { use: "누름 반응, 체크, 토글", duration: "d1", easing: "standard" },
   { use: "색·테두리 변화 (hover, 선택)", duration: "d2", easing: "standard" },
-  { use: "툴팁, 칩, 드롭다운이 열릴 때", duration: "d3", easing: "enter" },
+  { use: "툴팁, 칩, 드롭다운, 토스트가 나타날 때", duration: "d3", easing: "enter" },
   { use: "닫히거나 사라질 때", duration: "d3", easing: "exit" },
-  { use: "모달, 시트, 토스트가 나타날 때", duration: "d4", easing: "enter" },
+  { use: "모달, 시트가 나타날 때", duration: "d4", easing: "enter" },
   { use: "화면 전환, 큰 면이 움직일 때", duration: "d5", easing: "enter" },
   { use: "로딩 표시, 진행 막대", duration: "반복", easing: "linear" },
 ];

@@ -2,6 +2,16 @@
 
 import type { ReactNode } from "react";
 import Button from "./Button";
+import text_fieldDemo from "./demos/text-field";
+import checkboxDemo from "./demos/checkbox";
+import radioDemo from "./demos/radio";
+import switchDemo from "./demos/switch";
+import chipDemo from "./demos/chip";
+import badgeDemo from "./demos/badge";
+import dialogDemo from "./demos/dialog";
+import bottom_sheetDemo from "./demos/bottom-sheet";
+import toastDemo from "./demos/toast";
+import tabsDemo from "./demos/tabs";
 
 // 견본용 아이콘. 실제 제품에서는 Icon Library 의 아이콘을 쓴다.
 const plus = (
@@ -54,4 +64,14 @@ export const DEMOS: Record<string, (thumb: boolean) => ReactNode> = {
         </div>
       </div>
     ),
+  "text-field": text_fieldDemo,
+  "checkbox": checkboxDemo,
+  "radio": radioDemo,
+  "switch": switchDemo,
+  "chip": chipDemo,
+  "badge": badgeDemo,
+  "dialog": dialogDemo,
+  "bottom-sheet": bottom_sheetDemo,
+  "toast": toastDemo,
+  "tabs": tabsDemo,
 };
