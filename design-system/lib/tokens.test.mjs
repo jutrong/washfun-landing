@@ -18,8 +18,19 @@ test("앱 기준 값", () => {
   assert.equal(resolved.color.fg["neutral-muted"].$value, "#6B7280");
   assert.equal(resolved.color.bg["layer-basement"].$value, "#F9F9FA");
   assert.equal(resolved.color.stroke["neutral-weak"].$value, "#E1E3E6");
-  assert.equal(resolved.color.fg.critical.$value, "#FF0000");
-  assert.equal(resolved.color.fg.warning.$value, "#F59F0A");
+});
+test("상태 색 글자와 강조 면은 대비 기준(4.5:1)을 지키는 단계를 가리킨다", () => {
+  assert.equal(resolved.color.fg.critical.$value, "#CC0000");
+  assert.equal(resolved.color.fg.warning.$value, "#B45309");
+  assert.equal(resolved.color.fg.positive.$value, "#15803D");
+  assert.equal(resolved.color.fg.informative.$value, "#2563EB");
+  assert.equal(resolved.color.bg["critical-solid"].$value, "#CC0000");
+  assert.equal(resolved.color.bg["positive-solid"].$value, "#15803D");
+  assert.equal(resolved.color.bg["informative-solid"].$value, "#2563EB");
+});
+test("경고 강조 면은 색을 두고 그 위의 글자를 어둡게 쓴다", () => {
+  assert.equal(resolved.color.bg["warning-solid"].$value, "#F59F0A");
+  assert.equal(resolved.color.fg["on-warning-solid"].$value, "#15171A");
 });
 test("역할 색은 모두 팔레트를 참조한다", () => {
   for (const t of flat.filter((t) => /^color\.(fg|bg|stroke)\./.test(t.path)))

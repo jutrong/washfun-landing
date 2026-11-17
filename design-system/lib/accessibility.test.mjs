@@ -46,3 +46,9 @@ test("지침마다 규칙이 있다", () => {
   assert.ok(a11y.principles.length >= 3);
   for (const guide of [...a11y.guides, a11y.kiosk]) assert.ok(guide.title && guide.rules.length >= 2, guide.key);
 });
+test("상태 색 글자와 강조 면 위의 글자는 알려진 문제 없이 기준을 지킨다", () => {
+  const status = results.filter((result) => /critical|warning|positive|informative/.test(result.fg + result.bg));
+  assert.equal(status.length, 12);
+  for (const result of status) assert.equal(result.known, undefined, `${result.fg} / ${result.bg}`);
+  assert.ok(results.some((result) => result.fg === "color.fg.on-warning-solid" && result.bg === "color.bg.warning-solid"));
+});

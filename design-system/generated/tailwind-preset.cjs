@@ -1,4 +1,4 @@
-// Generated from washfun design tokens v0.1.0. Do not edit. Run sync-tokens to update.
+// Generated from washfun design tokens v0.2.0. Do not edit. Run sync-tokens to update.
 module.exports = {
   "theme": {
     "extend": {
@@ -77,10 +77,11 @@ module.exports = {
           "disabled": "#B1B1B1",
           "brand": "#1C74BC",
           "on-brand-solid": "#FFFFFF",
-          "critical": "#FF0000",
-          "warning": "#F59F0A",
-          "positive": "#22C55E",
-          "informative": "#3B82F6"
+          "on-warning-solid": "#15171A",
+          "critical": "#CC0000",
+          "warning": "#B45309",
+          "positive": "#15803D",
+          "informative": "#2563EB"
         },
         "bg": {
           "layer-basement": "#F9F9FA",
@@ -92,13 +93,13 @@ module.exports = {
           "brand-solid-pressed": "#165D96",
           "brand-weak": "#EEF5FB",
           "overlay": "#000000B3",
-          "critical-solid": "#FF0000",
+          "critical-solid": "#CC0000",
           "critical-weak": "#FFE5E5",
           "warning-solid": "#F59F0A",
           "warning-weak": "#FFF8E1",
-          "positive-solid": "#22C55E",
+          "positive-solid": "#15803D",
           "positive-weak": "#F0FDF4",
-          "informative-solid": "#3B82F6",
+          "informative-solid": "#2563EB",
           "informative-weak": "#EFF6FF"
         },
         "stroke": {

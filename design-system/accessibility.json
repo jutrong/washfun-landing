@@ -83,85 +83,73 @@
       "fg": "color.fg.on-brand-solid",
       "bg": "color.bg.critical-solid",
       "kind": "text",
-      "use": "오류 강조 면 위의 글자",
-      "known": "앱의 오류 색(#FF0000)을 그대로 가져왔습니다. 아이콘과 문장을 함께 써서 색에만 기대지 않습니다."
+      "use": "오류 강조 면 위의 글자"
     },
     {
-      "fg": "color.fg.on-brand-solid",
+      "fg": "color.fg.on-warning-solid",
       "bg": "color.bg.warning-solid",
       "kind": "text",
-      "use": "경고 강조 면 위의 글자",
-      "known": "경고 색은 글자로 쓰기에 밝습니다. 글자는 fg.neutral 로 쓰고 색은 아이콘과 면에만 씁니다."
+      "use": "경고 강조 면 위의 글자"
     },
     {
       "fg": "color.fg.on-brand-solid",
       "bg": "color.bg.positive-solid",
       "kind": "text",
-      "use": "성공 강조 면 위의 글자",
-      "known": "성공 색은 글자로 쓰기에 밝습니다. 글자는 fg.neutral 로 쓰고 색은 아이콘과 면에만 씁니다."
+      "use": "성공 강조 면 위의 글자"
     },
     {
       "fg": "color.fg.on-brand-solid",
       "bg": "color.bg.informative-solid",
       "kind": "text",
-      "use": "안내 강조 면 위의 글자",
-      "known": "안내 색은 큰 글자(24px 이상, 굵게 19px 이상)에만 씁니다."
+      "use": "안내 강조 면 위의 글자"
     },
     {
       "fg": "color.fg.critical",
       "bg": "color.bg.layer-default",
       "kind": "text",
-      "use": "오류 글자",
-      "known": "앱의 오류 색(#FF0000)을 그대로 가져왔습니다. 아이콘과 문장을 함께 써서 색에만 기대지 않습니다."
+      "use": "오류 글자"
     },
     {
       "fg": "color.fg.critical",
       "bg": "color.bg.critical-weak",
       "kind": "text",
-      "use": "오류 옅은 면 위의 글자",
-      "known": "앱의 오류 색(#FF0000)을 그대로 가져왔습니다. 아이콘과 문장을 함께 써서 색에만 기대지 않습니다."
+      "use": "오류 옅은 면 위의 글자"
     },
     {
       "fg": "color.fg.warning",
       "bg": "color.bg.layer-default",
       "kind": "text",
-      "use": "경고 글자",
-      "known": "경고 색은 글자로 쓰기에 밝습니다. 글자는 fg.neutral 로 쓰고 색은 아이콘과 면에만 씁니다."
+      "use": "경고 글자"
     },
     {
       "fg": "color.fg.warning",
       "bg": "color.bg.warning-weak",
       "kind": "text",
-      "use": "경고 옅은 면 위의 글자",
-      "known": "경고 색은 글자로 쓰기에 밝습니다. 글자는 fg.neutral 로 쓰고 색은 아이콘과 면에만 씁니다."
+      "use": "경고 옅은 면 위의 글자"
     },
     {
       "fg": "color.fg.positive",
       "bg": "color.bg.layer-default",
       "kind": "text",
-      "use": "성공 글자",
-      "known": "성공 색은 글자로 쓰기에 밝습니다. 글자는 fg.neutral 로 쓰고 색은 아이콘과 면에만 씁니다."
+      "use": "성공 글자"
     },
     {
       "fg": "color.fg.positive",
       "bg": "color.bg.positive-weak",
       "kind": "text",
-      "use": "성공 옅은 면 위의 글자",
-      "known": "성공 색은 글자로 쓰기에 밝습니다. 글자는 fg.neutral 로 쓰고 색은 아이콘과 면에만 씁니다."
+      "use": "성공 옅은 면 위의 글자"
     },
     {
       "fg": "color.fg.informative",
       "bg": "color.bg.layer-default",
       "kind": "text",
-      "use": "안내 글자",
-      "known": "안내 색은 큰 글자(24px 이상, 굵게 19px 이상)에만 씁니다."
+      "use": "안내 글자"
     },
     {
       "fg": "color.fg.informative",
       "bg": "color.bg.informative-weak",
       "kind": "text",
-      "use": "안내 옅은 면 위의 글자",
-      "known": "안내 색은 큰 글자(24px 이상, 굵게 19px 이상)에만 씁니다."
+      "use": "안내 옅은 면 위의 글자"
     },
     {
       "fg": "color.stroke.neutral-weak",

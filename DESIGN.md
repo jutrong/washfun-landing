@@ -80,8 +80,9 @@
 
 - 규칙과 검사할 색 짝의 원본은 `design-system/accessibility.json`이다. 지금 값으로 계산한 대비표는 `/design-system/accessibility`.
 - 글자는 배경과 4.5:1 이상, 아이콘과 외곽선은 3:1 이상의 명도 대비를 가진다. 큰 글자(24px 이상, 굵게 19px 이상)는 3:1.
-- 기준을 지키는 짝: `fg.neutral`, `fg.neutral-muted`, `fg.brand`를 `bg.layer-default` 위에, `fg.on-brand-solid`를 `bg.brand-solid` 위에.
-- 기준에 못 미치는 짝: `fg.neutral-subtle`, `fg.placeholder`, 상태 색 글자(`fg.critical`·`warning`·`positive`·`informative`), 상태 색 강조 면 위의 흰 글자, `stroke.neutral-weak`. 꼭 읽어야 하는 글자는 `fg.neutral`이나 `fg.neutral-muted`로 쓰고, 상태 색은 아이콘·면과 문장을 함께 써서 알린다.
+- 기준을 지키는 짝: `fg.neutral`, `fg.neutral-muted`, `fg.brand`를 `bg.layer-default` 위에, `fg.on-brand-solid`를 `bg.brand-solid` 위에, 상태 색 글자를 `bg.layer-default`와 옅은 상태 면 위에.
+- 기준에 못 미치는 짝: `fg.neutral-subtle`, `fg.placeholder`, `bg.brand-weak` 위의 `fg.brand`, `stroke.neutral-weak`. 꼭 읽어야 하는 글자는 `fg.neutral`이나 `fg.neutral-muted`로 쓰고, 입력 칸은 레이블과 배경 면으로 함께 알린다.
+- 상태 색 글자(`fg.critical`·`warning`·`positive`·`informative`)와 강조 면은 대비 기준을 지키는 단계를 가리킨다. 경고 강조 면(`bg.warning-solid`) 위의 글자만 `fg.on-warning-solid`(어두운 글자)를 쓰고, 나머지 강조 면 위에는 `fg.on-brand-solid`를 쓴다.
 - 본문은 `font-size.t5` 이상, 줄 높이 1.5 이상. 누르는 영역은 `touch-target.min` 이상.
 - 색만으로 상태를 알리지 않는다. 아이콘만 있는 버튼에는 읽어 줄 이름을 붙이고, 입력 칸에는 보이는 레이블을 둔다.
 - 키오스크는 한 화면에 한 가지 일, 어느 화면에서나 이전으로·처음으로, 결과는 화면과 소리로 함께 알린다. KS X 9211 수치와의 대조는 아직 하지 않았다.
@@ -121,7 +122,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 ## 토큰
 
 <!-- tokens:start -->
-버전 0.1.0
+버전 0.2.0
 
 ### 역할 색
 
@@ -133,11 +134,12 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.fg.placeholder` | `color.palette.gray-500` | `#C4C7CC` | 입력 안내 글자 |
 | `color.fg.disabled` | `color.palette.gray-600` | `#B1B1B1` | 비활성 글자 |
 | `color.fg.brand` | `color.palette.blue-600` | `#1C74BC` | 강조 글자·링크 |
-| `color.fg.on-brand-solid` | `color.palette.static-white` | `#FFFFFF` | 대표 색 위의 글자 |
-| `color.fg.critical` | `color.palette.red-700` | `#FF0000` | 오류 글자 |
-| `color.fg.warning` | `color.palette.yellow-700` | `#F59F0A` | 경고 글자 |
-| `color.fg.positive` | `color.palette.green-700` | `#22C55E` | 성공 글자 |
-| `color.fg.informative` | `color.palette.azure-700` | `#3B82F6` | 안내 글자 |
+| `color.fg.on-brand-solid` | `color.palette.static-white` | `#FFFFFF` | 대표 색과 오류·성공·안내 강조 면 위의 글자 |
+| `color.fg.on-warning-solid` | `color.palette.gray-1000` | `#15171A` | 경고 강조 면 위의 글자 |
+| `color.fg.critical` | `color.palette.red-800` | `#CC0000` | 오류 글자 |
+| `color.fg.warning` | `color.palette.yellow-900` | `#B45309` | 경고 글자 |
+| `color.fg.positive` | `color.palette.green-900` | `#15803D` | 성공 글자 |
+| `color.fg.informative` | `color.palette.azure-800` | `#2563EB` | 안내 글자 |
 | `color.bg.layer-basement` | `color.palette.gray-100` | `#F9F9FA` | 화면 가장 아래 배경 |
 | `color.bg.layer-default` | `color.palette.gray-00` | `#FFFFFF` | 카드·패널 표면 |
 | `color.bg.layer-floating` | `color.palette.gray-00` | `#FFFFFF` | 모달·시트 |
@@ -147,13 +149,13 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.bg.brand-solid-pressed` | `color.palette.blue-700` | `#165D96` | 눌린 주요 버튼 |
 | `color.bg.brand-weak` | `color.palette.blue-100` | `#EEF5FB` | 선택된 카드·칩 배경 |
 | `color.bg.overlay` | `color.palette.static-black-alpha-700` | `#000000B3` | 모달 뒤 어둡게 |
-| `color.bg.critical-solid` | `color.palette.red-700` | `#FF0000` | 오류 강조 면 |
+| `color.bg.critical-solid` | `color.palette.red-800` | `#CC0000` | 오류 강조 면 |
 | `color.bg.critical-weak` | `color.palette.red-100` | `#FFE5E5` | 오류 옅은 면 |
 | `color.bg.warning-solid` | `color.palette.yellow-700` | `#F59F0A` | 경고 강조 면 |
 | `color.bg.warning-weak` | `color.palette.yellow-100` | `#FFF8E1` | 경고 옅은 면 |
-| `color.bg.positive-solid` | `color.palette.green-700` | `#22C55E` | 성공 강조 면 |
+| `color.bg.positive-solid` | `color.palette.green-900` | `#15803D` | 성공 강조 면 |
 | `color.bg.positive-weak` | `color.palette.green-100` | `#F0FDF4` | 성공 옅은 면 |
-| `color.bg.informative-solid` | `color.palette.azure-700` | `#3B82F6` | 안내 강조 면 |
+| `color.bg.informative-solid` | `color.palette.azure-800` | `#2563EB` | 안내 강조 면 |
 | `color.bg.informative-weak` | `color.palette.azure-100` | `#EFF6FF` | 안내 옅은 면 |
 | `color.stroke.neutral-weak` | `color.palette.gray-400` | `#E1E3E6` | 입력·버튼 외곽선 |
 | `color.stroke.neutral-muted` | `color.palette.gray-300` | `#E7E7E7` | 구분선 |
