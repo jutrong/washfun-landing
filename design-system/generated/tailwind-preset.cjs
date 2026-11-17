@@ -1,4 +1,4 @@
-// Generated from washfun design tokens v0.2.0. Do not edit. Run sync-tokens to update.
+// Generated from washfun design tokens v0.3.0. Do not edit. Run sync-tokens to update.
 module.exports = {
   "theme": {
     "extend": {
@@ -15,7 +15,7 @@ module.exports = {
           "gray-800": "#6B7280",
           "gray-900": "#2A2A2A",
           "gray-1000": "#15171A",
-          "blue-100": "#EEF5FB",
+          "blue-100": "#F3F8FC",
           "blue-200": "#CCE5F5",
           "blue-300": "#99CBEB",
           "blue-400": "#66B1E1",
@@ -72,8 +72,8 @@ module.exports = {
         "fg": {
           "neutral": "#15171A",
           "neutral-muted": "#6B7280",
-          "neutral-subtle": "#7E7E7E",
-          "placeholder": "#C4C7CC",
+          "neutral-subtle": "#6B7280",
+          "placeholder": "#6B7280",
           "disabled": "#B1B1B1",
           "brand": "#1C74BC",
           "on-brand-solid": "#FFFFFF",
@@ -91,7 +91,7 @@ module.exports = {
           "disabled": "#F3F4F5",
           "brand-solid": "#1C74BC",
           "brand-solid-pressed": "#165D96",
-          "brand-weak": "#EEF5FB",
+          "brand-weak": "#F3F8FC",
           "overlay": "#000000B3",
           "critical-solid": "#CC0000",
           "critical-weak": "#FFE5E5",
@@ -103,6 +103,7 @@ module.exports = {
           "informative-weak": "#EFF6FF"
         },
         "stroke": {
+          "neutral": "#7E7E7E",
           "neutral-weak": "#E1E3E6",
           "neutral-muted": "#E7E7E7",
           "brand-solid": "#1C74BC"

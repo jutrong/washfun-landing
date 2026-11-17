@@ -64,8 +64,9 @@ export default function AccessibilityPage() {
         lead={`글자는 배경과 ${a11y.contrast.text}:1 이상, 아이콘과 외곽선은 ${a11y.contrast.graphic}:1 이상의 명도 대비를 가집니다. 아래 표는 지금 토큰 값으로 계산한 결과입니다.`}
       >
         <p className="rounded-r3 bg-bg-layer-basement p-x4 text-t4 text-fg-neutral">
-          색 짝 {results.length}개 가운데 {results.length - failed.length}개가 기준을 지키고 {failed.length}개가 못 미칩니다.
-          못 미치는 짝은 색을 바꾸기 전까지 “쓰는 법”을 따릅니다.
+          {failed.length === 0
+            ? `색 짝 ${results.length}개가 모두 기준을 지킵니다.`
+            : `색 짝 ${results.length}개 가운데 ${results.length - failed.length}개가 기준을 지키고 ${failed.length}개가 못 미칩니다. 못 미치는 짝은 색을 바꾸기 전까지 “쓰는 법”을 따릅니다.`}
         </p>
         <div className="mt-x6 overflow-x-auto">
           <table className="w-full border-collapse text-left text-t3">
@@ -75,7 +76,7 @@ export default function AccessibilityPage() {
                 <th scope="col" className={th}>글자 / 배경</th>
                 <th scope="col" className={th}>대비</th>
                 <th scope="col" className={th}>결과</th>
-                <th scope="col" className={th}>쓰는 법</th>
+                {failed.length > 0 ? <th scope="col" className={th}>쓰는 법</th> : null}
               </tr>
             </thead>
             <tbody>
@@ -106,7 +107,7 @@ export default function AccessibilityPage() {
                   <td className={`${td} whitespace-nowrap font-bold text-fg-neutral`}>
                     {result.pass ? "✓ 지킴" : "✕ 못 미침"}
                   </td>
-                  <td className={`${td} text-fg-neutral-muted`}>{result.known ?? ""}</td>
+                  {failed.length > 0 ? <td className={`${td} text-fg-neutral-muted`}>{result.known ?? ""}</td> : null}
                 </tr>
               ))}
             </tbody>

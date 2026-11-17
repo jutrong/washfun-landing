@@ -78,3 +78,13 @@ test("아이콘 크기와 누르는 영역은 환경마다 값이 있다", () =>
   assert.equal(get("env.app.touch-target.min").value, "44px");
   assert.equal(get("env.kiosk.touch-target.min").value, "64px");
 });
+test("캡션과 입력 안내 글자는 보조 글자와 같은 단계를 써서 대비 기준을 지킨다", () => {
+  assert.equal(resolved.color.fg["neutral-subtle"].$value, "#6B7280");
+  assert.equal(resolved.color.fg.placeholder.$value, "#6B7280");
+});
+test("입력 칸 외곽선은 꾸미는 선과 따로 두고 3:1 을 지킨다", () => {
+  assert.equal(resolved.color.stroke.neutral.$value, "#7E7E7E");
+  assert.equal(resolved.color.stroke["neutral-weak"].$value, "#E1E3E6");
+});
+test("옅은 대표 색 면은 그 위의 대표 색 글자가 읽히는 밝기다", () =>
+  assert.equal(resolved.color.bg["brand-weak"].$value, "#F3F8FC"));

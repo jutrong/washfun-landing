@@ -44,15 +44,13 @@
       "fg": "color.fg.neutral-subtle",
       "bg": "color.bg.layer-default",
       "kind": "text",
-      "use": "캡션·설명",
-      "known": "캡션 색이 조금 밝습니다. 꼭 읽어야 하는 내용에는 fg.neutral-muted 를 씁니다."
+      "use": "캡션·설명"
     },
     {
       "fg": "color.fg.placeholder",
       "bg": "color.bg.layer-default",
       "kind": "text",
-      "use": "입력 안내 글자",
-      "known": "입력 안내 글자는 레이블을 대신할 수 없습니다. 입력 칸 위에 레이블을 따로 둡니다."
+      "use": "입력 안내 글자"
     },
     {
       "fg": "color.fg.brand",
@@ -64,8 +62,7 @@
       "fg": "color.fg.brand",
       "bg": "color.bg.brand-weak",
       "kind": "text",
-      "use": "선택된 칩의 글자",
-      "known": "옅은 대표 색 면 위에서는 0.03 모자랍니다. 작은 글자는 fg.neutral 을 씁니다."
+      "use": "선택된 칩의 글자"
     },
     {
       "fg": "color.fg.on-brand-solid",
@@ -152,11 +149,10 @@
       "use": "안내 옅은 면 위의 글자"
     },
     {
-      "fg": "color.stroke.neutral-weak",
+      "fg": "color.stroke.neutral",
       "bg": "color.bg.layer-default",
       "kind": "graphic",
-      "use": "입력 칸·버튼 외곽선",
-      "known": "외곽선만으로는 입력 칸이 잘 보이지 않습니다. 레이블과 배경 면으로 영역을 함께 알립니다."
+      "use": "입력 칸 외곽선"
     },
     {
       "fg": "color.stroke.brand-solid",

@@ -45,7 +45,7 @@
 - 기본 글자는 `fg.neutral`, 보조 글자는 `fg.neutral-muted`, 캡션은 `fg.neutral-subtle`.
 - 화면 바닥은 `bg.layer-basement`, 그 위 카드·패널은 `bg.layer-default`, 모달·시트는 `bg.layer-floating`.
 - 주요 버튼은 `bg.brand-solid` 위에 `fg.on-brand-solid`. 색 면 위의 글자는 항상 `fg.on-*`을 쓴다.
-- 입력 칸·외곽선 버튼처럼 선이 형태를 만드는 곳은 `stroke.neutral-weak`, 영역을 나누는 구분선은 `stroke.neutral-muted`.
+- 입력 칸의 외곽선은 `stroke.neutral`(배경과 3:1 이상). 카드·외곽선 버튼처럼 꾸미는 선은 `stroke.neutral-weak`, 영역을 나누는 구분선은 `stroke.neutral-muted`.
 - 간격은 `dimension.x1`(4px) 단위만 쓴다.
 - 그라디언트 토큰은 색 지점만 정한다. 방향은 쓰는 곳에서 고른다(Tailwind는 `bg-gradient-glow-brand`가 세로, `-x`를 붙이면 가로).
 
@@ -81,7 +81,7 @@
 - 규칙과 검사할 색 짝의 원본은 `design-system/accessibility.json`이다. 지금 값으로 계산한 대비표는 `/design-system/accessibility`.
 - 글자는 배경과 4.5:1 이상, 아이콘과 외곽선은 3:1 이상의 명도 대비를 가진다. 큰 글자(24px 이상, 굵게 19px 이상)는 3:1.
 - 기준을 지키는 짝: `fg.neutral`, `fg.neutral-muted`, `fg.brand`를 `bg.layer-default` 위에, `fg.on-brand-solid`를 `bg.brand-solid` 위에, 상태 색 글자를 `bg.layer-default`와 옅은 상태 면 위에.
-- 기준에 못 미치는 짝: `fg.neutral-subtle`, `fg.placeholder`, `bg.brand-weak` 위의 `fg.brand`, `stroke.neutral-weak`. 꼭 읽어야 하는 글자는 `fg.neutral`이나 `fg.neutral-muted`로 쓰고, 입력 칸은 레이블과 배경 면으로 함께 알린다.
+- 검사하는 색 짝은 모두 기준을 지킨다. 캡션(`fg.neutral-subtle`)과 입력 안내 글자(`fg.placeholder`)는 보조 글자와 같은 색이므로 위계는 크기와 굵기로 나눈다. 입력 안내 글자는 레이블을 대신하지 않는다.
 - 상태 색 글자(`fg.critical`·`warning`·`positive`·`informative`)와 강조 면은 대비 기준을 지키는 단계를 가리킨다. 경고 강조 면(`bg.warning-solid`) 위의 글자만 `fg.on-warning-solid`(어두운 글자)를 쓰고, 나머지 강조 면 위에는 `fg.on-brand-solid`를 쓴다.
 - 본문은 `font-size.t5` 이상, 줄 높이 1.5 이상. 누르는 영역은 `touch-target.min` 이상.
 - 색만으로 상태를 알리지 않는다. 아이콘만 있는 버튼에는 읽어 줄 이름을 붙이고, 입력 칸에는 보이는 레이블을 둔다.
@@ -122,7 +122,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 ## 토큰
 
 <!-- tokens:start -->
-버전 0.2.0
+버전 0.3.0
 
 ### 역할 색
 
@@ -130,8 +130,8 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | --- | --- | --- | --- |
 | `color.fg.neutral` | `color.palette.gray-1000` | `#15171A` | 기본 글자 |
 | `color.fg.neutral-muted` | `color.palette.gray-800` | `#6B7280` | 보조 글자 |
-| `color.fg.neutral-subtle` | `color.palette.gray-700` | `#7E7E7E` | 캡션·설명 |
-| `color.fg.placeholder` | `color.palette.gray-500` | `#C4C7CC` | 입력 안내 글자 |
+| `color.fg.neutral-subtle` | `color.palette.gray-800` | `#6B7280` | 캡션·설명 |
+| `color.fg.placeholder` | `color.palette.gray-800` | `#6B7280` | 입력 안내 글자 |
 | `color.fg.disabled` | `color.palette.gray-600` | `#B1B1B1` | 비활성 글자 |
 | `color.fg.brand` | `color.palette.blue-600` | `#1C74BC` | 강조 글자·링크 |
 | `color.fg.on-brand-solid` | `color.palette.static-white` | `#FFFFFF` | 대표 색과 오류·성공·안내 강조 면 위의 글자 |
@@ -147,7 +147,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.bg.disabled` | `color.palette.gray-200` | `#F3F4F5` | 비활성 면 |
 | `color.bg.brand-solid` | `color.palette.blue-600` | `#1C74BC` | 주요 버튼·강조 면 |
 | `color.bg.brand-solid-pressed` | `color.palette.blue-700` | `#165D96` | 눌린 주요 버튼 |
-| `color.bg.brand-weak` | `color.palette.blue-100` | `#EEF5FB` | 선택된 카드·칩 배경 |
+| `color.bg.brand-weak` | `color.palette.blue-100` | `#F3F8FC` | 선택된 카드·칩 배경 |
 | `color.bg.overlay` | `color.palette.static-black-alpha-700` | `#000000B3` | 모달 뒤 어둡게 |
 | `color.bg.critical-solid` | `color.palette.red-800` | `#CC0000` | 오류 강조 면 |
 | `color.bg.critical-weak` | `color.palette.red-100` | `#FFE5E5` | 오류 옅은 면 |
@@ -157,7 +157,8 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.bg.positive-weak` | `color.palette.green-100` | `#F0FDF4` | 성공 옅은 면 |
 | `color.bg.informative-solid` | `color.palette.azure-800` | `#2563EB` | 안내 강조 면 |
 | `color.bg.informative-weak` | `color.palette.azure-100` | `#EFF6FF` | 안내 옅은 면 |
-| `color.stroke.neutral-weak` | `color.palette.gray-400` | `#E1E3E6` | 입력·버튼 외곽선 |
+| `color.stroke.neutral` | `color.palette.gray-700` | `#7E7E7E` | 입력 칸 외곽선 |
+| `color.stroke.neutral-weak` | `color.palette.gray-400` | `#E1E3E6` | 카드·버튼 외곽선(꾸미는 선) |
 | `color.stroke.neutral-muted` | `color.palette.gray-300` | `#E7E7E7` | 구분선 |
 | `color.stroke.brand-solid` | `color.palette.blue-600` | `#1C74BC` | 선택 테두리 |
 
@@ -176,7 +177,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.palette.gray-800` | `#6B7280` |
 | `color.palette.gray-900` | `#2A2A2A` |
 | `color.palette.gray-1000` | `#15171A` |
-| `color.palette.blue-100` | `#EEF5FB` |
+| `color.palette.blue-100` | `#F3F8FC` |
 | `color.palette.blue-200` | `#CCE5F5` |
 | `color.palette.blue-300` | `#99CBEB` |
 | `color.palette.blue-400` | `#66B1E1` |

@@ -52,3 +52,7 @@ test("상태 색 글자와 강조 면 위의 글자는 알려진 문제 없이 �
   for (const result of status) assert.equal(result.known, undefined, `${result.fg} / ${result.bg}`);
   assert.ok(results.some((result) => result.fg === "color.fg.on-warning-solid" && result.bg === "color.bg.warning-solid"));
 });
+test("검사하는 색 짝은 모두 기준을 지킨다", () => {
+  for (const result of results) assert.equal(result.pass, true, `${result.fg} / ${result.bg} ${result.ratio}:1`);
+  assert.ok(results.some((result) => result.fg === "color.stroke.neutral" && result.kind === "graphic"));
+});
