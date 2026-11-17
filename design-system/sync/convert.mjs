@@ -84,12 +84,19 @@ export function toTailwindPreset(tree, env) {
     size: { ...iconSize, touch },
     minHeight: { touch },
     minWidth: { touch },
+    // 움직임은 duration-d3 ease-enter 처럼 쓴다.
+    transitionDuration: group(tree, "motion.duration"),
+    transitionTimingFunction: group(tree, "motion.easing"),
   };
   return `${header(tree)}module.exports = ${JSON.stringify({ theme: { extend } }, null, 2)};\n`;
 }
 
 const camel = (name) => name.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase());
 const unitless = (value) => (typeof value === "string" && /^-?\d+(\.\d+)?px$/.test(value) ? Number(value.slice(0, -2)) : value);
+
+const milliseconds = (value) => Number(value.replace(/ms$/, ""));
+// "cubic-bezier(0.4, 0, 0.2, 1)" → [0.4, 0, 0.2, 1]. react-native 의 Easing.bezier(...) 에 그대로 편다.
+const bezier = (value) => value.replace(/^cubic-bezier\(|\)$/g, "").split(",").map(Number);
 
 function serialize(value, indent) {
   if (value === null || typeof value !== "object") return JSON.stringify(value);
@@ -117,6 +124,10 @@ export function toTsObject(tree, env) {
     shadow: group(tree, "shadow", camel),
     iconSize: group(tree, `env.${env}.icon-size`, camel, unitless),
     touchTarget: group(tree, `env.${env}.touch-target`, camel, unitless),
+    motion: {
+      duration: group(tree, "motion.duration", camel, milliseconds),
+      easing: group(tree, "motion.easing", camel, bezier),
+    },
     // react-native-linear-gradient 의 colors / locations 에 그대로 넣는 모양.
     gradient: group(tree, "gradient", camel, (stops) => ({
       colors: stops.map((stop) => stop.color),

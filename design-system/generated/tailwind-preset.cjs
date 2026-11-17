@@ -1,4 +1,4 @@
-// Generated from washfun design tokens v0.3.0. Do not edit. Run sync-tokens to update.
+// Generated from washfun design tokens v0.4.0. Do not edit. Run sync-tokens to update.
 module.exports = {
   "theme": {
     "extend": {
@@ -223,6 +223,19 @@ module.exports = {
       },
       "minWidth": {
         "touch": "44px"
+      },
+      "transitionDuration": {
+        "d1": "100ms",
+        "d2": "150ms",
+        "d3": "200ms",
+        "d4": "300ms",
+        "d5": "500ms"
+      },
+      "transitionTimingFunction": {
+        "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "enter": "cubic-bezier(0.21, 0.65, 0.32, 1)",
+        "exit": "cubic-bezier(0.4, 0, 1, 1)",
+        "linear": "cubic-bezier(0, 0, 1, 1)"
       }
     }
   }

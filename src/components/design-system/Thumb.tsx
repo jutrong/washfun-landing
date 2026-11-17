@@ -99,6 +99,18 @@ export default function Thumb({ name, large = false }: { name: string; large?: b
     );
   }
 
+  if (name === "motion") {
+    return (
+      <div className={`${frame} bg-bg-brand-weak`}>
+        <div className="flex items-center gap-x2">
+          {["opacity-20", "opacity-40", "opacity-60", "opacity-100"].map((opacity, index) => (
+            <span key={opacity} className={`block rounded-full bg-bg-brand-solid ${opacity} ${index === 3 ? "size-x12" : "size-x8"}`} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (name === "writing") {
     return (
       <div className={`${frame} flex-col gap-x3 bg-bg-brand-weak`}>

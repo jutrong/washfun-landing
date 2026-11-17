@@ -26,3 +26,7 @@ test("아이콘 크기와 누르는 영역도 환경별 표에 나온다", () =>
   assert.match(tables, /\| `icon-size\.md` \| 20px \| 20px \| 40px \|/);
   assert.match(tables, /\| `touch-target\.min` \| 44px \| 44px \| 64px \|/);
 });
+test("움직임 시간과 곡선도 표에 나온다", () => {
+  assert.match(tables, /\| `motion\.duration\.d3` \| 200ms \|/);
+  assert.match(tables, /\| `motion\.easing\.exit` \| cubic-bezier\(/);
+});

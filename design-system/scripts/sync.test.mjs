@@ -108,3 +108,14 @@ test("ts: 아이콘 크기와 누르는 영역은 단위 없는 숫자", () => {
   assert.match(out, /iconSize: \{[^}]*lg: 24,/s);
   assert.match(out, /touchTarget: \{\s*min: 44,/);
 });
+test("preset: 움직임은 duration-d* 와 ease-* 로 쓴다", () => {
+  const web = loadPreset(toTailwindPreset(tree, "web"));
+  assert.equal(web.transitionDuration.d3, "200ms");
+  assert.equal(web.transitionTimingFunction.enter, "cubic-bezier(0.21, 0.65, 0.32, 1)");
+  assert.equal(web.transitionTimingFunction.linear, "cubic-bezier(0, 0, 1, 1)");
+});
+test("ts: 움직임 시간은 ms 숫자, 곡선은 Easing.bezier 에 넣는 네 숫자", () => {
+  const out = toTsObject(tree, "app");
+  assert.match(out, /duration: \{[^}]*d3: 200,/s);
+  assert.match(out, /enter: \[0\.21, 0\.65, 0\.32, 1\],/);
+});

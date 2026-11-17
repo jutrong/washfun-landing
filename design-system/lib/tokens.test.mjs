@@ -88,3 +88,16 @@ test("입력 칸 외곽선은 꾸미는 선과 따로 두고 3:1 을 지킨다",
 });
 test("옅은 대표 색 면은 그 위의 대표 색 글자가 읽히는 밝기다", () =>
   assert.equal(resolved.color.bg["brand-weak"].$value, "#F3F8FC"));
+test("움직임 시간은 다섯 단계이고 뒤로 갈수록 길다", () => {
+  const durations = flat.filter((t) => t.path.startsWith("motion.duration.")).map((t) => parseInt(t.value, 10));
+  assert.deepEqual(durations, [100, 150, 200, 300, 500]);
+  assert.equal(get("motion.duration.d3").value, "200ms");
+});
+test("움직임 곡선은 쓰임새 이름으로 고른다", () => {
+  assert.deepEqual(
+    flat.filter((t) => t.path.startsWith("motion.easing.")).map((t) => t.path.split(".").pop()),
+    ["standard", "enter", "exit", "linear"],
+  );
+  assert.equal(get("motion.easing.enter").value, "cubic-bezier(0.21, 0.65, 0.32, 1)");
+  for (const t of flat.filter((t) => t.path.startsWith("motion.easing."))) assert.match(t.value, /^cubic-bezier\((-?[\d.]+, ){3}-?[\d.]+\)$/, t.path);
+});

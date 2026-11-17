@@ -58,6 +58,12 @@ export const FOUNDATIONS: NavItem[] = [
     lead: "아이콘은 24 격자에 그린 Line과 Fill 두 가지 모양을 쓰고, 색은 글자색을 따릅니다.",
   },
   {
+    key: "motion",
+    href: "/design-system/motion",
+    title: "Motion",
+    lead: "움직임의 시간은 다섯 단계, 곡선은 쓰임새에 따라 네 가지를 씁니다.",
+  },
+  {
     key: "writing",
     href: "/design-system/writing",
     title: "Writing",

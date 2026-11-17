@@ -60,6 +60,14 @@
 - 여러 색을 쓰는 그림(로고, 세차 코스 그림)은 아이콘이 아니라 이미지로 다룬다.
 - Tailwind는 `size-icon-lg`, `min-h-touch min-w-touch`, 앱은 `tokens.iconSize.lg`, `tokens.touchTarget.min`.
 
+## 움직임
+
+- 시간은 `motion.duration.d1`~`d5`(100·150·200·300·500ms), 곡선은 `motion.easing.standard`·`enter`·`exit`·`linear`. 환경과 상관없이 같은 값이다. 직접 보려면 `/design-system/motion`.
+- 누름 반응은 d1, 색·테두리 변화는 d2, 열릴 때는 d3 + enter, 사라질 때는 d3 + exit, 모달·시트·토스트는 d4 + enter, 화면 전환은 d5 + enter. 로딩 표시만 linear.
+- 움직이는 속성은 투명도와 transform으로 한정한다. d5보다 긴 움직임은 로딩 표시와 진행 막대뿐이다.
+- 기기의 동작 줄이기 설정이 켜지면 자리 이동과 크기 변화를 뺀다(`motion-reduce:transition-none`). 반복되는 움직임은 멈춘다.
+- Tailwind는 `duration-d3 ease-enter`, 앱은 `tokens.motion.duration.d3`(ms 숫자), `Easing.bezier(...tokens.motion.easing.enter)`.
+
 ## 글쓰기
 
 - 규칙과 용어의 원본은 `design-system/writing.json`이다. 예시와 함께 보려면 `/design-system/writing`.
@@ -122,7 +130,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 ## 토큰
 
 <!-- tokens:start -->
-버전 0.3.0
+버전 0.4.0
 
 ### 역할 색
 
@@ -274,6 +282,25 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `gradient.highlight-brand` | #1C74BC 0%, #3397D7 100% |
 | `gradient.fade-layer` | #FFFFFF00 0%, #FFFFFFD9 60%, #FFFFFF 100% |
 | `gradient.shimmer-neutral` | #FFFFFF00 0%, #FFFFFFAB 46%, #FFFFFFAB 54%, #FFFFFF00 100% |
+
+### 움직임 시간
+
+| 이름 | 값 |
+| --- | --- |
+| `motion.duration.d1` | 100ms |
+| `motion.duration.d2` | 150ms |
+| `motion.duration.d3` | 200ms |
+| `motion.duration.d4` | 300ms |
+| `motion.duration.d5` | 500ms |
+
+### 움직임 곡선
+
+| 이름 | 값 |
+| --- | --- |
+| `motion.easing.standard` | cubic-bezier(0.4, 0, 0.2, 1) |
+| `motion.easing.enter` | cubic-bezier(0.21, 0.65, 0.32, 1) |
+| `motion.easing.exit` | cubic-bezier(0.4, 0, 1, 1) |
+| `motion.easing.linear` | cubic-bezier(0, 0, 1, 1) |
 
 ### 글자 크기 (환경별)
 
