@@ -119,3 +119,8 @@ test("겹치는 순서는 이름으로 정하고 뒤로 갈수록 위에 온다"
   assert.deepEqual(values, [...values].sort((a, b) => a - b));
   assert.equal(new Set(values).size, values.length);
 });
+test("모달 뒤 어두운 면은 세 단계이고 뒤로 갈수록 진하다", () => {
+  assert.equal(resolved.color.bg["overlay-weak"].$value, "#00000080");
+  assert.equal(resolved.color.bg.overlay.$value, "#000000B3");
+  assert.equal(resolved.color.bg["overlay-strong"].$value, "#000000D9");
+});

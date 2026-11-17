@@ -1,9 +1,24 @@
 import DocPage from "@/components/design-system/DocPage";
+import OverlayDemo from "@/components/design-system/OverlayDemo";
 import TokenSection from "@/components/design-system/TokenSection";
 import { list } from "@/components/design-system/tokens";
 
 export default function ElevationPage() {
-  const overlay = list("color.bg").find((token) => token.name === "overlay");
+  // 클래스 이름은 Tailwind 가 찾을 수 있게 그대로 적어 둔다.
+  const OVERLAY_CLASS: Record<string, string> = {
+    "overlay-weak": "bg-bg-overlay-weak",
+    overlay: "bg-bg-overlay",
+    "overlay-strong": "bg-bg-overlay-strong",
+  };
+  const overlays = list("color.bg")
+    .filter((token) => token.name in OVERLAY_CLASS)
+    .map((token) => ({
+      path: token.path,
+      name: token.name,
+      value: token.value,
+      description: token.description ?? "",
+      className: OVERLAY_CLASS[token.name],
+    }));
 
   return (
     <DocPage name="elevation">
@@ -39,31 +54,25 @@ export default function ElevationPage() {
         title="Overlay"
         lead="확인 창과 바텀 시트가 뜨면 뒤의 화면을 어둡게 덮습니다. 지금은 이 창에만 답하면 된다는 것을 알려 줍니다."
       >
-        <div className="relative h-[280px] overflow-hidden rounded-r4 bg-bg-layer-basement p-x6">
-          <div className="flex flex-col gap-x3" aria-hidden>
-            <span className="h-x10 rounded-r3 bg-bg-layer-default shadow-s1" />
-            <span className="h-x16 rounded-r3 bg-bg-layer-default shadow-s2" />
-            <span className="h-x16 rounded-r3 bg-bg-layer-default shadow-s2" />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center bg-bg-overlay p-x6">
-            <div className="w-full max-w-container-narrow rounded-r6 bg-bg-layer-floating p-x6 shadow-s3">
-              <p className="text-t6 font-bold text-fg-neutral">bg.layer-floating + shadow.s3</p>
-              <p className="mt-x1 text-t4 text-fg-neutral-muted">뒤의 어두운 면이 bg.overlay입니다.</p>
-            </div>
-          </div>
-        </div>
-        <p className="mt-x4 text-t4">
-          <span className="font-medium">{overlay?.path}</span>
-          <span className="ml-x3 text-fg-neutral-muted">
-            {overlay?.value} · {overlay?.description}
-          </span>
-        </p>
+        <OverlayDemo levels={overlays} initial="overlay" />
+        <ul className="mt-x4 flex flex-col gap-x2 text-t4">
+          {overlays.map((token) => (
+            <li key={token.path}>
+              <span className="font-medium">{token.path}</span>
+              <span className="ml-x3 text-fg-neutral-muted">
+                {token.value} · {token.description}
+              </span>
+            </li>
+          ))}
+        </ul>
         <ul className="mt-x6 flex list-disc flex-col gap-x2 pl-x5 text-t4 text-fg-neutral-muted">
+          <li>기본은 bg.overlay(70%)입니다. 바텀 시트처럼 뒤의 내용을 보면서 고르는 창은 overlay-weak(50%), 뒤가 사진이나 지도처럼 복잡하거나 창에만 집중해야 할 때는 overlay-strong(85%)을 씁니다.</li>
+          <li>세 단계 말고 다른 투명도를 만들어 쓰지 않습니다. 한 제품 안에서는 같은 종류의 창에 같은 단계를 씁니다.</li>
           <li>어두운 면은 화면 전체를 덮습니다. 머리글과 하단 버튼도 함께 덮어 누를 수 없게 합니다.</li>
           <li>확인 창과 바텀 시트에만 씁니다. 토스트, 툴팁, 드롭다운은 뒤를 어둡게 하지 않습니다.</li>
           <li>어두운 면과 그 위의 창은 같은 층(z-index.overlay)에 두고, 창이 여러 개 겹쳐도 어두운 면은 한 겹만 둡니다.</li>
           <li>어두운 면을 눌러 닫을 수 있는지는 창마다 정합니다. 되돌리기 어려운 일을 묻는 창과 키오스크에서는 닫히지 않습니다.</li>
-          <li>나타날 때는 투명도만 d4로, 사라질 때는 d3으로 바꿉니다. 색을 직접 쓰지 않고 bg.overlay를 씁니다.</li>
+          <li>나타날 때는 투명도만 d4로, 사라질 때는 d3으로 바꿉니다. 색을 직접 쓰지 않고 토큰을 씁니다.</li>
         </ul>
       </TokenSection>
     </DocPage>

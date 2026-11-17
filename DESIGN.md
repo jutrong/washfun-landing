@@ -44,7 +44,7 @@
 - 글자와 아이콘은 `fg`, 면은 `bg`, 선은 `stroke`에서 고른다.
 - 기본 글자는 `fg.neutral`, 보조 글자는 `fg.neutral-muted`, 캡션은 `fg.neutral-subtle`.
 - 화면 바닥은 `bg.layer-basement`, 그 위 카드·패널은 `bg.layer-default`, 모달·시트는 `bg.layer-floating`.
-- 확인 창과 바텀 시트 뒤는 `bg.overlay`로 화면 전체를 어둡게 덮는다. 토스트·툴팁·드롭다운 뒤는 어둡게 하지 않는다. 창이 겹쳐도 어두운 면은 한 겹만 둔다.
+- 확인 창과 바텀 시트 뒤는 `bg.overlay`(70%)로 화면 전체를 어둡게 덮는다. 뒤의 내용을 보면서 고르는 창은 `bg.overlay-weak`(50%), 뒤가 복잡하거나 창에만 집중해야 하면 `bg.overlay-strong`(85%). 다른 투명도는 만들지 않는다. 토스트·툴팁·드롭다운 뒤는 어둡게 하지 않는다. 창이 겹쳐도 어두운 면은 한 겹만 둔다.
 - 주요 버튼은 `bg.brand-solid` 위에 `fg.on-brand-solid`. 색 면 위의 글자는 항상 `fg.on-*`을 쓴다.
 - 입력 칸의 외곽선은 `stroke.neutral`(배경과 3:1 이상). 카드·외곽선 버튼처럼 꾸미는 선은 `stroke.neutral-weak`, 영역을 나누는 구분선은 `stroke.neutral-muted`.
 - 간격은 `dimension.x1`(4px) 단위만 쓴다.
@@ -80,6 +80,14 @@
 - 키오스크는 웹 기준 구현을 그대로 쓰고 Tailwind preset만 kiosk로 바꾼다. 크기 표의 kiosk 값은 각 명세의 Sizes에 있다.
 - 누르는 부품의 기본 크기는 환경마다 `touch-target.min` 이상이고, 모든 변형의 글자와 면은 4.5:1 이상이다. 테스트가 확인한다.
 - 새 부품을 더할 때는 명세 json, 웹 기준 구현, 앱 예시, 견본(`reference/demos/<이름>.tsx`) 네 파일을 만들고 `demos.tsx`에 등록한다.
+
+## 패턴
+
+- 여러 화면에서 되풀이되는 상황을 푸는 방법의 원본은 `design-system/patterns/<이름>.json`이다. 푸는 문제, 고르는 법, 흐름, 규칙, 환경별 차이, 문구 예시, 접근성, 하지 않는 것을 담는다. 견본과 함께 보려면 `/design-system/patterns`.
+- 지금 있는 패턴: Error(오류 처리), Form(입력 폼), Loading(기다리는 동안), Empty State(빈 화면), Payment(결제와 충전), Kiosk Flow(키오스크 단계 진행).
+- 패턴의 문구 예시는 `findIssues`를 통과한 것만 싣는다. 쓰는 부품은 Components에 있는 것만 가리킨다. 테스트가 확인한다.
+- 오류는 무게에 따라 자리를 고른다: 입력 오류는 입력 칸 아래, 가벼운 실패는 토스트, 돈이 걸린 실패는 확인 창. 결제 실패는 돈이 빠져나갔는지를 가장 먼저 알린다.
+- 새 패턴을 더할 때는 명세 json과 견본(`reference/patterns/<이름>.tsx`)을 만들고 `pattern-demos.tsx`에 등록한다.
 
 ## 움직임
 
@@ -151,7 +159,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 ## 토큰
 
 <!-- tokens:start -->
-버전 0.5.0
+버전 0.6.0
 
 ### 역할 색
 
@@ -177,7 +185,9 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.bg.brand-solid` | `color.palette.blue-600` | `#1C74BC` | 주요 버튼·강조 면 |
 | `color.bg.brand-solid-pressed` | `color.palette.blue-700` | `#165D96` | 눌린 주요 버튼 |
 | `color.bg.brand-weak` | `color.palette.blue-100` | `#F3F8FC` | 선택된 카드·칩 배경 |
-| `color.bg.overlay` | `color.palette.static-black-alpha-700` | `#000000B3` | 모달 뒤 어둡게 |
+| `color.bg.overlay-weak` | `color.palette.static-black-alpha-500` | `#00000080` | 모달 뒤 옅게. 뒤의 내용이 보여야 할 때 |
+| `color.bg.overlay` | `color.palette.static-black-alpha-700` | `#000000B3` | 모달 뒤 어둡게. 기본 |
+| `color.bg.overlay-strong` | `color.palette.static-black-alpha-900` | `#000000D9` | 모달 뒤 진하게. 뒤가 복잡하거나 창에만 집중해야 할 때 |
 | `color.bg.critical-solid` | `color.palette.red-800` | `#CC0000` | 오류 강조 면 |
 | `color.bg.critical-weak` | `color.palette.red-100` | `#FFE5E5` | 오류 옅은 면 |
 | `color.bg.warning-solid` | `color.palette.yellow-700` | `#F59F0A` | 경고 강조 면 |
@@ -255,6 +265,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `color.palette.static-white` | `#FFFFFF` |
 | `color.palette.static-black` | `#000000` |
 | `color.palette.static-black-alpha-700` | `#000000B3` |
+| `color.palette.static-black-alpha-900` | `#000000D9` |
 | `color.palette.static-black-alpha-500` | `#00000080` |
 | `color.palette.static-white-alpha-00` | `#FFFFFF00` |
 | `color.palette.static-white-alpha-700` | `#FFFFFFAB` |

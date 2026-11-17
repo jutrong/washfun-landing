@@ -1,4 +1,4 @@
-// Generated from washfun design tokens v0.5.0. Do not edit. Run sync-tokens to update.
+// Generated from washfun design tokens v0.6.0. Do not edit. Run sync-tokens to update.
 module.exports = {
   "theme": {
     "extend": {
@@ -64,6 +64,7 @@ module.exports = {
           "static-white": "#FFFFFF",
           "static-black": "#000000",
           "static-black-alpha-700": "#000000B3",
+          "static-black-alpha-900": "#000000D9",
           "static-black-alpha-500": "#00000080",
           "static-white-alpha-00": "#FFFFFF00",
           "static-white-alpha-700": "#FFFFFFAB",
@@ -92,7 +93,9 @@ module.exports = {
           "brand-solid": "#1C74BC",
           "brand-solid-pressed": "#165D96",
           "brand-weak": "#F3F8FC",
+          "overlay-weak": "#00000080",
           "overlay": "#000000B3",
+          "overlay-strong": "#000000D9",
           "critical-solid": "#CC0000",
           "critical-weak": "#FFE5E5",
           "warning-solid": "#F59F0A",
