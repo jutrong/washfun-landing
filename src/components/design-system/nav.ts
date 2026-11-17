@@ -1,6 +1,7 @@
 export type NavItem = { key: string; href: string; title: string; lead: string };
 
 export const COMPONENTS_HREF = "/design-system/components";
+export const PATTERNS_HREF = "/design-system/patterns";
 
 export const OVERVIEW: NavItem = {
   key: "overview",

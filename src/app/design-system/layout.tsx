@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Sidebar from "@/components/design-system/Sidebar";
-import { COMPONENTS_HREF } from "@/components/design-system/nav";
+import { COMPONENTS_HREF, PATTERNS_HREF } from "@/components/design-system/nav";
+import { patterns } from "@/components/design-system/patterns";
 import { components } from "@/components/design-system/components";
 import { tokens } from "@/components/design-system/tokens";
 
@@ -11,7 +12,7 @@ import { tokens } from "@/components/design-system/tokens";
  */
 export const metadata: Metadata = {
   title: "워시펀 디자인 시스템",
-  description: "워시펀 제품이 함께 쓰는 토큰, 규칙, 컴포넌트 명세",
+  description: "워시펀 제품이 함께 쓰는 토큰, 규칙, 컴포넌트, 패턴",
   robots: { index: false, follow: false },
 };
 
@@ -35,7 +36,10 @@ export default function DesignSystemLayout({ children }: { children: React.React
         </div>
       </header>
       <div className="mx-auto flex max-w-[1200px] gap-x10 px-x6 py-x8 lg:flex-col lg:gap-x4 md:px-x4">
-        <Sidebar components={components().map((item) => ({ href: `${COMPONENTS_HREF}/${item.key}`, title: item.title }))} />
+        <Sidebar
+          components={components().map((item) => ({ href: `${COMPONENTS_HREF}/${item.key}`, title: item.title }))}
+          patterns={patterns().map((item) => ({ href: `${PATTERNS_HREF}/${item.key}`, title: item.title }))}
+        />
         <main className="min-w-0 flex-1 pb-x16">{children}</main>
       </div>
     </div>

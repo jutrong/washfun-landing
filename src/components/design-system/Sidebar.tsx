@@ -2,18 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { COMPONENTS_HREF, FOUNDATIONS, OVERVIEW } from "./nav";
+import { COMPONENTS_HREF, FOUNDATIONS, OVERVIEW, PATTERNS_HREF } from "./nav";
 
 /** 왼쪽 메뉴. 좁은 화면에서는 위쪽 가로 메뉴가 된다. */
 type Item = { href: string; title: string };
 
-export default function Sidebar({ components }: { components: Item[] }) {
+export default function Sidebar({ components, patterns }: { components: Item[]; patterns: Item[] }) {
   const pathname = usePathname();
   const groups: { title: string; items: Item[] }[] = [
     { title: "Foundations", items: [{ ...OVERVIEW, title: "Overview" }, ...FOUNDATIONS] },
     { title: "Components", items: [{ href: COMPONENTS_HREF, title: "Overview" }, ...components] },
+    { title: "Patterns", items: [{ href: PATTERNS_HREF, title: "Overview" }, ...patterns] },
   ];
-  const exact = [OVERVIEW.href, COMPONENTS_HREF];
+  const exact = [OVERVIEW.href, COMPONENTS_HREF, PATTERNS_HREF];
 
   return (
     <nav aria-label="디자인 시스템 문서" className="w-[200px] shrink-0 lg:w-full">
