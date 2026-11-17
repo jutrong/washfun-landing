@@ -99,6 +99,18 @@ export default function Thumb({ name, large = false }: { name: string; large?: b
     );
   }
 
+  if (name === "layout") {
+    return (
+      <div className={`${frame} bg-bg-brand-weak`}>
+        <div className="grid h-2/3 w-2/3 grid-cols-4 gap-x2">
+          {[0, 1, 2, 3].map((column) => (
+            <span key={column} className="rounded-r2 bg-bg-brand-solid opacity-40" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (name === "motion") {
     return (
       <div className={`${frame} bg-bg-brand-weak`}>

@@ -90,7 +90,7 @@
   ],
   "implementation": {
     "web": [
-      "createPortal로 document.body에 그립니다. 바깥은 fixed inset-x-0 bottom-0 z-50 flex justify-center px-x4 pb-x6에 pointer-events-none을 주고, 면에만 pointer-events-auto를 돌려줍니다. 문서의 고정 헤더(z-10)보다 위에 뜨되 토스트 밖은 그대로 눌려야 합니다.",
+      "createPortal로 document.body에 그립니다. 바깥은 fixed inset-x-0 bottom-0 z-toast flex justify-center px-x4 pb-x6에 pointer-events-none을 주고, 면에만 pointer-events-auto를 돌려줍니다. 문서의 고정 헤더(z-10)보다 위에 뜨되 토스트 밖은 그대로 눌려야 합니다.",
       "화면을 덮는 배경을 두지 않고 body의 스크롤도 잠그지 않습니다. 초점도 옮기지 않습니다. Dialog, Bottom Sheet와 다른 점입니다.",
       "읽어 주는 영역(role=\"status\", aria-live=\"polite\")은 처음부터 비어 있는 채로 두고, 그 안에 면을 넣었다 뺍니다. 영역과 내용을 한꺼번에 넣으면 화면 읽기 프로그램이 읽지 않는 일이 있습니다.",
       "면은 inline-flex items-center gap-x4 rounded-full border border-stroke-neutral-weak bg-bg-layer-floating px-x7 py-x3 text-t4 font-medium text-fg-neutral shadow-s2로 그립니다. 아이콘은 size-icon-md에 text-fg-positive 같은 상태 색 클래스를 줍니다.",

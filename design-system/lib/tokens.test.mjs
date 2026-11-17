@@ -101,3 +101,21 @@ test("움직임 곡선은 쓰임새 이름으로 고른다", () => {
   assert.equal(get("motion.easing.enter").value, "cubic-bezier(0.21, 0.65, 0.32, 1)");
   for (const t of flat.filter((t) => t.path.startsWith("motion.easing."))) assert.match(t.value, /^cubic-bezier\((-?[\d.]+, ){3}-?[\d.]+\)$/, t.path);
 });
+test("화면 좌우 여백은 환경마다 값이 있다", () => {
+  assert.equal(get("env.web.layout.gutter").value, "16px");
+  assert.equal(get("env.web.layout.gutter-wide").value, "24px");
+  assert.equal(get("env.app.layout.gutter").value, "20px");
+  assert.equal(get("env.kiosk.layout.gutter").value, "48px");
+});
+test("화면 너비 경계와 본문 최대 너비는 넓어지는 순서다", () => {
+  const px = (prefix) => flat.filter((t) => t.path.startsWith(prefix)).map((t) => parseInt(t.value, 10));
+  assert.deepEqual(px("breakpoint."), [768, 1024, 1280]);
+  assert.deepEqual(px("container."), [448, 1200, 1440]);
+});
+test("겹치는 순서는 이름으로 정하고 뒤로 갈수록 위에 온다", () => {
+  const layers = flat.filter((t) => t.path.startsWith("z-index."));
+  assert.deepEqual(layers.map((t) => t.path.split(".").pop()), ["base", "raised", "sticky", "dropdown", "overlay", "toast"]);
+  const values = layers.map((t) => Number(t.value));
+  assert.deepEqual(values, [...values].sort((a, b) => a - b));
+  assert.equal(new Set(values).size, values.length);
+});

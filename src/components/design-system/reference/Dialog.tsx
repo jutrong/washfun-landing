@@ -170,7 +170,7 @@ export default function Dialog({
   const closable = closeOnBackdrop && tone !== "danger" && !busy;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-x5">
+    <div className="fixed inset-0 z-overlay flex items-center justify-center p-x5">
       <div
         aria-hidden
         onClick={closable ? onClose : undefined}

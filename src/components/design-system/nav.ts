@@ -36,6 +36,12 @@ export const FOUNDATIONS: NavItem[] = [
     lead: "간격은 4px 단위 하나로 맞춥니다.",
   },
   {
+    key: "layout",
+    href: "/design-system/layout",
+    title: "Layout",
+    lead: "화면 좌우 여백, 너비 경계, 본문 최대 너비, 겹치는 순서를 정합니다.",
+  },
+  {
     key: "radius",
     href: "/design-system/radius",
     title: "Radius",

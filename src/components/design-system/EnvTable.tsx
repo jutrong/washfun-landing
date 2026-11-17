@@ -6,7 +6,7 @@ export default function EnvTable({
   group,
   sample,
 }: {
-  group: "font-size" | "line-height" | "radius" | "icon-size" | "touch-target";
+  group: "font-size" | "line-height" | "radius" | "icon-size" | "touch-target" | "layout";
   /** 환경별 값을 눈으로 보여 줄 견본 */
   sample?: (value: string) => ReactNode;
 }) {

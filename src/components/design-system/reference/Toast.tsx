@@ -107,7 +107,7 @@ export default function Toast({ open, onClose, message, tone = "neutral", durati
 
   return createPortal(
     // 화면을 덮지 않는다. 토스트 밖은 그대로 누를 수 있고 스크롤도 잠그지 않는다.
-    <div className={`pointer-events-none fixed inset-x-0 z-50 flex justify-center px-x4 ${aboveAction ? "bottom-x16 pb-x2" : "bottom-0 pb-x6"}`}>
+    <div className={`pointer-events-none fixed inset-x-0 z-toast flex justify-center px-x4 ${aboveAction ? "bottom-x16 pb-x2" : "bottom-0 pb-x6"}`}>
       {/* 읽어 주는 영역은 늘 두고 내용만 넣었다 뺀다. 그래야 화면 읽기 프로그램이 새 문구를 읽는다. */}
       <div role="status" aria-live="polite" aria-atomic="true">
         {mounted ? (

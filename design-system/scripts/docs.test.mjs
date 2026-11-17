@@ -30,3 +30,8 @@ test("움직임 시간과 곡선도 표에 나온다", () => {
   assert.match(tables, /\| `motion\.duration\.d3` \| 200ms \|/);
   assert.match(tables, /\| `motion\.easing\.exit` \| cubic-bezier\(/);
 });
+test("화면 배치 값도 표에 나온다", () => {
+  assert.match(tables, /\| `layout\.gutter` \| 16px \| 20px \| 48px \|/);
+  assert.match(tables, /\| `z-index\.overlay` \| 50 \|/);
+  assert.match(tables, /\| `breakpoint\.lg` \| 1024px \|/);
+});

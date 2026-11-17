@@ -232,7 +232,7 @@
   "implementation": {
     "web": [
       "면은 div에 role=\"dialog\"와 aria-modal=\"true\"를 줍니다. 제목은 h2로 쓰고 useId로 만든 id를 aria-labelledby에, 본문의 id를 aria-describedby에 잇습니다.",
-      "createPortal로 document.body에 그립니다. 가장 바깥은 fixed inset-0 z-50 flex items-center justify-center p-x5이고, 그 안에 배경(absolute inset-0 bg-bg-overlay)과 면을 형제로 둡니다. 문서의 고정 헤더(z-10)보다 위에 떠야 합니다. 면의 너비는 w-full max-w-sm이고, 버튼은 Button large 둘에 flex-1을 줘 같은 너비로 나눕니다.",
+      "createPortal로 document.body에 그립니다. 가장 바깥은 fixed inset-0 z-overlay flex items-center justify-center p-x5이고, 그 안에 배경(absolute inset-0 bg-bg-overlay)과 면을 형제로 둡니다. 문서의 고정 헤더(z-10)보다 위에 떠야 합니다. 면의 너비는 w-full max-w-sm이고, 버튼은 Button large 둘에 flex-1을 줘 같은 너비로 나눕니다.",
       "열릴 때 body의 overflow를 hidden으로 바꾸고, 닫힐 때 바꾸기 전 값으로 되돌립니다. 되돌리는 일은 effect의 정리 함수에 둬서 창이 열린 채 화면이 사라져도 스크롤이 잠긴 채 남지 않게 합니다.",
       "열릴 때 document.activeElement를 기억하고 면(tabIndex -1)으로 초점을 옮깁니다. document의 keydown에서 Tab과 Shift+Tab을 창 안의 처음과 끝 버튼 사이로 돌리고, 닫히면 기억해 둔 요소에 focus를 돌려줍니다.",
       "닫는 규칙은 한곳에 모읍니다. Esc는 처리 중이 아니면 onClose를 부르고, 배경 누름은 closeOnBackdrop이 참이고 danger가 아니며 처리 중이 아닐 때만 onClose를 부릅니다.",

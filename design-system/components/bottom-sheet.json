@@ -234,7 +234,7 @@
   "implementation": {
     "web": [
       "지금 웹에는 바텀 시트가 없으므로 모바일 웹에서 선택지를 받는 화면부터 이 구현으로 새로 넣습니다. 면은 div에 role=\"dialog\"와 aria-modal=\"true\"를 주고 제목 h2의 id를 aria-labelledby에 잇습니다. 닫기는 button 요소에 aria-label=\"닫기\"를 붙입니다.",
-      "createPortal로 document.body에 그립니다. 가장 바깥은 fixed inset-0 z-50 flex items-end justify-center pt-x16이고, 그 안에 배경(absolute inset-0 bg-bg-overlay)과 면을 형제로 둡니다. 문서의 고정 헤더(z-10)보다 위에 떠야 합니다.",
+      "createPortal로 document.body에 그립니다. 가장 바깥은 fixed inset-0 z-overlay flex items-end justify-center pt-x16이고, 그 안에 배경(absolute inset-0 bg-bg-overlay)과 면을 형제로 둡니다. 문서의 고정 헤더(z-10)보다 위에 떠야 합니다.",
       "면은 w-full max-w-md max-h-full flex flex-col rounded-t-r6 px-x6 pt-x6 pb-x12로 둡니다. 내용 영역에만 min-h-0 flex-1 overflow-y-auto를 줘서 제목과 주요 버튼이 스크롤에 밀려나지 않게 합니다.",
       "열릴 때 body의 overflow를 hidden으로 바꾸고 effect의 정리 함수에서 바꾸기 전 값으로 되돌립니다. 시트가 열린 채 화면이 사라져도 스크롤이 잠긴 채 남지 않습니다.",
       "열릴 때 document.activeElement를 기억하고 면(tabIndex -1)으로 초점을 옮깁니다. document의 keydown에서 Tab을 시트 안에 가두고 Esc로 닫으며, 닫히면 기억해 둔 요소에 focus를 돌려줍니다.",

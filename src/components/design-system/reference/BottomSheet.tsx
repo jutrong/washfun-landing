@@ -165,7 +165,7 @@ export default function BottomSheet({ open, onClose, title, description, childre
 
   return createPortal(
     // 위에 x16 을 남겨 시트가 화면을 다 덮지 않게 한다. 뒤 화면이 보여야 돌아갈 곳을 안다.
-    <div className="fixed inset-0 z-50 flex items-end justify-center pt-x16">
+    <div className="fixed inset-0 z-overlay flex items-end justify-center pt-x16">
       <div
         aria-hidden
         onClick={close}

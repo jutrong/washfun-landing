@@ -119,3 +119,19 @@ test("ts: 움직임 시간은 ms 숫자, 곡선은 Easing.bezier 에 넣는 네 
   assert.match(out, /duration: \{[^}]*d3: 200,/s);
   assert.match(out, /enter: \[0\.21, 0\.65, 0\.32, 1\],/);
 });
+test("preset: 화면 여백은 px-gutter, 본문 너비는 max-w-container, 겹침은 z-overlay", () => {
+  const web = loadPreset(toTailwindPreset(tree, "web"));
+  assert.equal(web.spacing.gutter, "16px");
+  assert.equal(web.spacing["gutter-wide"], "24px");
+  assert.equal(loadPreset(toTailwindPreset(tree, "kiosk")).spacing.gutter, "48px");
+  assert.equal(web.maxWidth.container, "1200px");
+  assert.equal(web.maxWidth["container-narrow"], "448px");
+  assert.equal(web.zIndex.overlay, "50");
+  assert.equal(web.screens, undefined, "화면 경계는 제품의 screens 설정을 덮어쓰지 않는다");
+});
+test("ts: 화면 배치 값은 숫자로 나온다", () => {
+  const out = toTsObject(tree, "app");
+  assert.match(out, /layout: \{\s*gutter: 20,/);
+  assert.match(out, /zIndex: \{[^}]*overlay: 50,/s);
+  assert.match(out, /breakpoint: \{\s*md: 768,/);
+});

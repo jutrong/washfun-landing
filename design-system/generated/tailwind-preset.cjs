@@ -1,4 +1,4 @@
-// Generated from washfun design tokens v0.4.0. Do not edit. Run sync-tokens to update.
+// Generated from washfun design tokens v0.5.0. Do not edit. Run sync-tokens to update.
 module.exports = {
   "theme": {
     "extend": {
@@ -122,7 +122,10 @@ module.exports = {
         "x10": "40px",
         "x12": "48px",
         "x14": "56px",
-        "x16": "64px"
+        "x16": "64px",
+        "gutter": "16px",
+        "gutter-wide": "24px",
+        "column-gap": "24px"
       },
       "fontSize": {
         "t1": [
@@ -223,6 +226,19 @@ module.exports = {
       },
       "minWidth": {
         "touch": "44px"
+      },
+      "maxWidth": {
+        "container": "1200px",
+        "container-narrow": "448px",
+        "container-wide": "1440px"
+      },
+      "zIndex": {
+        "base": "0",
+        "raised": "1",
+        "sticky": "10",
+        "dropdown": "40",
+        "overlay": "50",
+        "toast": "60"
       },
       "transitionDuration": {
         "d1": "100ms",

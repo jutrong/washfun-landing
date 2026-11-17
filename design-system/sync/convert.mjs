@@ -67,6 +67,8 @@ export function toTailwindPreset(tree, env) {
     Object.entries(group(tree, `env.${env}.icon-size`)).map(([name, size]) => [`icon-${name}`, size]),
   );
   const touch = group(tree, `env.${env}.touch-target`).min;
+  const layout = group(tree, `env.${env}.layout`);
+  const container = group(tree, "container");
 
   const extend = {
     colors: {
@@ -75,7 +77,13 @@ export function toTailwindPreset(tree, env) {
       bg: group(tree, "color.bg"),
       stroke: group(tree, "color.stroke"),
     },
-    spacing: Object.fromEntries(Object.entries(group(tree, "dimension")).filter(([, v]) => typeof v === "string")),
+    // 화면 좌우 여백은 px-gutter, 넓은 화면에서는 px-gutter-wide.
+    spacing: {
+      ...Object.fromEntries(Object.entries(group(tree, "dimension")).filter(([, v]) => typeof v === "string")),
+      gutter: layout.gutter,
+      "gutter-wide": layout["gutter-wide"],
+      "column-gap": layout["column-gap"],
+    },
     fontSize,
     borderRadius: group(tree, `env.${env}.radius`),
     boxShadow: group(tree, "shadow"),
@@ -84,6 +92,10 @@ export function toTailwindPreset(tree, env) {
     size: { ...iconSize, touch },
     minHeight: { touch },
     minWidth: { touch },
+    // 본문 최대 너비는 max-w-container, 겹치는 순서는 z-overlay 처럼 쓴다.
+    // 화면 너비 경계(breakpoint)는 제품마다 screens 를 이미 정해 두었으므로 여기서 덮어쓰지 않는다.
+    maxWidth: { container: container.default, "container-narrow": container.narrow, "container-wide": container.wide },
+    zIndex: group(tree, "z-index", (key) => key, String),
     // 움직임은 duration-d3 ease-enter 처럼 쓴다.
     transitionDuration: group(tree, "motion.duration"),
     transitionTimingFunction: group(tree, "motion.easing"),
@@ -124,6 +136,10 @@ export function toTsObject(tree, env) {
     shadow: group(tree, "shadow", camel),
     iconSize: group(tree, `env.${env}.icon-size`, camel, unitless),
     touchTarget: group(tree, `env.${env}.touch-target`, camel, unitless),
+    layout: group(tree, `env.${env}.layout`, camel, unitless),
+    breakpoint: group(tree, "breakpoint", camel, unitless),
+    container: group(tree, "container", camel, unitless),
+    zIndex: group(tree, "z-index", camel),
     motion: {
       duration: group(tree, "motion.duration", camel, milliseconds),
       easing: group(tree, "motion.easing", camel, bezier),

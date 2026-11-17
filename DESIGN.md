@@ -60,6 +60,16 @@
 - 여러 색을 쓰는 그림(로고, 세차 코스 그림)은 아이콘이 아니라 이미지로 다룬다.
 - Tailwind는 `size-icon-lg`, `min-h-touch min-w-touch`, 앱은 `tokens.iconSize.lg`, `tokens.touchTarget.min`.
 
+## 화면 배치
+
+- 화면 좌우 여백은 `layout.gutter`(web 16px, app 20px, kiosk 48px), 넓은 화면은 `layout.gutter-wide`. 나란히 놓인 칸 사이는 `layout.column-gap`. 직접 보려면 `/design-system/layout`.
+- 웹은 `breakpoint.md`(768px)와 `breakpoint.lg`(1024px)에서 휴대폰·태블릿·데스크톱 배치로 나뉘고 칸 수는 4·8·12다. 좁아지면 숨기지 않고 아래로 쌓는다. 제품의 Tailwind 화면 구간 설정('이 너비 이하')은 바꾸지 않는다.
+- 본문은 `container.default`(1200px) 안에서 가운데에 둔다. 폼과 읽는 글은 `container.narrow`(448px), 표가 많은 관리 화면은 `container.wide`(1440px).
+- 간격으로 묶음을 알린다. 조각 사이 x1~x2, 항목 사이 x3~x4, 묶음 사이 x6, 구간 사이 x10 이상. 간격은 margin보다 부모의 gap으로 준다.
+- 겹치는 순서는 `z-index.base`·`raised`·`sticky`·`dropdown`·`overlay`·`toast`(0·1·10·40·50·60) 이름으로 정한다. 9999 같은 숫자를 쓰지 않는다.
+- 화면 아래에 고정한 버튼은 안전 영역 위에 두고, 스크롤되는 내용 끝에 버튼 높이만큼 여백을 더한다.
+- Tailwind는 `px-gutter`, `gap-column-gap`, `max-w-container`, `z-overlay`, 앱은 `tokens.layout.gutter`, `tokens.zIndex.overlay`.
+
 ## 컴포넌트
 
 - 부품별 명세의 원본은 `design-system/components/<이름>.json`이다. 구성 조각, 변형, 환경별 크기, 상태, 움직임, 접근성, 문구, props, 웹·앱·키오스크 구현 단계를 담는다. 견본과 함께 보려면 `/design-system/components`.
@@ -140,7 +150,7 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 ## 토큰
 
 <!-- tokens:start -->
-버전 0.4.0
+버전 0.5.0
 
 ### 역할 색
 
@@ -293,6 +303,33 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | `gradient.fade-layer` | #FFFFFF00 0%, #FFFFFFD9 60%, #FFFFFF 100% |
 | `gradient.shimmer-neutral` | #FFFFFF00 0%, #FFFFFFAB 46%, #FFFFFFAB 54%, #FFFFFF00 100% |
 
+### 화면 너비 경계
+
+| 이름 | 값 |
+| --- | --- |
+| `breakpoint.md` | 768px |
+| `breakpoint.lg` | 1024px |
+| `breakpoint.xl` | 1280px |
+
+### 본문 최대 너비
+
+| 이름 | 값 |
+| --- | --- |
+| `container.narrow` | 448px |
+| `container.default` | 1200px |
+| `container.wide` | 1440px |
+
+### 겹치는 순서
+
+| 이름 | 값 |
+| --- | --- |
+| `z-index.base` | 0 |
+| `z-index.raised` | 1 |
+| `z-index.sticky` | 10 |
+| `z-index.dropdown` | 40 |
+| `z-index.overlay` | 50 |
+| `z-index.toast` | 60 |
+
 ### 움직임 시간
 
 | 이름 | 값 |
@@ -369,4 +406,12 @@ node sync-tokens.mjs --format ts --env app --out src/assets/styles/tokens.ts
 | 이름 | web | app | kiosk |
 | --- | --- | --- | --- |
 | `touch-target.min` | 44px | 44px | 64px |
+
+### 화면 배치 (환경별)
+
+| 이름 | web | app | kiosk |
+| --- | --- | --- | --- |
+| `layout.gutter` | 16px | 20px | 48px |
+| `layout.gutter-wide` | 24px | 20px | 48px |
+| `layout.column-gap` | 24px | 12px | 24px |
 <!-- tokens:end -->

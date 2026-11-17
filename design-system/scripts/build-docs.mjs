@@ -29,6 +29,9 @@ export function renderTokenTables(tree) {
     plain("글자 굵기", "font-weight."),
     plain("그림자", "shadow."),
     plain("그라디언트", "gradient."),
+    plain("화면 너비 경계", "breakpoint."),
+    plain("본문 최대 너비", "container."),
+    plain("겹치는 순서", "z-index."),
     plain("움직임 시간", "motion.duration."),
     plain("움직임 곡선", "motion.easing."),
   ];
@@ -37,7 +40,7 @@ export function renderTokenTables(tree) {
   const [firstEnv] = ENVIRONMENTS;
   const names = under(`env.${firstEnv}.`).map((t) => t.path.replace(`env.${firstEnv}.`, ""));
   const valueOf = (env, name) => flat.find((t) => t.path === `env.${env}.${name}`)?.value ?? "";
-  for (const [title, group] of [["글자 크기", "font-size."], ["줄 높이", "line-height."], ["모서리", "radius."], ["아이콘 크기", "icon-size."], ["누르는 영역", "touch-target."]]) {
+  for (const [title, group] of [["글자 크기", "font-size."], ["줄 높이", "line-height."], ["모서리", "radius."], ["아이콘 크기", "icon-size."], ["누르는 영역", "touch-target."], ["화면 배치", "layout."]]) {
     sections.push(
       `### ${title} (환경별)\n\n${table(
         ["이름", ...ENVIRONMENTS],
