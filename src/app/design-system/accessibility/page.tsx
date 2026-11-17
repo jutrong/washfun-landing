@@ -75,7 +75,6 @@ export default function AccessibilityPage() {
                 <th scope="col" className={th}>견본</th>
                 <th scope="col" className={th}>글자 / 배경</th>
                 <th scope="col" className={th}>대비</th>
-                <th scope="col" className={th}>결과</th>
                 {failed.length > 0 ? <th scope="col" className={th}>쓰는 법</th> : null}
               </tr>
             </thead>
@@ -103,9 +102,7 @@ export default function AccessibilityPage() {
                   <td className={`${td} whitespace-nowrap text-fg-neutral`}>
                     {result.ratio}:1
                     <span className="block text-fg-neutral-subtle">기준 {result.required}:1</span>
-                  </td>
-                  <td className={`${td} whitespace-nowrap font-bold text-fg-neutral`}>
-                    {result.pass ? "✓ 지킴" : "✕ 못 미침"}
+                    {result.pass ? null : <span className="block font-bold text-fg-critical">✕ 못 미침</span>}
                   </td>
                   {failed.length > 0 ? <td className={`${td} text-fg-neutral-muted`}>{result.known ?? ""}</td> : null}
                 </tr>
