@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import DocPage from "@/components/design-system/DocPage";
 import TokenSection from "@/components/design-system/TokenSection";
 import { ENVIRONMENTS } from "@/components/design-system/tokens";
@@ -21,6 +22,48 @@ function Pair({ dont, good }: { dont: string; good: string }) {
         {good}
       </p>
     </div>
+  );
+}
+
+type GuideItem = {
+  key: string;
+  title: string;
+  lead: string;
+  rules: string[];
+  exceptions?: string[];
+  examples: { source: string; dont: string; do: string; why: string }[];
+};
+
+/** 규칙 한 묶음: 규칙, 예외, 고치기 전·후 예시. */
+function Guide({ item, children }: { item: GuideItem; children?: ReactNode }) {
+  return (
+    <TokenSection id={item.key} title={item.title} lead={item.lead}>
+      <ul className={rule}>
+        {item.rules.map((text) => (
+          <li key={text}>{text}</li>
+        ))}
+      </ul>
+      {item.exceptions ? (
+        <div className="mt-x4 rounded-r3 bg-bg-layer-basement p-x4">
+          <p className="text-t3 font-bold text-fg-neutral">이럴 때는 예외</p>
+          <ul className={`mt-x2 ${rule}`}>
+            {item.exceptions.map((text) => (
+              <li key={text}>{text}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {children}
+      <ul className="mt-x6 flex flex-col gap-x6">
+        {item.examples.map((example) => (
+          <li key={example.do}>
+            <p className="mb-x2 text-t2 text-fg-neutral-subtle">{example.source}</p>
+            <Pair dont={example.dont} good={example.do} />
+            <p className="mt-x2 text-t3 text-fg-neutral-muted">{example.why}</p>
+          </li>
+        ))}
+      </ul>
+    </TokenSection>
   );
 }
 
@@ -79,23 +122,33 @@ export default function WritingPage() {
         </ul>
       </TokenSection>
 
-      {writing.patterns.map((pattern) => (
-        <TokenSection key={pattern.key} id={pattern.key} title={pattern.title} lead={pattern.lead}>
-          <ul className={rule}>
-            {pattern.rules.map((text) => (
-              <li key={text}>{text}</li>
-            ))}
-          </ul>
-          <ul className="mt-x6 flex flex-col gap-x6">
-            {pattern.examples.map((example) => (
-              <li key={example.do}>
-                <p className="mb-x2 text-t2 text-fg-neutral-subtle">{example.source}</p>
-                <Pair dont={example.dont} good={example.do} />
-                <p className="mt-x2 text-t3 text-fg-neutral-muted">{example.why}</p>
-              </li>
-            ))}
-          </ul>
-        </TokenSection>
+      {writing.style.map((item) => (
+        <Guide key={item.key} item={item}>
+          {item.key === "plain" ? (
+            <div className="mt-x6 overflow-x-auto">
+              <table className="w-full border-collapse text-left text-t3">
+                <thead>
+                  <tr className="text-fg-neutral-muted">
+                    <th scope="col" className={th}>어려운 말</th>
+                    <th scope="col" className={th}>쉬운 말</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {writing.plain.map((word) => (
+                    <tr key={word.avoid}>
+                      <td className={`${td} text-fg-neutral-subtle line-through`}>{word.avoid}</td>
+                      <th scope="row" className={`${td} text-left font-bold text-fg-neutral`}>{word.use}</th>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+        </Guide>
+      ))}
+
+      {writing.patterns.map((item) => (
+        <Guide key={item.key} item={item} />
       ))}
 
       <TokenSection
@@ -157,7 +210,14 @@ export default function WritingPage() {
           </li>
           <li>
             <code className={code}>design-system/lib/writing.mjs</code>의 <code className={code}>findIssues(문구, 환경)</code>는
-            피하는 말, 금액 표기, 느낌표·말줄임표, 말투를 찾아 줍니다. 이 페이지의 “이렇게 써요” 예시는 모두 이 검사를 통과합니다.
+            피하는 말, 어려운 한자어, 금액 표기, 느낌표·말줄임표, 말투, 수동형, 지나친 높임말을 찾아 줍니다. 이 페이지의 “이렇게 써요” 예시는 모두 이 검사를 통과합니다.
+          </li>
+          <li>
+            능동형·긍정형·높임말·풀어 쓰기 규칙은{" "}
+            <a href={writing.reference.url} target="_blank" rel="noreferrer" className="text-fg-brand underline">
+              {writing.reference.name}
+            </a>
+            를 참고해 워시펀에 맞게 다시 썼습니다.
           </li>
           <li>기계가 볼 수 없는 것(쉬운 말인지, 다음에 할 일을 알려 주는지)은 리뷰할 때 위 원칙으로 확인합니다.</li>
         </ul>
