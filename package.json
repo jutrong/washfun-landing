@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node design-system/scripts/copy-public.mjs",
     "dev": "next dev",
+    "prebuild": "npm run tokens:check && node design-system/scripts/copy-public.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "tokens:test": "node --test design-system/",
+    "tokens:build": "node design-system/sync/sync-tokens.mjs --source design-system/tokens.json --format tailwind --env web --out design-system/generated/tailwind-preset.cjs && npm run tokens:docs",
+    "tokens:docs": "node design-system/scripts/build-docs.mjs",
+    "tokens:check": "node design-system/scripts/check.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",

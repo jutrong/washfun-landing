@@ -1,0 +1,122 @@
+import React, { useEffect, useRef, useState } from "react";
+import { AccessibilityInfo, Animated, Easing, Modal, Pressable, StyleSheet, Text, View, findNodeHandle } from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+import { Button } from "./Button";
+
+type Action = { label: string; onPress: () => void; loading?: boolean };
+
+type Props = {
+  open: boolean;
+  /** 배경 누름, Android 뒤로 가기로 닫힐 때 부른다. 버튼은 각자의 onPress 에서 닫는다. */
+  onClose: () => void;
+  title: string;
+  description?: string;
+  primaryAction: Action;
+  secondaryAction?: Action;
+  /** danger 는 삭제처럼 되돌리기 어려운 행동. 오른쪽 버튼이 danger 로 바뀌고 배경을 눌러도 닫히지 않는다. */
+  tone?: "default" | "danger";
+  closeOnBackdrop?: boolean;
+};
+
+const { color, dimension, radius, fontSize, fontWeight, lineHeight, shadow } = tokens;
+
+export function Dialog({ open, onClose, title, description, primaryAction, secondaryAction, tone = "default", closeOnBackdrop = true }: Props) {
+  // mounted: Modal 이 떠 있는지. 사라지는 움직임이 끝난 뒤에 내린다.
+  const [mounted, setMounted] = useState(open);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const progress = useRef(new Animated.Value(0)).current;
+  const titleRef = useRef<Text>(null);
+  const busy = !!primaryAction.loading || !!secondaryAction?.loading;
+
+  useEffect(() => {
+    AccessibilityInfo.isReduceMotionEnabled().then(setReduceMotion);
+    const subscription = AccessibilityInfo.addEventListener("reduceMotionChanged", setReduceMotion);
+    return () => subscription.remove();
+  }, []);
+
+  useEffect(() => {
+    if (open) setMounted(true);
+    Animated.timing(progress, {
+      toValue: open ? 1 : 0,
+      duration: open ? tokens.motion.duration.d4 : tokens.motion.duration.d3,
+      easing: Easing.bezier(...(open ? tokens.motion.easing.enter : tokens.motion.easing.exit)),
+      useNativeDriver: true,
+    }).start(({ finished }) => {
+      if (finished && !open) setMounted(false);
+    });
+  }, [open, progress]);
+
+  // 열리면 화면 읽기 프로그램의 초점을 제목으로 옮긴다.
+  const focusTitle = () => {
+    const node = findNodeHandle(titleRef.current);
+    if (node) AccessibilityInfo.setAccessibilityFocus(node);
+  };
+
+  const closable = closeOnBackdrop && tone !== "danger" && !busy;
+  // 동작 줄이기에서는 크기 변화를 빼고 투명도만 바꾼다.
+  const scale = reduceMotion ? 1 : progress.interpolate({ inputRange: [0, 1], outputRange: [0.95, 1] });
+
+  return (
+    <Modal
+      visible={mounted}
+      transparent
+      statusBarTranslucent
+      animationType="none"
+      onShow={focusTitle}
+      // Android 뒤로 가기. 처리 중에는 닫지 않는다.
+      onRequestClose={() => {
+        if (!busy) onClose();
+      }}
+    >
+      <View style={styles.root}>
+        <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, { opacity: progress }]}>
+          <Pressable
+            style={StyleSheet.absoluteFill}
+            accessible={false}
+            importantForAccessibility="no"
+            onPress={closable ? onClose : undefined}
+          />
+        </Animated.View>
+        <Animated.View accessibilityViewIsModal style={[styles.surface, { opacity: progress, transform: [{ scale }] }]}>
+          <Text ref={titleRef} accessibilityRole="header" style={styles.title}>
+            {title}
+          </Text>
+          {description ? <Text style={styles.description}>{description}</Text> : null}
+          {/* 덜 중요한 버튼이 왼쪽, 주요 버튼이 오른쪽. 세로로 쌓지 않는다. */}
+          <View style={styles.actions}>
+            {secondaryAction ? (
+              <View style={styles.action}>
+                <Button variant="outline" fullWidth loading={secondaryAction.loading} onPress={secondaryAction.onPress}>
+                  {secondaryAction.label}
+                </Button>
+              </View>
+            ) : null}
+            <View style={styles.action}>
+              <Button variant={tone === "danger" ? "danger" : "primary"} fullWidth loading={primaryAction.loading} onPress={primaryAction.onPress}>
+                {primaryAction.label}
+              </Button>
+            </View>
+          </View>
+        </Animated.View>
+      </View>
+    </Modal>
+  );
+}
+
+const styles = StyleSheet.create({
+  // 좌우 x5 를 남기면 면의 너비가 '화면 너비 - 40' 이 된다.
+  root: { flex: 1, alignItems: "center", justifyContent: "center", paddingHorizontal: dimension.x5 },
+  backdrop: { backgroundColor: color.bg.overlay },
+  surface: {
+    width: "100%",
+    padding: dimension.x6,
+    borderRadius: radius.r6,
+    backgroundColor: color.bg.layerFloating,
+    // boxShadow 는 RN 0.76 이상에서 쓴다. 그보다 낮으면 shadow* 와 elevation 으로 옮긴다.
+    boxShadow: shadow.s3,
+  },
+  title: { color: color.fg.neutral, fontSize: fontSize.t7, fontWeight: fontWeight.bold, lineHeight: fontSize.t7 * lineHeight.t7 },
+  description: { marginTop: dimension.x2, color: color.fg.neutralMuted, fontSize: fontSize.t5, lineHeight: fontSize.t5 * lineHeight.t5 },
+  actions: { flexDirection: "row", gap: dimension.x2, marginTop: dimension.x6 },
+  action: { flex: 1 },
+});

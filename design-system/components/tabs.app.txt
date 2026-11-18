@@ -1,0 +1,88 @@
+import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+
+type Size = "medium" | "small";
+
+type Item = { value: string; label: string; disabled?: boolean };
+
+type Props = {
+  items: Item[];
+  value: string;
+  onChange: (value: string) => void;
+  /** 탭 줄이 무엇을 나누는지 읽어 줄 이름. 예: 매장 상세 */
+  label: string;
+  size?: Size;
+  fullWidth?: boolean;
+};
+
+const { color, dimension, fontSize, fontWeight, touchTarget } = tokens;
+
+const SIZES = {
+  medium: { height: dimension.x12, paddingHorizontal: dimension.x4, fontSize: fontSize.t5 },
+  // 시트 안의 탭. 누르는 영역을 지키려고 높이를 touchTarget.min 에 맞춘다.
+  small: { height: touchTarget.min, paddingHorizontal: dimension.x3, fontSize: fontSize.t4 },
+} as const;
+
+// 밑줄 두께. 선택 여부에 따라 두께를 바꾸지 않고 색만 바꾼다.
+const INDICATOR = dimension.x1 / 2;
+
+export function Tabs({ items, value, onChange, label, size = "medium", fullWidth }: Props) {
+  const s = SIZES[size];
+
+  return (
+    <View accessibilityRole="tablist" accessibilityLabel={label} style={styles.list}>
+      {items.map((item) => {
+        const selected = item.value === value;
+        const fg = item.disabled ? color.fg.disabled : selected ? color.fg.neutral : color.fg.neutralMuted;
+        return (
+          <Pressable
+            key={item.value}
+            accessibilityRole="tab"
+            accessibilityState={{ selected, disabled: !!item.disabled }}
+            accessibilityLabel={item.label}
+            disabled={item.disabled}
+            onPress={() => !selected && onChange(item.value)}
+            style={({ pressed }) => [
+              styles.tab,
+              { height: s.height, paddingHorizontal: s.paddingHorizontal },
+              { backgroundColor: pressed ? color.bg.neutralWeak : "transparent" },
+              fullWidth && styles.fill,
+            ]}
+          >
+            {/* 선택 여부는 색과 함께 굵기와 밑줄로도 알린다. */}
+            <Text numberOfLines={1} style={{ color: fg, fontSize: s.fontSize, fontWeight: selected ? fontWeight.bold : fontWeight.regular }}>
+              {item.label}
+            </Text>
+            <View style={[styles.indicator, { backgroundColor: selected ? color.fg.neutral : "transparent" }]} />
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  list: { flexDirection: "row", borderBottomWidth: 1, borderBottomColor: color.stroke.neutralMuted, backgroundColor: color.bg.layerDefault },
+  tab: { alignItems: "center", justifyContent: "center" },
+  fill: { flex: 1 },
+  // 탭 줄의 1px 구분선을 덮도록 1px 내려 그린다.
+  indicator: { position: "absolute", left: 0, right: 0, bottom: -1, height: INDICATOR },
+});
+
+// 화면 아래 탭 바는 react-navigation 설정으로 같은 토큰을 쓴다.
+// const insets = useSafeAreaInsets();
+// <Tab.Navigator
+//   screenOptions={{
+//     tabBarActiveTintColor: tokens.color.fg.brand,
+//     tabBarInactiveTintColor: tokens.color.fg.neutralMuted,
+//     tabBarLabelStyle: { fontSize: tokens.fontSize.t1, fontWeight: tokens.fontWeight.bold },
+//     tabBarStyle: {
+//       height: tokens.dimension.x14 + insets.bottom,
+//       backgroundColor: tokens.color.bg.layerDefault,
+//       borderTopColor: tokens.color.stroke.neutralMuted,
+//     },
+//     // 선택 여부를 색만으로 알리지 않도록 아이콘 모양도 바꾼다(Line → Fill). 크기는 tokens.iconSize.lg.
+//     tabBarIcon: ({ focused, color }) => <Icon name={focused ? "home-fill" : "home-line"} size={tokens.iconSize.lg} color={color} />,
+//   }}
+// />

@@ -1,6 +1,12 @@
 import type { Config } from "tailwindcss";
 
+// 워시펀 디자인 토큰(design-system/tokens.json)에서 만든 preset. 고치려면 npm run tokens:build.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const tokensPreset = require("./design-system/generated/tailwind-preset.cjs");
+const tokenColors = tokensPreset.theme.extend.colors;
+
 const config: Config = {
+  presets: [tokensPreset],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -41,15 +47,15 @@ const config: Config = {
         lightPrimary3: "#F5F9FF",
         lightPrimary4: "#F9FBFF",
         lightPrimary5: "#FEFFFF",
-        black: "#15171A",
+        black: tokenColors.fg.neutral,
         color: "white",
         day: "linear-gradient(180deg, #F5F9FF 0%, #EFF6FF 100%)",
-        primary2: "#1C74BC",
+        primary2: tokenColors.bg["brand-solid"],
   
-        secondaryDefault: "#6B7280",
+        secondaryDefault: tokenColors.fg["neutral-muted"],
         secondaryForeground: "#F9F9FA",
         main: "#1C73BA",
-        borderStrong: "#E1E3E6",
+        borderStrong: tokenColors.stroke["neutral-weak"],
         
 
       },

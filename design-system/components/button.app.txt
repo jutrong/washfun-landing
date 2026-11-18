@@ -1,0 +1,80 @@
+import React, { useRef } from "react";
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "danger";
+type Size = "large" | "medium" | "small";
+
+type Props = {
+  variant?: Variant;
+  size?: Size;
+  fullWidth?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
+  icon?: React.ReactNode;
+  onPress?: () => void;
+  children: string;
+};
+
+const { color, dimension, radius, fontSize, fontWeight } = tokens;
+
+const VARIANTS = {
+  primary: { bg: color.bg.brandSolid, pressed: color.bg.brandSolidPressed, fg: color.fg.onBrandSolid, stroke: "transparent" },
+  secondary: { bg: color.bg.neutralWeak, pressed: color.stroke.neutralWeak, fg: color.fg.neutral, stroke: "transparent" },
+  outline: { bg: color.bg.layerDefault, pressed: color.bg.neutralWeak, fg: color.fg.neutral, stroke: color.stroke.neutralWeak },
+  ghost: { bg: "transparent", pressed: color.bg.brandWeak, fg: color.fg.brand, stroke: "transparent" },
+  danger: { bg: color.bg.criticalSolid, pressed: color.bg.criticalSolid, fg: color.fg.onBrandSolid, stroke: "transparent" },
+} as const;
+
+const SIZES = {
+  large: { height: dimension.x12, paddingHorizontal: dimension.x5, gap: dimension.x2, borderRadius: radius.r3, fontSize: fontSize.t5 },
+  medium: { height: dimension.x10, paddingHorizontal: dimension.x4, gap: dimension.x2, borderRadius: radius.r2, fontSize: fontSize.t4 },
+  small: { height: dimension.x8, paddingHorizontal: dimension.x3, gap: dimension.x1, borderRadius: radius.r2, fontSize: fontSize.t3 },
+} as const;
+
+export function Button({ variant = "primary", size = "large", fullWidth, loading, disabled, icon, onPress, children }: Props) {
+  const v = VARIANTS[variant];
+  const s = SIZES[size];
+  const lastPress = useRef(0);
+
+  // 결제처럼 두 번 눌리면 안 되는 곳을 위해 500ms 안의 두 번째 누름은 버린다.
+  const handlePress = () => {
+    const now = Date.now();
+    if (loading || now - lastPress.current < 500) return;
+    lastPress.current = now;
+    onPress?.();
+  };
+
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ disabled: !!disabled, busy: !!loading }}
+      accessibilityLabel={children}
+      disabled={disabled}
+      onPress={handlePress}
+      // small 은 보이는 높이가 32 이므로 누르는 영역을 touchTarget.min 까지 넓힌다.
+      hitSlop={Math.max(0, (tokens.touchTarget.min - s.height) / 2)}
+      style={({ pressed }) => [
+        styles.base,
+        { height: s.height, paddingHorizontal: s.paddingHorizontal, borderRadius: s.borderRadius, borderColor: v.stroke },
+        { backgroundColor: disabled ? color.bg.disabled : pressed ? v.pressed : v.bg },
+        fullWidth && styles.fullWidth,
+      ]}
+    >
+      {/* 처리 중에도 폭이 변하지 않도록 내용은 그대로 두고 투명하게만 한다. */}
+      <View style={[styles.content, { gap: s.gap, opacity: loading ? 0 : 1 }]}>
+        {icon}
+        <Text numberOfLines={1} style={{ color: disabled ? color.fg.disabled : v.fg, fontSize: s.fontSize, fontWeight: fontWeight.bold }}>
+          {children}
+        </Text>
+      </View>
+      {loading ? <ActivityIndicator style={StyleSheet.absoluteFill} size="small" color={v.fg} /> : null}
+    </Pressable>
+  );
+}
+
+const styles = StyleSheet.create({
+  base: { alignItems: "center", justifyContent: "center", borderWidth: 1, alignSelf: "flex-start" },
+  content: { flexDirection: "row", alignItems: "center", justifyContent: "center" },
+  fullWidth: { alignSelf: "stretch" },
+});

@@ -1,0 +1,86 @@
+import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+
+type RadioProps = {
+  label: string;
+  description?: string;
+  checked: boolean;
+  onCheckedChange?: (checked: boolean) => void;
+  invalid?: boolean;
+  disabled?: boolean;
+};
+
+const { color, dimension, fontSize, fontWeight } = tokens;
+
+export function Radio({ label, description, checked, onCheckedChange, invalid, disabled }: RadioProps) {
+  // 고르지 않은 동그라미의 테두리는 면과 3:1 이 되는 stroke.neutral.
+  const borderColor = disabled ? color.stroke.neutralWeak : checked ? color.stroke.brandSolid : invalid ? color.fg.critical : color.stroke.neutral;
+
+  return (
+    <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{ checked, disabled: !!disabled }}
+      accessibilityLabel={label}
+      accessibilityHint={description}
+      disabled={disabled}
+      // 이미 고른 선택지를 다시 눌러도 풀리지 않는다.
+      onPress={() => {
+        if (!checked) onCheckedChange?.(true);
+      }}
+      style={({ pressed }) => [styles.row, pressed && { backgroundColor: color.bg.neutralWeak }]}
+    >
+      {/* 높이를 레이블 한 줄과 같게 두어, 레이블이 여러 줄이어도 동그라미가 첫 줄에 맞는다. */}
+      <View style={styles.line}>
+        <View style={[styles.circle, { borderColor, backgroundColor: disabled ? color.bg.disabled : color.bg.layerDefault }]}>
+          {/* 고른 상태는 색과 함께 가운데 점으로 알린다. */}
+          {checked ? <View style={[styles.dot, { backgroundColor: disabled ? color.fg.disabled : color.bg.brandSolid }]} /> : null}
+        </View>
+      </View>
+      <View style={styles.text}>
+        <Text style={{ color: disabled ? color.fg.disabled : color.fg.neutral, fontSize: fontSize.t5 }}>{label}</Text>
+        {description ? <Text style={{ color: disabled ? color.fg.disabled : color.fg.neutralMuted, fontSize: fontSize.t3 }}>{description}</Text> : null}
+      </View>
+    </Pressable>
+  );
+}
+
+type RadioGroupProps = {
+  legend: string;
+  options: { value: string; label: string; description?: string; disabled?: boolean }[];
+  value?: string;
+  onValueChange?: (value: string) => void;
+  errorText?: string;
+  disabled?: boolean;
+};
+
+export function RadioGroup({ legend, options, value, onValueChange, errorText, disabled }: RadioGroupProps) {
+  return (
+    <View accessibilityRole="radiogroup" accessibilityLabel={legend}>
+      <Text style={styles.legend}>{legend}</Text>
+      {options.map((option) => (
+        <Radio
+          key={option.value}
+          label={option.label}
+          description={option.description}
+          checked={value === option.value}
+          invalid={!!errorText}
+          disabled={disabled || option.disabled}
+          onCheckedChange={() => onValueChange?.(option.value)}
+        />
+      ))}
+      {/* 오류 문구는 묶음 아래에 한 번만 둔다. */}
+      {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: { minHeight: dimension.x12, paddingVertical: dimension.x3, flexDirection: "row", alignItems: "flex-start", gap: dimension.x3 },
+  line: { height: dimension.x6, justifyContent: "center" },
+  circle: { width: dimension.x5, height: dimension.x5, borderRadius: tokens.radius.full, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+  dot: { width: dimension.x3, height: dimension.x3, borderRadius: tokens.radius.full },
+  text: { flex: 1 },
+  legend: { marginBottom: dimension.x1, color: color.fg.neutral, fontSize: fontSize.t4, fontWeight: fontWeight.medium },
+  error: { marginTop: dimension.x1, color: color.fg.critical, fontSize: fontSize.t3 },
+});

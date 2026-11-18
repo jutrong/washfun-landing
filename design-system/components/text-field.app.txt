@@ -1,0 +1,96 @@
+import React, { useEffect, useRef, useState } from "react";
+import { AccessibilityInfo, Animated, Easing, StyleSheet, Text, TextInput, View } from "react-native";
+import type { TextInputProps } from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+
+type Props = Omit<TextInputProps, "style" | "editable"> & {
+  label: string;
+  helperText?: string;
+  errorText?: string;
+  suffix?: string;
+  disabled?: boolean;
+};
+
+const { color, dimension, radius, fontSize, fontWeight } = tokens;
+
+export function TextField({ label, helperText, errorText, suffix, disabled, onFocus, onBlur, ...rest }: Props) {
+  const [focused, setFocused] = useState(false);
+  const focus = useRef(new Animated.Value(0)).current;
+  const invalid = !!errorText;
+  const message = errorText ?? helperText;
+
+  // 테두리 색 변화는 d2 + standard. 색 값은 Animated 가 보간하므로 native driver 를 쓰지 않는다.
+  useEffect(() => {
+    Animated.timing(focus, {
+      toValue: focused ? 1 : 0,
+      duration: tokens.motion.duration.d2,
+      easing: Easing.bezier(...tokens.motion.easing.standard),
+      useNativeDriver: false,
+    }).start();
+  }, [focused, focus]);
+
+  // 오류가 새로 생기면 화면 읽기 프로그램에 문구를 읽어 준다.
+  useEffect(() => {
+    if (errorText) AccessibilityInfo.announceForAccessibility(errorText);
+  }, [errorText]);
+
+  const borderColor = disabled
+    ? color.stroke.neutralWeak
+    : invalid
+      ? color.fg.critical
+      : focus.interpolate({ inputRange: [0, 1], outputRange: [color.stroke.neutral, color.stroke.brandSolid] });
+
+  return (
+    <View style={styles.stack}>
+      <Text style={styles.label}>{label}</Text>
+      <Animated.View
+        style={[
+          styles.field,
+          { borderColor, backgroundColor: disabled ? color.bg.disabled : color.bg.layerDefault },
+          // 초점은 색과 함께 굵기로도 알린다. 오류는 색과 아래 문구로 알린다.
+          focused && !disabled ? styles.strong : null,
+        ]}
+      >
+        <TextInput
+          {...rest}
+          editable={!disabled}
+          accessibilityLabel={label}
+          accessibilityHint={message}
+          accessibilityState={{ disabled: !!disabled }}
+          placeholderTextColor={color.fg.placeholder}
+          onFocus={(event) => {
+            setFocused(true);
+            onFocus?.(event);
+          }}
+          onBlur={(event) => {
+            setFocused(false);
+            onBlur?.(event);
+          }}
+          style={[styles.input, { color: disabled ? color.fg.disabled : color.fg.neutral }]}
+        />
+        {suffix ? <Text style={[styles.suffix, { color: disabled ? color.fg.disabled : color.fg.neutralMuted }]}>{suffix}</Text> : null}
+      </Animated.View>
+      {/* 도움말과 오류 문구는 같은 자리를 쓴다. */}
+      {message ? <Text style={[styles.helper, { color: invalid ? color.fg.critical : color.fg.neutralMuted }]}>{message}</Text> : null}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  stack: { alignSelf: "stretch", gap: dimension.x2 },
+  label: { color: color.fg.neutral, fontSize: fontSize.t4, fontWeight: fontWeight.medium },
+  field: {
+    height: dimension.x12,
+    paddingHorizontal: dimension.x4,
+    borderRadius: radius.r4,
+    borderWidth: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: dimension.x2,
+  },
+  // 2px 테두리만큼 안쪽 여백을 줄여 글자가 움직이지 않게 한다.
+  strong: { borderWidth: 2, paddingHorizontal: dimension.x4 - 1 },
+  input: { flex: 1, height: "100%", padding: 0, fontSize: fontSize.t5 },
+  suffix: { fontSize: fontSize.t5 },
+  helper: { fontSize: fontSize.t3 },
+});

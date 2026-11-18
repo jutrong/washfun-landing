@@ -1,0 +1,72 @@
+import React, { useEffect, useRef, useState } from "react";
+import { AccessibilityInfo, Animated, Easing, Pressable, StyleSheet, Text, View } from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+
+type Props = {
+  label: string;
+  description?: string;
+  checked: boolean;
+  onCheckedChange?: (checked: boolean) => void;
+  disabled?: boolean;
+};
+
+const { color, dimension, radius, fontSize } = tokens;
+
+// 바탕 48×28, 손잡이 24, 바탕 가장자리에서 2px. 손잡이가 움직이는 거리는 48 - 24 - 2×2 = 20(x5).
+const INSET = (dimension.x7 - dimension.x6) / 2;
+const TRAVEL = dimension.x5;
+
+export function Switch({ label, description, checked, onCheckedChange, disabled }: Props) {
+  const position = useRef(new Animated.Value(checked ? 1 : 0)).current;
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    AccessibilityInfo.isReduceMotionEnabled().then(setReduceMotion);
+    const subscription = AccessibilityInfo.addEventListener("reduceMotionChanged", setReduceMotion);
+    return () => subscription.remove();
+  }, []);
+
+  // 손잡이와 바탕 색을 한 값으로 함께 움직인다. 동작 줄이기가 켜지면 바로 바꾼다.
+  useEffect(() => {
+    Animated.timing(position, {
+      toValue: checked ? 1 : 0,
+      duration: reduceMotion ? 0 : tokens.motion.duration.d3,
+      easing: Easing.bezier(...tokens.motion.easing.standard),
+      useNativeDriver: false, // 색을 함께 바꾸므로 native driver 를 쓰지 않는다.
+    }).start();
+  }, [checked, reduceMotion, position]);
+
+  const trackColor = disabled
+    ? color.bg.disabled
+    : position.interpolate({ inputRange: [0, 1], outputRange: [color.stroke.neutral, color.bg.brandSolid] });
+  const translateX = position.interpolate({ inputRange: [0, 1], outputRange: [0, TRAVEL] });
+
+  return (
+    <Pressable
+      accessibilityRole="switch"
+      accessibilityState={{ checked, disabled: !!disabled }}
+      accessibilityLabel={label}
+      accessibilityHint={description}
+      disabled={disabled}
+      // 줄 전체가 눌린다. 누르는 즉시 적용한다.
+      onPress={() => onCheckedChange?.(!checked)}
+      style={styles.row}
+    >
+      <View style={styles.text}>
+        <Text style={{ color: disabled ? color.fg.disabled : color.fg.neutral, fontSize: fontSize.t5 }}>{label}</Text>
+        {description ? <Text style={{ color: disabled ? color.fg.disabled : color.fg.neutralMuted, fontSize: fontSize.t3 }}>{description}</Text> : null}
+      </View>
+      <Animated.View style={[styles.track, { backgroundColor: trackColor }]}>
+        {/* 켜짐과 꺼짐은 색과 함께 손잡이의 자리로 알린다. */}
+        <Animated.View style={[styles.thumb, { backgroundColor: disabled ? color.fg.disabled : color.fg.onBrandSolid, transform: [{ translateX }] }]} />
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: { minHeight: dimension.x12, flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: dimension.x3 },
+  text: { flex: 1 },
+  track: { width: dimension.x12, height: dimension.x7, borderRadius: radius.full, padding: INSET },
+  thumb: { width: dimension.x6, height: dimension.x6, borderRadius: radius.full },
+});

@@ -1,0 +1,76 @@
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { tokens } from "@/design-system/tokens"; // sync-tokens 로 만든 app 용 파일
+
+type Tone = "neutral" | "brand" | "critical" | "warning" | "positive" | "informative";
+type Variant = "weak" | "solid";
+type Size = "medium" | "large";
+
+type Props = {
+  tone?: Tone;
+  variant?: Variant;
+  size?: Size;
+  dot?: boolean;
+  children: string;
+};
+
+const { color, dimension, radius, fontSize, fontWeight } = tokens;
+
+// 같은 색조의 면과 글자를 짝으로 쓴다. 뜻은 글자가 전하고 색은 거든다.
+const TONES = {
+  weak: {
+    neutral: { bg: color.bg.neutralWeak, fg: color.fg.neutral },
+    brand: { bg: color.bg.brandWeak, fg: color.fg.brand },
+    critical: { bg: color.bg.criticalWeak, fg: color.fg.critical },
+    warning: { bg: color.bg.warningWeak, fg: color.fg.warning },
+    positive: { bg: color.bg.positiveWeak, fg: color.fg.positive },
+    informative: { bg: color.bg.informativeWeak, fg: color.fg.informative },
+  },
+  solid: {
+    // neutral 은 진한 면 토큰이 없어 weak 와 같게 그린다.
+    neutral: { bg: color.bg.neutralWeak, fg: color.fg.neutral },
+    brand: { bg: color.bg.brandSolid, fg: color.fg.onBrandSolid },
+    critical: { bg: color.bg.criticalSolid, fg: color.fg.onBrandSolid },
+    // 진한 경고 면 위에서만 어두운 글자를 쓴다.
+    warning: { bg: color.bg.warningSolid, fg: color.fg.onWarningSolid },
+    positive: { bg: color.bg.positiveSolid, fg: color.fg.onBrandSolid },
+    informative: { bg: color.bg.informativeSolid, fg: color.fg.onBrandSolid },
+  },
+} as const;
+
+const SIZES = {
+  medium: { height: dimension.x5, paddingHorizontal: dimension.x2, gap: dimension.x1, fontSize: fontSize.t1, dot: dimension.x1 },
+  large: { height: dimension.x6, paddingHorizontal: dimension.x2, gap: dimension.x1, fontSize: fontSize.t2, dot: dimension.x2 },
+} as const;
+
+// 누를 수 없으므로 Pressable 로 감싸지 않는다.
+export function Badge({ tone = "neutral", variant = "weak", size = "medium", dot, children }: Props) {
+  const t = TONES[variant][tone];
+  const s = SIZES[size];
+
+  return (
+    <View style={[styles.base, { height: s.height, paddingHorizontal: s.paddingHorizontal, gap: s.gap, backgroundColor: t.bg }]}>
+      {dot ? (
+        <View
+          accessibilityElementsHidden
+          importantForAccessibility="no"
+          style={{ width: s.dot, height: s.dot, borderRadius: radius.full, backgroundColor: t.fg }}
+        />
+      ) : null}
+      <Text numberOfLines={1} style={{ color: t.fg, fontSize: s.fontSize, fontWeight: fontWeight.bold }}>
+        {children}
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  // alignSelf 를 주지 않으면 부모 너비만큼 늘어난다.
+  base: { flexDirection: "row", alignItems: "center", alignSelf: "flex-start", borderRadius: tokens.radius.full },
+});
+
+// 쓰는 예: 매장 종류는 색을 나누지 않고 neutral 로 통일한다.
+// <Badge>셀프 세차</Badge>
+// <Badge tone="positive" dot>이용 중</Badge>
+// <Badge tone="warning">만료 예정</Badge>
+// <Badge tone="critical" variant="solid">결제 실패</Badge>

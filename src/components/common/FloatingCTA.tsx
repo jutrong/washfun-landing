@@ -35,6 +35,7 @@ export default function FloatingCTA() {
   if (pathname?.startsWith("/inquiry")) return null;
   if (pathname?.startsWith("/terms")) return null;
   if (pathname?.startsWith("/term-of")) return null;
+  if (pathname?.startsWith("/design-system")) return null;
 
   return (
     <div

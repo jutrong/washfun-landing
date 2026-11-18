@@ -1,0 +1,37 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { loadTokens } from "../lib/tokens.mjs";
+import { renderTokenTables, injectTables } from "./build-docs.mjs";
+
+const tables = renderTokenTables(loadTokens());
+
+test("역할 표에 참조와 값이 함께 나온다", () =>
+  assert.match(tables, /\| `color\.bg\.brand-solid` \| `color\.palette\.blue-600` \| `#1C74BC` \|/));
+test("환경별 표는 세 환경을 나란히 보여 준다", () =>
+  assert.match(tables, /\| `font-size\.t5` \| 16px \| 16px \| 28px \|/));
+test("표시 구간 밖은 그대로 둔다", () => {
+  const doc = "앞\n<!-- tokens:start -->\n옛 표\n<!-- tokens:end -->\n뒤\n";
+  const out = injectTables(doc, "새 표");
+  assert.equal(out, "앞\n<!-- tokens:start -->\n새 표\n<!-- tokens:end -->\n뒤\n");
+});
+test("두 번 돌려도 결과가 같다", () => {
+  const doc = "<!-- tokens:start -->\n<!-- tokens:end -->\n";
+  assert.equal(injectTables(injectTables(doc, tables), tables), injectTables(doc, tables));
+});
+test("표시가 없으면 덮어쓰지 않고 오류", () =>
+  assert.throws(() => injectTables("표시 없음", tables), /missing the tokens:start \/ tokens:end markers/));
+test("그라디언트 표에 색 지점이 나온다", () =>
+  assert.match(tables, /\| `gradient\.highlight-brand` \| #1C74BC 0%, #3397D7 100% \|/));
+test("아이콘 크기와 누르는 영역도 환경별 표에 나온다", () => {
+  assert.match(tables, /\| `icon-size\.md` \| 20px \| 20px \| 40px \|/);
+  assert.match(tables, /\| `touch-target\.min` \| 44px \| 44px \| 64px \|/);
+});
+test("움직임 시간과 곡선도 표에 나온다", () => {
+  assert.match(tables, /\| `motion\.duration\.d3` \| 200ms \|/);
+  assert.match(tables, /\| `motion\.easing\.exit` \| cubic-bezier\(/);
+});
+test("화면 배치 값도 표에 나온다", () => {
+  assert.match(tables, /\| `layout\.gutter` \| 16px \| 20px \| 48px \|/);
+  assert.match(tables, /\| `z-index\.overlay` \| 50 \|/);
+  assert.match(tables, /\| `breakpoint\.lg` \| 1024px \|/);
+});

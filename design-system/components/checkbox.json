@@ -1,0 +1,125 @@
+{
+  "key": "checkbox",
+  "file": "Checkbox",
+  "title": "Checkbox",
+  "ko": "체크박스",
+  "category": "selection",
+  "order": 10,
+  "interactive": true,
+  "lead": "여러 항목을 저마다 골랐다 풀었다 할 수 있는 부품입니다. 네모와 레이블이 한 줄로 묶여 줄 전체가 눌립니다.",
+  "when": [
+    "약관 동의처럼 항목마다 동의 여부를 받을 때",
+    "목록에서 여러 개를 함께 고를 때",
+    "'로그인 상태 유지'처럼 제출할 때 함께 보내는 선택 하나를 받을 때"
+  ],
+  "avoid": [
+    "여러 값 가운데 하나만 고를 때는 Radio를 씁니다.",
+    "누르는 즉시 적용되는 설정에는 Switch를 씁니다. Checkbox는 제출해야 적용됩니다.",
+    "누르면 다른 화면으로 가는 항목에는 쓰지 않습니다. 목록 항목을 씁니다."
+  ],
+  "anatomy": [
+    { "part": "row", "ko": "줄", "note": "누르는 영역 전체. 네모와 레이블을 함께 감쌉니다. 높이는 touch-target.min 이상입니다." },
+    { "part": "box", "ko": "네모", "note": "고른 상태를 보여 줍니다. 고르지 않았을 때는 테두리만, 골랐을 때는 색 면이 됩니다." },
+    { "part": "check", "ko": "체크 표시", "note": "골랐을 때 네모 안에 나타납니다. 색은 fg.on-brand-solid입니다." },
+    { "part": "label", "ko": "레이블", "note": "네모 오른쪽에 둡니다. 길면 줄을 바꾸고, 네모는 첫 줄에 맞춥니다." },
+    { "part": "description", "ko": "보조 설명", "note": "선택. 레이블 아래에 작은 글자로 둡니다." }
+  ],
+  "variants": [
+    {
+      "name": "default",
+      "use": "모든 체크박스의 기본 모양. 골랐을 때 네모가 bg.brand-solid, 체크 표시가 fg.on-brand-solid가 됩니다. 변형은 이것 하나입니다.",
+      "tokens": { "bg": "color.bg.brand-solid", "fg": "color.fg.on-brand-solid", "stroke": "color.stroke.neutral" }
+    }
+  ],
+  "sizes": [
+    {
+      "name": "medium",
+      "default": true,
+      "use": "고객 앱과 키오스크의 모든 체크박스, 웹의 가입과 동의 화면",
+      "env": {
+        "web": { "height": "dimension.x12", "box": "dimension.x6", "check": "icon-size.sm", "gap": "dimension.x3", "radius": "radius.r1", "font": "font-size.t5", "description-font": "font-size.t3" },
+        "app": { "height": "dimension.x12", "box": "dimension.x6", "check": "icon-size.sm", "gap": "dimension.x3", "radius": "radius.r1", "font": "font-size.t5", "description-font": "font-size.t3" },
+        "kiosk": { "height": "dimension.x16", "box": "dimension.x8", "check": "icon-size.xs", "gap": "dimension.x4", "radius": "radius.r1", "font": "font-size.t3", "description-font": "font-size.t1" }
+      }
+    },
+    {
+      "name": "small",
+      "use": "파트너 웹의 표와 필터. 마우스로 쓰는 화면에서만 씁니다. 앱과 키오스크에서는 쓰지 않습니다.",
+      "env": {
+        "web": { "height": "dimension.x10", "box": "dimension.x5", "check": "icon-size.xs", "gap": "dimension.x2", "radius": "radius.r1", "font": "font-size.t4", "description-font": "font-size.t2" },
+        "app": {},
+        "kiosk": {}
+      }
+    }
+  ],
+  "states": [
+    { "name": "unchecked", "change": "네모는 bg.layer-default 면에 stroke.neutral 1px 테두리. 체크 표시는 보이지 않습니다.", "tokens": ["color.bg.layer-default", "color.stroke.neutral"] },
+    { "name": "checked", "change": "네모의 면과 테두리가 bg.brand-solid로 바뀌고 체크 표시가 나타납니다.", "tokens": ["color.bg.brand-solid", "color.fg.on-brand-solid"] },
+    { "name": "focus", "change": "웹에서 키보드로 초점이 오면 네모 둘레에 2px 테두리를 2px 띄워 그립니다.", "tokens": ["color.stroke.brand-solid"] },
+    { "name": "error", "change": "꼭 골라야 하는데 고르지 않은 채 제출하면 네모의 테두리가 fg.critical로 바뀝니다. 이유는 묶음 아래에 문구로 알립니다.", "tokens": ["color.fg.critical"] },
+    { "name": "disabled", "change": "네모는 bg.disabled 면에 stroke.neutral-weak 테두리, 체크 표시와 레이블은 fg.disabled. 누를 수 없습니다. 투명도로 흐리게 하지 않습니다.", "tokens": ["color.bg.disabled", "color.fg.disabled", "color.stroke.neutral-weak"] }
+  ],
+  "motion": [
+    { "what": "고를 때 네모의 색 변화와 체크 표시의 나타남", "duration": "motion.duration.d1", "easing": "motion.easing.standard" }
+  ],
+  "behavior": [
+    "줄 전체가 눌립니다. 네모만 눌리게 만들지 않습니다.",
+    "레이블이 길면 줄을 바꿉니다. 말줄임으로 자르지 않습니다. 동의하는 내용이 잘리면 안 되기 때문입니다.",
+    "고른 값은 제출할 때 적용됩니다. 누르는 즉시 적용되어야 하면 Switch를 씁니다.",
+    "여러 개를 세로로 쌓을 때는 줄 사이를 띄우지 않습니다. 줄의 높이가 이미 간격을 만듭니다.",
+    "'모두 동의하기'는 아래 항목을 모두 고르거나 모두 풉니다. 아래 항목 가운데 하나라도 풀리면 '모두 동의하기'도 풀립니다.",
+    "약관 전문처럼 다른 화면으로 가는 링크는 레이블 밖 오른쪽에 따로 둡니다. 레이블 안에 넣으면 고르려다 화면이 넘어갑니다."
+  ],
+  "accessibility": [
+    "웹은 input type=checkbox를 씁니다. 모양만 바꾸고 요소는 그대로 두어 키보드의 스페이스로 고를 수 있게 합니다.",
+    "네모와 레이블을 label 요소로 감싸 레이블을 눌러도 고를 수 있게 합니다. 레이블이 없으면 aria-label로 이름을 붙입니다.",
+    "여러 개를 묶을 때는 fieldset과 legend로 묶음의 이름을 알립니다.",
+    "고른 상태는 색과 함께 체크 표시로 알립니다. 색만 바뀌는 체크박스는 만들지 않습니다.",
+    "고르지 않은 네모의 테두리는 면과 3:1 이상(stroke.neutral), 체크 표시는 네모의 면과 4.5:1 이상입니다.",
+    "오류일 때는 aria-invalid를 주고, 묶음 아래의 오류 문구를 aria-describedby로 잇습니다."
+  ],
+  "writing": [
+    "레이블은 고르면 일어나는 일을 긍정형으로 씁니다: '마케팅 알림 받기'. '알림 받지 않기'처럼 부정형으로 쓰지 않습니다.",
+    "약관 동의는 '(필수) 서비스 이용약관에 동의해요', '(선택) 마케팅 정보 받기에 동의해요'처럼 필수와 선택을 앞에 적습니다.",
+    "한 문장으로 쓰고 마침표는 붙이지 않습니다.",
+    "오류 문구는 다음에 할 일을 씁니다: 필수 약관에 동의해주세요."
+  ],
+  "props": [
+    { "name": "label", "type": "ReactNode", "note": "네모 오른쪽 레이블. 앱은 string." },
+    { "name": "description", "type": "string", "note": "레이블 아래 보조 설명." },
+    { "name": "checked", "type": "boolean", "note": "고른 상태. 밖에서 값을 가질 때 씁니다." },
+    { "name": "defaultChecked", "type": "boolean", "default": "false", "note": "처음 상태. 웹에서 값을 밖에 두지 않을 때 씁니다." },
+    { "name": "onCheckedChange", "type": "(checked: boolean) => void", "note": "고르거나 풀 때. 웹과 앱이 같은 이름을 씁니다." },
+    { "name": "size", "type": "medium | small", "default": "medium", "note": "크기. small은 웹에만 있습니다." },
+    { "name": "invalid", "type": "boolean", "default": "false", "note": "오류 상태. 문구는 묶음 아래에 따로 둡니다." },
+    { "name": "disabled", "type": "boolean", "default": "false", "note": "누를 수 없습니다." }
+  ],
+  "implementation": {
+    "web": [
+      "label 요소 하나로 네모와 레이블을 감쌉니다. inline-flex, items-start, gap-x3를 주고 줄의 높이는 min-h-x12와 py-x3으로 만듭니다.",
+      "input type=checkbox에 appearance-none을 주어 그 요소를 네모로 그립니다(size-x6 rounded-r1 border). 숨긴 input 옆에 div를 따로 그리지 않습니다. 초점과 고른 상태가 요소에 그대로 남습니다.",
+      "고른 상태는 checked:bg-bg-brand-solid checked:border-stroke-brand-solid로 바꿉니다. 체크 표시는 input 바로 뒤의 svg에 peer-checked:opacity-100을 주어 보여 줍니다.",
+      "네모를 감싼 span의 높이를 레이블 한 줄의 높이(h-x6)와 같게 두면 레이블이 여러 줄이 되어도 네모가 첫 줄에 맞습니다.",
+      "초점 테두리는 input에 focus-visible:outline으로 그립니다. outline-offset-2로 네모에서 띄웁니다.",
+      "비활성은 disabled:bg-bg-disabled disabled:border-stroke-neutral-weak, 체크 표시는 peer-disabled:text-fg-disabled로 바꿉니다. opacity는 쓰지 않습니다.",
+      "색 변화에는 transition-colors duration-d1 ease-standard를, 동작 줄이기에는 motion-reduce:transition-none을 붙입니다."
+    ],
+    "app": [
+      "Pressable 하나로 네모와 레이블을 감싸 줄 전체가 눌리게 합니다. minHeight는 tokens.dimension.x12입니다.",
+      "네모의 크기, 모서리, 사이 간격, 글자 크기는 tokens.dimension, tokens.radius, tokens.fontSize에서 가져옵니다. 숫자를 직접 쓰지 않습니다.",
+      "지금 앱은 함께 쓰는 체크박스가 없이 화면마다 24px 아이콘을 손으로 바꾸고 있어 바꿔야 하는 부분입니다. 이 부품 하나로 모으고 화면에서는 checked와 onCheckedChange만 넘깁니다.",
+      "체크 표시는 react-native-svg의 Path로 그리고 색은 color.fg.onBrandSolid를 넘깁니다. 크기는 tokens.iconSize.sm입니다.",
+      "accessibilityRole은 checkbox, accessibilityState에 checked와 disabled를 넘깁니다. accessibilityLabel은 레이블과 같습니다.",
+      "비활성은 opacity가 아니라 color.bg.disabled와 color.fg.disabled로 바꿉니다.",
+      "눌리는 동안의 반응은 네모가 아니라 줄 전체의 배경(color.bg.neutralWeak)으로 보여 줍니다."
+    ],
+    "kiosk": [
+      "웹 기준 구현을 그대로 가져가고 Tailwind preset만 kiosk용으로 만듭니다(sync-tokens --env kiosk). 같은 클래스 이름으로 글자 크기와 모서리가 kiosk 값이 됩니다.",
+      "크기 표(SIZES)만 kiosk 값으로 바꿉니다: medium은 줄 min-h-x16 py-x4 gap-x4, 네모 size-x8, 네모를 감싼 span h-x8, 체크 표시 size-icon-xs, 레이블 text-t3. small은 두지 않습니다.",
+      "줄 전체가 눌려야 합니다. 네모만 눌리면 서서 손가락으로 누르기 어렵습니다. 줄의 너비도 화면 너비를 채웁니다.",
+      "hover는 없으므로 눌리는 동안 줄의 배경을 active:bg-bg-neutral-weak로 바꿔 반응을 보여 줍니다.",
+      "한 화면에 한 가지 일만 두는 규칙에 따라, 약관 동의는 '모두 동의하기' 한 줄과 필수 항목만 보여 주고 나머지는 펼쳐서 봅니다.",
+      "초점 테두리는 키보드가 없는 키오스크에서는 보이지 않지만, 지우지 않고 둡니다."
+    ]
+  }
+}

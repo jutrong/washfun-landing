@@ -1,0 +1,784 @@
+{
+  "add": {
+    "category": "System",
+    "ko": [
+      "더하기",
+      "추가",
+      "플러스"
+    ]
+  },
+  "add-large": {
+    "category": "System",
+    "ko": [
+      "더하기",
+      "추가",
+      "플러스",
+      "크게"
+    ]
+  },
+  "subtract": {
+    "category": "System",
+    "ko": [
+      "빼기",
+      "마이너스"
+    ]
+  },
+  "close": {
+    "category": "System",
+    "ko": [
+      "닫기",
+      "엑스",
+      "취소"
+    ]
+  },
+  "close-large": {
+    "category": "System",
+    "ko": [
+      "닫기",
+      "엑스",
+      "크게"
+    ]
+  },
+  "close-circle": {
+    "category": "System",
+    "ko": [
+      "닫기",
+      "지우기",
+      "원"
+    ]
+  },
+  "check": {
+    "category": "System",
+    "ko": [
+      "체크",
+      "확인",
+      "완료"
+    ]
+  },
+  "check-double": {
+    "category": "System",
+    "ko": [
+      "체크",
+      "두번",
+      "읽음",
+      "완료"
+    ]
+  },
+  "checkbox": {
+    "category": "System",
+    "ko": [
+      "체크박스",
+      "선택"
+    ]
+  },
+  "checkbox-blank": {
+    "category": "System",
+    "ko": [
+      "체크박스",
+      "빈칸",
+      "미선택"
+    ]
+  },
+  "checkbox-circle": {
+    "category": "System",
+    "ko": [
+      "체크",
+      "원",
+      "완료",
+      "성공"
+    ]
+  },
+  "radio-button": {
+    "category": "System",
+    "ko": [
+      "라디오",
+      "선택"
+    ]
+  },
+  "arrow-left": {
+    "category": "Arrows",
+    "ko": [
+      "화살표",
+      "왼쪽",
+      "뒤로"
+    ]
+  },
+  "arrow-right": {
+    "category": "Arrows",
+    "ko": [
+      "화살표",
+      "오른쪽",
+      "다음"
+    ]
+  },
+  "arrow-up": {
+    "category": "Arrows",
+    "ko": [
+      "화살표",
+      "위"
+    ]
+  },
+  "arrow-down": {
+    "category": "Arrows",
+    "ko": [
+      "화살표",
+      "아래"
+    ]
+  },
+  "arrow-left-s": {
+    "category": "Arrows",
+    "ko": [
+      "꺾쇠",
+      "왼쪽",
+      "뒤로"
+    ]
+  },
+  "arrow-right-s": {
+    "category": "Arrows",
+    "ko": [
+      "꺾쇠",
+      "오른쪽",
+      "더보기"
+    ]
+  },
+  "arrow-up-s": {
+    "category": "Arrows",
+    "ko": [
+      "꺾쇠",
+      "위",
+      "접기"
+    ]
+  },
+  "arrow-down-s": {
+    "category": "Arrows",
+    "ko": [
+      "꺾쇠",
+      "아래",
+      "펼치기"
+    ]
+  },
+  "arrow-drop-left": {
+    "category": "Arrows",
+    "ko": [
+      "삼각형",
+      "왼쪽",
+      "이전"
+    ]
+  },
+  "arrow-drop-right": {
+    "category": "Arrows",
+    "ko": [
+      "삼각형",
+      "오른쪽",
+      "다음"
+    ]
+  },
+  "arrow-drop-up": {
+    "category": "Arrows",
+    "ko": [
+      "삼각형",
+      "위"
+    ]
+  },
+  "arrow-drop-down": {
+    "category": "Arrows",
+    "ko": [
+      "삼각형",
+      "아래",
+      "선택"
+    ]
+  },
+  "arrow-left-right": {
+    "category": "Arrows",
+    "ko": [
+      "좌우",
+      "교환",
+      "전환"
+    ]
+  },
+  "arrow-right-up": {
+    "category": "Arrows",
+    "ko": [
+      "화살표",
+      "바로가기",
+      "외부"
+    ]
+  },
+  "arrow-go-back": {
+    "category": "Arrows",
+    "ko": [
+      "되돌리기",
+      "뒤로"
+    ]
+  },
+  "refresh": {
+    "category": "System",
+    "ko": [
+      "새로고침",
+      "다시"
+    ]
+  },
+  "loader-4": {
+    "category": "System",
+    "ko": [
+      "불러오는",
+      "중",
+      "로딩"
+    ]
+  },
+  "more": {
+    "category": "System",
+    "ko": [
+      "더보기",
+      "점",
+      "가로"
+    ]
+  },
+  "more-2": {
+    "category": "System",
+    "ko": [
+      "더보기",
+      "점",
+      "세로"
+    ]
+  },
+  "menu": {
+    "category": "System",
+    "ko": [
+      "메뉴",
+      "햄버거"
+    ]
+  },
+  "search": {
+    "category": "System",
+    "ko": [
+      "검색",
+      "돋보기"
+    ]
+  },
+  "home": {
+    "category": "Buildings",
+    "ko": [
+      "홈",
+      "집"
+    ]
+  },
+  "settings-4": {
+    "category": "System",
+    "ko": [
+      "설정",
+      "톱니"
+    ]
+  },
+  "user-3": {
+    "category": "User & Faces",
+    "ko": [
+      "사용자",
+      "내정보",
+      "프로필"
+    ]
+  },
+  "user": {
+    "category": "User & Faces",
+    "ko": [
+      "사용자",
+      "회원"
+    ]
+  },
+  "user-add": {
+    "category": "User & Faces",
+    "ko": [
+      "사용자",
+      "추가",
+      "초대"
+    ]
+  },
+  "user-settings": {
+    "category": "User & Faces",
+    "ko": [
+      "사용자",
+      "설정",
+      "관리자"
+    ]
+  },
+  "user-smile": {
+    "category": "User & Faces",
+    "ko": [
+      "사용자",
+      "회원",
+      "웃음"
+    ]
+  },
+  "group": {
+    "category": "User & Faces",
+    "ko": [
+      "사용자",
+      "여럿",
+      "그룹",
+      "직원"
+    ]
+  },
+  "heart": {
+    "category": "Health & Medical",
+    "ko": [
+      "하트",
+      "찜",
+      "좋아요"
+    ]
+  },
+  "star": {
+    "category": "System",
+    "ko": [
+      "별",
+      "즐겨찾기",
+      "평점",
+      "리뷰"
+    ]
+  },
+  "notification-4": {
+    "category": "Media",
+    "ko": [
+      "알림",
+      "종"
+    ]
+  },
+  "alarm": {
+    "category": "System",
+    "ko": [
+      "알람",
+      "시계"
+    ]
+  },
+  "time": {
+    "category": "System",
+    "ko": [
+      "시간",
+      "시계"
+    ]
+  },
+  "calendar": {
+    "category": "Business",
+    "ko": [
+      "달력",
+      "일정",
+      "예약"
+    ]
+  },
+  "calendar-2": {
+    "category": "Business",
+    "ko": [
+      "달력",
+      "일정",
+      "날짜"
+    ]
+  },
+  "map-2": {
+    "category": "Map",
+    "ko": [
+      "지도"
+    ]
+  },
+  "map-pin": {
+    "category": "Map",
+    "ko": [
+      "위치",
+      "핀",
+      "매장"
+    ]
+  },
+  "direction": {
+    "category": "Map",
+    "ko": [
+      "길찾기",
+      "방향"
+    ]
+  },
+  "phone": {
+    "category": "Device",
+    "ko": [
+      "전화",
+      "통화"
+    ]
+  },
+  "message-3": {
+    "category": "Communication",
+    "ko": [
+      "메시지",
+      "말풍선",
+      "문의"
+    ]
+  },
+  "chat-3": {
+    "category": "Communication",
+    "ko": [
+      "채팅",
+      "댓글",
+      "말풍선"
+    ]
+  },
+  "mail-send": {
+    "category": "Business",
+    "ko": [
+      "메일",
+      "보내기",
+      "발송"
+    ]
+  },
+  "send-plane": {
+    "category": "Business",
+    "ko": [
+      "보내기",
+      "전송",
+      "종이비행기"
+    ]
+  },
+  "customer-service-2": {
+    "category": "Business",
+    "ko": [
+      "고객센터",
+      "상담",
+      "헤드셋"
+    ]
+  },
+  "question": {
+    "category": "System",
+    "ko": [
+      "물음표",
+      "도움말",
+      "질문"
+    ]
+  },
+  "information": {
+    "category": "System",
+    "ko": [
+      "정보",
+      "안내"
+    ]
+  },
+  "information-2": {
+    "category": "System",
+    "ko": [
+      "정보",
+      "안내",
+      "원"
+    ]
+  },
+  "error-warning": {
+    "category": "System",
+    "ko": [
+      "오류",
+      "경고",
+      "느낌표"
+    ]
+  },
+  "alert": {
+    "category": "System",
+    "ko": [
+      "경고",
+      "주의",
+      "삼각형"
+    ]
+  },
+  "eye": {
+    "category": "System",
+    "ko": [
+      "보기",
+      "표시"
+    ]
+  },
+  "eye-off": {
+    "category": "System",
+    "ko": [
+      "숨기기",
+      "가리기"
+    ]
+  },
+  "edit": {
+    "category": "Design",
+    "ko": [
+      "수정",
+      "편집",
+      "연필"
+    ]
+  },
+  "delete-bin": {
+    "category": "System",
+    "ko": [
+      "삭제",
+      "휴지통"
+    ]
+  },
+  "delete-back-2": {
+    "category": "System",
+    "ko": [
+      "지우기",
+      "백스페이스",
+      "키패드"
+    ]
+  },
+  "file-copy": {
+    "category": "Document",
+    "ko": [
+      "복사",
+      "파일"
+    ]
+  },
+  "download": {
+    "category": "System",
+    "ko": [
+      "내려받기",
+      "다운로드"
+    ]
+  },
+  "upload": {
+    "category": "System",
+    "ko": [
+      "올리기",
+      "업로드"
+    ]
+  },
+  "share": {
+    "category": "System",
+    "ko": [
+      "공유"
+    ]
+  },
+  "image": {
+    "category": "Media",
+    "ko": [
+      "이미지",
+      "사진"
+    ]
+  },
+  "image-add": {
+    "category": "Media",
+    "ko": [
+      "이미지",
+      "사진",
+      "추가"
+    ]
+  },
+  "camera": {
+    "category": "Media",
+    "ko": [
+      "카메라",
+      "촬영"
+    ]
+  },
+  "gallery": {
+    "category": "Media",
+    "ko": [
+      "갤러리",
+      "사진첩"
+    ]
+  },
+  "qr-code": {
+    "category": "Device",
+    "ko": [
+      "큐알",
+      "QR",
+      "코드"
+    ]
+  },
+  "bank-card": {
+    "category": "Finance",
+    "ko": [
+      "카드",
+      "결제",
+      "신용카드"
+    ]
+  },
+  "wallet-3": {
+    "category": "Finance",
+    "ko": [
+      "지갑",
+      "잔액",
+      "충전"
+    ]
+  },
+  "coin": {
+    "category": "Finance",
+    "ko": [
+      "코인",
+      "동전",
+      "포인트"
+    ]
+  },
+  "coins": {
+    "category": "Finance",
+    "ko": [
+      "코인",
+      "동전",
+      "여러개",
+      "포인트"
+    ]
+  },
+  "coupon": {
+    "category": "Finance",
+    "ko": [
+      "쿠폰",
+      "할인"
+    ]
+  },
+  "ticket": {
+    "category": "Finance",
+    "ko": [
+      "티켓",
+      "이용권",
+      "세차권"
+    ]
+  },
+  "gift": {
+    "category": "Finance",
+    "ko": [
+      "선물",
+      "이벤트"
+    ]
+  },
+  "receipt": {
+    "category": "Document",
+    "ko": [
+      "영수증",
+      "결제내역"
+    ]
+  },
+  "cash": {
+    "category": "Finance",
+    "ko": [
+      "현금",
+      "지폐"
+    ]
+  },
+  "money-dollar-circle": {
+    "category": "Finance",
+    "ko": [
+      "금액",
+      "매출",
+      "정산"
+    ]
+  },
+  "exchange": {
+    "category": "Finance",
+    "ko": [
+      "교환",
+      "환불",
+      "전환"
+    ]
+  },
+  "store": {
+    "category": "Buildings",
+    "ko": [
+      "매장",
+      "가게",
+      "세차장"
+    ]
+  },
+  "dashboard": {
+    "category": "System",
+    "ko": [
+      "대시보드",
+      "현황"
+    ]
+  },
+  "bar-chart-box": {
+    "category": "Business",
+    "ko": [
+      "막대",
+      "그래프",
+      "통계"
+    ]
+  },
+  "bar-chart-grouped": {
+    "category": "Business",
+    "ko": [
+      "막대",
+      "그래프",
+      "비교",
+      "통계"
+    ]
+  },
+  "line-chart": {
+    "category": "Business",
+    "ko": [
+      "꺾은선",
+      "그래프",
+      "추이"
+    ]
+  },
+  "megaphone": {
+    "category": "Business",
+    "ko": [
+      "공지",
+      "확성기",
+      "이벤트"
+    ]
+  },
+  "flashlight": {
+    "category": "Weather",
+    "ko": [
+      "번개",
+      "빠른",
+      "즉시"
+    ]
+  },
+  "car-washing": {
+    "category": "Map",
+    "ko": [
+      "세차",
+      "자동차"
+    ]
+  },
+  "car": {
+    "category": "Map",
+    "ko": [
+      "자동차",
+      "차량"
+    ]
+  },
+  "logout-box-r": {
+    "category": "System",
+    "ko": [
+      "로그아웃",
+      "나가기"
+    ]
+  },
+  "device": {
+    "category": "Device",
+    "ko": [
+      "기기",
+      "단말",
+      "키오스크"
+    ]
+  },
+  "volume-up": {
+    "category": "Media",
+    "ko": [
+      "소리",
+      "음량"
+    ]
+  },
+  "volume-mute": {
+    "category": "Media",
+    "ko": [
+      "음소거",
+      "소리끔"
+    ]
+  },
+  "rfid": {
+    "category": "Device",
+    "ko": [
+      "태그",
+      "NFC",
+      "RF",
+      "카드"
+    ]
+  },
+  "parking-box": {
+    "category": "Map",
+    "ko": [
+      "주차",
+      "P",
+      "베이"
+    ]
+  }
+}
