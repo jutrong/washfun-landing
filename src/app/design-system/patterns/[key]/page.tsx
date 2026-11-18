@@ -5,13 +5,10 @@ import TokenSection from "@/components/design-system/TokenSection";
 import { components } from "@/components/design-system/components";
 import { COMPONENTS_HREF, PATTERNS_HREF } from "@/components/design-system/nav";
 import { pattern, patterns } from "@/components/design-system/patterns";
-import { ENVIRONMENTS } from "@/components/design-system/tokens";
 
 const rule = "flex list-disc flex-col gap-x2 pl-x5 text-t4 text-fg-neutral-muted";
 const th = "border-b border-stroke-neutral-weak py-x2 pr-x4 font-medium";
 const td = "border-b border-stroke-neutral-muted py-x2 pr-x4 align-top";
-
-const ENV_NAME: Record<string, string> = { web: "웹 · 파트너 웹, 랜딩", app: "앱 · 고객 앱", kiosk: "키오스크" };
 
 export const dynamicParams = false;
 
@@ -133,17 +130,7 @@ export default function PatternPage({ params }: { params: { key: string } }) {
           </div>
         </TokenSection>
 
-        <TokenSection id="env" title="환경별" lead="같은 패턴이라도 환경마다 달라지는 부분입니다.">
-          <div className="flex flex-col gap-x6">
-            {ENVIRONMENTS.map((env) => (
-              <div key={env}>
-                <p className="mb-x2 text-t5 font-bold text-fg-neutral">{ENV_NAME[env]}</p>
-                <Rules items={spec.env[env]} />
-              </div>
-            ))}
-          </div>
-        </TokenSection>
-
+        {/* 환경별 차이(spec.env)는 명세 json 에만 두고 페이지에는 보여 주지 않는다. */}
         <TokenSection id="copy" title="문구 예시" lead="Writing 규칙을 지킨 문구입니다. 검사를 통과한 것만 실었습니다.">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-t3">
