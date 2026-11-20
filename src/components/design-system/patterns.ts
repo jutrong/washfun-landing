@@ -8,7 +8,7 @@ export type PatternSpec = {
   ko: string;
   order?: number;
   lead: string;
-  /** 이 패턴이 푸는 문제 */
+  /** 이 패턴이 왜 필요한지 */
   problem: string;
   when: string[];
   /** 함께 쓰는 부품의 키 */
