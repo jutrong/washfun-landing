@@ -50,7 +50,7 @@ export default function PatternPage({ params }: { params: { key: string } }) {
       </div>
 
       <div className="mt-x4">
-        <TokenSection id="problem" title="푸는 문제" lead={spec.problem}>
+        <TokenSection id="problem" title="왜 필요한가요" lead={spec.problem}>
           <p className="mb-x2 text-t3 font-bold text-fg-neutral">이럴 때 써요</p>
           <Rules items={spec.when} />
           <p className="mb-x2 mt-x6 text-t3 font-bold text-fg-neutral">쓰는 부품</p>
